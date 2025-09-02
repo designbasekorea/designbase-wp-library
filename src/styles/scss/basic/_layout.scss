@@ -1,0 +1,533 @@
+/**
+ * DesignBase Frontend Kit - 레이아웃
+ * 그리드, 컨테이너, 유틸리티 클래스 등을 정의
+ */
+
+
+* {
+    box-sizing: border-box;
+}
+
+// 컨테이너
+$container-max-width: 1200px;
+$container-padding: $spacing-4;
+
+$grid-columns: 12;
+$grid-gutter: $spacing-4;
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+    max-width: $container-max-width;
+
+    @media (min-width: 576px) {
+        padding: 0 $spacing-6;
+    }
+
+    @media (min-width: 992px) {
+        padding: 0 $spacing-8;
+    }
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @media (min-width: 576px) {
+        padding: 0 $spacing-6;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 (-$spacing-4 / 2);
+}
+
+.col,
+.col-auto,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    position: relative;
+    width: 100%;
+    padding: 0 ($spacing-4 / 2);
+}
+
+.col {
+    flex: 1 0 0%;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+// 그리드 컬럼 클래스들
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        flex: 0 0 percentage($i / 12);
+        max-width: percentage($i / 12);
+    }
+}
+
+// 반응형 그리드
+@each $breakpoint, $value in (sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px) {
+    @media (min-width: $value) {
+        @for $i from 1 through 12 {
+            .col-#{$breakpoint}-#{$i} {
+                flex: 0 0 percentage($i / 12);
+                max-width: percentage($i / 12);
+            }
+        }
+
+        .col-#{$breakpoint}-auto {
+            flex: 0 0 auto;
+            width: auto;
+        }
+    }
+}
+
+// ============================================================================
+// 플렉스 유틸리티
+// ============================================================================
+
+.d-flex {
+    display: flex;
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+.d-none {
+    display: none;
+}
+
+// 플렉스 방향
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-column-reverse {
+    flex-direction: column-reverse;
+}
+
+// 플렉스 래핑
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+// 플렉스 정렬 (메인 축)
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+// 플렉스 정렬 (교차 축)
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-baseline {
+    align-items: baseline;
+}
+
+.items-stretch {
+    align-items: stretch;
+}
+
+// 플렉스 정렬 (여러 줄)
+.content-start {
+    align-content: flex-start;
+}
+
+.content-end {
+    align-content: flex-end;
+}
+
+.content-center {
+    align-content: center;
+}
+
+.content-between {
+    align-content: space-between;
+}
+
+.content-around {
+    align-content: space-around;
+}
+
+.content-stretch {
+    align-content: stretch;
+}
+
+// 플렉스 아이템 정렬
+.self-start {
+    align-self: flex-start;
+}
+
+.self-end {
+    align-self: flex-end;
+}
+
+.self-center {
+    align-self: center;
+}
+
+.self-baseline {
+    align-self: baseline;
+}
+
+.self-stretch {
+    align-self: stretch;
+}
+
+// 플렉스 성장/축소
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+.flex-grow-0 {
+    flex-grow: 0;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.flex-shrink-1 {
+    flex-shrink: 1;
+}
+
+// ============================================================================
+// 위치 유틸리티
+// ============================================================================
+
+.position-static {
+    position: static;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.position-sticky {
+    position: sticky;
+}
+
+// ============================================================================
+// 표시 유틸리티
+// ============================================================================
+
+.d-block {
+    display: block;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-table {
+    display: table;
+}
+
+.d-table-row {
+    display: table-row;
+}
+
+.d-table-cell {
+    display: table-cell;
+}
+
+// 반응형 표시
+@each $breakpoint, $value in (sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px) {
+    @media (min-width: $value) {
+        .d-#{$breakpoint}-block {
+            display: block;
+        }
+
+        .d-#{$breakpoint}-inline {
+            display: inline;
+        }
+
+        .d-#{$breakpoint}-inline-block {
+            display: inline-block;
+        }
+
+        .d-#{$breakpoint}-flex {
+            display: flex;
+        }
+
+        .d-#{$breakpoint}-none {
+            display: none;
+        }
+    }
+}
+
+// ============================================================================
+// 너비 및 높이 유틸리티
+// ============================================================================
+
+.w-25 {
+    width: 25%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-auto {
+    width: auto;
+}
+
+.h-25 {
+    height: 25%;
+}
+
+.h-50 {
+    height: 50%;
+}
+
+.h-75 {
+    height: 75%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.h-auto {
+    height: auto;
+}
+
+// 뷰포트 높이
+.vh-25 {
+    height: 25vh;
+}
+
+.vh-50 {
+    height: 50vh;
+}
+
+.vh-75 {
+    height: 75vh;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+// ============================================================================
+// 오버플로우 유틸리티
+// ============================================================================
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-x-visible {
+    overflow-x: visible;
+}
+
+.overflow-x-scroll {
+    overflow-x: scroll;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+.overflow-y-visible {
+    overflow-y: visible;
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+
+// ============================================================================
+// 정렬 유틼리티
+// ============================================================================
+
+.float-start {
+    float: left;
+}
+
+.float-end {
+    float: right;
+}
+
+.float-none {
+    float: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+// ============================================================================
+// 가시성 유틸리티
+// ============================================================================
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+// ============================================================================
+// 반응형 숨김/표시
+// ============================================================================
+
+@each $breakpoint, $value in (sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px) {
+    @media (min-width: $value) {
+        .d-#{$breakpoint}-none {
+            display: none;
+        }
+
+        .d-#{$breakpoint}-block {
+            display: block;
+        }
+
+        .d-#{$breakpoint}-flex {
+            display: flex;
+        }
+    }
+
+    @media (max-width: #{$value - 1px}) {
+        .d-#{$breakpoint}-down-none {
+            display: none;
+        }
+
+        .d-#{$breakpoint}-down-block {
+            display: block;
+        }
+
+        .d-#{$breakpoint}-down-flex {
+            display: flex;
+        }
+    }
+}

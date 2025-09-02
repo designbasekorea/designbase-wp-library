@@ -1,0 +1,450 @@
+/**
+ * DesignBase Frontend Kit - 탭 컴포넌트
+ * 콘텐츠를 탭으로 구분하여 표시하는 컴포넌트 스타일을 정의
+ */
+
+.tabs {
+    display: inline-flex;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 4px;
+    gap: 4px;
+
+    .tab-btn {
+        appearance: none;
+        color: #6b7280;
+        font-size: 14px;
+        padding: 8px 16px;
+        font-weight: 600;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        user-select: none;
+        white-space: nowrap;
+
+        // 내부 요소들의 클릭 이벤트 방지
+        * {
+            pointer-events: none;
+        }
+
+        // 탭 버튼 자체는 클릭 가능
+        pointer-events: auto;
+
+        &:hover {
+            background: #ffffff;
+            color: #374151;
+        }
+
+        &.active {
+            background: #ffffff;
+            color: #1f2937;
+
+        }
+
+        .tab-count {
+            background: #e5e7eb;
+            color: #6b7280;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            min-width: 20px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        &:hover .tab-count,
+        &.active .tab-count {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+    }
+
+
+    &-sm {
+        padding: 3px;
+        gap: 3px;
+
+        .tab-btn {
+            padding: 6px 12px;
+            font-size: 13px;
+
+            .tab-count {
+                padding: 1px 4px;
+                font-size: 11px;
+                min-width: 16px;
+            }
+        }
+    }
+
+    &-lg {
+        padding: 6px;
+        gap: 6px;
+
+        .tab-btn {
+            padding: 12px 20px;
+            font-size: 16px;
+
+            .tab-count {
+                padding: 3px 8px;
+                font-size: 14px;
+                min-width: 24px;
+            }
+        }
+    }
+
+
+    // 알약 타입 (둥근 모서리)
+    &-pills {
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+
+        .tab-btn {
+            border-radius: 50px;
+            padding: 8px 20px;
+
+            &.active {
+                background: #3b82f6;
+                color: #ffffff;
+                box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: #f2f2f2;
+                color: #374151;
+            }
+        }
+    }
+
+    // 테두리 타입 (상단 테두리)
+    &-basic {
+        background: transparent;
+        padding: 0;
+        gap: 4px;
+
+        .tab-btn {
+            border-radius: 4px;
+            padding: 12px 16px;
+
+            &.active {
+                border-bottom-color: #3b82f6;
+                background: #3b82f6;
+                color: #fff;
+                font-weight: 600;
+            }
+
+            &:hover:not(.active) {
+                background: #f2f2f2;
+                color: #6b7280;
+            }
+        }
+    }
+
+    // 언더라인 타입 (하단 밑줄)
+    &-underline {
+        background: transparent;
+        padding: 0;
+        gap: 0;
+
+        border-bottom: 1px solid #e5e7eb;
+
+        .tab-btn {
+            border-radius: 0;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            padding: 12px 20px;
+
+            &.active {
+                border-bottom-color: #3b82f6;
+                background: transparent;
+                color: #3b82f6;
+                font-weight: 600;
+            }
+
+            &:hover:not(.active) {
+                background: transparent;
+                color: #6b7280;
+                border-bottom-color: #d1d5db;
+            }
+        }
+    }
+
+    // 세로 타입
+    &-vertical {
+        flex-direction: column;
+        align-items: stretch;
+        background: transparent;
+        padding: 0;
+        gap: 0;
+
+        .tab-btn {
+            justify-content: flex-start;
+            text-align: left;
+            border-radius: 0;
+            border-left: 3px solid transparent;
+            padding: 12px 20px;
+
+            &.active {
+                border-left-color: #3b82f6;
+                background: #f8fafc;
+                color: #3b82f6;
+                font-weight: 600;
+            }
+
+            &:hover:not(.active) {
+                background: #f8fafc;
+                color: #6b7280;
+                border-left-color: #d1d5db;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 탭 색상 변형
+    // ============================================================================
+
+    &-primary {
+        .tab-btn {
+            &.active {
+                background: #3b82f6;
+                color: #ffffff;
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: rgba(59, 130, 246, 0.1);
+                color: #3b82f6;
+            }
+        }
+    }
+
+    &-success {
+        .tab-btn {
+            &.active {
+                background: #22c55e;
+                color: #ffffff;
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: rgba(34, 197, 94, 0.1);
+                color: #22c55e;
+            }
+        }
+    }
+
+    &-warning {
+        .tab-btn {
+            &.active {
+                background: #f59e0b;
+                color: #ffffff;
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: rgba(245, 158, 11, 0.1);
+                color: #f59e0b;
+            }
+        }
+    }
+
+    &-danger {
+        .tab-btn {
+            &.active {
+                background: #ef4444;
+                color: #ffffff;
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: rgba(239, 68, 68, 0.1);
+                color: #ef4444;
+            }
+        }
+    }
+
+    &-info {
+        .tab-btn {
+            &.active {
+                background: #06b6d4;
+                color: #ffffff;
+
+                .tab-count {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffffff;
+                }
+            }
+
+            &:hover:not(.active) {
+                background: rgba(6, 182, 212, 0.1);
+                color: #06b6d4;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 탭 유틸리티
+    // ============================================================================
+
+    &-full {
+        width: 100%;
+
+        .tab-btn {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+
+    &-justified {
+        width: 100%;
+
+        .tab-btn {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+
+    &-center {
+        justify-content: center;
+    }
+
+    &-end {
+        justify-content: flex-end;
+    }
+
+    &-between {
+        justify-content: space-between;
+    }
+}
+
+// ============================================================================
+// 탭 헤더
+// ============================================================================
+
+.tab-header {
+    margin: 24px 0;
+
+    h2 {
+        margin: 0 0 12px 0;
+        color: #1f2937;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        i {
+            color: #3b82f6;
+        }
+    }
+
+    p {
+        margin: 0;
+        color: #6b7280;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+// ============================================================================
+// 탭 콘텐츠
+// ============================================================================
+
+.tab-content {
+    .tab-panel {
+        display: none;
+
+        &.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+    }
+}
+
+// ============================================================================
+// 탭 그룹
+// ============================================================================
+
+.tab-group {
+    .tabs {
+        margin-bottom: 24px;
+    }
+
+    .tab-content {
+        padding: 24px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        border-top-left-radius: 0;
+    }
+}
+
+// ============================================================================
+// 반응형 탭
+// ============================================================================
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-wrap: wrap;
+        gap: 4px;
+
+        .tab-btn {
+            flex: 1;
+            min-width: 0;
+            justify-content: center;
+        }
+
+        &-vertical {
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .tab-btn {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+    }
+}
+
+// ============================================================================
+// 탭 애니메이션
+// ============================================================================
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

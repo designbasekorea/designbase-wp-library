@@ -1,0 +1,365 @@
+/**
+ * DesignBase Frontend Kit - 테이블 컴포넌트
+ * 데이터 표시를 위한 테이블 스타일을 정의
+ */
+
+
+.table {
+    width: 100%;
+    margin-bottom: $spacing-4;
+    color: $text-primary;
+    background-color: $bg-primary;
+    border-collapse: collapse;
+    border: 1px solid $border-01;
+    border-radius: $radius-3;
+    overflow: hidden;
+
+    th,
+    td {
+        padding: $spacing-2 $spacing-4;
+        text-align: left;
+        vertical-align: middle;
+        border-bottom: 1px solid $border-01;
+    }
+
+    th {
+        background-color: $bg-secondary;
+        font-weight: $font-weight-semibold;
+        color: $text-primary;
+        border-bottom: 2px solid $border-01;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color $transition-fast;
+
+        &:hover {
+            background-color: darken($bg-secondary, 3%);
+        }
+
+        &.sortable {
+            position: relative;
+            padding-right: 2.5rem;
+
+            &::after {
+                content: '↕';
+                position: absolute;
+                right: $spacing-2;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0.5;
+                font-size: $font-size-xs;
+                transition: opacity $transition-fast;
+            }
+
+            &:hover::after {
+                opacity: 0.8;
+            }
+
+            &.sort-asc::after {
+                content: '↑';
+                opacity: 1;
+            }
+
+            &.sort-desc::after {
+                content: '↓';
+                opacity: 1;
+            }
+        }
+    }
+
+    td {
+        border-bottom: 1px solid $border-01;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+
+    tbody tr {
+        transition: background-color $transition-fast;
+
+        &:hover {
+            background-color: rgba($primary, 0.02);
+        }
+
+        &:last-child td {
+            border-bottom: none;
+        }
+    }
+
+    tfoot {
+
+        th,
+        td {
+            background-color: $bg-secondary;
+            font-weight: $font-weight-medium;
+        }
+    }
+}
+
+// ============================================================================
+// 테이블 변형
+// ============================================================================
+
+.table-striped {
+    tbody tr:nth-of-type(odd) {
+        background-color: rgba($bg-secondary, 0.5);
+
+        &:hover {
+            background-color: rgba($primary, 0.05);
+        }
+    }
+}
+
+.table-hover {
+    tbody tr:hover {
+        background-color: rgba($primary, 0.05);
+    }
+}
+
+.table-bordered {
+
+    th,
+    td {
+        border: 1px solid $border-01;
+    }
+}
+
+.table-borderless {
+
+    th,
+    td {
+        border: none;
+    }
+}
+
+.table-sm {
+
+    th,
+    td {
+        padding: $spacing-1 $spacing-2;
+        font-size: $font-size-s;
+    }
+}
+
+.table-lg {
+
+    th,
+    td {
+        padding: $spacing-4 $spacing-6;
+        font-size: $font-size-m;
+    }
+}
+
+// ============================================================================
+// 테이블 색상 변형
+// ============================================================================
+
+.table-primary {
+    th {
+        background-color: $primary;
+        color: $white;
+        border-color: $primary;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($primary, 0.1);
+    }
+}
+
+.table-secondary {
+    th {
+        background-color: $secondary;
+        color: $white;
+        border-color: $secondary;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($secondary, 0.1);
+    }
+}
+
+.table-success {
+    th {
+        background-color: $success;
+        color: $white;
+        border-color: $success;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($success, 0.1);
+    }
+}
+
+.table-warning {
+    th {
+        background-color: $warning;
+        color: $text-primary;
+        border-color: $warning;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($warning, 0.1);
+    }
+}
+
+.table-danger {
+    th {
+        background-color: $danger;
+        color: $white;
+        border-color: $danger;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($danger, 0.1);
+    }
+}
+
+.table-info {
+    th {
+        background-color: $info;
+        color: $white;
+        border-color: $info;
+    }
+
+    tbody tr:hover {
+        background-color: rgba($info, 0.1);
+    }
+}
+
+// ============================================================================
+// 테이블 정렬
+// ============================================================================
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .table {
+        margin-bottom: 0;
+    }
+}
+
+.table-centered {
+
+    th,
+    td {
+        text-align: center;
+    }
+}
+
+.table-right {
+
+    th,
+    td {
+        text-align: right;
+    }
+}
+
+// ============================================================================
+// 폼 테이블
+// ============================================================================
+
+.form-table {
+    margin-bottom: $spacing-4;
+
+    th {
+        width: 160px;
+        padding: $spacing-2 0;
+        font-weight: $font-weight-semibold;
+        color: $text-primary;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    td {
+        padding: $spacing-2;
+        vertical-align: top;
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    tr:last-child {
+        border-bottom: none;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input[type="checkbox"] {
+        margin-right: $spacing-2;
+    }
+
+    .description {
+        font-size: $font-size-xs;
+        color: $text-muted;
+        margin-top: $spacing-1;
+        line-height: $line-height-base;
+    }
+}
+
+// ============================================================================
+// 반응형 테이블
+// ============================================================================
+
+@include respond-below(md) {
+    .table-responsive {
+        .table {
+            min-width: 600px;
+        }
+    }
+
+    .form-table {
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        th {
+            padding-bottom: $spacing-1;
+            border-bottom: 1px solid $border-01;
+        }
+
+        td {
+            padding-top: $spacing-2;
+            padding-bottom: $spacing-4;
+        }
+    }
+}
+
+// ============================================================================
+// 테이블 유틸리티
+// ============================================================================
+
+.table-fixed {
+    table-layout: fixed;
+}
+
+.table-auto {
+    table-layout: auto;
+}
+
+.table-compact {
+
+    th,
+    td {
+        padding: $spacing-1;
+        font-size: $font-size-xs;
+    }
+}
+
+.table-expanded {
+
+    th,
+    td {
+        padding: $spacing-6 $spacing-8;
+        font-size: $font-size-m;
+    }
+}

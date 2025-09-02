@@ -1,0 +1,13 @@
+// 애니메이션 관련 추가 변수
+$animation-duration-fast: 0.15s;
+$animation-duration-base: 0.3s;
+$animation-duration-slow: 0.5s;
+
+$animation-easing-ease: ease;
+$animation-easing-ease-in: ease-in;
+$animation-easing-ease-out: ease-out;
+$animation-easing-ease-in-out: ease-in-out;
+
+
+// 다크 모드 지원 (향후 확장용)
+$theme-transition-duration: 0.3s;

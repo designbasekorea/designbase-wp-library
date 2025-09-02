@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEWP 라이브러리 - 기본 사용법</title>
+  <link rel="stylesheet" href="../../dist/css/dewp.min.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      color: #495057;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+    }
+
+    .code-block {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      padding: 15px;
+      margin: 10px 0;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    .demo-btn {
+      margin: 5px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .demo-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #ffc107;
+      color: #212529;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-info {
+      background: #17a2b8;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .demo-area {
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 2px dashed #dee2e6;
+    }
+
+    .demo-element {
+      padding: 10px;
+      margin: 5px 0;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+
+    .demo-element.active {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    .demo-element.visible {
+      background: #cce5ff;
+      border-color: #b3d7ff;
+      color: #004085;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🚀 DEWP 라이브러리 - 기본 사용법</h1>
+    <p>이 페이지는 DEWP 라이브러리의 기본적인 사용법을 보여줍니다.</p>
+
+    <!-- 토스트 알림 섹션 -->
+    <div class="section">
+      <h2>🔔 토스트 알림 (Toast Notifications)</h2>
+      <p>사용자에게 일시적인 메시지를 표시합니다.</p>
+
+      <div class="code-block">
+        // 기본 토스트
+        window.DEWP.DEWP.showToast('메시지');
+
+        // 타입별 토스트
+        window.DEWP.DEWP.showSuccessToast('성공!');
+        window.DEWP.DEWP.showErrorToast('오류!');
+        window.DEWP.DEWP.showWarningToast('경고!');
+        window.DEWP.DEWP.showInfoToast('정보!');
+      </div>
+
+      <div class="demo-area">
+        <button class="demo-btn btn-success" onclick="demoToast('success')">성공 토스트</button>
+        <button class="demo-btn btn-danger" onclick="demoToast('error')">오류 토스트</button>
+        <button class="demo-btn btn-warning" onclick="demoToast('warning')">경고 토스트</button>
+        <button class="demo-btn btn-info" onclick="demoToast('info')">정보 토스트</button>
+      </div>
+    </div>
+
+    <!-- 모달 섹션 -->
+    <div class="section">
+      <h2>🪟 모달 (Modal Dialogs)</h2>
+      <p>사용자의 주의를 끌기 위한 대화상자를 표시합니다.</p>
+
+      <div class="code-block">
+        // 기본 모달
+        window.DEWP.DEWP.showModal({
+        title: '제목',
+        content: '내용'
+        });
+
+        // 확인 모달
+        window.DEWP.DEWP.showConfirmModal({
+        title: '확인',
+        message: '정말 삭제하시겠습니까?',
+        onConfirm: () => console.log('확인됨'),
+        onCancel: () => console.log('취소됨')
+        });
+      </div>
+
+      <div class="demo-area">
+        <button class="demo-btn btn-primary" onclick="demoModal()">기본 모달</button>
+        <button class="demo-btn btn-warning" onclick="demoConfirmModal()">확인 모달</button>
+      </div>
+    </div>
+
+    <!-- 드롭다운 섹션 -->
+    <div class="section">
+      <h2>🔽 드롭다운 (Dropdown Menus)</h2>
+      <p>클릭 시 메뉴가 나타나는 드롭다운을 생성합니다.</p>
+
+      <div class="code-block">
+        // 드롭다운 생성
+        const dropdownId = window.DEWP.DEWP.createDropdown({
+        trigger: document.querySelector('.dropdown-trigger'),
+        content: '&lt;div&gt;메뉴 내용&lt;/div&gt;',
+        position: 'bottom'
+        });
+
+        // 드롭다운 제어
+        window.DEWP.DEWP.showDropdown(dropdownId);
+        window.DEWP.DEWP.hideDropdown(dropdownId);
+        window.DEWP.DEWP.toggleDropdown(dropdownId);
+      </div>
+
+      <div class="demo-area">
+        <div class="dropdown">
+          <button class="dropdown-toggle" id="dropdown-trigger" onclick="demoDropdown()">
+            <span class="dropdown-text">선택하세요</span>
+            <svg class="dropdown-arrow" viewBox="0 0 24 24">
+              <path d="M7 10l5 5 5-5z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 탭 섹션 -->
+    <div class="section">
+      <h2>📑 탭 (Tabs)</h2>
+      <p>콘텐츠를 탭으로 구분하여 표시하는 컴포넌트입니다.</p>
+
+      <div class="code-block">
+        // 탭 초기화
+        const tabsId = window.DEWP.DEWP.initTabs(container, {
+        activeTab: 'tab1',
+        onTabChange: (tabId, previousTabId) => {
+        console.log('탭 변경:', previousTabId, '→', tabId);
+        }
+        });
+
+        // 프로그래밍으로 탭 활성화
+        window.DEWP.DEWP.activateTab(tabsId, 'tab2');
+      </div>
+
+      <div class="demo-area">
+        <div id="demo-tabs" data-tabs="demo-tabs">
+          <!-- 탭 버튼들 -->
+          <div class="tabs">
+            <button class="tab-btn" data-tab="tab1">기본 정보</button>
+            <button class="tab-btn" data-tab="tab2">설정</button>
+            <button class="tab-btn" data-tab="tab3">통계</button>
+          </div>
+
+          <!-- 탭 패널들 -->
+          <div class="tab-content">
+            <div class="tab-panel" data-panel="tab1">
+              <h3>기본 정보</h3>
+              <p>이것은 첫 번째 탭의 내용입니다. 사용자 프로필의 기본 정보를 표시합니다.</p>
+              <ul>
+                <li>이름: 홍길동</li>
+                <li>이메일: hong@example.com</li>
+                <li>가입일: 2024년 1월 1일</li>
+              </ul>
+            </div>
+
+            <div class="tab-panel" data-panel="tab2">
+              <h3>설정</h3>
+              <p>사용자 설정을 관리하는 탭입니다.</p>
+              <div class="demo-element">
+                <label><input type="checkbox" checked> 이메일 알림 받기</label>
+              </div>
+              <div class="demo-element">
+                <label><input type="checkbox"> SMS 알림 받기</label>
+              </div>
+              <div class="demo-element">
+                <label><input type="checkbox" checked> 푸시 알림 받기</label>
+              </div>
+            </div>
+
+            <div class="tab-panel" data-panel="tab3">
+              <h3>통계</h3>
+              <p>사용자 활동 통계를 보여주는 탭입니다.</p>
+              <div class="demo-element">
+                <strong>총 로그인 횟수:</strong> 127회
+              </div>
+              <div class="demo-element">
+                <strong>마지막 로그인:</strong> 2024년 1월 15일
+              </div>
+              <div class="demo-element">
+                <strong>활성 세션:</strong> 3개
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <button class="demo-btn btn-primary" onclick="demoActivateTab('tab1')">첫 번째 탭</button>
+          <button class="demo-btn btn-success" onclick="demoActivateTab('tab2')">두 번째 탭</button>
+          <button class="demo-btn btn-warning" onclick="demoActivateTab('tab3')">세 번째 탭</button>
+          <button class="demo-btn btn-info" onclick="showActiveTab()">현재 활성 탭 확인</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOM 유틸리티 섹션 -->
+    <div class="section">
+      <h2>🔧 DOM 유틸리티 (DOM Utilities)</h2>
+      <p>DOM 요소를 쉽게 조작할 수 있는 유틸리티 함수들입니다.</p>
+
+      <div class="code-block">
+        // 요소 선택
+        const element = window.DEWP.DEWP.qs('.my-class');
+        const elements = window.DEWP.DEWP.qsa('.my-class');
+
+        // 클래스 조작
+        window.DEWP.DEWP.addClass(element, 'active');
+        window.DEWP.DEWP.removeClass(element, 'inactive');
+        window.DEWP.DEWP.toggleClass(element, 'visible');
+
+        // 이벤트 처리
+        window.DEWP.DEWP.on(element, 'click', () => console.log('클릭됨'));
+      </div>
+
+      <div class="demo-area">
+        <div class="demo-element" id="demo-element">이 요소를 조작해보세요</div>
+        <button class="demo-btn btn-primary" onclick="demoAddClass()">클래스 추가</button>
+        <button class="demo-btn btn-warning" onclick="demoRemoveClass()">클래스 제거</button>
+        <button class="demo-btn btn-info" onclick="demoToggleClass()">클래스 토글</button>
+        <button class="demo-btn btn-secondary" onclick="demoEvent()">이벤트 테스트</button>
+      </div>
+    </div>
+
+    <!-- 라이브러리 정보 섹션 -->
+    <div class="section">
+      <h2>📚 라이브러리 정보</h2>
+      <div class="demo-area">
+        <button class="demo-btn btn-primary" onclick="showLibraryInfo()">라이브러리 정보 표시</button>
+        <div id="library-info"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEWP JavaScript 라이브러리 로드 -->
+  <script src="../../dist/js/dewp.min.js"></script>
+
+  <script>
+    // 토스트 데모
+    function demoToast(type) {
+      const messages = {
+        success: '성공적으로 처리되었습니다!',
+        error: '오류가 발생했습니다.',
+        warning: '주의가 필요한 사항이 있습니다.',
+        info: '새로운 정보가 있습니다.'
+      };
+
+      window.DEWP.DEWP.showToast(messages[type], type);
+    }
+
+    // 모달 데모
+    function demoModal() {
+      window.DEWP.DEWP.showModal({
+        title: '데모 모달',
+        content: '이것은 DEWP 라이브러리로 생성된 모달입니다.',
+        size: 'md'
+      });
+    }
+
+    // 확인 모달 데모
+    function demoConfirmModal() {
+      window.DEWP.DEWP.showConfirmModal({
+        title: '확인',
+        message: '정말로 이 작업을 진행하시겠습니까?',
+        confirmText: '진행',
+        cancelText: '취소',
+        onConfirm: () => {
+          window.DEWP.DEWP.showToast('작업이 진행되었습니다!', 'success');
+        },
+        onCancel: () => {
+          window.DEWP.DEWP.showToast('작업이 취소되었습니다.', 'info');
+        }
+      });
+    }
+
+    // 드롭다운 데모
+    let currentDropdownId = null;
+    function demoDropdown() {
+      console.log('🎯 demoDropdown 함수 호출됨');
+      console.log('🎯 현재 드롭다운 ID:', currentDropdownId);
+
+      if (currentDropdownId && window.DEWP.DEWP.isOpen(currentDropdownId)) {
+        console.log('🎯 드롭다운이 열려있음, 닫기 시도');
+        // 이미 드롭다운이 열려있으면 닫기
+        window.DEWP.DEWP.hideDropdown(currentDropdownId);
+      } else {
+        console.log('🎯 새 드롭다운 생성 시도');
+        // 기존 드롭다운이 있으면 제거
+        if (currentDropdownId) {
+          console.log('🎯 기존 드롭다운 제거:', currentDropdownId);
+          window.DEWP.DEWP.destroy(currentDropdownId);
+        }
+
+        // 새 드롭다운 생성
+        console.log('🎯 새 드롭다운 생성 시작');
+        currentDropdownId = window.DEWP.DEWP.createDropdown({
+          trigger: document.getElementById('dropdown-trigger'),
+          content: `
+            <div class="dropdown-item" data-value="menu1">메뉴 1</div>
+            <div class="dropdown-item" data-value="menu2">메뉴 2</div>
+            <div class="dropdown-item" data-value="menu3">메뉴 3</div>
+          `,
+          position: 'bottom',
+          align: 'start',
+          offset: 8,
+          placeholder: '선택하세요',
+          onSelect: (value, text) => {
+            console.log('🎯 onSelect 콜백 호출됨:', value, text);
+            window.DEWP.DEWP.showToast(`선택된 메뉴: ${text}`, 'success');
+          }
+        });
+        console.log('🎯 드롭다운 생성 완료, ID:', currentDropdownId);
+
+        // 드롭다운 표시
+        console.log('🎯 드롭다운 표시 시도');
+        window.DEWP.DEWP.showDropdown(currentDropdownId);
+      }
+    }
+
+    // 드롭다운 아이템 클릭 처리
+    function handleDropdownItem(itemName) {
+      window.DEWP.DEWP.showToast(`선택된 메뉴: ${itemName}`, 'success');
+      // 드롭다운 닫기
+      if (currentDropdownId) {
+        window.DEWP.DEWP.hideDropdown(currentDropdownId);
+      }
+    }
+
+    // 탭 데모
+    function demoActivateTab(tabId) {
+      const tabsContainer = document.getElementById('demo-tabs');
+      if (tabsContainer) {
+        window.DEWP.DEWP.activateTab(tabsContainer.dataset.tabs, tabId);
+      }
+    }
+
+    function showActiveTab() {
+      const tabsContainer = document.getElementById('demo-tabs');
+      if (tabsContainer) {
+        const activeTab = window.DEWP.DEWP.getActiveTab(tabsContainer.dataset.tabs);
+        window.DEWP.DEWP.showToast(`현재 활성 탭: ${activeTab}`, 'info');
+      }
+    }
+
+    // DOM 유틸리티 데모
+    function demoAddClass() {
+      const element = document.getElementById('demo-element');
+      window.DEWP.DEWP.addClass(element, 'active');
+      window.DEWP.DEWP.showToast('클래스가 추가되었습니다!', 'success');
+    }
+
+    function demoRemoveClass() {
+      const element = document.getElementById('demo-element');
+      window.DEWP.DEWP.removeClass(element, 'active');
+      window.DEWP.DEWP.showToast('클래스가 제거되었습니다!', 'info');
+    }
+
+    function demoToggleClass() {
+      const element = document.getElementById('demo-element');
+      window.DEWP.DEWP.toggleClass(element, 'visible');
+
+      const isVisible = window.DEWP.DEWP.hasClass(element, 'visible');
+      window.DEWP.DEWP.showToast(
+        isVisible ? '클래스가 토글되었습니다!' : '클래스가 토글 해제되었습니다!',
+        'warning'
+      );
+    }
+
+    function demoEvent() {
+      const element = document.getElementById('demo-element');
+
+      // 이벤트 리스너 추가
+      window.DEWP.DEWP.on(element, 'click', function () {
+        window.DEWP.DEWP.showToast('요소가 클릭되었습니다!', 'info');
+      });
+
+      window.DEWP.DEWP.showToast('클릭 이벤트가 추가되었습니다! 요소를 클릭해보세요.', 'success');
+    }
+
+    // 라이브러리 정보 표시
+    function showLibraryInfo() {
+      const infoDiv = document.getElementById('library-info');
+      const info = window.DEWP.DEWP.info;
+
+      infoDiv.innerHTML = `
+                <h3>${info.name}</h3>
+                <p><strong>버전:</strong> ${window.DEWP.DEWP.version}</p>
+                <p><strong>설명:</strong> ${info.description}</p>
+                <p><strong>작성자:</strong> ${info.author}</p>
+                <p><strong>라이선스:</strong> ${info.license}</p>
+                <p><strong>사용 가능한 함수 수:</strong> ${Object.keys(window.DEWP.DEWP).length}개</p>
+            `;
+    }
+
+    // 페이지 로드 시 라이브러리 확인
+    window.addEventListener('load', () => {
+      if (window.DEWP && window.DEWP.DEWP) {
+        console.log('✅ DEWP 라이브러리가 성공적으로 로드되었습니다!');
+        console.log('사용 가능한 함수들:', Object.keys(window.DEWP.DEWP));
+      } else {
+        console.error('❌ DEWP 라이브러리를 찾을 수 없습니다.');
+      }
+    });
+  </script>
+</body>
+
+</html>

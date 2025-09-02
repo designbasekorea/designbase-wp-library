@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEWP 라이브러리 - 컴포넌트 데모</title>
+  <link rel="stylesheet" href="../../dist/css/dewp.min.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8f9fa;
+      min-height: 100vh;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-theme {
+      background: #1a1a1a;
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-theme .container {
+      background: #2d2d2d;
+      color: #ffffff;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .theme-toggle button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle .light {
+      background: #ffffff;
+      color: #495057;
+      border: 1px solid #dee2e6;
+    }
+
+    .theme-toggle .dark {
+      background: #2c3e50;
+      color: white;
+    }
+
+    .component-section {
+      margin-bottom: 40px;
+      padding: 25px;
+      border-radius: 12px;
+      border: 2px solid #e9ecef;
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-theme .component-section {
+      background: #3a3a3a;
+      border-color: #404040;
+    }
+
+    .component-section h2 {
+      color: #2c3e50;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    body.dark-theme .component-section h2 {
+      color: #ffffff;
+      border-bottom-color: #4ecdc4;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .demo-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-theme .demo-card {
+      background: #404040;
+      border-color: #505050;
+    }
+
+    .demo-card h3 {
+      margin-top: 0;
+      color: #495057;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 10px;
+    }
+
+    body.dark-theme .demo-card h3 {
+      color: #ffffff;
+      border-bottom-color: #505050;
+    }
+
+    .component-demo {
+      margin: 20px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      border: 2px dashed #dee2e6;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-theme .component-demo {
+      background: #404040;
+      border-color: #505050;
+    }
+
+    .component-demo h4 {
+      margin-top: 0;
+      color: #495057;
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 10px;
+    }
+
+    body.dark-theme .component-demo h4 {
+      color: #ffffff;
+      border-bottom-color: #505050;
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px 0;
+      align-items: center;
+    }
+
+    .demo-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .demo-col.full {
+      width: 100%;
+    }
+
+    .demo-col.half {
+      width: calc(50% - 10px);
+    }
+
+    @media (max-width: 768px) {
+      .demo-col.half {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 테마 토글 버튼 -->
+  <div class="theme-toggle">
+    <button class="light" onclick="setTheme('light')">☀️ 라이트</button>
+    <button class="dark" onclick="setTheme('dark')">🌙 다크</button>
+  </div>
+
+  <div class="container">
+    <h1>🎨 DEWP 라이브러리 - 컴포넌트 데모</h1>
+    <p>DEWP 라이브러리의 모든 컴포넌트 스타일을 확인할 수 있습니다.</p>
+
+    <!-- 배지 컴포넌트 -->
+    <div class="component-section">
+      <h2>🏷️ 배지 (Badge)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 배지</h3>
+          <div class="demo-row">
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-secondary">Secondary</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-danger">Danger</span>
+            <span class="badge badge-info">Info</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Outline 배지</h3>
+          <div class="demo-row">
+            <span class="badge badge-outline-primary">Primary</span>
+            <span class="badge badge-outline-secondary">Secondary</span>
+            <span class="badge badge-outline-success">Success</span>
+            <span class="badge badge-outline-warning">Warning</span>
+            <span class="badge badge-outline-danger">Danger</span>
+            <span class="badge badge-outline-info">Info</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>배지 크기</h3>
+          <div class="demo-row">
+            <span class="badge badge-primary badge-xs">XS</span>
+            <span class="badge badge-primary badge-s">S</span>
+            <span class="badge badge-primary badge-m">M</span>
+            <span class="badge badge-primary badge-l">L</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>특수 배지</h3>
+          <div class="demo-row">
+            <span class="badge badge-dot badge-primary"></span>
+            <span class="badge badge-ring badge-primary">Ring</span>
+            <span class="badge badge-pill badge-primary">Pill</span>
+            <span class="badge badge-square badge-primary">Square</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 버튼 컴포넌트 -->
+    <div class="component-section">
+      <h2>🔘 버튼 (Button)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 버튼</h3>
+          <div class="demo-row">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-warning">Warning</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-info">Info</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Outline 버튼</h3>
+          <div class="demo-row">
+            <button class="btn btn-outline-primary">Primary</button>
+            <button class="btn btn-outline-secondary">Secondary</button>
+            <button class="btn btn-outline-success">Success</button>
+            <button class="btn btn-outline-warning">Warning</button>
+            <button class="btn btn-outline-danger">Danger</button>
+            <button class="btn btn-outline-info">Info</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>버튼 크기</h3>
+          <div class="demo-row">
+            <button class="btn btn-primary btn-xs">XS</button>
+            <button class="btn btn-primary btn-s">S</button>
+            <button class="btn btn-primary btn-m">M</button>
+            <button class="btn btn-primary btn-l">L</button>
+            <button class="btn btn-primary btn-xl">XL</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>버튼 상태</h3>
+          <div class="demo-row">
+            <button class="btn btn-primary">Normal</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-primary btn-loading">Loading</button>
+            <button class="btn btn-primary btn-block">Block Button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 드롭다운 컴포넌트 -->
+    <div class="component-section">
+      <h2>🔽 드롭다운 (Dropdown)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 드롭다운</h3>
+          <div class="demo-row">
+            <div class="dropdown">
+              <button class="dropdown-toggle" onclick="toggleDropdown('dropdown1')">
+                <span class="dropdown-text">선택하세요</span>
+                <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>드롭다운 크기</h3>
+          <div class="demo-row">
+            <div class="dropdown dropdown-sm">
+              <button class="dropdown-toggle" onclick="toggleDropdown('dropdown2')">
+                <span class="dropdown-text">Small</span>
+                <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+            </div>
+            <div class="dropdown dropdown-lg">
+              <button class="dropdown-toggle" onclick="toggleDropdown('dropdown3')">
+                <span class="dropdown-text">Large</span>
+                <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>드롭다운 스타일</h3>
+          <div class="demo-row">
+            <div class="dropdown dropdown-primary">
+              <button class="dropdown-toggle" onclick="toggleDropdown('dropdown4')">
+                <span class="dropdown-text">Primary</span>
+                <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+            </div>
+            <div class="dropdown dropdown-success">
+              <button class="dropdown-toggle" onclick="toggleDropdown('dropdown5')">
+                <span class="dropdown-text">Success</span>
+                <svg class="dropdown-arrow" viewBox="0 0 24 24">
+                  <path d="M7 10l5 5 5-5z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 빈 상태 컴포넌트 -->
+    <div class="component-section">
+      <h2>📭 빈 상태 (Empty State)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 빈 상태</h3>
+          <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            <div class="empty-message">
+              <h3>데이터가 없습니다</h3>
+              <p>새로운 데이터를 추가해보세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>빈 상태 크기</h3>
+          <div class="empty-state empty-state-sm">
+            <div class="empty-icon">📭</div>
+            <div class="empty-message">
+              <h3>작은 빈 상태</h3>
+              <p>간단한 메시지입니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>빈 상태 스타일</h3>
+          <div class="empty-state empty-state-bordered empty-state-rounded">
+            <div class="empty-icon">📭</div>
+            <div class="empty-message">
+              <h3>스타일된 빈 상태</h3>
+              <p>테두리와 둥근 모서리가 있습니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>액션이 있는 빈 상태</h3>
+          <div class="empty-state empty-state-with-action">
+            <div class="empty-icon">📭</div>
+            <div class="empty-message">
+              <h3>액션 버튼</h3>
+              <p>아래 버튼을 클릭해보세요.</p>
+            </div>
+            <div class="empty-actions">
+              <button class="btn btn-primary">새로 만들기</button>
+              <button class="btn btn-secondary">가져오기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 폼 컴포넌트 -->
+    <div class="component-section">
+      <h2>📝 폼 (Form)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 입력 필드</h3>
+          <div class="demo-col full">
+            <label class="form-label">이름</label>
+            <input type="text" class="form-input" placeholder="이름을 입력하세요">
+
+            <label class="form-label">이메일</label>
+            <input type="email" class="form-input" placeholder="이메일을 입력하세요">
+
+            <label class="form-label">메시지</label>
+            <textarea class="form-textarea" placeholder="메시지를 입력하세요"></textarea>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>체크박스와 라디오</h3>
+          <div class="demo-col full">
+            <div class="form-check form-checkbox">
+              <input type="checkbox" class="form-check-input" id="check1">
+              <label class="form-check-label" for="check1">체크박스 1</label>
+            </div>
+
+            <div class="form-check form-checkbox">
+              <input type="checkbox" class="form-check-input" id="check2">
+              <label class="form-check-label" for="check2">체크박스 2</label>
+            </div>
+
+            <div class="form-check form-radio">
+              <input type="radio" class="form-check-input" name="radio" id="radio1">
+              <label class="form-check-label" for="radio1">라디오 1</label>
+            </div>
+
+            <div class="form-check form-radio">
+              <input type="radio" class="form-check-input" name="radio" id="radio2">
+              <label class="form-check-label" for="radio2">라디오 2</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>입력 그룹</h3>
+          <div class="demo-col full">
+            <div class="form-input-group">
+              <span class="form-input-group-text">@</span>
+              <input type="text" class="form-input" placeholder="사용자명">
+            </div>
+
+            <div class="form-input-group">
+              <input type="text" class="form-input" placeholder="도메인">
+              <span class="form-input-group-text">.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>폼 크기</h3>
+          <div class="demo-col full">
+            <input type="text" class="form-input form-input-sm" placeholder="작은 입력 필드">
+            <input type="text" class="form-input" placeholder="기본 입력 필드">
+            <input type="text" class="form-input form-input-lg" placeholder="큰 입력 필드">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 컴포넌트 -->
+    <div class="component-section">
+      <h2>🪟 모달 (Modal)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>모달 사이즈</h3>
+          <div class="demo-row">
+            <button class="btn btn-primary" onclick="showModal('sm')">작은 모달</button>
+            <button class="btn btn-success" onclick="showModal('md')">기본 모달</button>
+            <button class="btn btn-info" onclick="showModal('lg')">큰 모달</button>
+            <button class="btn btn-warning" onclick="showModal('xl')">매우 큰 모달</button>
+            <button class="btn btn-danger" onclick="showModal('full')">전체 화면</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>모달 타입</h3>
+          <div class="demo-row">
+            <button class="btn btn-secondary" onclick="showModal('basic')">기본 모달</button>
+            <button class="btn btn-primary" onclick="showModal('withFooter')">푸터 모달</button>
+            <button class="btn btn-success" onclick="showModal('confirm')">확인 모달</button>
+            <button class="btn btn-info" onclick="showModal('alert')">알림 모달</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 알림 컴포넌트 -->
+    <div class="component-section">
+      <h2>📢 알림 (Notice)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 알림</h3>
+          <div class="demo-col full">
+            <div class="notice notice-info">
+              <div class="notice-icon">ℹ️</div>
+              <div class="notice-content">
+                <h3>정보 알림</h3>
+                <p>이것은 정보를 알려주는 알림입니다.</p>
+              </div>
+              <button class="notice-close">×</button>
+            </div>
+
+            <div class="notice notice-success">
+              <div class="notice-icon">✅</div>
+              <div class="notice-content">
+                <h3>성공 알림</h3>
+                <p>작업이 성공적으로 완료되었습니다.</p>
+              </div>
+              <button class="notice-close">×</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>알림 크기</h3>
+          <div class="demo-col full">
+            <div class="notice notice-warning notice-sm">
+              <div class="notice-icon">⚠️</div>
+              <div class="notice-content">
+                <h3>작은 경고</h3>
+                <p>작은 크기의 경고 알림입니다.</p>
+              </div>
+            </div>
+
+            <div class="notice notice-danger notice-lg">
+              <div class="notice-icon">🚨</div>
+              <div class="notice-content">
+                <h3>큰 오류</h3>
+                <p>큰 크기의 오류 알림입니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>알림 스타일</h3>
+          <div class="demo-col full">
+            <div class="notice notice-primary notice-bordered">
+              <div class="notice-icon">🔵</div>
+              <div class="notice-content">
+                <h3>테두리 알림</h3>
+                <p>테두리가 있는 알림입니다.</p>
+              </div>
+            </div>
+
+            <div class="notice notice-secondary notice-rounded notice-elevated">
+              <div class="notice-icon">⚪</div>
+              <div class="notice-content">
+                <h3>둥근 그림자 알림</h3>
+                <p>둥근 모서리와 그림자가 있는 알림입니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 페이지네이션 컴포넌트 -->
+    <div class="component-section">
+      <h2>📄 페이지네이션 (Pagination)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 페이지네이션</h3>
+          <nav class="pagination">
+            <div class="page-item">
+              <a class="page-link" href="#" onclick="return false;">이전</a>
+            </div>
+            <div class="page-item">
+              <a class="page-link" href="#" onclick="return false;">1</a>
+            </div>
+            <div class="page-item active">
+              <a class="page-link" href="#" onclick="return false;">2</a>
+            </div>
+            <div class="page-item">
+              <a class="page-link" href="#" onclick="return false;">3</a>
+            </div>
+            <div class="page-item">
+              <a class="page-link" href="#" onclick="return false;">다음</a>
+            </div>
+          </nav>
+        </div>
+
+        <div class="demo-card">
+          <h3>페이지네이션 크기</h3>
+          <div class="demo-col full">
+            <nav class="pagination pagination-sm">
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">1</a>
+              </div>
+              <div class="page-item active">
+                <a class="page-link" href="#" onclick="return false;">2</a>
+              </div>
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">3</a>
+              </div>
+            </nav>
+
+            <nav class="pagination pagination-lg">
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">1</a>
+              </div>
+              <div class="page-item active">
+                <a class="page-link" href="#" onclick="return false;">2</a>
+              </div>
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">3</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>페이지네이션 스타일</h3>
+          <div class="demo-col full">
+            <nav class="pagination pagination-rounded">
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">1</a>
+              </div>
+              <div class="page-item active">
+                <a class="page-link" href="#" onclick="return false;">2</a>
+              </div>
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">3</a>
+              </div>
+            </nav>
+
+            <nav class="pagination pagination-pill">
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">1</a>
+              </div>
+              <div class="page-item active">
+                <a class="page-link" href="#" onclick="return false;">2</a>
+              </div>
+              <div class="page-item">
+                <a class="page-link" href="#" onclick="return false;">3</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 테이블 컴포넌트 -->
+    <div class="component-section">
+      <h2>📊 테이블 (Table)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 테이블</h3>
+          <div class="demo-col full">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>이름</th>
+                  <th>이메일</th>
+                  <th>역할</th>
+                  <th>상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>김철수</td>
+                  <td>kim@example.com</td>
+                  <td>관리자</td>
+                  <td><span class="badge badge-success">활성</span></td>
+                </tr>
+                <tr>
+                  <td>이영희</td>
+                  <td>lee@example.com</td>
+                  <td>사용자</td>
+                  <td><span class="badge badge-warning">대기</span></td>
+                </tr>
+                <tr>
+                  <td>박민수</td>
+                  <td>park@example.com</td>
+                  <td>편집자</td>
+                  <td><span class="badge badge-danger">비활성</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>테이블 변형</h3>
+          <div class="demo-col full">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>제품</th>
+                  <th>가격</th>
+                  <th>재고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>노트북</td>
+                  <td>₩1,200,000</td>
+                  <td><span class="badge badge-success">재고있음</span></td>
+                </tr>
+                <tr>
+                  <td>마우스</td>
+                  <td>₩50,000</td>
+                  <td><span class="badge badge-warning">부족</span></td>
+                </tr>
+                <tr>
+                  <td>키보드</td>
+                  <td>₩150,000</td>
+                  <td><span class="badge badge-danger">품절</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>테이블 크기</h3>
+          <div class="demo-col full">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th>작은 테이블</th>
+                  <th>컴팩트</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>데이터 1</td>
+                  <td>데이터 2</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-lg">
+              <thead>
+                <tr>
+                  <th>큰 테이블</th>
+                  <th>여유로운</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>데이터 1</td>
+                  <td>데이터 2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 탭 컴포넌트 -->
+    <div class="component-section">
+      <h2>📑 탭 (Tabs)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 탭</h3>
+          <div class="demo-col full">
+            <div id="demo-tabs-1" data-tabs="demo-tabs-1">
+              <div class="tabs">
+                <button class="tab-btn" data-tab="tab1">기본 정보</button>
+                <button class="tab-btn" data-tab="tab2">설정</button>
+                <button class="tab-btn" data-tab="tab3">통계</button>
+              </div>
+              <div class="tab-content">
+                <div class="tab-panel" data-panel="tab1">
+                  <h5>기본 정보</h5>
+                  <p>첫 번째 탭의 내용입니다.</p>
+                </div>
+                <div class="tab-panel" data-panel="tab2">
+                  <h5>설정</h5>
+                  <p>두 번째 탭의 내용입니다.</p>
+                </div>
+                <div class="tab-panel" data-panel="tab3">
+                  <h5>통계</h5>
+                  <p>세 번째 탭의 내용입니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>탭 스타일</h3>
+          <div class="demo-col full">
+            <div class="tabs tabs-pills">
+              <button class="tab-btn active">알약</button>
+              <button class="tab-btn">스타일</button>
+              <button class="tab-btn">탭</button>
+            </div>
+
+            <div class="tabs tabs-basic">
+              <button class="tab-btn active">기본</button>
+              <button class="tab-btn">스타일</button>
+              <button class="tab-btn">탭</button>
+            </div>
+
+            <div class="tabs tabs-underline">
+              <button class="tab-btn active">밑줄</button>
+              <button class="tab-btn">스타일</button>
+              <button class="tab-btn">탭</button>
+            </div>
+
+            <div class="tabs tabs-vertical">
+              <button class="tab-btn active">세로</button>
+              <button class="tab-btn">스타일</button>
+              <button class="tab-btn">탭</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>탭 색상</h3>
+          <div class="demo-col full">
+            <div class="tabs tabs-primary">
+              <button class="tab-btn active">Primary</button>
+              <button class="tab-btn">색상</button>
+              <button class="tab-btn">탭</button>
+            </div>
+
+            <div class="tabs tabs-success">
+              <button class="tab-btn active">Success</button>
+              <button class="tab-btn">색상</button>
+              <button class="tab-btn">탭</button>
+            </div>
+
+            <div class="tabs tabs-warning">
+              <button class="tab-btn active">Warning</button>
+              <button class="tab-btn">색상</button>
+              <button class="tab-btn">탭</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 토글 컴포넌트 -->
+    <div class="component-section">
+      <h2>🔀 토글 (Toggle)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>기본 토글</h3>
+          <div class="demo-row">
+            <label class="toggle-label">
+              <input type="checkbox" class="toggle-input">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">기본 토글</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>토글 크기</h3>
+          <div class="demo-col full">
+            <label class="toggle-label toggle-sm">
+              <input type="checkbox" class="toggle-input">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">작은 토글</span>
+            </label>
+
+            <label class="toggle-label">
+              <input type="checkbox" class="toggle-input">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">기본 토글</span>
+            </label>
+
+            <label class="toggle-label toggle-lg">
+              <input type="checkbox" class="toggle-input">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">큰 토글</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>토글 상태</h3>
+          <div class="demo-col full">
+            <label class="toggle-label">
+              <input type="checkbox" class="toggle-input">
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">활성 토글</span>
+            </label>
+
+            <label class="toggle-label toggle-disabled">
+              <input type="checkbox" class="toggle-input" disabled>
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">비활성 토글</span>
+            </label>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 토스트 컴포넌트 -->
+    <div class="component-section">
+      <h2>🔔 토스트 (Toast)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>토스트 트리거</h3>
+          <div class="demo-row">
+            <button class="btn btn-success" onclick="showToast('success')">성공 토스트</button>
+            <button class="btn btn-danger" onclick="showToast('error')">오류 토스트</button>
+            <button class="btn btn-warning" onclick="showToast('warning')">경고 토스트</button>
+            <button class="btn btn-info" onclick="showToast('info')">정보 토스트</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DEWP JavaScript 라이브러리 로드 -->
+  <script src="../../dist/js/dewp.min.js"></script>
+
+  <script>
+    let currentTheme = 'light';
+
+    // 테마 설정
+    function setTheme(theme) {
+      currentTheme = theme;
+
+      if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        window.DEWP.DEWP.showToast('다크 테마로 변경되었습니다!', 'success');
+      } else {
+        document.body.classList.remove('dark-theme');
+        window.DEWP.DEWP.showToast('라이트 테마로 변경되었습니다!', 'success');
+      }
+    }
+
+    // 드롭다운 토글
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      if (dropdown) {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        if (menu) {
+          menu.classList.toggle('show');
+        }
+      }
+    }
+
+    // 모달 표시
+    function showModal(type) {
+      const modals = {
+        // 사이즈별 모달
+        sm: {
+          title: '작은 모달',
+          content: '이것은 작은 모달입니다. (320px)',
+          size: 'sm'
+        },
+        md: {
+          title: '기본 모달',
+          content: '이것은 기본 모달입니다. (480px)',
+          size: 'md'
+        },
+        lg: {
+          title: '큰 모달',
+          content: '이것은 큰 모달입니다. (720px)',
+          size: 'lg'
+        },
+        xl: {
+          title: '매우 큰 모달',
+          content: '이것은 매우 큰 모달입니다. (960px)',
+          size: 'xl'
+        },
+        full: {
+          title: '전체 화면 모달',
+          content: '이것은 전체 화면 모달입니다.',
+          size: 'full'
+        },
+        // 타입별 모달
+        basic: {
+          title: '기본 모달',
+          content: '이것은 기본 모달입니다.',
+          size: 'md'
+        },
+        withFooter: {
+          title: '푸터 모달',
+          content: '이것은 푸터가 있는 모달입니다.',
+          size: 'md',
+          showCancel: true,
+          confirmText: '확인'
+        },
+        confirm: {
+          title: '확인 모달',
+          content: '정말로 진행하시겠습니까?',
+          size: 'sm',
+          showCancel: true,
+          confirmText: '확인'
+        },
+        alert: {
+          title: '알림 모달',
+          content: '이것은 알림 모달입니다.',
+          size: 'md',
+          confirmText: '확인'
+        }
+      };
+
+      const modal = modals[type];
+      if (modal) {
+        window.DEWP.DEWP.showModal(modal);
+      }
+    }
+
+    // 토스트 표시
+    function showToast(type) {
+      const toasts = {
+        success: {
+          message: '성공적으로 처리되었습니다!',
+          type: 'success'
+        },
+        error: {
+          message: '오류가 발생했습니다.',
+          type: 'error'
+        },
+        warning: {
+          message: '주의가 필요한 사항이 있습니다.',
+          type: 'warning'
+        },
+        info: {
+          message: '새로운 정보가 있습니다.',
+          type: 'info'
+        },
+        small: {
+          message: '작은 토스트 메시지입니다.',
+          type: 'success'
+        },
+        large: {
+          message: '큰 토스트 메시지입니다.',
+          type: 'info'
+        }
+      };
+
+      const toast = toasts[type];
+      if (toast) {
+        window.DEWP.DEWP.showToast(toast.message, toast.type);
+      }
+    }
+
+    // 페이지 로드 시 라이브러리 확인 및 컴포넌트 초기화
+    window.addEventListener('load', () => {
+      if (window.DEWP && window.DEWP.DEWP) {
+        console.log('✅ DEWP 라이브러리가 성공적으로 로드되었습니다!');
+        console.log('사용 가능한 함수들:', Object.keys(window.DEWP.DEWP));
+
+        // 기본 테마로 시작
+        setTheme('light');
+
+        // 모든 탭 컴포넌트 초기화
+        initializeTabs();
+      } else {
+        console.error('❌ DEWP 라이브러리를 찾을 수 없습니다.');
+      }
+    });
+
+    // 탭 컴포넌트 초기화
+    function initializeTabs() {
+      const tabContainers = document.querySelectorAll('[data-tabs]');
+
+      tabContainers.forEach(container => {
+        const containerId = container.getAttribute('data-tabs');
+        if (containerId) {
+          window.DEWP.DEWP.initTabs(container, {
+            activeTab: 'tab1',
+            onTabChange: (tabId, previousTabId) => {
+              console.log(`탭 변경 (${containerId}):`, previousTabId, '→', tabId);
+            }
+          });
+        }
+      });
+    }
+
+    // 전역 클릭 이벤트로 드롭다운 닫기
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+    });
+
+    // ESC 키로 드롭다운 닫기
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

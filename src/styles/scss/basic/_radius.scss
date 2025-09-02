@@ -1,0 +1,162 @@
+/**
+ * DesignBase Frontend Kit - 둥근 모서리 시스템
+ * border-radius를 위한 변수와 믹스인을 정의
+ */
+
+$radius-unit: 4px; // 기본 둥근 모서리 단위 (4px)
+$radius-base: $radius-unit; // 기본 둥근 모서리
+
+// 순차적 둥근 모서리 스케일 (1-10)
+$radius-1: $radius-unit * 1; // 4px
+$radius-2: $radius-unit * 2; // 8px
+$radius-3: $radius-unit * 3; // 12px
+$radius-4: $radius-unit * 4; // 16px
+$radius-5: $radius-unit * 5; // 20px
+$radius-6: $radius-unit * 6; // 24px
+$radius-7: $radius-unit * 7; // 28px
+$radius-8: $radius-unit * 8; // 32px
+$radius-9: $radius-unit * 9; // 36px
+$radius-10: $radius-unit * 10; // 40px
+
+// 기존 변수명과의 호환성을 위한 별칭
+$radius-xs: $radius-1; // 4px
+$radius-s: $radius-2; // 8px
+$radius-m: $radius-3; // 12px
+$radius-l: $radius-4; // 16px
+$radius-xl: $radius-5; // 20px
+$radius-xxl: $radius-6; // 24px
+
+// ============================================================================
+// 둥근 모서리 믹스인
+// ============================================================================
+
+// 둥근 모서리 유틸리티 생성
+@mixin generate-radius-utilities($prefix: '') {
+
+    @each $size, $value in (1: $radius-1,
+        2: $radius-2,
+        3: $radius-3,
+        4: $radius-4,
+        5: $radius-5,
+        6: $radius-6,
+        7: $radius-7,
+        8: $radius-8,
+        9: $radius-9,
+        10: $radius-10,
+        0: 0) {
+        .#{$prefix}rounded-#{$size} {
+            border-radius: $value;
+        }
+
+        .#{$prefix}rounded-top-#{$size} {
+            border-top-left-radius: $value;
+            border-top-right-radius: $value;
+        }
+
+        .#{$prefix}rounded-right-#{$size} {
+            border-top-right-radius: $value;
+            border-bottom-right-radius: $value;
+        }
+
+        .#{$prefix}rounded-bottom-#{$size} {
+            border-bottom-right-radius: $value;
+            border-bottom-left-radius: $value;
+        }
+
+        .#{$prefix}rounded-left-#{$size} {
+            border-top-left-radius: $value;
+            border-bottom-left-radius: $value;
+        }
+    }
+}
+
+// 특수 둥근 모서리
+@mixin generate-special-radius-utilities($prefix: '') {
+    .#{$prefix}rounded-circle {
+        border-radius: 50%;
+    }
+
+    .#{$prefix}rounded-pill {
+        border-radius: 50rem;
+    }
+
+    .#{$prefix}rounded-top-left {
+        border-top-left-radius: $radius-3;
+    }
+
+    .#{$prefix}rounded-top-right {
+        border-top-right-radius: $radius-3;
+    }
+
+    .#{$prefix}rounded-bottom-left {
+        border-bottom-left-radius: $radius-3;
+    }
+
+    .#{$prefix}rounded-bottom-right {
+        border-bottom-right-radius: $radius-3;
+    }
+}
+
+// ============================================================================
+// 둥근 모서리 유틸리티 클래스
+// ============================================================================
+
+// 기본 둥근 모서리
+@include generate-radius-utilities('');
+
+// 특수 둥근 모서리
+@include generate-special-radius-utilities('');
+
+// ============================================================================
+// 반응형 둥근 모서리
+// ============================================================================
+
+@mixin responsive-radius($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @include generate-radius-utilities('d-#{$breakpoint}-');
+        @include generate-special-radius-utilities('d-#{$breakpoint}-');
+    }
+}
+
+// ============================================================================
+// 둥근 모서리 헬퍼
+// ============================================================================
+
+// 둥근 모서리 계산 함수
+@function radius($multiplier: 1) {
+    @return $radius-unit * $multiplier;
+}
+
+// 둥근 모서리 반올림
+@function radius-round($value) {
+    @return round($value / $radius-unit) * $radius-unit;
+}
+
+// 둥근 모서리 비율
+@function radius-ratio($numerator, $denominator) {
+    @return ($radius-unit * $numerator) / $denominator;
+}
+
+// ============================================================================
+// 둥근 모서리 변형
+// ============================================================================
+
+// 둥근 모서리 제거
+.rounded-0 {
+    border-radius: 0;
+}
+
+// 둥근 모서리 상속
+.rounded-inherit {
+    border-radius: inherit;
+}
+
+// 둥근 모서리 초기화
+.rounded-initial {
+    border-radius: initial;
+}
+
+// 둥근 모서리 되돌리기
+.rounded-unset {
+    border-radius: unset;
+}

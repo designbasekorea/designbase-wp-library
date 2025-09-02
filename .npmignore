@@ -1,0 +1,60 @@
+# 소스 코드 (GitHub에는 포함, npm에는 제외)
+src/
+scripts/
+tsconfig.json
+rollup.config.mjs
+
+# 개발 도구 및 설정
+.vscode/
+.idea/
+*.config.js
+*.config.mjs
+*.config.ts
+
+# 개발 의존성
+node_modules/
+package-lock.json
+
+# 개발 및 테스트 파일
+examples/
+tests/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# 문서 및 가이드
+DEPLOYMENT.md
+CHANGELOG.md
+docs/
+
+# 빌드 도구
+webpack.config.js
+postcss.config.js
+sass.config.js
+
+# Git 관련
+.git/
+.gitignore
+.github/
+
+# 환경 설정
+.env*
+*.local
+
+# 로그 및 임시 파일
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.tmp/
+temp/
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# IDE 파일
+*.swp
+*.swo
+*~

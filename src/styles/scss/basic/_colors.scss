@@ -1,0 +1,200 @@
+/**
+ * DesignBase Frontend Kit - 컬러 시스템
+ * 색상 팔레트와 테마를 위한 변수와 믹스인을 정의
+ */
+
+// ============================================================================
+// 기본 색상
+// ============================================================================
+
+$white: #ffffff;
+$black: #000000;
+
+// ============================================================================
+// 그레이 스케일
+// ============================================================================
+
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+// ============================================================================
+// 브랜드 컬러
+// ============================================================================
+
+// Primary (주요 색상)
+$primary: #3b82f6;
+$primary-50: #eff6ff;
+$primary-100: #dbeafe;
+$primary-200: #bfdbfe;
+$primary-300: #93c5fd;
+$primary-400: #60a5fa;
+$primary-500: #3b82f6;
+$primary-600: #2563eb;
+$primary-700: #1d4ed8;
+$primary-800: #1e40af;
+$primary-900: #1e3a8a;
+
+// Secondary (보조 색상)
+$secondary: #6b7280;
+$secondary-50: #f9fafb;
+$secondary-100: #f3f4f6;
+$secondary-200: #e5e7eb;
+$secondary-300: #d1d5db;
+$secondary-400: #9ca3af;
+$secondary-500: #6b7280;
+$secondary-600: #4b5563;
+$secondary-700: #374151;
+$secondary-800: #1f2937;
+$secondary-900: #111827;
+
+// ============================================================================
+// 상태별 색상
+// ============================================================================
+
+// Success (성공)
+$success: #10b981;
+$success-50: #ecfdf5;
+$success-100: #d1fae5;
+$success-200: #a7f3d0;
+$success-300: #6ee7b7;
+$success-400: #34d399;
+$success-500: #10b981;
+$success-600: #059669;
+$success-700: #047857;
+$success-800: #065f46;
+$success-900: #064e3b;
+
+// Warning (경고)
+$warning: #f59e0b;
+$warning-50: #fffbeb;
+$warning-100: #fef3c7;
+$warning-200: #fde68a;
+$warning-300: #fcd34d;
+$warning-400: #fbbf24;
+$warning-500: #f59e0b;
+$warning-600: #d97706;
+$warning-700: #b45309;
+$warning-800: #92400e;
+$warning-900: #78350f;
+
+// Danger (위험/에러)
+$danger: #ef4444;
+$danger-50: #fef2f2;
+$danger-100: #fee2e2;
+$danger-200: #fecaca;
+$danger-300: #fca5a5;
+$danger-400: #f87171;
+$danger-500: #ef4444;
+$danger-600: #dc2626;
+$danger-700: #b91c1c;
+$danger-800: #991b1b;
+$danger-900: #7f1d1d;
+
+// Info (정보)
+$info: #06b6d4;
+$info-50: #ecfeff;
+$info-100: #cffafe;
+$info-200: #a5f3fc;
+$info-300: #67e8f9;
+$info-400: #22d3ee;
+$info-500: #06b6d4;
+$info-600: #0891b2;
+$info-700: #0e7490;
+$info-800: #155e75;
+$info-900: #164e63;
+
+// ============================================================================
+// 시맨틱 컬러
+// ============================================================================
+
+$text-primary: $gray-900;
+$text-secondary: $gray-600;
+$text-muted: $gray-500;
+$text-light: $gray-400;
+$text-white: $white;
+
+$bg-primary: $white;
+$bg-secondary: $gray-50;
+$bg-muted: $gray-100;
+$bg-dark: $gray-900;
+
+$border-01: $gray-100;
+$border-02: $gray-200;
+$border-03: $gray-300;
+
+$link-color: $primary;
+$link-hover-color: darken($primary, 10%);
+$link-visited-color: darken($primary, 20%);
+
+// 상태별 시맨틱 컬러
+$status-success: $success;
+$status-success-light: $success-50;
+$status-success-bg: rgba($success, 0.1);
+$status-success-border: $success;
+$status-success-text: darken($success, 20%);
+
+$status-warning: $warning;
+$status-warning-light: $warning-50;
+$status-warning-bg: rgba($warning, 0.1);
+$status-warning-border: $warning;
+$status-warning-text: darken($warning, 20%);
+
+$status-danger: $danger;
+$status-danger-light: $danger-50;
+$status-danger-bg: rgba($danger, 0.1);
+$status-danger-border: $danger;
+$status-danger-text: darken($danger, 20%);
+
+$status-info: $info;
+$status-info-light: $info-50;
+$status-info-bg: rgba($info, 0.1);
+$status-info-border: $info;
+$status-info-text: darken($info, 20%);
+
+$shadow-color: rgba($black, 0.1);
+$shadow-color-light: rgba($black, 0.05);
+$shadow-color-dark: rgba($black, 0.2);
+
+// 그림자 변수
+$shadow-sm: 0 0.125rem 0.25rem $shadow-color-light;
+$shadow: 0 0.25rem 0.5rem $shadow-color;
+$shadow-md: 0 0.375rem 0.75rem $shadow-color;
+$shadow-lg: 0 0.5rem 1rem $shadow-color;
+$shadow-xl: 0 1rem 2rem $shadow-color-dark;
+
+// ============================================================================
+// 컴포넌트별 색상
+// ============================================================================
+
+// 버튼
+$btn-primary-bg: $primary;
+$btn-primary-border: $primary;
+$btn-primary-text: $white;
+$btn-primary-hover-bg: darken($primary, 10%);
+$btn-primary-hover-border: darken($primary, 10%);
+
+$btn-secondary-bg: $secondary;
+$btn-secondary-border: $secondary;
+$btn-secondary-text: $white;
+$btn-secondary-hover-bg: darken($secondary, 10%);
+$btn-secondary-hover-border: darken($secondary, 10%);
+
+// 입력 필드
+$input-border: $border-01;
+$input-border-focus: $primary;
+$input-bg: $bg-primary;
+$input-text: $text-primary;
+$input-placeholder: $text-muted;
+
+// 카드
+$card-bg: $bg-primary;
+$card-border: $border-01;
+$card-shadow: $shadow-sm;

@@ -1,0 +1,263 @@
+/**
+ * DesignBase Frontend Kit - 기본 스타일 통합
+ * 모든 기본 스타일과 변수를 통합하여 관리
+ */
+
+// ============================================================================
+// 기본 시스템 import
+// ============================================================================
+
+@import 'colors';
+@import 'spacing';
+@import 'radius';
+@import 'animation';
+@import 'typography';
+@import 'layout';
+@import 'mixins';
+@import 'z-index';
+
+// ============================================================================
+// 트랜지션
+// ============================================================================
+
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ============================================================================
+// 그림자 시스템
+// ============================================================================
+
+// 컴포넌트별 그림자
+$card-box-shadow: $shadow-sm;
+$modal-box-shadow: $shadow-lg;
+$dropdown-box-shadow: $shadow-lg;
+$toast-box-shadow: $shadow;
+
+// ============================================================================
+// 전역 스타일
+// ============================================================================
+
+// 기본 리셋
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    line-height: $line-height-base;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-base;
+    color: $text-primary;
+    background-color: $bg-primary;
+    margin: 0;
+    padding: 0;
+}
+
+// ============================================================================
+// 기본 유틸리티
+// ============================================================================
+
+// 텍스트 유틸리티
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 포지셔닝 유틸리티
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.position-sticky {
+    position: sticky;
+}
+
+// 가시성 유틸리티
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+// 커서 유틸리티
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+// 사용자 선택 유틸리티
+.user-select-none {
+    user-select: none;
+}
+
+.user-select-auto {
+    user-select: auto;
+}
+
+.user-select-all {
+    user-select: all;
+}
+
+// 오버플로우 유틸리티
+.overflow-auto {
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+// ============================================================================
+// 반응형 유틸리티
+// ============================================================================
+
+// 반응형 숨김/표시
+@each $breakpoint, $value in (sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px) {
+    @media (min-width: $value) {
+        .d-#{$breakpoint}-none {
+            display: none;
+        }
+
+        .d-#{$breakpoint}-block {
+            display: block;
+        }
+
+        .d-#{$breakpoint}-inline {
+            display: inline;
+        }
+
+        .d-#{$breakpoint}-inline-block {
+            display: inline-block;
+        }
+
+        .d-#{$breakpoint}-flex {
+            display: flex;
+        }
+
+        .d-#{$breakpoint}-inline-flex {
+            display: inline-flex;
+        }
+    }
+}
+
+// ============================================================================
+// 인쇄 스타일
+// ============================================================================
+
+@media print {
+    * {
+        background: transparent !important;
+        color: $black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid $gray-300;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

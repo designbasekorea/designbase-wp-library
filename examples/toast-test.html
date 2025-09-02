@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEWP 토스트 테스트 - 닫기 기능</title>
+  <link rel="stylesheet" href="../dist/css/dewp.min.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .test-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      background: #f8f9fa;
+    }
+
+    .test-section h2 {
+      color: #495057;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .test-btn {
+      margin: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .test-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #ffc107;
+      color: #212529;
+    }
+
+    .btn-info {
+      background: #17a2b8;
+      color: white;
+    }
+
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    .test-info {
+      background: #e7f3ff;
+      border: 1px solid #b3d9ff;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+
+    .test-info h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+
+    .test-info ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .test-info li {
+      margin: 5px 0;
+    }
+
+    .status-display {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 15px 0;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    .auto-hide-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .auto-hide-controls input {
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      width: 80px;
+    }
+
+    .auto-hide-controls label {
+      font-weight: 500;
+      color: #495057;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🔔 DEWP 토스트 테스트 - 닫기 기능</h1>
+    <p>토스트의 닫기 기능과 애니메이션을 테스트해보세요.</p>
+
+    <!-- 테스트 정보 -->
+    <div class="test-info">
+      <h3>🧪 테스트 방법</h3>
+      <ul>
+        <li><strong>토스트 표시</strong>: 각 버튼을 클릭하여 토스트를 표시합니다</li>
+        <li><strong>닫기 버튼</strong>: 토스트 우측 상단의 × 버튼을 클릭하여 닫습니다</li>
+        <li><strong>자동 닫기</strong>: 설정된 시간 후 자동으로 닫힙니다</li>
+        <li><strong>애니메이션</strong>: 슬라이드 인/아웃 애니메이션을 확인합니다</li>
+      </ul>
+    </div>
+
+    <!-- 기본 토스트 테스트 -->
+    <div class="test-section">
+      <h2>🎯 기본 토스트 테스트</h2>
+      <p>각 타입의 토스트를 표시하고 닫기 버튼으로 닫아보세요.</p>
+
+      <button class="test-btn btn-success" onclick="testSuccessToast()">성공 토스트</button>
+      <button class="test-btn btn-danger" onclick="testErrorToast()">오류 토스트</button>
+      <button class="test-btn btn-warning" onclick="testWarningToast()">경고 토스트</button>
+      <button class="test-btn btn-info" onclick="testInfoToast()">정보 토스트</button>
+    </div>
+
+    <!-- 자동 닫기 테스트 -->
+    <div class="test-section">
+      <h2>⏰ 자동 닫기 테스트</h2>
+      <p>다양한 지속 시간으로 토스트를 표시해보세요.</p>
+
+      <div class="auto-hide-controls">
+        <label for="duration">지속 시간 (초):</label>
+        <input type="number" id="duration" value="3" min="1" max="30">
+      </div>
+
+      <button class="test-btn btn-primary" onclick="testAutoHideToast()">자동 닫기 토스트</button>
+      <button class="test-btn btn-secondary" onclick="testLongDurationToast()">10초 토스트</button>
+      <button class="test-btn btn-warning" onclick="testNoAutoHideToast()">수동 닫기만</button>
+    </div>
+
+    <!-- 다중 토스트 테스트 -->
+    <div class="test-section">
+      <h2>📚 다중 토스트 테스트</h2>
+      <p>여러 토스트를 동시에 표시하고 개별적으로 닫아보세요.</p>
+
+      <button class="test-btn btn-success" onclick="testMultipleToasts()">여러 토스트 표시</button>
+      <button class="test-btn btn-danger" onclick="hideAllToasts()">모든 토스트 닫기</button>
+      <button class="test-btn btn-info" onclick="testRapidToasts()">빠른 연속 토스트</button>
+    </div>
+
+    <!-- 애니메이션 테스트 -->
+    <div class="test-section">
+      <h2>🎬 애니메이션 테스트</h2>
+      <p>토스트의 슬라이드 인/아웃 애니메이션을 확인해보세요.</p>
+
+      <button class="test-btn btn-primary" onclick="testAnimationSequence()">애니메이션 시퀀스</button>
+      <button class="test-btn btn-secondary" onclick="testQuickClose()">빠른 닫기 테스트</button>
+    </div>
+
+    <!-- 상태 표시 -->
+    <div class="test-section">
+      <h2>📊 현재 상태</h2>
+      <div class="status-display" id="status">
+        토스트 테스트를 시작하세요...
+      </div>
+    </div>
+  </div>
+
+  <!-- DEWP JavaScript 라이브러리 로드 -->
+  <script src="../dist/js/dewp.min.js"></script>
+
+  <script>
+    let toastCount = 0;
+    let activeToasts = [];
+
+    // 상태 업데이트
+    function updateStatus(message) {
+      const statusEl = document.getElementById('status');
+      const timestamp = new Date().toLocaleTimeString();
+      statusEl.innerHTML = `[${timestamp}] ${message}`;
+      console.log(message);
+    }
+
+    // 기본 토스트 테스트
+    function testSuccessToast() {
+      const toastId = window.DEWP.DEWP.showSuccessToast('성공 토스트입니다! 닫기 버튼을 클릭해보세요.');
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`✅ 성공 토스트 표시됨 (ID: ${toastId}, 총 ${toastCount}개)`);
+    }
+
+    function testErrorToast() {
+      const toastId = window.DEWP.DEWP.showErrorToast('오류 토스트입니다! 닫기 버튼을 클릭해보세요.');
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`❌ 오류 토스트 표시됨 (ID: ${toastId}, 총 ${toastCount}개)`);
+    }
+
+    function testWarningToast() {
+      const toastId = window.DEWP.DEWP.showWarningToast('경고 토스트입니다! 닫기 버튼을 클릭해보세요.');
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`⚠️ 경고 토스트 표시됨 (ID: ${toastId}, 총 ${toastCount}개)`);
+    }
+
+    function testInfoToast() {
+      const toastId = window.DEWP.DEWP.showInfoToast('정보 토스트입니다! 닫기 버튼을 클릭해보세요.');
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`ℹ️ 정보 토스트 표시됨 (ID: ${toastId}, 총 ${toastCount}개)`);
+    }
+
+    // 자동 닫기 테스트
+    function testAutoHideToast() {
+      const duration = parseInt(document.getElementById('duration').value) * 1000;
+      const toastId = window.DEWP.DEWP.showToast(`이 토스트는 ${duration / 1000}초 후 자동으로 닫힙니다.`, 'info', duration);
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`⏰ 자동 닫기 토스트 표시됨 (${duration / 1000}초, ID: ${toastId})`);
+    }
+
+    function testLongDurationToast() {
+      const toastId = window.DEWP.DEWP.showToast('이 토스트는 10초 후 자동으로 닫힙니다. 충분한 시간이 있습니다!', 'warning', 10000);
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`⏰ 10초 토스트 표시됨 (ID: ${toastId})`);
+    }
+
+    function testNoAutoHideToast() {
+      const toastId = window.DEWP.DEWP.showToast('이 토스트는 자동으로 닫히지 않습니다. 수동으로 닫아주세요!', 'info', 0);
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`🔒 수동 닫기 토스트 표시됨 (ID: ${toastId})`);
+    }
+
+    // 다중 토스트 테스트
+    function testMultipleToasts() {
+      const types = ['success', 'error', 'warning', 'info'];
+      const messages = [
+        '첫 번째 토스트입니다',
+        '두 번째 토스트입니다',
+        '세 번째 토스트입니다',
+        '네 번째 토스트입니다'
+      ];
+
+      types.forEach((type, index) => {
+        setTimeout(() => {
+          const toastId = window.DEWP.DEWP.showToast(messages[index], type, 8000);
+          activeToasts.push(toastId);
+          toastCount++;
+          updateStatus(`📚 ${type} 토스트 표시됨 (ID: ${toastId})`);
+        }, index * 500);
+      });
+    }
+
+    function hideAllToasts() {
+      window.DEWP.DEWP.hideAllToasts();
+      activeToasts = [];
+      updateStatus(`🗑️ 모든 토스트 닫기 요청됨`);
+    }
+
+    function testRapidToasts() {
+      for (let i = 1; i <= 5; i++) {
+        setTimeout(() => {
+          const toastId = window.DEWP.DEWP.showToast(`빠른 토스트 ${i}`, 'info', 5000);
+          activeToasts.push(toastId);
+          toastCount++;
+          updateStatus(`⚡ 빠른 토스트 ${i} 표시됨 (ID: ${toastId})`);
+        }, i * 200);
+      }
+    }
+
+    // 애니메이션 테스트
+    function testAnimationSequence() {
+      const toastId = window.DEWP.DEWP.showToast('애니메이션 테스트 토스트입니다!', 'primary', 5000);
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`🎬 애니메이션 토스트 표시됨 (ID: ${toastId})`);
+
+      // 2초 후 닫기
+      setTimeout(() => {
+        window.DEWP.DEWP.hideToast(toastId);
+        updateStatus(`🎬 애니메이션 토스트 닫기 요청됨 (ID: ${toastId})`);
+      }, 2000);
+    }
+
+    function testQuickClose() {
+      const toastId = window.DEWP.DEWP.showToast('빠르게 닫을 토스트입니다!', 'warning', 10000);
+      activeToasts.push(toastId);
+      toastCount++;
+      updateStatus(`⚡ 빠른 닫기 테스트 토스트 표시됨 (ID: ${toastId})`);
+
+      // 0.5초 후 즉시 닫기
+      setTimeout(() => {
+        window.DEWP.DEWP.hideToast(toastId);
+        updateStatus(`⚡ 빠른 닫기 실행됨 (ID: ${toastId})`);
+      }, 500);
+    }
+
+    // 페이지 로드 시 라이브러리 확인
+    window.addEventListener('load', () => {
+      if (window.DEWP && window.DEWP.DEWP) {
+        console.log('✅ DEWP 라이브러리가 성공적으로 로드되었습니다!');
+        console.log('사용 가능한 토스트 함수들:', [
+          'showToast',
+          'showSuccessToast',
+          'showErrorToast',
+          'showWarningToast',
+          'showInfoToast',
+          'hideToast',
+          'hideAllToasts'
+        ].filter(func => window.DEWP.DEWP[func]));
+
+        updateStatus('🚀 DEWP 라이브러리 로드 완료! 토스트 테스트를 시작하세요.');
+      } else {
+        console.error('❌ DEWP 라이브러리를 찾을 수 없습니다.');
+        updateStatus('❌ DEWP 라이브러리를 찾을 수 없습니다.');
+      }
+    });
+
+    // 토스트 닫기 이벤트 감지 (디버깅용)
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('toast-close') || e.target.closest('.toast-close')) {
+        updateStatus('🔘 닫기 버튼 클릭됨');
+      }
+    });
+  </script>
+</body>
+
+</html>

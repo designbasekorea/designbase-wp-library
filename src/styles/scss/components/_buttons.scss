@@ -1,0 +1,495 @@
+/**
+ * DesignBase Frontend Kit - 버튼 컴포넌트
+ * 다양한 버튼 스타일과 변형을 정의
+ */
+
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: $radius-2;
+    transition: all $transition-fast;
+    white-space: nowrap;
+    min-height: 2.5rem;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &:disabled,
+    &.disabled {
+        opacity: 0.65;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    // 아이콘이 있는 경우
+    .icon {
+        margin-right: $spacing-1;
+
+        &:last-child {
+            margin-right: 0;
+            margin-left: $spacing-1;
+        }
+    }
+
+    // ============================================================================
+    // 버튼 크기
+    // ============================================================================
+
+    &-xs {
+        padding: $spacing-1 $spacing-2;
+        font-size: $font-size-xs;
+        border-radius: $radius-1;
+        min-height: 1.75rem;
+    }
+
+    &-s {
+        padding: $spacing-1 $spacing-3;
+        font-size: $font-size-s;
+        min-height: 2rem;
+    }
+
+    &-m {
+        padding: $spacing-2 $spacing-4;
+        font-size: $font-size-base;
+        min-height: 2.5rem;
+    }
+
+    &-l {
+        padding: $spacing-3 $spacing-5;
+        font-size: $font-size-m;
+        min-height: 3rem;
+    }
+
+    &-xl {
+        padding: $spacing-4 $spacing-6;
+        font-size: $font-size-l;
+        min-height: 3.5rem;
+    }
+
+    // ============================================================================
+    // 버튼 색상 변형
+    // ============================================================================
+
+    &-primary {
+        color: $white;
+        background-color: $primary;
+        border-color: $primary;
+
+        &:hover {
+            color: $white;
+            background-color: darken($primary, 10%);
+            border-color: darken($primary, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($primary);
+        }
+
+        &:active {
+            background-color: darken($primary, 15%);
+            border-color: darken($primary, 15%);
+        }
+    }
+
+    &-secondary {
+        color: $text-primary;
+        background-color: $secondary;
+        border-color: $secondary;
+
+        &:hover {
+            color: $white;
+            background-color: darken($secondary, 10%);
+            border-color: darken($secondary, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($secondary);
+        }
+
+        &:active {
+            background-color: darken($secondary, 15%);
+            border-color: darken($secondary, 15%);
+        }
+    }
+
+    &-success {
+        color: $white;
+        background-color: $success;
+        border-color: $success;
+
+        &:hover {
+            color: $white;
+            background-color: darken($success, 10%);
+            border-color: darken($success, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($success);
+        }
+
+        &:active {
+            background-color: darken($success, 15%);
+            border-color: darken($success, 15%);
+        }
+    }
+
+    &-warning {
+        color: $text-primary;
+        background-color: $warning;
+        border-color: $warning;
+
+        &:hover {
+            color: $text-primary;
+            background-color: darken($warning, 10%);
+            border-color: darken($warning, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($warning);
+        }
+
+        &:active {
+            background-color: darken($warning, 15%);
+            border-color: darken($warning, 15%);
+        }
+    }
+
+    &-danger {
+        color: $white;
+        background-color: $danger;
+        border-color: $danger;
+
+        &:hover {
+            color: $white;
+            background-color: darken($danger, 10%);
+            border-color: darken($danger, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($danger);
+        }
+
+        &:active {
+            background-color: darken($danger, 15%);
+            border-color: darken($danger, 15%);
+        }
+    }
+
+    &-info {
+        color: $white;
+        background-color: $info;
+        border-color: $info;
+
+        &:hover {
+            color: $white;
+            background-color: darken($info, 10%);
+            border-color: darken($info, 10%);
+        }
+
+        &:focus {
+            @include focus-ring($info);
+        }
+
+        &:active {
+            background-color: darken($info, 15%);
+            border-color: darken($info, 15%);
+        }
+    }
+
+    &-light {
+        color: $text-primary;
+        background-color: $gray-100;
+        border-color: $gray-300;
+
+        &:hover {
+            color: $text-primary;
+            background-color: $gray-200;
+            border-color: $gray-400;
+        }
+
+        &:focus {
+            @include focus-ring($gray-500);
+        }
+
+        &:active {
+            background-color: $gray-300;
+            border-color: $gray-500;
+        }
+    }
+
+    &-dark {
+        color: $white;
+        background-color: $gray-800;
+        border-color: $gray-800;
+
+        &:hover {
+            color: $white;
+            background-color: $gray-900;
+            border-color: $gray-900;
+        }
+
+        &:focus {
+            @include focus-ring($gray-700);
+        }
+
+        &:active {
+            background-color: $black;
+            border-color: $black;
+        }
+    }
+
+    // ============================================================================
+    // Outline 버튼 변형
+    // ============================================================================
+
+    &-outline-primary {
+        color: $primary;
+        background-color: transparent;
+        border-color: $primary;
+
+        &:hover {
+            color: $white;
+            background-color: $primary;
+            border-color: $primary;
+        }
+
+        &:focus {
+            @include focus-ring($primary);
+        }
+
+        &:active {
+            color: $white;
+            background-color: darken($primary, 15%);
+            border-color: darken($primary, 15%);
+        }
+    }
+
+    &-outline-secondary {
+        color: $secondary;
+        background-color: transparent;
+        border-color: $secondary;
+
+        &:hover {
+            color: $white;
+            background-color: $secondary;
+            border-color: $secondary;
+        }
+
+        &:focus {
+            @include focus-ring($secondary);
+        }
+
+        &:active {
+            color: $white;
+            background-color: darken($secondary, 15%);
+            border-color: darken($secondary, 15%);
+        }
+    }
+
+    &-outline-success {
+        color: $success;
+        background-color: transparent;
+        border-color: $success;
+
+        &:hover {
+            color: $white;
+            background-color: $success;
+            border-color: $success;
+        }
+
+        &:focus {
+            @include focus-ring($success);
+        }
+
+        &:active {
+            color: $white;
+            background-color: darken($success, 15%);
+            border-color: darken($success, 15%);
+        }
+    }
+
+    &-outline-warning {
+        color: $warning;
+        background-color: transparent;
+        border-color: $warning;
+
+        &:hover {
+            color: $text-primary;
+            background-color: $warning;
+            border-color: $warning;
+        }
+
+        &:focus {
+            @include focus-ring($warning);
+        }
+
+        &:active {
+            color: $text-primary;
+            background-color: darken($warning, 15%);
+            border-color: darken($warning, 15%);
+        }
+    }
+
+    &-outline-danger {
+        color: $danger;
+        background-color: transparent;
+        border-color: $danger;
+
+        &:hover {
+            color: $white;
+            background-color: $danger;
+            border-color: $danger;
+        }
+
+        &:focus {
+            @include focus-ring($danger);
+        }
+
+        &:active {
+            color: $white;
+            background-color: darken($danger, 15%);
+            border-color: darken($danger, 15%);
+        }
+    }
+
+    &-outline-info {
+        color: $info;
+        background-color: transparent;
+        border-color: $info;
+
+        &:hover {
+            color: $white;
+            background-color: $info;
+            border-color: $info;
+        }
+
+        &:focus {
+            @include focus-ring($info);
+        }
+
+        &:active {
+            color: $white;
+            background-color: darken($info, 15%);
+            border-color: darken($info, 15%);
+        }
+    }
+
+    // ============================================================================
+    // 버튼 상태
+    // ============================================================================
+
+    &-block {
+        display: block;
+        width: 100%;
+    }
+
+    &-loading {
+        position: relative;
+        color: transparent;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1rem;
+            height: 1rem;
+            margin: -0.5rem 0 0 -0.5rem;
+            border: 2px solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.75s linear infinite;
+        }
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// ============================================================================
+// 버튼 그룹
+// ============================================================================
+
+.btn-group {
+    display: inline-flex;
+    vertical-align: middle;
+
+    .btn {
+        position: relative;
+        flex: 1 1 auto;
+
+        &:not(:first-child) {
+            margin-left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            z-index: 1;
+        }
+    }
+
+    &-vertical {
+        flex-direction: column;
+
+        .btn {
+            &:not(:first-child) {
+                margin-top: -1px;
+                margin-left: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+}
+
+// ============================================================================
+// 버튼 툴바
+// ============================================================================
+
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .btn-group {
+        margin-right: $spacing-2;
+        margin-bottom: $spacing-2;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

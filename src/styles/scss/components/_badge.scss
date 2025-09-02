@@ -1,0 +1,369 @@
+/**
+ * DesignBase Frontend Kit - 배지 컴포넌트
+ * 상태 표시, 카운터 등을 위한 배지 스타일을 정의
+ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-xs $padding-s;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: $radius-s;
+    transition: all $transition-fast;
+
+    // 아이콘이 있는 경우
+    .icon {
+        margin-right: $margin-xs;
+
+        &:last-child {
+            margin-right: 0;
+            margin-left: $margin-xs;
+        }
+    }
+
+    // 링크로 사용되는 경우
+    &[href] {
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    // ============================================================================
+    // 배지 크기
+    // ============================================================================
+
+    &-xs {
+        padding: 0.125rem 0.25rem;
+        font-size: 0.625rem;
+    }
+
+    &-s {
+        padding: $padding-xs $padding-s;
+        font-size: $font-size-xs;
+    }
+
+    &-m {
+        padding: $padding-s $padding-l;
+        font-size: $font-size-s;
+    }
+
+    &-l {
+        padding: $padding-l $padding-xl;
+        font-size: $font-size-base;
+    }
+
+    // ============================================================================
+    // 배지 색상 변형
+    // ============================================================================
+
+    &-primary {
+        color: $white;
+        background-color: $primary;
+
+        &[href]:hover {
+            background-color: darken($primary, 10%);
+        }
+    }
+
+    &-secondary {
+        color: $white;
+        background-color: $secondary;
+
+        &[href]:hover {
+            background-color: darken($secondary, 10%);
+        }
+    }
+
+    &-success {
+        color: $white;
+        background-color: $success;
+
+        &[href]:hover {
+            background-color: darken($success, 10%);
+        }
+    }
+
+    &-warning {
+        color: $text-primary;
+        background-color: $warning;
+
+        &[href]:hover {
+            background-color: darken($warning, 10%);
+        }
+    }
+
+    &-danger {
+        color: $white;
+        background-color: $danger;
+
+        &[href]:hover {
+            background-color: darken($danger, 10%);
+        }
+    }
+
+    &-info {
+        color: $white;
+        background-color: $info;
+
+        &[href]:hover {
+            background-color: darken($info, 10%);
+        }
+    }
+
+    &-light {
+        color: $text-primary;
+        background-color: $gray-100;
+
+        &[href]:hover {
+            background-color: $gray-200;
+        }
+    }
+
+    &-dark {
+        color: $white;
+        background-color: $gray-800;
+
+        &[href]:hover {
+            background-color: $gray-900;
+        }
+    }
+
+    // ============================================================================
+    // Outline 배지 변형
+    // ============================================================================
+
+    &-outline-primary {
+        color: $primary;
+        background-color: transparent;
+        border: 1px solid $primary;
+    }
+
+    &-outline-secondary {
+        color: $secondary;
+        background-color: transparent;
+        border: 1px solid $secondary;
+    }
+
+    &-outline-success {
+        color: $success;
+        background-color: transparent;
+        border: 1px solid $success;
+    }
+
+    &-outline-warning {
+        color: $warning;
+        background-color: transparent;
+        border: 1px solid $warning;
+    }
+
+    &-outline-danger {
+        color: $danger;
+        background-color: transparent;
+        border: 1px solid $danger;
+    }
+
+    &-outline-info {
+        color: $info;
+        background-color: transparent;
+        border: 1px solid $info;
+    }
+
+    &-outline-light {
+        color: $gray-600;
+        background-color: transparent;
+        border: 1px solid $gray-300;
+    }
+
+    &-outline-dark {
+        color: $gray-800;
+        background-color: transparent;
+        border: 1px solid $gray-800;
+    }
+
+    // ============================================================================
+    // 배지 모양
+    // ============================================================================
+
+    &-rounded {
+        border-radius: $radius-m;
+    }
+
+    &-pill {
+        border-radius: $radius-xxl;
+    }
+
+    &-square {
+        border-radius: 0;
+    }
+
+    // ============================================================================
+    // 배지 상태
+    // ============================================================================
+
+    &-dot {
+        padding: 0;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+
+        .icon {
+            display: none;
+        }
+    }
+
+    &-ring {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: $danger;
+            border: 2px solid $white;
+            border-radius: 50%;
+        }
+    }
+
+    // ============================================================================
+    // 배지 위치
+    // ============================================================================
+
+    &-top-left {
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        transform: translate(-50%, -50%);
+    }
+
+    &-top-right {
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        transform: translate(50%, -50%);
+    }
+
+    &-bottom-left {
+        position: absolute;
+        bottom: -0.5rem;
+        left: -0.5rem;
+        transform: translate(-50%, 50%);
+    }
+
+    &-bottom-right {
+        position: absolute;
+        bottom: -0.5rem;
+        right: -0.5rem;
+        transform: translate(50%, 50%);
+    }
+
+    // ============================================================================
+    // 배지 애니메이션
+    // ============================================================================
+
+    &-pulse {
+        animation: badge-pulse 2s infinite;
+    }
+
+    &-bounce {
+        animation: badge-bounce 1s infinite;
+    }
+}
+
+// ============================================================================
+// 애니메이션 정의
+// ============================================================================
+
+@keyframes badge-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba($primary, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 0.5rem rgba($primary, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba($primary, 0);
+    }
+}
+
+@keyframes badge-bounce {
+
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        transform: translate3d(0, -0.25rem, 0);
+    }
+
+    70% {
+        transform: translate3d(0, -0.125rem, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -0.0625rem, 0);
+    }
+}
+
+// ============================================================================
+// 배지 그룹
+// ============================================================================
+
+.badge-group {
+    display: inline-flex;
+    align-items: center;
+
+    .badge {
+        margin-right: $margin-xs;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-vertical {
+        flex-direction: column;
+
+        .badge {
+            margin-right: 0;
+            margin-bottom: $margin-xs;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// ============================================================================
+// 배지와 버튼 조합
+// ============================================================================
+
+.btn .badge {
+    margin-left: $margin-xs;
+    font-size: 0.75em;
+    vertical-align: middle;
+
+    &:first-child {
+        margin-left: 0;
+        margin-right: $margin-xs;
+    }
+}

@@ -1,0 +1,211 @@
+/**
+ * DesignBase Frontend Kit - 간격 시스템
+ * 스페이싱, 패딩, 마진을 위한 변수와 믹스인을 정의
+ */
+
+$spacing-unit: 4px; // 기본 간격 단위 (4px)
+$spacing-base: $spacing-unit; // 기본 간격
+
+// 순차적 간격 스케일 (1-20)
+$spacing-1: $spacing-unit * 1; // 4px
+$spacing-2: $spacing-unit * 2; // 8px
+$spacing-3: $spacing-unit * 3; // 12px
+$spacing-4: $spacing-unit * 4; // 16px
+$spacing-5: $spacing-unit * 5; // 20px
+$spacing-6: $spacing-unit * 6; // 24px
+$spacing-7: $spacing-unit * 7; // 28px
+$spacing-8: $spacing-unit * 8; // 32px
+$spacing-9: $spacing-unit * 9; // 36px
+$spacing-10: $spacing-unit * 10; // 40px
+$spacing-11: $spacing-unit * 11; // 44px
+$spacing-12: $spacing-unit * 12; // 48px
+$spacing-13: $spacing-unit * 13; // 52px
+$spacing-14: $spacing-unit * 14; // 56px
+$spacing-15: $spacing-unit * 15; // 60px
+$spacing-16: $spacing-unit * 16; // 64px
+$spacing-17: $spacing-unit * 17; // 68px
+$spacing-18: $spacing-unit * 18; // 72px
+$spacing-19: $spacing-unit * 19; // 76px
+$spacing-20: $spacing-unit * 20; // 80px
+
+// ============================================================================
+// 패딩 변수
+// ============================================================================
+$padding-xs: $spacing-1; // 4px
+$padding-s: $spacing-2; // 8px
+$padding-m: $spacing-3; // 12px
+$padding-l: $spacing-4; // 16px
+$padding-xl: $spacing-6; // 24px
+$padding-xxl: $spacing-8; // 32px
+
+
+// ============================================================================
+// 마진 변수
+// ============================================================================
+$margin-xs: $spacing-1; // 4px
+$margin-s: $spacing-2; // 8px
+$margin-m: $spacing-3; // 12px
+$margin-l: $spacing-4; // 16px
+$margin-xl: $spacing-6; // 24px
+$margin-xxl: $spacing-8; // 32px
+
+$section-margin: $spacing-8; // 32px
+$component-margin: $spacing-5; // 20px
+$element-margin: $spacing-3; // 12px
+$text-margin: $spacing-2; // 8px
+
+// ============================================================================
+// 간격 믹스인
+// ============================================================================
+
+// 간격 유틸리티 생성
+@mixin generate-spacing-utilities($prefix: '', $property: 'margin') {
+
+    @each $size, $value in (1: $spacing-1,
+        2: $spacing-2,
+        3: $spacing-3,
+        4: $spacing-4,
+        5: $spacing-5,
+        6: $spacing-6,
+        7: $spacing-7,
+        8: $spacing-8,
+        9: $spacing-9,
+        10: $spacing-10,
+        11: $spacing-11,
+        12: $spacing-12,
+        13: $spacing-13,
+        14: $spacing-14,
+        15: $spacing-15,
+        16: $spacing-16,
+        17: $spacing-17,
+        18: $spacing-18,
+        19: $spacing-19,
+        20: $spacing-20,
+        0: 0) {
+        .#{$prefix}#{$property}-#{$size} {
+            #{$property}: $value;
+        }
+
+        .#{$prefix}#{$property}t-#{$size} {
+            #{$property}-top: $value;
+        }
+
+        .#{$prefix}#{$property}r-#{$size} {
+            #{$property}-right: $value;
+        }
+
+        .#{$prefix}#{$property}b-#{$size} {
+            #{$property}-bottom: $value;
+        }
+
+        .#{$prefix}#{$property}l-#{$size} {
+            #{$property}-left: $value;
+        }
+
+        .#{$prefix}#{$property}x-#{$size} {
+            #{$property}-left: $value;
+            #{$property}-right: $value;
+        }
+
+        .#{$prefix}#{$property}y-#{$size} {
+            #{$property}-top: $value;
+            #{$property}-bottom: $value;
+        }
+    }
+}
+
+// 패딩 유틸리티 생성
+@mixin generate-padding-utilities($prefix: '') {
+
+    @each $size, $value in (1: $spacing-1,
+        2: $spacing-2,
+        3: $spacing-3,
+        4: $spacing-4,
+        5: $spacing-5,
+        6: $spacing-6,
+        7: $spacing-7,
+        8: $spacing-8,
+        9: $spacing-9,
+        10: $spacing-10,
+        11: $spacing-11,
+        12: $spacing-12,
+        13: $spacing-13,
+        14: $spacing-14,
+        15: $spacing-15,
+        16: $spacing-16,
+        17: $spacing-17,
+        18: $spacing-18,
+        19: $spacing-19,
+        20: $spacing-20,
+        0: 0) {
+        .#{$prefix}p-#{$size} {
+            padding: $value;
+        }
+
+        .#{$prefix}pt-#{$size} {
+            padding-top: $value;
+        }
+
+        .#{$prefix}pr-#{$size} {
+            padding-right: $value;
+        }
+
+        .#{$prefix}pb-#{$size} {
+            padding-bottom: $value;
+        }
+
+        .#{$prefix}pl-#{$size} {
+            padding-left: $value;
+        }
+
+        .#{$prefix}px-#{$size} {
+            padding-left: $value;
+            padding-right: $value;
+        }
+
+        .#{$prefix}py-#{$size} {
+            padding-top: $value;
+            padding-bottom: $value;
+        }
+    }
+}
+
+// ============================================================================
+// 간격 유틸리티 클래스
+// ============================================================================
+
+// 마진 유틸리티
+@include generate-spacing-utilities('', 'margin');
+
+// 패딩 유틸리티
+@include generate-padding-utilities('');
+
+// ============================================================================
+// 반응형 간격
+// ============================================================================
+
+@mixin responsive-spacing($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @include generate-spacing-utilities('d-#{$breakpoint}-', 'margin');
+        @include generate-padding-utilities('d-#{$breakpoint}-');
+    }
+}
+
+// ============================================================================
+// 간격 헬퍼
+// ============================================================================
+
+// 간격 계산 함수
+@function spacing($multiplier: 1) {
+    @return $spacing-unit * $multiplier;
+}
+
+// 간격 반올림
+@function spacing-round($value) {
+    @return round($value / $spacing-unit) * $spacing-unit;
+}
+
+// 간격 비율
+@function spacing-ratio($numerator, $denominator) {
+    @return ($spacing-unit * $numerator) / $denominator;
+}
