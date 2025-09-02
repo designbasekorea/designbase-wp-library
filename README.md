@@ -23,10 +23,10 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.1.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.1.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.2.0/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
@@ -73,10 +73,10 @@ src/
 
 #### 브라우저에서 직접 사용
 ```html
-<script src="https://unpkg.com/designbase-wp-library@0.1.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.2.0/dist/js/dewp.min.js"></script>
 <script>
   // 전역 DEWP 객체 사용
-  window.DEWP.showToast('안녕하세요!', 'success');
+  window.DEWP.showToast('안녕하세요!', 'success', 3000, 'md');
   
   // 모달 표시
   window.DEWP.showModal('알림', '모달이 표시됩니다!', {
@@ -121,7 +121,7 @@ showConfirmModal('정말 삭제하시겠습니까?')
 ### CSS 사용
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.1.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.0/dist/css/dewp.min.css">
 ```
 
 ## 🧩 컴포넌트
@@ -129,13 +129,13 @@ showConfirmModal('정말 삭제하시겠습니까?')
 ### 1. 토스트 알림 (Toast)
 ```javascript
 // 기본 토스트
-window.DEWP.showToast('메시지', 'success');
+window.DEWP.showToast('메시지', 'success', 3000, 'md');
 
-// 타입별 토스트
-window.DEWP.showSuccessToast('성공 메시지');
-window.DEWP.showWarningToast('경고 메시지');
-window.DEWP.showErrorToast('오류 메시지');
-window.DEWP.showInfoToast('정보 메시지');
+// 타입별 토스트 (크기 옵션 포함)
+window.DEWP.showSuccessToast('성공 메시지', 3000, 'lg');
+window.DEWP.showWarningToast('경고 메시지', 5000, 'sm');
+window.DEWP.showErrorToast('오류 메시지', 4000, 'md');
+window.DEWP.showInfoToast('정보 메시지', 3000, 'sm');
 ```
 
 ### 2. 모달 (Modal)
@@ -296,9 +296,24 @@ window.DEWP.onDOMReady(() => {
 
 #### 토글
 ```html
+<!-- 기본 토글 -->
 <label class="dewp-toggle-label">
   <input type="checkbox" class="dewp-toggle-input">
   <span class="dewp-toggle-slider"></span>
+  <span class="dewp-toggle-text">기본 토글</span>
+</label>
+
+<!-- 크기 변형 -->
+<label class="dewp-toggle-label dewp-toggle-sm">
+  <input type="checkbox" class="dewp-toggle-input">
+  <span class="dewp-toggle-slider"></span>
+  <span class="dewp-toggle-text">작은 토글</span>
+</label>
+
+<label class="dewp-toggle-label dewp-toggle-lg">
+  <input type="checkbox" class="dewp-toggle-input">
+  <span class="dewp-toggle-slider"></span>
+  <span class="dewp-toggle-text">큰 토글</span>
 </label>
 ```
 
@@ -421,5 +436,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.1.0/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.1.0/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.0/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.0/)
