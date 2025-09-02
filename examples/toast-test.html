@@ -55,32 +55,32 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .btn-success {
+    .dewp-btn-success {
       background: #28a745;
       color: white;
     }
 
-    .btn-danger {
+    .dewp-btn-danger {
       background: #dc3545;
       color: white;
     }
 
-    .btn-warning {
+    .dewp-btn-warning {
       background: #ffc107;
       color: #212529;
     }
 
-    .btn-info {
+    .dewp-btn-info {
       background: #17a2b8;
       color: white;
     }
 
-    .btn-primary {
+    .dewp-btn-primary {
       background: #007bff;
       color: white;
     }
 
-    .btn-secondary {
+    .dewp-btn-secondary {
       background: #6c757d;
       color: white;
     }
@@ -159,10 +159,10 @@
       <h2>🎯 기본 토스트 테스트</h2>
       <p>각 타입의 토스트를 표시하고 닫기 버튼으로 닫아보세요.</p>
 
-      <button class="test-btn btn-success" onclick="testSuccessToast()">성공 토스트</button>
-      <button class="test-btn btn-danger" onclick="testErrorToast()">오류 토스트</button>
-      <button class="test-btn btn-warning" onclick="testWarningToast()">경고 토스트</button>
-      <button class="test-btn btn-info" onclick="testInfoToast()">정보 토스트</button>
+      <button class="test-btn dewp-btn-success" onclick="testSuccessToast()">성공 토스트</button>
+      <button class="test-btn dewp-btn-danger" onclick="testErrorToast()">오류 토스트</button>
+      <button class="test-btn dewp-btn-warning" onclick="testWarningToast()">경고 토스트</button>
+      <button class="test-btn dewp-btn-info" onclick="testInfoToast()">정보 토스트</button>
     </div>
 
     <!-- 자동 닫기 테스트 -->
@@ -175,9 +175,9 @@
         <input type="number" id="duration" value="3" min="1" max="30">
       </div>
 
-      <button class="test-btn btn-primary" onclick="testAutoHideToast()">자동 닫기 토스트</button>
-      <button class="test-btn btn-secondary" onclick="testLongDurationToast()">10초 토스트</button>
-      <button class="test-btn btn-warning" onclick="testNoAutoHideToast()">수동 닫기만</button>
+      <button class="test-btn dewp-btn-primary" onclick="testAutoHideToast()">자동 닫기 토스트</button>
+      <button class="test-btn dewp-btn-secondary" onclick="testLongDurationToast()">10초 토스트</button>
+      <button class="test-btn dewp-btn-warning" onclick="testNoAutoHideToast()">수동 닫기만</button>
     </div>
 
     <!-- 다중 토스트 테스트 -->
@@ -185,9 +185,9 @@
       <h2>📚 다중 토스트 테스트</h2>
       <p>여러 토스트를 동시에 표시하고 개별적으로 닫아보세요.</p>
 
-      <button class="test-btn btn-success" onclick="testMultipleToasts()">여러 토스트 표시</button>
-      <button class="test-btn btn-danger" onclick="hideAllToasts()">모든 토스트 닫기</button>
-      <button class="test-btn btn-info" onclick="testRapidToasts()">빠른 연속 토스트</button>
+      <button class="test-btn dewp-btn-success" onclick="testMultipleToasts()">여러 토스트 표시</button>
+      <button class="test-btn dewp-btn-danger" onclick="hideAllToasts()">모든 토스트 닫기</button>
+      <button class="test-btn dewp-btn-info" onclick="testRapidToasts()">빠른 연속 토스트</button>
     </div>
 
     <!-- 애니메이션 테스트 -->
@@ -195,8 +195,8 @@
       <h2>🎬 애니메이션 테스트</h2>
       <p>토스트의 슬라이드 인/아웃 애니메이션을 확인해보세요.</p>
 
-      <button class="test-btn btn-primary" onclick="testAnimationSequence()">애니메이션 시퀀스</button>
-      <button class="test-btn btn-secondary" onclick="testQuickClose()">빠른 닫기 테스트</button>
+      <button class="test-btn dewp-btn-primary" onclick="testAnimationSequence()">애니메이션 시퀀스</button>
+      <button class="test-btn dewp-btn-secondary" onclick="testQuickClose()">빠른 닫기 테스트</button>
     </div>
 
     <!-- 상태 표시 -->

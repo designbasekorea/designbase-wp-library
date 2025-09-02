@@ -3,22 +3,18 @@
  * 메뉴나 옵션을 표시하는 드롭다운 스타일을 정의
  */
 
-// ============================================================================
-// 기본 드롭다운 (JavaScript로 생성되는 드롭다운)
-// ============================================================================
-
-.dropdown {
+.dewp-dropdown {
     position: relative; // 부모 요소 기준으로 상대 위치
     display: inline-block;
 
     // 드롭다운이 열린 상태에서 버튼 스타일
-    &:has(.dropdown-menu.show) .dropdown-toggle {
+    &:has(.dewp-dropdown-menu.show) .dewp-dropdown-toggle {
         background-color: $bg-secondary;
         color: $text-primary;
     }
 
     // 드롭다운 메뉴
-    .dropdown-menu {
+    .dewp-dropdown-menu {
         position: absolute; // 부모 기준으로 절대 위치
         background: $bg-primary;
         border: 1px solid $border-01;
@@ -43,7 +39,7 @@
         }
 
         // 드롭다운 아이템
-        .dropdown-item {
+        .dewp-dropdown-item {
             display: block;
             width: 100%;
             padding: $padding-s $padding-l;
@@ -169,7 +165,7 @@
         &.dropdown-sm {
             min-width: 140px;
 
-            .dropdown-item {
+            .dewp-dropdown-item {
                 padding: $padding-xs $padding-s;
                 font-size: $font-size-xs;
             }
@@ -178,7 +174,7 @@
         &.dropdown-lg {
             min-width: 200px;
 
-            .dropdown-item {
+            .dewp-dropdown-item {
                 padding: $padding-l $padding-xl;
                 font-size: $font-size-base;
             }
@@ -226,7 +222,7 @@
     }
 
     // 드롭다운 토글 버튼
-    .dropdown-toggle {
+    .dewp-dropdown-toggle {
         background: none;
         border: none;
         padding: 8px 12px;
@@ -271,14 +267,17 @@
         }
 
         // 드롭다운이 열린 상태에서 화살표 회전
-        .dropdown:has(.dropdown-menu.show) & .dropdown-arrow {
+        .dropdown:has(.dewp-dropdown-menu.show) & .dropdown-arrow {
             transform: rotate(180deg);
         }
     }
 
-    // 크기 변형
+    // ============================================================================
+    // 드롭다운 크기 변형
+    // ============================================================================
+
     &-sm {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             min-width: 28px;
             min-height: 28px;
             padding: $padding-xs;
@@ -289,10 +288,10 @@
             }
         }
 
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             min-width: 140px;
 
-            .dropdown-item {
+            .dewp-dropdown-item {
                 padding: $padding-xs $padding-s;
                 font-size: $font-size-xs;
             }
@@ -300,7 +299,7 @@
     }
 
     &-lg {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             min-width: 40px;
             min-height: 40px;
             padding: $padding-s;
@@ -311,43 +310,50 @@
             }
         }
 
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             min-width: 200px;
 
-            .dropdown-item {
+            .dewp-dropdown-item {
                 padding: $padding-l $padding-xl;
                 font-size: $font-size-base;
             }
         }
     }
 
-    // 스타일 변형
+    // ============================================================================
+    // 드롭다운 스타일 변형
+    // ============================================================================
+
     &-bordered {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             border: 2px solid $border-01;
         }
     }
 
     &-shadow-lg {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             box-shadow: $shadow-xl;
         }
     }
 
     &-rounded {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             border-radius: $radius-l;
         }
     }
 
     &-no-border {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             border: none;
         }
     }
 
+    // ============================================================================
+    // 드롭다운 색상 변형
+    // ============================================================================
+
     &-primary {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             background-color: $primary;
             border-color: $primary;
             color: $white;
@@ -360,7 +366,7 @@
     }
 
     &-success {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             background-color: $success;
             border-color: $success;
             color: $white;
@@ -373,7 +379,7 @@
     }
 
     &-warning {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             background-color: $warning;
             border-color: $warning;
             color: $text-primary;
@@ -386,7 +392,7 @@
     }
 
     &-danger {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             background-color: $danger;
             border-color: $danger;
             color: $white;
@@ -399,7 +405,7 @@
     }
 
     &-info {
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             background-color: $info;
             border-color: $info;
             color: $white;
@@ -411,9 +417,12 @@
         }
     }
 
-    // 위치 변형
+    // ============================================================================
+    // 드롭다운 위치 변형
+    // ============================================================================
+
     &-up {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             top: auto;
             bottom: 100%;
             margin-bottom: $margin-xs;
@@ -421,21 +430,21 @@
     }
 
     &-left {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             right: auto;
             left: 0;
         }
     }
 
     &-right {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             left: auto;
             right: 0;
         }
     }
 
     &-center {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             right: auto;
             left: 50%;
             transform: translateX(-50%) translateY(-8px);
@@ -449,19 +458,19 @@
     &-full-width {
         width: 100%;
 
-        .dropdown-toggle {
+        .dewp-dropdown-toggle {
             width: 100%;
             justify-content: space-between;
         }
 
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             width: 100%;
             min-width: 100%;
         }
     }
 
     &-auto-width {
-        .dropdown-menu {
+        .dewp-dropdown-menu {
             width: auto;
             min-width: auto;
             white-space: nowrap;
@@ -475,8 +484,8 @@
 
 @include respond-below(md) {
 
-    .dropdown,
-    .dropdown-container .dropdown-menu {
+    .dewp-dropdown,
+    .dewp-dropdown-container .dewp-dropdown-menu {
         min-width: 180px;
         box-shadow: $shadow-xl;
     }
@@ -488,12 +497,12 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .dropdown,
-    .dropdown-container {
+    .dewp-dropdown,
+    .dewp-dropdown-container {
 
-        .dropdown-toggle,
-        .dropdown-menu,
-        .dropdown-item {
+        .dewp-dropdown-toggle,
+        .dewp-dropdown-menu,
+        .dewp-dropdown-item {
             transition: none;
         }
     }

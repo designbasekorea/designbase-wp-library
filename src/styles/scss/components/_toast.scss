@@ -3,8 +3,7 @@
  * 사용자에게 알림 메시지를 표시하는 토스트 스타일을 정의
  */
 
-
-.toast-container {
+.dewp-toast-container {
     position: fixed;
     top: $spacing-4;
     right: $spacing-4;
@@ -22,13 +21,55 @@
         left: $spacing-1;
         max-width: none;
     }
+
+    // 위치 변형
+    &-top-left {
+        top: $spacing-4;
+        left: $spacing-4;
+        right: auto;
+    }
+
+    &-top-center {
+        top: $spacing-4;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    &-top-right {
+        top: $spacing-4;
+        right: $spacing-4;
+        left: auto;
+    }
+
+    &-bottom-left {
+        top: auto;
+        bottom: $spacing-4;
+        left: $spacing-4;
+        right: auto;
+    }
+
+    &-bottom-center {
+        top: auto;
+        bottom: $spacing-4;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    &-bottom-right {
+        top: auto;
+        bottom: $spacing-4;
+        right: $spacing-4;
+        left: auto;
+    }
 }
 
 // ============================================================================
 // 기본 토스트
 // ============================================================================
 
-.toast {
+.dewp-toast {
     background: $bg-primary;
     border-radius: $radius-2;
     border-left: 2px solid;
@@ -48,55 +89,111 @@
         transform: translateX(0);
     }
 
-    // 성공 토스트
-    &.toast-success {
+    // 타입별 스타일
+    &-success {
         border-left-color: $success;
 
-        .toast-icon {
+        .dewp-toast-icon {
             color: $success;
         }
     }
 
-    // 에러 토스트
-    &.toast-error {
+    &-error {
         border-left-color: $danger;
 
-        .toast-icon {
+        .dewp-toast-icon {
             color: $danger;
         }
     }
 
-    // 경고 토스트
-    &.toast-warning {
+    &-warning {
         border-left-color: $warning;
 
-        .toast-icon {
+        .dewp-toast-icon {
             color: $warning;
         }
     }
 
-    // 정보 토스트
-    &.toast-info {
+    &-info {
         border-left-color: $info;
 
-        .toast-icon {
+        .dewp-toast-icon {
             color: $info;
         }
     }
+
+    // 크기 변형
+    &-sm {
+        min-width: 250px;
+
+        .dewp-toast-content {
+            padding: $spacing-1;
+        }
+
+        .dewp-toast-icon {
+            font-size: $font-size-s;
+            width: 16px;
+            height: 16px;
+        }
+
+        .dewp-toast-close {
+            width: 16px;
+            height: 16px;
+            font-size: $font-size-s;
+        }
+    }
+
+    &-lg {
+        min-width: 500px;
+
+        .dewp-toast-content {
+            padding: $spacing-4;
+        }
+
+        .dewp-toast-icon {
+            font-size: $font-size-l;
+            width: 24px;
+            height: 24px;
+        }
+
+        .dewp-toast-close {
+            width: 24px;
+            height: 24px;
+            font-size: $font-size-l;
+        }
+    }
+
+    // 애니메이션 클래스
+    &-slide-in {
+        animation: toastSlideIn $transition-base ease-out;
+    }
+
+    &-slide-out {
+        animation: toastSlideOut $transition-base ease-in;
+    }
+
+    &-fade-in {
+        animation: toastFadeIn $transition-base ease-out;
+    }
+
+    &-fade-out {
+        animation: toastFadeOut $transition-base ease-in;
+    }
+
+    &-auto-hide {
+        animation: toastAutoHide 5s ease-in-out forwards;
+    }
 }
 
-// ============================================================================
-// 토스트 콘텐츠
-// ============================================================================
 
-.toast-content {
+.dewp-toast-content {
     display: flex;
     align-items: center;
-    padding: $padding-s;
+    padding: $spacing-2;
     gap: $spacing-1;
 }
 
-.toast-icon {
+.dewp-toast-icon {
     flex-shrink: 0;
     font-size: $font-size-m;
     width: 20px;
@@ -106,14 +203,14 @@
     justify-content: center;
 }
 
-.toast-message {
+.dewp-toast-message {
     flex: 1;
     font-size: $font-size-s;
     line-height: $line-height-base;
     color: $text-primary;
 }
 
-.toast-close {
+.dewp-toast-close {
     flex-shrink: 0;
     background: none;
     border: none;
@@ -143,114 +240,38 @@
     }
 }
 
-// ============================================================================
-// 토스트 위치
-// ============================================================================
 
-.toast-container-top-left {
-    top: $spacing-4;
-    left: $spacing-4;
-    right: auto;
-}
+.dewp-toast-group {
+    .dewp-toast {
+        margin-bottom: $spacing-1;
 
-.toast-container-top-center {
-    top: $spacing-4;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-}
-
-.toast-container-top-right {
-    top: $spacing-4;
-    right: $spacing-4;
-    left: auto;
-}
-
-.toast-container-bottom-left {
-    top: auto;
-    bottom: $spacing-4;
-    left: $spacing-4;
-    right: auto;
-}
-
-.toast-container-bottom-center {
-    top: auto;
-    bottom: $spacing-4;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-}
-
-.toast-container-bottom-right {
-    top: auto;
-    bottom: $spacing-4;
-    right: $spacing-4;
-    left: auto;
-}
-
-// ============================================================================
-// 토스트 크기
-// ============================================================================
-
-.toast-sm {
-    min-width: 250px;
-
-    .toast-content {
-        padding: $spacing-1;
-    }
-
-    .toast-icon {
-        font-size: $font-size-s;
-        width: 16px;
-        height: 16px;
-    }
-
-    .toast-close {
-        width: 16px;
-        height: 16px;
-        font-size: $font-size-s;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
-.toast-lg {
-    min-width: 500px;
+.dewp-toast-stack {
+    .dewp-toast {
+        margin-bottom: $spacing-1;
 
-    .toast-content {
-        padding: $spacing-4;
-    }
-
-    .toast-icon {
-        font-size: $font-size-l;
-        width: 24px;
-        height: 24px;
-    }
-
-    .toast-close {
-        width: 24px;
-        height: 24px;
-        font-size: $font-size-l;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
-// ============================================================================
-// 토스트 애니메이션
-// ============================================================================
-
-.toast-slide-in {
-    animation: toastSlideIn $transition-base ease-out;
+.dewp-toast-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($black, 0.5);
+    z-index: $z-toast - 1;
+    pointer-events: none;
 }
 
-.toast-slide-out {
-    animation: toastSlideOut $transition-base ease-in;
-}
-
-.toast-fade-in {
-    animation: toastFadeIn $transition-base ease-out;
-}
-
-.toast-fade-out {
-    animation: toastFadeOut $transition-base ease-in;
-}
 
 @keyframes toastSlideIn {
     from {
@@ -300,28 +321,6 @@
     }
 }
 
-// ============================================================================
-// 토스트 그룹
-// ============================================================================
-
-.toast-group {
-    .toast {
-        margin-bottom: $spacing-1;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-// ============================================================================
-// 토스트 유틸리티
-// ============================================================================
-
-.toast-auto-hide {
-    animation: toastAutoHide 5s ease-in-out forwards;
-}
-
 @keyframes toastAutoHide {
 
     0%,
@@ -336,41 +335,17 @@
     }
 }
 
-.toast-stack {
-    .toast {
-        margin-bottom: $spacing-1;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
-
-.toast-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($black, 0.5);
-    z-index: $z-toast - 1;
-    pointer-events: none;
-}
-
-// ============================================================================
-// 다크 모드 지원
-// ============================================================================
 
 @media (prefers-color-scheme: dark) {
-    .toast {
+    .dewp-toast {
         background: $bg-secondary;
         color: $text-primary;
 
-        .toast-message {
+        .dewp-toast-message {
             color: $text-primary;
         }
 
-        .toast-close {
+        .dewp-toast-close {
             color: $text-muted;
 
             &:hover {

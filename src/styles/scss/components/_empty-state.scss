@@ -3,7 +3,7 @@
  * 데이터가 없거나 로딩 중일 때 표시하는 빈 상태 스타일을 정의
  */
 
-.empty-state {
+.dewp-empty-state {
     @include flex-center;
     flex-direction: column;
     padding: $spacing-8;
@@ -16,219 +16,255 @@
     @include respond-below(md) {
         padding: $spacing-6;
     }
-}
 
-.empty-icon {
-    @include flex-center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    color: $white;
-    font-size: $font-size-xxxl;
-    margin-bottom: $spacing-6;
-
-    @include respond-below(md) {
-        width: 60px;
-        height: 60px;
-        font-size: $font-size-xxl;
-    }
-}
-
-.empty-message {
-    h3 {
-        font-size: $font-size-xl;
-        font-weight: $font-weight-bold;
-        color: $text-primary;
-        margin: 0 0 $spacing-2 0;
+    .dewp-empty-icon {
+        @include flex-center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        color: $white;
+        font-size: $font-size-xxxl;
+        margin-bottom: $spacing-6;
 
         @include respond-below(md) {
-            font-size: $font-size-l;
+            width: 60px;
+            height: 60px;
+            font-size: $font-size-xxl;
         }
     }
 
-    p {
-        font-size: $font-size-base;
-        color: $text-secondary;
-        line-height: $line-height-base;
-        margin: 0;
+    .dewp-empty-message {
+        h3 {
+            font-size: $font-size-xl;
+            font-weight: $font-weight-bold;
+            color: $text-primary;
+            margin: 0 0 $spacing-2 0;
 
-        @include respond-below(md) {
+            @include respond-below(md) {
+                font-size: $font-size-l;
+            }
+        }
+
+        p {
+            font-size: $font-size-base;
+            color: $text-secondary;
+            line-height: $line-height-base;
+            margin: 0;
+
+            @include respond-below(md) {
+                font-size: $font-size-s;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 빈 상태 크기
+    // ============================================================================
+
+    &-sm {
+        padding: $spacing-4;
+
+        .dewp-empty-icon {
+            width: 60px;
+            height: 60px;
+            font-size: $font-size-xl;
+            margin-bottom: $spacing-4;
+        }
+
+        .dewp-empty-message h3 {
+            font-size: $font-size-l;
+            margin-bottom: $spacing-1;
+        }
+
+        .dewp-empty-message p {
             font-size: $font-size-s;
         }
     }
-}
 
-// ============================================================================
-// 빈 상태 크기
-// ============================================================================
+    &-lg {
+        padding: $spacing-12;
 
-.empty-state-sm {
-    padding: $spacing-4;
+        .dewp-empty-icon {
+            width: 100px;
+            height: 100px;
+            font-size: 3rem;
+            margin-bottom: $spacing-8;
+        }
 
-    .empty-icon {
-        width: 60px;
-        height: 60px;
-        font-size: $font-size-xl;
-        margin-bottom: $spacing-4;
-    }
-
-    .empty-message h3 {
-        font-size: $font-size-l;
-        margin-bottom: $spacing-1;
-    }
-
-    .empty-message p {
-        font-size: $font-size-s;
-    }
-}
-
-.empty-state-lg {
-    padding: $spacing-12;
-
-    .empty-icon {
-        width: 100px;
-        height: 100px;
-        font-size: 3rem;
-        margin-bottom: $spacing-8;
-    }
-
-    .empty-message h3 {
-        font-size: $font-size-xxl;
-        margin-bottom: $spacing-4;
-    }
-
-    .empty-message p {
-        font-size: $font-size-m;
-    }
-}
-
-// ============================================================================
-// 빈 상태 스타일 변형
-// ============================================================================
-
-.empty-state-bordered {
-    border: 2px solid $border-01;
-}
-
-.empty-state-no-shadow {
-    box-shadow: none;
-}
-
-.empty-state-rounded {
-    border-radius: $radius-3;
-}
-
-.empty-state-compact {
-    padding: $spacing-4;
-
-    .empty-icon {
-        margin-bottom: $spacing-2;
-    }
-
-    .empty-message h3 {
-        margin-bottom: $spacing-1;
-    }
-}
-
-// ============================================================================
-// 빈 상태 색상 변형
-// ============================================================================
-
-.empty-state-primary {
-    .empty-icon {
-        background-color: $primary;
-    }
-}
-
-.empty-state-secondary {
-    .empty-icon {
-        background-color: $secondary;
-    }
-}
-
-.empty-state-success {
-    .empty-icon {
-        background-color: $success;
-    }
-}
-
-.empty-state-warning {
-    .empty-icon {
-        background-color: $warning;
-    }
-}
-
-.empty-state-danger {
-    .empty-icon {
-        background-color: $danger;
-    }
-}
-
-.empty-state-info {
-    .empty-icon {
-        background-color: $info;
-    }
-}
-
-// ============================================================================
-// 빈 상태 레이아웃
-// ============================================================================
-
-.empty-state-horizontal {
-    flex-direction: row;
-    text-align: left;
-
-    .empty-icon {
-        margin-bottom: 0;
-        margin-right: $spacing-6;
-    }
-
-    @include respond-below(md) {
-        flex-direction: column;
-        text-align: center;
-
-        .empty-icon {
-            margin-right: 0;
+        .dewp-empty-message h3 {
+            font-size: $font-size-xxl;
             margin-bottom: $spacing-4;
         }
-    }
-}
 
-.empty-state-vertical {
-    flex-direction: column;
-    text-align: center;
-}
-
-// ============================================================================
-// 빈 상태 액션
-// ============================================================================
-
-.empty-state-with-action {
-    .empty-message {
-        margin-bottom: $spacing-4;
+        .dewp-empty-message p {
+            font-size: $font-size-m;
+        }
     }
 
-    .empty-actions {
-        display: flex;
-        gap: $spacing-2;
-        justify-content: center;
-        flex-wrap: wrap;
+    // ============================================================================
+    // 빈 상태 스타일 변형
+    // ============================================================================
 
-        .btn {
-            min-width: 120px;
+    &-bordered {
+        border: 2px solid $border-01;
+    }
+
+    &-no-shadow {
+        box-shadow: none;
+    }
+
+    &-rounded {
+        border-radius: $radius-3;
+    }
+
+    &-compact {
+        padding: $spacing-4;
+
+        .dewp-empty-icon {
+            margin-bottom: $spacing-2;
+        }
+
+        .dewp-empty-message h3 {
+            margin-bottom: $spacing-1;
+        }
+    }
+
+    // ============================================================================
+    // 빈 상태 색상 변형
+    // ============================================================================
+
+    &-primary {
+        .dewp-empty-icon {
+            background-color: $primary;
+        }
+    }
+
+    &-secondary {
+        .dewp-empty-icon {
+            background-color: $secondary;
+        }
+    }
+
+    &-success {
+        .dewp-empty-icon {
+            background-color: $success;
+        }
+    }
+
+    &-warning {
+        .dewp-empty-icon {
+            background-color: $warning;
+        }
+    }
+
+    &-danger {
+        .dewp-empty-icon {
+            background-color: $danger;
+        }
+    }
+
+    &-info {
+        .dewp-empty-icon {
+            background-color: $info;
+        }
+    }
+
+    // ============================================================================
+    // 빈 상태 레이아웃
+    // ============================================================================
+
+    &-horizontal {
+        flex-direction: row;
+        text-align: left;
+
+        .dewp-empty-icon {
+            margin-bottom: 0;
+            margin-right: $spacing-6;
+        }
+
+        @include respond-below(md) {
+            flex-direction: column;
+            text-align: center;
+
+            .dewp-empty-icon {
+                margin-right: 0;
+                margin-bottom: $spacing-4;
+            }
+        }
+    }
+
+    &-vertical {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    // ============================================================================
+    // 빈 상태 액션
+    // ============================================================================
+
+    &-with-action {
+        .dewp-empty-message {
+            margin-bottom: $spacing-4;
+        }
+
+        .empty-actions {
+            display: flex;
+            gap: $spacing-2;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .dewp-btn {
+                min-width: 120px;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 빈 상태 애니메이션
+    // ============================================================================
+
+    &-animated {
+        .dewp-empty-icon {
+            animation: emptyStatePulse 2s ease-in-out infinite;
+        }
+    }
+
+    // ============================================================================
+    // 빈 상태 유틸리티
+    // ============================================================================
+
+    &-full-width {
+        width: 100%;
+    }
+
+    &-centered {
+        margin: 0 auto;
+    }
+
+    &-responsive {
+        @include respond-below(md) {
+            padding: $spacing-4;
+
+            .dewp-empty-icon {
+                width: 50px;
+                height: 50px;
+                font-size: $font-size-l;
+            }
+
+            .dewp-empty-message h3 {
+                font-size: $font-size-base;
+            }
+
+            .dewp-empty-message p {
+                font-size: $font-size-xs;
+            }
         }
     }
 }
 
 // ============================================================================
-// 빈 상태 애니메이션
+// 애니메이션 키프레임
 // ============================================================================
-
-.empty-state-animated {
-    .empty-icon {
-        animation: emptyStatePulse 2s ease-in-out infinite;
-    }
-}
 
 @keyframes emptyStatePulse {
 
@@ -241,37 +277,5 @@
     50% {
         transform: scale(1.05);
         opacity: 0.8;
-    }
-}
-
-// ============================================================================
-// 빈 상태 유틸리티
-// ============================================================================
-
-.empty-state-full-width {
-    width: 100%;
-}
-
-.empty-state-centered {
-    margin: 0 auto;
-}
-
-.empty-state-responsive {
-    @include respond-below(md) {
-        padding: $spacing-4;
-
-        .empty-icon {
-            width: 50px;
-            height: 50px;
-            font-size: $font-size-l;
-        }
-
-        .empty-message h3 {
-            font-size: $font-size-base;
-        }
-
-        .empty-message p {
-            font-size: $font-size-xs;
-        }
     }
 }

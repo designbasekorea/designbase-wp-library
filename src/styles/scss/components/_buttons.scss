@@ -3,8 +3,7 @@
  * 다양한 버튼 스타일과 변형을 정의
  */
 
-
-.btn {
+.dewp-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -369,28 +368,6 @@
         }
     }
 
-    &-outline-info {
-        color: $info;
-        background-color: transparent;
-        border-color: $info;
-
-        &:hover {
-            color: $white;
-            background-color: $info;
-            border-color: $info;
-        }
-
-        &:focus {
-            @include focus-ring($info);
-        }
-
-        &:active {
-            color: $white;
-            background-color: darken($info, 15%);
-            border-color: darken($info, 15%);
-        }
-    }
-
     // ============================================================================
     // 버튼 상태
     // ============================================================================
@@ -430,11 +407,11 @@
 // 버튼 그룹
 // ============================================================================
 
-.btn-group {
+.dewp-btn-group {
     display: inline-flex;
     vertical-align: middle;
 
-    .btn {
+    .dewp-btn {
         position: relative;
         flex: 1 1 auto;
 
@@ -459,7 +436,7 @@
     &-vertical {
         flex-direction: column;
 
-        .btn {
+        .dewp-btn {
             &:not(:first-child) {
                 margin-top: -1px;
                 margin-left: 0;
@@ -479,12 +456,12 @@
 // 버튼 툴바
 // ============================================================================
 
-.btn-toolbar {
+.dewp-btn-toolbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 
-    .btn-group {
+    .dewp-btn-group {
         margin-right: $spacing-2;
         margin-bottom: $spacing-2;
 

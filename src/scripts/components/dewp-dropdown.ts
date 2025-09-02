@@ -146,7 +146,7 @@ class DEWPDropdown {
     private createDropdownElement(id: string, options: DropdownOptions): HTMLElement {
         const dropdown = document.createElement('div');
         dropdown.id = id;
-        dropdown.className = 'dropdown-menu';
+        dropdown.className = 'dewp-dropdown-menu';
 
         // 컨텐츠 추가
         if (typeof options.content === 'string') {
@@ -162,7 +162,7 @@ class DEWPDropdown {
     }
 
     private bindDropdownItemEvents(dropdown: HTMLElement, dropdownId: string): void {
-        const items = dropdown.querySelectorAll('.dropdown-item');
+        const items = dropdown.querySelectorAll('.dewp-dropdown-item');
         items.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -199,7 +199,7 @@ class DEWPDropdown {
 
     private updateTriggerText(instance: DropdownInstance, text: string): void {
         const trigger = instance.trigger;
-        const textElement = trigger.querySelector('.dropdown-text');
+        const textElement = trigger.querySelector('.dewp-dropdown-text');
 
         if (textElement) {
             textElement.textContent = text;

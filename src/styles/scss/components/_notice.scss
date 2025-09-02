@@ -3,11 +3,7 @@
  * 사용자에게 정보, 경고, 성공, 에러 메시지를 표시하는 알림 스타일을 정의
  */
 
-// ============================================================================
-// 기본 알림
-// ============================================================================
-
-.notice {
+.dewp-notice {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -24,7 +20,7 @@
     }
 
     // 알림 아이콘
-    .notice-icon {
+    .dewp-notice-icon {
         flex-shrink: 0;
         width: 20px;
         height: 20px;
@@ -38,7 +34,7 @@
     }
 
     // 알림 콘텐츠
-    .notice-content {
+    .dewp-notice-content {
         flex: 1;
         min-width: 0; // 텍스트 오버플로우 방지
 
@@ -87,7 +83,7 @@
     }
 
     // 닫기 버튼
-    .notice-close {
+    .dewp-notice-close {
         background: none;
         border: none;
         cursor: pointer;
@@ -121,67 +117,67 @@
     // ============================================================================
 
     // 정보 알림
-    &.notice-info {
+    &-info {
         background-color: #eff6ff;
         border-color: #3b82f6;
         color: #1e40af;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #3b82f6;
         }
     }
 
     // 성공 알림
-    &.notice-success {
+    &-success {
         background-color: #f0fdf4;
         border-color: #22c55e;
         color: #15803d;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #22c55e;
         }
     }
 
     // 경고 알림
-    &.notice-warning {
+    &-warning {
         background-color: #fffbeb;
         border-color: #f59e0b;
         color: #a16207;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #f59e0b;
         }
     }
 
     // 오류 알림
-    &.notice-danger {
+    &-danger {
         background-color: #fef2f2;
         border-color: #ef4444;
         color: #b91c1c;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #ef4444;
         }
     }
 
     // 기본 알림
-    &.notice-primary {
+    &-primary {
         background-color: #f0f9ff;
         border-color: #0ea5e9;
         color: #0369a1;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #0ea5e9;
         }
     }
 
     // 보조 알림
-    &.notice-secondary {
+    &-secondary {
         background-color: #f8fafc;
         border-color: #64748b;
         color: #334155;
 
-        .notice-icon {
+        .dewp-notice-icon {
             background-color: #64748b;
         }
     }
@@ -191,17 +187,17 @@
     // ============================================================================
 
     // 작은 알림
-    &.notice-sm {
+    &-sm {
         padding: 12px;
         gap: 10px;
 
-        .notice-icon {
+        .dewp-notice-icon {
             width: 16px;
             height: 16px;
             font-size: 12px;
         }
 
-        .notice-content {
+        .dewp-notice-content {
             h3 {
                 font-size: 13px;
                 margin-bottom: 3px;
@@ -212,7 +208,7 @@
             }
         }
 
-        .notice-close {
+        .dewp-notice-close {
             width: 20px;
             height: 20px;
             font-size: 16px;
@@ -221,17 +217,17 @@
     }
 
     // 큰 알림
-    &.notice-lg {
+    &-lg {
         padding: 20px;
         gap: 16px;
 
-        .notice-icon {
+        .dewp-notice-icon {
             width: 24px;
             height: 24px;
             font-size: 18px;
         }
 
-        .notice-content {
+        .dewp-notice-content {
             h3 {
                 font-size: 16px;
                 margin-bottom: 6px;
@@ -242,7 +238,7 @@
             }
         }
 
-        .notice-close {
+        .dewp-notice-close {
             width: 28px;
             height: 28px;
             font-size: 20px;
@@ -255,22 +251,22 @@
     // ============================================================================
 
     // 테두리 강조
-    &.notice-bordered {
+    &-bordered {
         border-width: 2px;
     }
 
     // 둥근 모서리
-    &.notice-rounded {
+    &-rounded {
         border-radius: 12px;
     }
 
     // 그림자 없음
-    &.notice-no-shadow {
+    &-no-shadow {
         box-shadow: none;
     }
 
     // 그림자 강화
-    &.notice-elevated {
+    &-elevated {
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
@@ -279,12 +275,12 @@
     // ============================================================================
 
     // 닫을 수 있는 알림
-    &.notice-dismissible .notice-close {
+    &-dismissible .dewp-notice-close {
         display: flex;
     }
 
     // 닫을 수 없는 알림
-    &.notice-non-dismissible .notice-close {
+    &-non-dismissible .dewp-notice-close {
         display: none;
     }
 
@@ -298,11 +294,11 @@
         text-align: center;
         padding: 16px;
 
-        .notice-icon {
+        .dewp-notice-icon {
             margin: 0 auto;
         }
 
-        .notice-content {
+        .dewp-notice-content {
             text-align: center;
 
             h3 {
@@ -310,7 +306,7 @@
             }
         }
 
-        .notice-close {
+        .dewp-notice-close {
             align-self: center;
         }
     }
@@ -319,15 +315,15 @@
     // 애니메이션
     // ============================================================================
 
-    &.notice-fade-in {
+    &-fade-in {
         animation: noticeFadeIn 0.3s ease-out;
     }
 
-    &.notice-slide-in {
+    &-slide-in {
         animation: noticeSlideIn 0.3s ease-out;
     }
 
-    &.notice-auto-hide {
+    &-auto-hide {
         animation: noticeAutoHide 5s ease-in-out forwards;
     }
 }
@@ -378,8 +374,8 @@
 // 알림 그룹
 // ============================================================================
 
-.notice-group {
-    .notice {
+.dewp-notice-group {
+    .dewp-notice {
         margin-bottom: 12px;
 
         &:last-child {
@@ -388,7 +384,7 @@
     }
 }
 
-.notice-stack {
+.dewp-notice-stack {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -396,7 +392,7 @@
     max-width: 400px;
     pointer-events: none;
 
-    .notice {
+    .dewp-notice {
         margin-bottom: 12px;
         pointer-events: auto;
         animation: noticeSlideIn 0.3s ease-out;
@@ -418,7 +414,7 @@
 // 위치 유틸리티
 // ============================================================================
 
-.notice-fixed {
+.dewp-notice-fixed {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -426,7 +422,7 @@
     max-width: 400px;
     pointer-events: none;
 
-    .notice {
+    .dewp-notice {
         pointer-events: auto;
     }
 
@@ -438,7 +434,7 @@
     }
 }
 
-.notice-sticky {
+.dewp-notice-sticky {
     position: sticky;
     top: 20px;
     z-index: 100;
@@ -449,48 +445,48 @@
 // ============================================================================
 
 @media (prefers-color-scheme: dark) {
-    .notice {
+    .dewp-notice {
         background-color: #1f2937;
         border-color: #374151;
         color: #f9fafb;
 
-        &.notice-info {
+        &-info {
             background-color: #1e3a8a;
             border-color: #3b82f6;
             color: #dbeafe;
         }
 
-        &.notice-success {
+        &-success {
             background-color: #14532d;
             border-color: #22c55e;
             color: #bbf7d0;
         }
 
-        &.notice-warning {
+        &-warning {
             background-color: #78350f;
             border-color: #f59e0b;
             color: #fef3c7;
         }
 
-        &.notice-danger {
+        &-danger {
             background-color: #7f1d1d;
             border-color: #ef4444;
             color: #fecaca;
         }
 
-        &.notice-primary {
+        &-primary {
             background-color: #0c4a6e;
             border-color: #0ea5e9;
             color: #bae6fd;
         }
 
-        &.notice-secondary {
+        &-secondary {
             background-color: #374151;
             border-color: #6b7280;
             color: #d1d5db;
         }
 
-        .notice-close {
+        .dewp-notice-close {
             color: #9ca3af;
 
             &:hover {

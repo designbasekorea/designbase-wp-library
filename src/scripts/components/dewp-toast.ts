@@ -7,6 +7,7 @@ interface ToastOptions {
     message: string;
     type?: 'info' | 'success' | 'warning' | 'error';
     duration?: number;
+    size?: 'sm' | 'md' | 'lg';
 }
 
 class DEWPToast {
@@ -30,24 +31,24 @@ class DEWPToast {
         // 새 컨테이너 생성
         this.container = document.createElement('div');
         this.container.id = 'dewp-toast-container';
-        this.container.className = 'toast-container toast-container-top-right';
+        this.container.className = 'dewp-toast-container dewp-toast-container-top-right';
 
         document.body.appendChild(this.container);
     }
 
-    show(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info', duration: number = 5000): string {
-        console.log('🔔 토스트 표시:', { message, type, duration });
+    show(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info', duration: number = 5000, size: 'sm' | 'md' | 'lg' = 'md'): string {
+        console.log('🔔 토스트 표시:', { message, type, duration, size });
 
         if (!this.container) {
             this.createContainer();
         }
 
         const toastId = 'dewp-toast-' + Date.now();
-        const toast = this.createToastElement(toastId, message, type);
+        const toast = this.createToastElement(toastId, message, type, size);
 
         // 동일 메시지 중복 방지: 같은 텍스트의 토스트가 이미 보이면 숨김
         try {
-            const existingSame = Array.from(this.container!.querySelectorAll('.toast .toast-message'))
+            const existingSame = Array.from(this.container!.querySelectorAll('.dewp-toast .dewp-toast-message'))
                 .some(el => el.textContent === String(message));
             if (existingSame) {
                 // 기존 토스트를 먼저 모두 닫고 새 토스트만 남김
@@ -73,27 +74,27 @@ class DEWPToast {
         return toastId;
     }
 
-    private createToastElement(id: string, message: string, type: 'info' | 'success' | 'warning' | 'error'): HTMLElement {
+    private createToastElement(id: string, message: string, type: 'info' | 'success' | 'warning' | 'error', size: 'sm' | 'md' | 'lg' = 'md'): HTMLElement {
         const toast = document.createElement('div');
         toast.id = id;
-        toast.className = `toast toast-${type}`;
+        toast.className = `dewp-toast dewp-toast-${type} dewp-toast-${size}`;
 
         const content = document.createElement('div');
-        content.className = 'toast-content';
+        content.className = 'dewp-toast-content';
 
         // 아이콘 생성
         const icon = document.createElement('span');
-        icon.className = 'toast-icon';
+        icon.className = 'dewp-toast-icon';
         icon.innerHTML = this.getTypeIcon(type);
 
         // 메시지 생성
         const messageEl = document.createElement('div');
-        messageEl.className = 'toast-message';
+        messageEl.className = 'dewp-toast-message';
         messageEl.textContent = message;
 
         // 닫기 버튼 생성
         const closeBtn = document.createElement('button');
-        closeBtn.className = 'toast-close';
+        closeBtn.className = 'dewp-toast-close';
         closeBtn.type = 'button';
         closeBtn.innerHTML = '<span>×</span>';
         closeBtn.setAttribute('aria-label', '토스트 닫기');
@@ -144,7 +145,7 @@ class DEWPToast {
 
     hideAll(): void {
         if (this.container) {
-            const toasts = this.container.querySelectorAll('.toast');
+            const toasts = this.container.querySelectorAll('.dewp-toast');
             toasts.forEach(toast => {
                 const toastId = toast.id;
                 if (toastId) {
@@ -155,20 +156,20 @@ class DEWPToast {
     }
 
     // 편의 메서드들
-    success(message: string, duration?: number): string {
-        return this.show(message, 'success', duration);
+    success(message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string {
+        return this.show(message, 'success', duration, size);
     }
 
-    error(message: string, duration?: number): string {
-        return this.show(message, 'error', duration);
+    error(message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string {
+        return this.show(message, 'error', duration, size);
     }
 
-    warning(message: string, duration?: number): string {
-        return this.show(message, 'warning', duration);
+    warning(message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string {
+        return this.show(message, 'warning', duration, size);
     }
 
-    info(message: string, duration?: number): string {
-        return this.show(message, 'info', duration);
+    info(message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string {
+        return this.show(message, 'info', duration, size);
     }
 }
 
@@ -176,24 +177,24 @@ class DEWPToast {
 const dewpToast = new DEWPToast();
 
 // 전역 함수들 export
-export const showToast = (message: string, type?: 'info' | 'success' | 'warning' | 'error', duration?: number): string => {
-    return dewpToast.show(message, type || 'info', duration);
+export const showToast = (message: string, type?: 'info' | 'success' | 'warning' | 'error', duration?: number, size?: 'sm' | 'md' | 'lg'): string => {
+    return dewpToast.show(message, type || 'info', duration, size);
 };
 
-export const showSuccessToast = (message: string, duration?: number): string => {
-    return dewpToast.success(message, duration);
+export const showSuccessToast = (message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string => {
+    return dewpToast.success(message, duration, size);
 };
 
-export const showErrorToast = (message: string, duration?: number): string => {
-    return dewpToast.error(message, duration);
+export const showErrorToast = (message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string => {
+    return dewpToast.error(message, duration, size);
 };
 
-export const showWarningToast = (message: string, duration?: number): string => {
-    return dewpToast.warning(message, duration);
+export const showWarningToast = (message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string => {
+    return dewpToast.warning(message, duration, size);
 };
 
-export const showInfoToast = (message: string, duration?: number): string => {
-    return dewpToast.info(message, duration);
+export const showInfoToast = (message: string, duration?: number, size?: 'sm' | 'md' | 'lg'): string => {
+    return dewpToast.info(message, duration, size);
 };
 
 export const hideToast = (id: string): void => {

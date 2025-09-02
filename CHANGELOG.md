@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: 토글 및 토스트 컴포넌트 크기 변형 지원 추가
+
+  - 토글 컴포넌트 크기 변형 (sm, lg) 스타일 적용
+  - 토스트 컴포넌트 크기 변형 (sm, md, lg) 지원
+  - HTML 데모 파일 클래스명 최신화 (dewp- 접두사 적용)
+  - TypeScript 인터페이스에 크기 옵션 추가
+  - CSS 클래스명 일관성 개선
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -8,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial project setup
 - SCSS architecture with basic, components, and common folders
 - Comprehensive component library (buttons, badges, dropdowns, forms, modals, notices, pagination, tables, tabs, toasts, toggles, empty states)
@@ -23,12 +36,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development and build scripts
 
 ### Changed
+
 - Refactored SCSS structure for better modularity
-- Consolidated variables into specialized files (_colors.scss, _spacing.scss, _radius.scss)
+- Consolidated variables into specialized files (\_colors.scss, \_spacing.scss, \_radius.scss)
 - Removed redundant imports from component files
 - Updated component styles to use new spacing and radius systems
 
 ### Fixed
+
 - Resolved undefined variable errors in component files
 - Fixed spacing and radius variable references
 - Corrected color variable usage throughout components
@@ -37,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2024-12-19
 
 ### Added
+
 - Initial release of DesignBase WordPress Library
 - Core SCSS architecture and component system
 - Basic JavaScript utilities and TypeScript support
@@ -45,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Versioning
 
 This project uses semantic versioning:
+
 - **MAJOR** version for incompatible API changes
 - **MINOR** version for added functionality in a backwards compatible manner
 - **PATCH** version for backwards compatible bug fixes

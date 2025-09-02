@@ -3,7 +3,7 @@
  * 상태 표시, 카운터 등을 위한 배지 스타일을 정의
  */
 
-.badge {
+.dewp-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -327,11 +327,11 @@
 // 배지 그룹
 // ============================================================================
 
-.badge-group {
+.dewp-badge-group {
     display: inline-flex;
     align-items: center;
 
-    .badge {
+    .dewp-badge {
         margin-right: $margin-xs;
 
         &:last-child {
@@ -342,7 +342,7 @@
     &-vertical {
         flex-direction: column;
 
-        .badge {
+        .dewp-badge {
             margin-right: 0;
             margin-bottom: $margin-xs;
 
@@ -357,7 +357,7 @@
 // 배지와 버튼 조합
 // ============================================================================
 
-.btn .badge {
+.dewp-btn .dewp-badge {
     margin-left: $margin-xs;
     font-size: 0.75em;
     vertical-align: middle;

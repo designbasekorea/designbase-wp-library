@@ -241,29 +241,29 @@ window.DEWP.onDOMReady(() => {
 
 #### 버튼
 ```html
-<button class="btn btn-primary">Primary Button</button>
-<button class="btn btn-outline-secondary">Outline Button</button>
-<button class="btn btn-success btn-lg">Large Success Button</button>
+<button class="dewp-btn dewp-btn-primary">Primary Button</button>
+<button class="dewp-btn dewp-btn-outline-secondary">Outline Button</button>
+<button class="dewp-btn dewp-btn-success dewp-btn-lg">Large Success Button</button>
 ```
 
 #### 배지
 ```html
-<span class="badge badge-primary">Primary</span>
-<span class="badge badge-success badge-pill">Success</span>
-<span class="badge badge-danger badge-ring">Danger</span>
+<span class="dewp-badge dewp-badge-primary">Primary</span>
+<span class="dewp-badge dewp-badge-success dewp-badge-pill">Success</span>
+<span class="dewp-badge dewp-badge-danger dewp-badge-ring">Danger</span>
 ```
 
 #### 폼
 ```html
-<div class="form-group">
-  <label class="form-label">이름</label>
-  <input type="text" class="form-control" placeholder="이름을 입력하세요">
+<div class="dewp-form-group">
+  <label class="dewp-form-label">이름</label>
+  <input type="text" class="dewp-form-input" placeholder="이름을 입력하세요">
 </div>
 ```
 
 #### 테이블
 ```html
-<table class="designbase-table">
+<table class="dewp-table">
   <thead>
     <tr>
       <th>제목</th>
@@ -281,34 +281,34 @@ window.DEWP.onDOMReady(() => {
 
 #### 페이지네이션
 ```html
-<div class="pagination">
-  <div class="page-item">
-    <a href="#" class="page-link">1</a>
+<div class="dewp-pagination">
+  <div class="dewp-page-item">
+    <a href="#" class="dewp-page-link">1</a>
   </div>
-  <div class="page-item active">
-    <a href="#" class="page-link">2</a>
+  <div class="dewp-page-item active">
+    <a href="#" class="dewp-page-link">2</a>
   </div>
-  <div class="page-item">
-    <a href="#" class="page-link">3</a>
+  <div class="dewp-page-item">
+    <a href="#" class="dewp-page-link">3</a>
   </div>
 </div>
 ```
 
 #### 토글
 ```html
-<label class="toggle">
-  <input type="checkbox">
-  <span class="toggle-slider"></span>
+<label class="dewp-toggle-label">
+  <input type="checkbox" class="dewp-toggle-input">
+  <span class="dewp-toggle-slider"></span>
 </label>
 ```
 
 #### 알림
 ```html
-<div class="notice notice-success">
+<div class="dewp-notice dewp-notice-success">
   <p>성공 메시지입니다.</p>
 </div>
 
-<div class="notice notice-warning">
+<div class="dewp-notice dewp-notice-warning">
   <p>경고 메시지입니다.</p>
 </div>
 ```

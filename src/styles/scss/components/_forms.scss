@@ -28,20 +28,53 @@ $form-success-color: $status-success;
 // 폼 그룹
 // ============================================================================
 
-.form-group {
+.dewp-form-group {
     margin-bottom: $spacing-4;
 
     &:last-child {
         margin-bottom: 0;
     }
+
+    // ============================================================================
+    // 폼 그룹 상태
+    // ============================================================================
+
+    &.has-error {
+        .dewp-form-label {
+            color: $form-error-color;
+        }
+
+        .dewp-form-input,
+        .dewp-form-textarea,
+        .dewp-form-select {
+            border-color: $form-error-color;
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($form-error-color, 0.1);
+            }
+        }
+    }
+
+    &.has-success {
+
+        .dewp-form-input,
+        .dewp-form-textarea,
+        .dewp-form-select {
+            border-color: $form-success-color;
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($form-success-color, 0.1);
+            }
+        }
+    }
 }
 
-.form-row {
+.dewp-form-row {
     display: flex;
     flex-wrap: wrap;
     margin: 0 (-$spacing-2);
 
-    .form-group {
+    .dewp-form-group {
         flex: 1;
         margin: 0 $spacing-2 $spacing-4;
         min-width: 200px;
@@ -52,7 +85,7 @@ $form-success-color: $status-success;
 // 라벨
 // ============================================================================
 
-.form-label {
+.dewp-form-label {
     display: block;
     font-size: $form-label-font-size;
     font-weight: $form-label-font-weight;
@@ -64,21 +97,21 @@ $form-success-color: $status-success;
         content: ' *';
         color: $form-error-color;
     }
-}
 
-.form-label-inline {
-    display: inline-block;
-    margin-right: $spacing-3;
-    margin-bottom: 0;
+    &-inline {
+        display: inline-block;
+        margin-right: $spacing-3;
+        margin-bottom: 0;
+    }
 }
 
 // ============================================================================
 // 입력 필드
 // ============================================================================
 
-.form-input,
-.form-textarea,
-.form-select {
+.dewp-form-input,
+.dewp-form-textarea,
+.dewp-form-select {
     display: block;
     width: 100%;
     padding: $form-input-padding-y $form-input-padding-x;
@@ -126,16 +159,29 @@ $form-success-color: $status-success;
     }
 }
 
-.form-input {
+.dewp-form-input {
     height: $form-input-height;
+
+    // 크기 변형
+    &-sm {
+        height: 32px;
+        padding: $spacing-1 $spacing-2;
+        font-size: $font-size-s;
+    }
+
+    &-lg {
+        height: 48px;
+        padding: $spacing-3 $spacing-4;
+        font-size: $font-size-l;
+    }
 }
 
-.form-textarea {
+.dewp-form-textarea {
     min-height: 100px;
     resize: vertical;
 }
 
-.form-select {
+.dewp-form-select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
     background-position: right $spacing-2 center;
     background-repeat: no-repeat;
@@ -152,7 +198,7 @@ $form-success-color: $status-success;
 // 체크박스와 라디오 버튼
 // ============================================================================
 
-.form-check {
+.dewp-form-check {
     display: flex;
     align-items: flex-start;
     margin-bottom: $spacing-2;
@@ -160,33 +206,33 @@ $form-success-color: $status-success;
     &:last-child {
         margin-bottom: 0;
     }
+
+    .dewp-form-check-input {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin: 2px $spacing-2 0 0;
+        cursor: pointer;
+    }
+
+    .dewp-form-check-label {
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        color: $text-primary;
+        cursor: pointer;
+        user-select: none;
+    }
 }
 
-.form-check-input {
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    margin: 2px $spacing-2 0 0;
-    cursor: pointer;
-}
-
-.form-check-label {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $text-primary;
-    cursor: pointer;
-    user-select: none;
-}
-
-.form-check-group {
-    .form-check {
+.dewp-form-check-group {
+    .dewp-form-check {
         margin-bottom: $spacing-2;
     }
 }
 
 // 체크박스 스타일
-.form-checkbox {
-    .form-check-input {
+.dewp-form-checkbox {
+    .dewp-form-check-input {
         appearance: none;
         border: 2px solid $border-02;
         border-radius: $radius-1;
@@ -217,8 +263,8 @@ $form-success-color: $status-success;
 }
 
 // 라디오 버튼 스타일
-.form-radio {
-    .form-check-input {
+.dewp-form-radio {
+    .dewp-form-check-input {
         appearance: none;
         border: 2px solid $border-02;
         border-radius: 50%;
@@ -252,44 +298,44 @@ $form-success-color: $status-success;
 // 파일 업로드
 // ============================================================================
 
-.form-file {
+.dewp-form-file {
     position: relative;
     display: inline-block;
     width: 100%;
-}
 
-.form-file-input {
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.form-file-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: $form-input-height;
-    padding: $form-input-padding-y $form-input-padding-x;
-    font-size: $form-input-font-size;
-    line-height: $form-input-line-height;
-    color: $text-primary;
-    background-color: $bg-primary;
-    border: 2px dashed $border-02;
-    border-radius: $form-input-border-radius;
-    cursor: pointer;
-    transition: $form-input-transition;
-
-    &:hover {
-        border-color: $primary;
-        background-color: $bg-secondary;
+    .dewp-form-file-input {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        width: 0;
+        height: 0;
     }
 
-    .form-file-icon {
-        margin-right: $spacing-2;
-        color: $text-muted;
+    .dewp-form-file-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: $form-input-height;
+        padding: $form-input-padding-y $form-input-padding-x;
+        font-size: $form-input-font-size;
+        line-height: $form-input-line-height;
+        color: $text-primary;
+        background-color: $bg-primary;
+        border: 2px dashed $border-02;
+        border-radius: $form-input-border-radius;
+        cursor: pointer;
+        transition: $form-input-transition;
+
+        &:hover {
+            border-color: $primary;
+            background-color: $bg-secondary;
+        }
+
+        .dewp-form-file-icon {
+            margin-right: $spacing-2;
+            color: $text-muted;
+        }
     }
 }
 
@@ -297,13 +343,13 @@ $form-success-color: $status-success;
 // 입력 그룹
 // ============================================================================
 
-.form-input-group {
+.dewp-form-input-group {
     display: flex;
     align-items: stretch;
     width: 100%;
 
-    .form-input,
-    .form-select {
+    .dewp-form-input,
+    .dewp-form-select {
         border-radius: 0;
         border-right: none;
 
@@ -319,7 +365,7 @@ $form-success-color: $status-success;
         }
     }
 
-    .form-input-group-text {
+    .dewp-form-input-group-text {
         display: flex;
         align-items: center;
         padding: $form-input-padding-y $form-input-padding-x;
@@ -348,7 +394,7 @@ $form-success-color: $status-success;
 // 도움말과 에러 메시지
 // ============================================================================
 
-.form-help {
+.dewp-form-help {
     display: block;
     font-size: $form-help-font-size;
     color: $form-help-color;
@@ -356,7 +402,7 @@ $form-success-color: $status-success;
     line-height: $line-height-base;
 }
 
-.form-error {
+.dewp-form-error {
     display: block;
     font-size: $form-help-font-size;
     color: $form-error-color;
@@ -364,7 +410,7 @@ $form-success-color: $status-success;
     line-height: $line-height-base;
 }
 
-.form-success {
+.dewp-form-success {
     display: block;
     font-size: $form-help-font-size;
     color: $form-success-color;
@@ -373,52 +419,21 @@ $form-success-color: $status-success;
 }
 
 // ============================================================================
-// 폼 크기 변형
+// 폼 유틸리티
 // ============================================================================
 
-.form-input-sm {
-    height: 32px;
-    padding: $spacing-1 $spacing-2;
-    font-size: $font-size-s;
+.dewp-form-required {
+    color: $form-error-color;
 }
 
-.form-input-lg {
-    height: 48px;
-    padding: $spacing-3 $spacing-4;
-    font-size: $font-size-l;
+.dewp-form-disabled {
+    opacity: 0.6;
+    pointer-events: none;
 }
 
-// ============================================================================
-// 폼 상태
-// ============================================================================
-
-.form-group.has-error {
-    .form-label {
-        color: $form-error-color;
-    }
-
-    .form-input,
-    .form-textarea,
-    .form-select {
-        border-color: $form-error-color;
-
-        &:focus {
-            box-shadow: 0 0 0 3px rgba($form-error-color, 0.1);
-        }
-    }
-}
-
-.form-group.has-success {
-
-    .form-input,
-    .form-textarea,
-    .form-select {
-        border-color: $form-success-color;
-
-        &:focus {
-            box-shadow: 0 0 0 3px rgba($form-success-color, 0.1);
-        }
-    }
+.dewp-form-readonly {
+    background-color: $bg-muted;
+    cursor: not-allowed;
 }
 
 // ============================================================================
@@ -426,21 +441,21 @@ $form-success-color: $status-success;
 // ============================================================================
 
 @include respond-below(md) {
-    .form-row {
+    .dewp-form-row {
         flex-direction: column;
 
-        .form-group {
+        .dewp-form-group {
             margin: 0 0 $spacing-4 0;
             min-width: auto;
         }
     }
 
-    .form-input-group {
+    .dewp-form-input-group {
         flex-direction: column;
 
-        .form-input,
-        .form-select,
-        .form-input-group-text {
+        .dewp-form-input,
+        .dewp-form-select,
+        .dewp-form-input-group-text {
             border-radius: $form-input-border-radius;
             border-right: 1px solid $border-01;
             margin-bottom: $spacing-1;
@@ -450,22 +465,4 @@ $form-success-color: $status-success;
             }
         }
     }
-}
-
-// ============================================================================
-// 폼 유틸리티
-// ============================================================================
-
-.form-required {
-    color: $form-error-color;
-}
-
-.form-disabled {
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-.form-readonly {
-    background-color: $bg-muted;
-    cursor: not-allowed;
 }

@@ -3,8 +3,7 @@
  * ON/OFF 상태를 전환하는 토글 스위치 스타일을 정의
  */
 
-
-.toggle-label {
+.dewp-toggle-label {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -13,11 +12,11 @@
     margin: 0;
     gap: 12px;
 
-    .toggle-input {
+    .dewp-toggle-input {
         display: none;
     }
 
-    .toggle-slider {
+    .dewp-toggle-slider {
         position: relative;
         width: 50px;
         height: 24px;
@@ -39,14 +38,14 @@
         }
     }
 
-    .toggle-text {
+    .dewp-toggle-text {
         font-size: 14px;
         font-weight: 500;
         color: #374151;
     }
 
     // 활성화 상태
-    .toggle-input:checked+.toggle-slider {
+    .dewp-toggle-input:checked+.dewp-toggle-slider {
         background: #3b82f6;
 
         &::before {
@@ -55,32 +54,31 @@
     }
 
     // 호버 효과
-    &:hover .toggle-slider {
+    &:hover .dewp-toggle-slider {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
 
     // 비활성화 상태
-    &.toggle-disabled {
+    &.dewp-toggle-disabled {
         opacity: 0.6;
         cursor: not-allowed;
 
-        .toggle-slider {
+        .dewp-toggle-slider {
             cursor: not-allowed;
         }
 
-        .toggle-text {
+        .dewp-toggle-text {
             cursor: not-allowed;
         }
     }
 }
 
 // ============================================================================
-// 토글 크기
+// 토글 크기 변형
 // ============================================================================
 
-// 작은 토글
-.toggle-sm {
-    .toggle-slider {
+.dewp-toggle-label.dewp-toggle-sm {
+    .dewp-toggle-slider {
         width: 40px;
         height: 20px;
 
@@ -92,14 +90,13 @@
         }
     }
 
-    .toggle-input:checked+.toggle-slider::before {
+    .dewp-toggle-input:checked+.dewp-toggle-slider::before {
         transform: translateX(20px);
     }
 }
 
-// 큰 토글
-.toggle-lg {
-    .toggle-slider {
+.dewp-toggle-label.dewp-toggle-lg {
+    .dewp-toggle-slider {
         width: 60px;
         height: 32px;
 
@@ -111,22 +108,16 @@
         }
     }
 
-    .toggle-input:checked+.toggle-slider::before {
+    .dewp-toggle-input:checked+.dewp-toggle-slider::before {
         transform: translateX(28px);
     }
 }
 
-
-
-// ============================================================================
-// 반응형 디자인
-// ============================================================================
-
 @media (max-width: 768px) {
-    .toggle-label {
+    .dewp-toggle-label {
         gap: 10px;
 
-        .toggle-text {
+        .dewp-toggle-text {
             font-size: 13px;
         }
     }

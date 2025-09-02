@@ -144,10 +144,10 @@
       </div>
 
       <div class="demo-area">
-        <button class="demo-btn btn-success" onclick="demoToast('success')">성공 토스트</button>
-        <button class="demo-btn btn-danger" onclick="demoToast('error')">오류 토스트</button>
-        <button class="demo-btn btn-warning" onclick="demoToast('warning')">경고 토스트</button>
-        <button class="demo-btn btn-info" onclick="demoToast('info')">정보 토스트</button>
+        <button class="demo-btn dewp-btn-success" onclick="demoToast('success')">성공 토스트</button>
+        <button class="demo-btn dewp-btn-danger" onclick="demoToast('error')">오류 토스트</button>
+        <button class="demo-btn dewp-btn-warning" onclick="demoToast('warning')">경고 토스트</button>
+        <button class="demo-btn dewp-btn-info" onclick="demoToast('info')">정보 토스트</button>
       </div>
     </div>
 
@@ -173,8 +173,8 @@
       </div>
 
       <div class="demo-area">
-        <button class="demo-btn btn-primary" onclick="demoModal()">기본 모달</button>
-        <button class="demo-btn btn-warning" onclick="demoConfirmModal()">확인 모달</button>
+        <button class="demo-btn dewp-btn-primary" onclick="demoModal()">기본 모달</button>
+        <button class="demo-btn dewp-btn-warning" onclick="demoConfirmModal()">확인 모달</button>
       </div>
     </div>
 
@@ -198,10 +198,10 @@
       </div>
 
       <div class="demo-area">
-        <div class="dropdown">
-          <button class="dropdown-toggle" id="dropdown-trigger" onclick="demoDropdown()">
-            <span class="dropdown-text">선택하세요</span>
-            <svg class="dropdown-arrow" viewBox="0 0 24 24">
+        <div class="dewp-dropdown">
+          <button class="dewp-dropdown-toggle" id="dropdown-trigger" onclick="demoDropdown()">
+            <span class="dewp-dropdown-text">선택하세요</span>
+            <svg class="dewp-dropdown-arrow" viewBox="0 0 24 24">
               <path d="M7 10l5 5 5-5z" />
             </svg>
           </button>
@@ -230,15 +230,15 @@
       <div class="demo-area">
         <div id="demo-tabs" data-tabs="demo-tabs">
           <!-- 탭 버튼들 -->
-          <div class="tabs">
-            <button class="tab-btn" data-tab="tab1">기본 정보</button>
-            <button class="tab-btn" data-tab="tab2">설정</button>
-            <button class="tab-btn" data-tab="tab3">통계</button>
+          <div class="dewp-tabs">
+            <button class="dewp-tab-btn" data-tab="tab1">기본 정보</button>
+            <button class="dewp-tab-btn" data-tab="tab2">설정</button>
+            <button class="dewp-tab-btn" data-tab="tab3">통계</button>
           </div>
 
           <!-- 탭 패널들 -->
-          <div class="tab-content">
-            <div class="tab-panel" data-panel="tab1">
+          <div class="dewp-tab-content">
+            <div class="dewp-tab-panel" data-panel="tab1">
               <h3>기본 정보</h3>
               <p>이것은 첫 번째 탭의 내용입니다. 사용자 프로필의 기본 정보를 표시합니다.</p>
               <ul>
@@ -248,7 +248,7 @@
               </ul>
             </div>
 
-            <div class="tab-panel" data-panel="tab2">
+            <div class="dewp-tab-panel" data-panel="tab2">
               <h3>설정</h3>
               <p>사용자 설정을 관리하는 탭입니다.</p>
               <div class="demo-element">
@@ -262,7 +262,7 @@
               </div>
             </div>
 
-            <div class="tab-panel" data-panel="tab3">
+            <div class="dewp-tab-panel" data-panel="tab3">
               <h3>통계</h3>
               <p>사용자 활동 통계를 보여주는 탭입니다.</p>
               <div class="demo-element">
@@ -279,10 +279,10 @@
         </div>
 
         <div style="margin-top: 20px;">
-          <button class="demo-btn btn-primary" onclick="demoActivateTab('tab1')">첫 번째 탭</button>
-          <button class="demo-btn btn-success" onclick="demoActivateTab('tab2')">두 번째 탭</button>
-          <button class="demo-btn btn-warning" onclick="demoActivateTab('tab3')">세 번째 탭</button>
-          <button class="demo-btn btn-info" onclick="showActiveTab()">현재 활성 탭 확인</button>
+          <button class="demo-btn dewp-btn-primary" onclick="demoActivateTab('tab1')">첫 번째 탭</button>
+          <button class="demo-btn dewp-btn-success" onclick="demoActivateTab('tab2')">두 번째 탭</button>
+          <button class="demo-btn dewp-btn-warning" onclick="demoActivateTab('tab3')">세 번째 탭</button>
+          <button class="demo-btn dewp-btn-info" onclick="showActiveTab()">현재 활성 탭 확인</button>
         </div>
       </div>
     </div>
@@ -308,10 +308,10 @@
 
       <div class="demo-area">
         <div class="demo-element" id="demo-element">이 요소를 조작해보세요</div>
-        <button class="demo-btn btn-primary" onclick="demoAddClass()">클래스 추가</button>
-        <button class="demo-btn btn-warning" onclick="demoRemoveClass()">클래스 제거</button>
-        <button class="demo-btn btn-info" onclick="demoToggleClass()">클래스 토글</button>
-        <button class="demo-btn btn-secondary" onclick="demoEvent()">이벤트 테스트</button>
+        <button class="demo-btn dewp-btn-primary" onclick="demoAddClass()">클래스 추가</button>
+        <button class="demo-btn dewp-btn-warning" onclick="demoRemoveClass()">클래스 제거</button>
+        <button class="demo-btn dewp-btn-info" onclick="demoToggleClass()">클래스 토글</button>
+        <button class="demo-btn dewp-btn-secondary" onclick="demoEvent()">이벤트 테스트</button>
       </div>
     </div>
 
@@ -319,7 +319,7 @@
     <div class="section">
       <h2>📚 라이브러리 정보</h2>
       <div class="demo-area">
-        <button class="demo-btn btn-primary" onclick="showLibraryInfo()">라이브러리 정보 표시</button>
+        <button class="demo-btn dewp-btn-primary" onclick="showLibraryInfo()">라이브러리 정보 표시</button>
         <div id="library-info"></div>
       </div>
     </div>

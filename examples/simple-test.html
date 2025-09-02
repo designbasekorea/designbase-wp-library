@@ -29,11 +29,11 @@
   <h1>🚀 DEWP 라이브러리 간단 테스트</h1>
 
   <div>
-    <button class="test-btn btn btn-primary" onclick="testToast()">토스트 테스트</button>
-    <button class="test-btn btn btn-success" onclick="testModal()">모달 테스트</button>
-    <button class="test-btn btn btn-info" onclick="testDropdown()">드롭다운 테스트</button>
-    <button class="test-btn btn btn-secondary" onclick="testToggle()">토글 테스트</button>
-    <button class="test-btn btn btn-warning" onclick="checkLibrary()">라이브러리 확인</button>
+    <button class="test-btn dewp-btn dewp-btn-primary" onclick="testToast()">토스트 테스트</button>
+    <button class="test-btn dewp-btn dewp-btn-success" onclick="testModal()">모달 테스트</button>
+    <button class="test-btn dewp-btn dewp-btn-info" onclick="testDropdown()">드롭다운 테스트</button>
+    <button class="test-btn dewp-btn dewp-btn-secondary" onclick="testToggle()">토글 테스트</button>
+    <button class="test-btn dewp-btn dewp-btn-warning" onclick="checkLibrary()">라이브러리 확인</button>
   </div>
 
   <div class="status" id="status">상태: 대기 중...</div>
@@ -104,7 +104,7 @@
       if (window.DEWP && window.DEWP.DEWP && window.DEWP.DEWP.createDropdown) {
         // 드롭다운 생성
         const dropdownId = window.DEWP.DEWP.createDropdown({
-          trigger: document.querySelector('.btn-info'),
+          trigger: document.querySelector('.dewp-btn-info'),
           content: `
             <div style="padding: 10px;">
               <div style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #eee;">메뉴 1</div>

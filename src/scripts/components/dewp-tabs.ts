@@ -97,7 +97,7 @@ class DEWPTabs {
 
         // .tab-btn 클래스가 있는 버튼들 찾기
         if (tabs.size === 0) {
-            const tabButtons = container.querySelectorAll('.tab-btn');
+            const tabButtons = container.querySelectorAll('.dewp-tab-btn');
             tabButtons.forEach((button, index) => {
                 const tabId = button.getAttribute('data-tab') || `tab-${index}`;
                 tabs.set(tabId, button as HTMLElement);
@@ -121,7 +121,7 @@ class DEWPTabs {
 
         // .tab-panel 클래스가 있는 요소들 찾기
         if (panels.size === 0) {
-            const panelElements = container.querySelectorAll('.tab-panel');
+            const panelElements = container.querySelectorAll('.dewp-tab-panel');
             panelElements.forEach((panel, index) => {
                 const panelId = panel.getAttribute('data-panel') || `panel-${index}`;
                 panels.set(panelId, panel as HTMLElement);
