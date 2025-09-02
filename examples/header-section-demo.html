@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEWP Header & Section Components Demo</title>
+  <link rel="stylesheet" href="../dist/css/dewp.min.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f0f1;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      margin-bottom: 40px;
+    }
+
+    .demo-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1d2327;
+    }
+
+    .demo-description {
+      color: #646970;
+      margin-bottom: 20px;
+    }
+
+    .code-block {
+      background: #f6f7f7;
+      border: 1px solid #dcdcde;
+      border-radius: 4px;
+      padding: 15px;
+      margin: 15px 0;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo-container">
+    <h1>DEWP Header & Section Components Demo</h1>
+
+    <!-- 헤더 컴포넌트 데모 -->
+    <div class="demo-section">
+      <h2 class="demo-title">1. 헤더 컴포넌트 (Header)</h2>
+      <p class="demo-description">워드프레스 어드민 페이지 상단에 사용되는 헤더 컴포넌트입니다.</p>
+
+      <!-- 기본 헤더 -->
+      <h3>기본 헤더</h3>
+      <div class="dewp-header">
+        <div class="dewp-header-content">
+          <h1 class="dewp-header-title">플러그인 설정</h1>
+          <p class="dewp-header-description">플러그인의 기본 설정을 관리할 수 있습니다. 각 옵션을 설정하고 저장하세요.</p>
+        </div>
+        <div class="dewp-header-actions">
+          <button class="dewp-header-btn dewp-btn-secondary">미리보기</button>
+          <button class="dewp-header-btn dewp-btn-primary">설정 저장</button>
+        </div>
+      </div>
+
+      <!-- 아이콘이 있는 헤더 -->
+      <h3>아이콘이 있는 헤더</h3>
+      <div class="dewp-header">
+        <div class="dewp-header-content">
+          <h1 class="dewp-header-title dewp-header-title-with-icon">
+            <i class="dewp-header-icon">⚙️</i>
+            고급 설정
+          </h1>
+          <p class="dewp-header-description">고급 기능 설정 및 세부 옵션을 관리합니다.</p>
+        </div>
+        <div class="dewp-header-actions">
+          <div class="dewp-header-action-group">
+            <button class="dewp-header-btn dewp-btn-outline-secondary">내보내기</button>
+            <button class="dewp-header-btn dewp-btn-outline-secondary">가져오기</button>
+          </div>
+          <div class="dewp-header-divider"></div>
+          <button class="dewp-header-btn dewp-btn-success">적용</button>
+        </div>
+      </div>
+
+      <!-- 컴팩트 헤더 -->
+      <h3>컴팩트 헤더</h3>
+      <div class="dewp-header dewp-header-compact">
+        <div class="dewp-header-content">
+          <h1 class="dewp-header-title">빠른 설정</h1>
+          <p class="dewp-header-description">자주 사용하는 설정만 빠르게 변경</p>
+        </div>
+        <div class="dewp-header-actions">
+          <button class="dewp-header-btn dewp-btn-primary dewp-header-btn-sm">저장</button>
+        </div>
+      </div>
+
+      <!-- 프라이머리 테마 헤더 -->
+      <h3>프라이머리 테마 헤더</h3>
+      <div class="dewp-header dewp-header-primary dewp-header-shadow">
+        <div class="dewp-header-content">
+          <h1 class="dewp-header-title">프리미엄 기능</h1>
+          <p class="dewp-header-description">프리미엄 사용자를 위한 고급 기능들</p>
+        </div>
+        <div class="dewp-header-actions">
+          <button class="dewp-header-btn dewp-btn-outline-primary">업그레이드</button>
+          <button class="dewp-header-btn dewp-btn-primary">활성화</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 섹션 컴포넌트 데모 -->
+    <div class="demo-section">
+      <h2 class="demo-title">2. 섹션 컴포넌트 (Section)</h2>
+      <p class="demo-description">워드프레스 어드민 페이지에서 콘텐츠를 구분하는 섹션 컴포넌트입니다.</p>
+
+      <!-- 기본 섹션 -->
+      <h3>기본 섹션</h3>
+      <div class="dewp-section">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">일반 설정</h3>
+            <p class="dewp-section-description">플러그인의 기본 동작을 설정합니다.</p>
+          </div>
+          <div class="dewp-section-actions">
+            <button class="dewp-section-btn dewp-btn-outline-secondary">초기화</button>
+            <button class="dewp-section-btn dewp-btn-primary">저장</button>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>여기에 폼 요소들이 들어갑니다.</p>
+          <div class="dewp-form-group">
+            <label class="dewp-form-label">사이트 이름</label>
+            <input type="text" class="dewp-form-input" placeholder="사이트 이름을 입력하세요">
+          </div>
+        </div>
+      </div>
+
+      <!-- 아이콘이 있는 섹션 -->
+      <h3>아이콘이 있는 섹션</h3>
+      <div class="dewp-section">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title dewp-section-title-with-icon">
+              <i class="dewp-section-icon">🔒</i>
+              보안 설정
+            </h3>
+            <p class="dewp-section-description">보안 관련 옵션을 설정합니다.</p>
+          </div>
+          <div class="dewp-section-actions">
+            <button class="dewp-section-btn dewp-btn-warning">보안 검사</button>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>보안 설정 내용이 여기에 들어갑니다.</p>
+        </div>
+      </div>
+
+      <!-- 접을 수 있는 섹션 -->
+      <h3>접을 수 있는 섹션</h3>
+      <div class="dewp-section dewp-section-collapsible" id="collapsible-section">
+        <div class="dewp-section-header" onclick="toggleSection()">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">
+              <span class="dewp-section-toggle">
+                <i class="dewp-section-toggle-icon">▼</i>
+                고급 옵션
+              </span>
+            </h3>
+            <p class="dewp-section-description">고급 사용자를 위한 세부 설정</p>
+          </div>
+          <div class="dewp-section-actions">
+            <button class="dewp-section-btn dewp-btn-outline-primary">도움말</button>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>고급 옵션들이 여기에 표시됩니다.</p>
+          <div class="dewp-form-group">
+            <label class="dewp-form-label">디버그 모드</label>
+            <label class="dewp-toggle-label">
+              <input type="checkbox" class="dewp-toggle-input">
+              <span class="dewp-toggle-slider"></span>
+              <span class="dewp-toggle-text">활성화</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 테마별 섹션 -->
+      <h3>테마별 섹션</h3>
+      <div class="dewp-section dewp-section-success">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">성공 메시지</h3>
+            <p class="dewp-section-description">설정이 성공적으로 저장되었습니다.</p>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>모든 설정이 정상적으로 적용되었습니다.</p>
+        </div>
+      </div>
+
+      <div class="dewp-section dewp-section-warning">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">주의사항</h3>
+            <p class="dewp-section-description">이 설정을 변경하기 전에 주의하세요.</p>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>이 옵션은 시스템 전체에 영향을 미칠 수 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- 빈 콘텐츠 섹션 -->
+      <h3>빈 콘텐츠 섹션</h3>
+      <div class="dewp-section">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">데이터 목록</h3>
+            <p class="dewp-section-description">등록된 데이터가 없습니다.</p>
+          </div>
+          <div class="dewp-section-actions">
+            <button class="dewp-section-btn dewp-btn-primary">새로 만들기</button>
+          </div>
+        </div>
+        <div class="dewp-section-content dewp-section-content-empty">
+          <div class="dewp-section-empty-icon">📝</div>
+          <div class="dewp-section-empty-text">아직 등록된 데이터가 없습니다.</div>
+          <div class="dewp-section-empty-actions">
+            <button class="dewp-btn dewp-btn-outline-primary">샘플 데이터 추가</button>
+            <button class="dewp-btn dewp-btn-primary">첫 번째 데이터 만들기</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 섹션 그룹 -->
+      <h3>섹션 그룹</h3>
+      <div class="dewp-section-group">
+        <div class="dewp-section">
+          <div class="dewp-section-header">
+            <div class="dewp-section-title-area">
+              <h3 class="dewp-section-title">첫 번째 섹션</h3>
+            </div>
+          </div>
+          <div class="dewp-section-content">
+            <p>첫 번째 섹션의 내용입니다.</p>
+          </div>
+        </div>
+        <div class="dewp-section">
+          <div class="dewp-section-header">
+            <div class="dewp-section-title-area">
+              <h3 class="dewp-section-title">두 번째 섹션</h3>
+            </div>
+          </div>
+          <div class="dewp-section-content">
+            <p>두 번째 섹션의 내용입니다.</p>
+          </div>
+        </div>
+        <div class="dewp-section">
+          <div class="dewp-section-header">
+            <div class="dewp-section-title-area">
+              <h3 class="dewp-section-title">세 번째 섹션</h3>
+            </div>
+          </div>
+          <div class="dewp-section-content">
+            <p>세 번째 섹션의 내용입니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 섹션 푸터가 있는 섹션 -->
+      <h3>푸터가 있는 섹션</h3>
+      <div class="dewp-section">
+        <div class="dewp-section-header">
+          <div class="dewp-section-title-area">
+            <h3 class="dewp-section-title">사용 통계</h3>
+            <p class="dewp-section-description">플러그인 사용 현황을 확인합니다.</p>
+          </div>
+          <div class="dewp-section-actions">
+            <button class="dewp-section-btn dewp-btn-outline-secondary">새로고침</button>
+          </div>
+        </div>
+        <div class="dewp-section-content">
+          <p>통계 데이터가 여기에 표시됩니다.</p>
+        </div>
+        <div class="dewp-section-footer">
+          <div class="dewp-section-footer-left">
+            <div class="dewp-section-footer-info">
+              <i class="dewp-section-footer-icon">🕒</i>
+              마지막 업데이트: 5분 전
+            </div>
+            <div class="dewp-section-footer-info">
+              <i class="dewp-section-footer-icon">📊</i>
+              총 1,234건의 데이터
+            </div>
+          </div>
+          <div class="dewp-section-footer-right">
+            <button class="dewp-btn dewp-btn-sm dewp-btn-outline-secondary">내보내기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사용법 설명 -->
+    <div class="demo-section">
+      <h2 class="demo-title">3. 사용법</h2>
+
+      <h3>헤더 컴포넌트 HTML 구조</h3>
+      <div class="code-block">
+        &lt;div class="dewp-header"&gt;
+        &lt;div class="dewp-header-content"&gt;
+        &lt;h1 class="dewp-header-title"&gt;제목&lt;/h1&gt;
+        &lt;p class="dewp-header-description"&gt;부가설명&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="dewp-header-actions"&gt;
+        &lt;button class="dewp-header-btn dewp-btn-primary"&gt;액션 버튼&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+      </div>
+
+      <h3>섹션 컴포넌트 HTML 구조</h3>
+      <div class="code-block">
+        &lt;div class="dewp-section"&gt;
+        &lt;div class="dewp-section-header"&gt;
+        &lt;div class="dewp-section-title-area"&gt;
+        &lt;h3 class="dewp-section-title"&gt;섹션 제목&lt;/h3&gt;
+        &lt;p class="dewp-section-description"&gt;섹션 설명&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="dewp-section-actions"&gt;
+        &lt;button class="dewp-section-btn dewp-btn-primary"&gt;액션&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="dewp-section-content"&gt;
+        &lt;p&gt;섹션 내용&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="dewp-section-footer"&gt;
+        &lt;div class="dewp-section-footer-left"&gt;푸터 정보&lt;/div&gt;
+        &lt;div class="dewp-section-footer-right"&gt;푸터 액션&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection() {
+      const section = document.getElementById('collapsible-section');
+      section.classList.toggle('dewp-section-collapsed');
+    }
+  </script>
+</body>
+
+</html>

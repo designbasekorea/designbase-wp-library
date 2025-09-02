@@ -23,10 +23,10 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.2/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.2.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.2.2/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
@@ -73,7 +73,7 @@ src/
 
 #### 브라우저에서 직접 사용
 ```html
-<script src="https://unpkg.com/designbase-wp-library@0.2.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.2.2/dist/js/dewp.min.js"></script>
 <script>
   // 전역 DEWP 객체 사용
   window.DEWP.showToast('안녕하세요!', 'success', 3000, 'md');
@@ -206,7 +206,38 @@ const activeTab = window.DEWP.getActiveTab('.dewp-tabs');
 </script>
 ```
 
-### 5. DOM 유틸리티
+### 5. 헤더 컴포넌트
+```html
+<div class="dewp-header">
+  <div class="dewp-header-content">
+    <h1 class="dewp-header-title">플러그인 설정</h1>
+    <p class="dewp-header-description">플러그인의 기본 설정을 관리할 수 있습니다.</p>
+  </div>
+  <div class="dewp-header-actions">
+    <button class="dewp-header-btn dewp-btn-primary">설정 저장</button>
+  </div>
+</div>
+```
+
+### 6. 섹션 컴포넌트
+```html
+<div class="dewp-section">
+  <div class="dewp-section-header">
+    <div class="dewp-section-title-area">
+      <h3 class="dewp-section-title">일반 설정</h3>
+      <p class="dewp-section-description">플러그인의 기본 동작을 설정합니다.</p>
+    </div>
+    <div class="dewp-section-actions">
+      <button class="dewp-section-btn dewp-btn-primary">저장</button>
+    </div>
+  </div>
+  <div class="dewp-section-content">
+    <!-- 폼 요소들 -->
+  </div>
+</div>
+```
+
+### 7. DOM 유틸리티
 ```javascript
 // DOM 요소 선택
 const element = window.DEWP.qs('.my-class');
@@ -436,5 +467,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.0/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.0/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.2/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.2/)
