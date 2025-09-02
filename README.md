@@ -4,13 +4,14 @@
 
 > **DEWP** - DesignBase WordPress Library의 약자로, `mcp-` 접두사를 `dewp-`로 변경한 최신 버전입니다.
 
-## 🚀 특징
+## �� 특징
 
-- **모듈화된 구조**: 핵심 기능과 전체 기능을 분리하여 필요한 만큼만 로드
+- **모듈화된 구조**: TypeScript로 작성된 컴포넌트 기반 아키텍처
 - **체계적인 SCSS**: 변수, 믹스인, 컴포넌트를 체계적으로 구성
 - **반응형 디자인**: 모바일 우선 접근법으로 모든 디바이스 지원
 - **접근성 고려**: WCAG 가이드라인을 준수하는 컴포넌트
-- **TypeScript 지원**: 완전한 타입 정의 제공
+- **TypeScript 지원**: 완전한 타입 정의와 ES6+ 모듈 지원
+- **WordPress 최적화**: 플러그인 개발에 특화된 컴포넌트
 
 ## 📦 설치
 
@@ -22,33 +23,48 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.1.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.1.0/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
 
 ```
 src/
-├── js/
-│   ├── common/          # 공통 JavaScript 모듈
-│   │   ├── mcp-modal.js
-│   │   ├── mcp-dropdown.js
-│   │   └── mcp-toast.js
-│   ├── frontend/        # 프론트엔드 전용 모듈
-│   └── admin/           # 관리자 전용 모듈
+├── scripts/
+│   ├── components/       # 컴포넌트 스크립트
+│   │   ├── dewp-modal.ts      # 모달 컴포넌트
+│   │   ├── dewp-dropdown.ts   # 드롭다운 컴포넌트
+│   │   ├── dewp-tabs.ts       # 탭 컴포넌트
+│   │   ├── dewp-toast.ts      # 토스트 알림 컴포넌트
+│   │   └── dewp-validate.ts   # 폼 검증 컴포넌트
+│   ├── utils/
+│   │   └── dom.ts             # DOM 유틸리티 함수
+│   └── index.ts               # 메인 진입점
 ├── styles/
 │   └── scss/
-│       ├── basic/       # 기본 스타일 (변수, 믹스인, 타이포그래피, 레이아웃)
-│       ├── components/  # 재사용 가능한 컴포넌트
-│       ├── common/      # 공통 컴포넌트 스타일
-│       └── main.scss    # 메인 스타일시트
-├── utils/
-│   └── dom.ts          # DOM 유틸리티 함수
-├── core.ts             # 핵심 모듈 (가벼운 버전)
-└── index.ts            # 전체 기능 모듈
+│       ├── basic/             # 기본 스타일 (변수, 믹스인, 타이포그래피, 레이아웃)
+│       ├── components/        # 재사용 가능한 컴포넌트
+│       │   ├── _badge.scss        # 배지 컴포넌트
+│       │   ├── _buttons.scss      # 버튼 컴포넌트
+│       │   ├── _dropdown.scss     # 드롭다운 컴포넌트
+│       │   ├── _empty-state.scss  # 빈 상태 컴포넌트
+│       │   ├── _forms.scss        # 폼 컴포넌트
+│       │   ├── _modal.scss        # 모달 컴포넌트
+│       │   ├── _notice.scss       # 알림 컴포넌트
+│       │   ├── _pagination.scss   # 페이지네이션 컴포넌트
+│       │   ├── _table.scss        # 테이블 컴포넌트
+│       │   ├── _tabs.scss         # 탭 컴포넌트
+│       │   ├── _toast.scss        # 토스트 컴포넌트
+│       │   └── _toggle.scss       # 토글 컴포넌트
+│       └── main.scss              # 메인 스타일시트
+└── dist/                         # 빌드 출력
+    ├── css/
+    │   └── dewp.min.css          # 압축된 CSS
+    └── js/
+        └── dewp.min.js           # 압축된 JavaScript
 ```
 
 ## 🎯 사용법
@@ -57,25 +73,29 @@ src/
 
 #### 브라우저에서 직접 사용
 ```html
-<script src="dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.1.0/dist/js/dewp.min.js"></script>
 <script>
   // 전역 DEWP 객체 사용
   window.DEWP.showToast('안녕하세요!', 'success');
   
   // 모달 표시
-  window.DEWP.showModal({
-    title: '알림',
-    content: '모달이 표시됩니다!',
+  window.DEWP.showModal('알림', '모달이 표시됩니다!', {
     size: 'md'
   });
   
   // 확인 모달
-  window.DEWP.showConfirmModal({
-    title: '확인',
-    message: '정말로 진행하시겠습니까?',
-    onConfirm: () => console.log('확인됨'),
-    onCancel: () => console.log('취소됨')
-  });
+  window.DEWP.showConfirmModal('정말로 진행하시겠습니까?')
+    .then((confirmed) => {
+      if (confirmed) {
+        console.log('사용자가 확인했습니다');
+      }
+    });
+  
+  // 드롭다운 초기화
+  window.DEWP.initDropdowns();
+  
+  // 탭 초기화
+  window.DEWP.initTabs();
 </script>
 ```
 
@@ -87,51 +107,135 @@ import { showToast, showModal, showConfirmModal } from 'designbase-wp-library';
 showToast('성공!', 'success');
 
 // 모달 표시
-showModal({
-  title: '알림',
-  content: '모달입니다!',
-  size: 'lg'
-});
+showModal('제목', '내용', { size: 'lg' });
+
+// 확인 모달
+showConfirmModal('정말 삭제하시겠습니까?')
+  .then((confirmed) => {
+    if (confirmed) {
+      // 삭제 로직
+    }
+  });
 ```
 
 ### CSS 사용
 
 ```html
-<link rel="stylesheet" href="dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.1.0/dist/css/dewp.min.css">
 ```
 
-## 🛠️ 개발
+## 🧩 컴포넌트
 
-### 의존성 설치
-```bash
-npm install
+### 1. 토스트 알림 (Toast)
+```javascript
+// 기본 토스트
+window.DEWP.showToast('메시지', 'success');
+
+// 타입별 토스트
+window.DEWP.showSuccessToast('성공 메시지');
+window.DEWP.showWarningToast('경고 메시지');
+window.DEWP.showErrorToast('오류 메시지');
+window.DEWP.showInfoToast('정보 메시지');
 ```
 
-### 개발 모드
-```bash
-# CSS와 JS 모두 감시 모드
-npm run dev
+### 2. 모달 (Modal)
+```javascript
+// 기본 모달
+window.DEWP.showModal('제목', '내용');
 
-# CSS만 감시 모드
-npm run dev:css
+// 확인 모달
+window.DEWP.showConfirmModal('정말 삭제하시겠습니까?')
+  .then((confirmed) => {
+    if (confirmed) {
+      // 확인 시 실행할 코드
+    }
+  });
 
-# JS만 감시 모드
-npm run dev:js
+// 모달 생성 및 제어
+const modal = window.DEWP.createModal('제목', '내용');
+window.DEWP.openModal(modal);
+window.DEWP.closeModal(modal);
 ```
 
-### 빌드
-```bash
-# 전체 빌드
-npm run build
+### 3. 드롭다운 (Dropdown)
+```html
+<div class="dropdown">
+  <button class="dropdown-trigger">
+    선택하세요 <i class="designbase-icon-arrow-down"></i>
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-item" data-value="option1">옵션 1</div>
+    <div class="dropdown-item" data-value="option2">옵션 2</div>
+  </div>
+</div>
 
-# CSS만 빌드
-npm run build:css
+<script>
+// 드롭다운 초기화
+window.DEWP.initDropdowns();
 
-# JS만 빌드
-npm run build:js
+// 선택된 값 가져오기
+const value = window.DEWP.getSelectedValue('.dropdown');
+const text = window.DEWP.getSelectedText('.dropdown');
+
+// 값 설정
+window.DEWP.setDropdownValue('.dropdown', 'option1');
+</script>
 ```
 
-## 📚 컴포넌트
+### 4. 탭 (Tabs)
+```html
+<div class="tabs">
+  <button class="tab-btn active" data-tab="tab1">탭 1</button>
+  <button class="tab-btn" data-tab="tab2">탭 2</button>
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane active" data-tab="tab1">탭 1 내용</div>
+  <div class="tab-pane" data-tab="tab2">탭 2 내용</div>
+</div>
+
+<script>
+// 탭 초기화
+window.DEWP.initTabs();
+
+// 특정 탭 활성화
+window.DEWP.activateTab('tab2');
+
+// 활성 탭 정보 가져오기
+const activeTab = window.DEWP.getActiveTab('.tabs');
+</script>
+```
+
+### 5. DOM 유틸리티
+```javascript
+// DOM 요소 선택
+const element = window.DEWP.qs('.my-class');
+const elements = window.DEWP.qsa('.my-class');
+
+// 클래스 조작
+window.DEWP.addClass(element, 'active');
+window.DEWP.removeClass(element, 'inactive');
+window.DEWP.toggleClass(element, 'visible');
+
+// 텍스트 및 HTML 설정
+window.DEWP.setText(element, '새로운 텍스트');
+window.DEWP.setHTML(element, '<strong>HTML</strong>');
+
+// 이벤트 처리
+window.DEWP.on(element, 'click', (e) => console.log('클릭됨'));
+window.DEWP.off(element, 'click');
+
+// DOM 상태 확인
+if (window.DEWP.isDOMReady()) {
+  // DOM이 준비됨
+}
+
+window.DEWP.onDOMReady(() => {
+  // DOM 로드 완료 후 실행
+});
+```
+
+## 🎨 SCSS 컴포넌트
 
 ### 기본 컴포넌트
 
@@ -146,16 +250,66 @@ npm run build:js
 ```html
 <span class="badge badge-primary">Primary</span>
 <span class="badge badge-success badge-pill">Success</span>
-<span class="badge badge-danger badge-ring"></span>
+<span class="badge badge-danger badge-ring">Danger</span>
 ```
 
-#### 그리드
+#### 폼
 ```html
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">Left Column</div>
-    <div class="col-md-6">Right Column</div>
+<div class="form-group">
+  <label class="form-label">이름</label>
+  <input type="text" class="form-control" placeholder="이름을 입력하세요">
+</div>
+```
+
+#### 테이블
+```html
+<table class="designbase-table">
+  <thead>
+    <tr>
+      <th>제목</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>내용 1</td>
+      <td>설명 1</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+#### 페이지네이션
+```html
+<div class="pagination">
+  <div class="page-item">
+    <a href="#" class="page-link">1</a>
   </div>
+  <div class="page-item active">
+    <a href="#" class="page-link">2</a>
+  </div>
+  <div class="page-item">
+    <a href="#" class="page-link">3</a>
+  </div>
+</div>
+```
+
+#### 토글
+```html
+<label class="toggle">
+  <input type="checkbox">
+  <span class="toggle-slider"></span>
+</label>
+```
+
+#### 알림
+```html
+<div class="notice notice-success">
+  <p>성공 메시지입니다.</p>
+</div>
+
+<div class="notice notice-warning">
+  <p>경고 메시지입니다.</p>
 </div>
 ```
 
@@ -220,9 +374,9 @@ $font-family-base: 'Your Font', sans-serif;
 ```
 dist/
 ├── css/
-│   └── dewp.min.css     # 압축된 CSS
+│   └── dewp.min.css     # 압축된 CSS (80.8kB)
 └── js/
-    └── dewp.min.js      # 압축된 JavaScript
+    └── dewp.min.js      # 압축된 JavaScript (16.0kB)
 ```
 
 ## 🚀 배포
@@ -263,3 +417,9 @@ MIT License
 ## 📞 지원
 
 문제가 있거나 질문이 있으시면 이슈를 생성해 주세요.
+
+## 🔗 관련 링크
+
+- [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.1.0/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.1.0/)
