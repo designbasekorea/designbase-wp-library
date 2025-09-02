@@ -159,13 +159,13 @@ window.DEWP.closeModal(modal);
 
 ### 3. 드롭다운 (Dropdown)
 ```html
-<div class="dropdown">
-  <button class="dropdown-trigger">
+<div class="dewp-dropdown">
+  <button class="dewp-dropdown-toggle">
     선택하세요 <i class="designbase-icon-arrow-down"></i>
   </button>
-  <div class="dropdown-menu">
-    <div class="dropdown-item" data-value="option1">옵션 1</div>
-    <div class="dropdown-item" data-value="option2">옵션 2</div>
+  <div class="dewp-dropdown-menu">
+    <div class="dewp-dropdown-item" data-value="option1">옵션 1</div>
+    <div class="dewp-dropdown-item" data-value="option2">옵션 2</div>
   </div>
 </div>
 
@@ -174,24 +174,24 @@ window.DEWP.closeModal(modal);
 window.DEWP.initDropdowns();
 
 // 선택된 값 가져오기
-const value = window.DEWP.getSelectedValue('.dropdown');
-const text = window.DEWP.getSelectedText('.dropdown');
+const value = window.DEWP.getSelectedValue('.dewp-dropdown');
+const text = window.DEWP.getSelectedText('.dewp-dropdown');
 
 // 값 설정
-window.DEWP.setDropdownValue('.dropdown', 'option1');
+window.DEWP.setDropdownValue('.dewp-dropdown', 'option1');
 </script>
 ```
 
 ### 4. 탭 (Tabs)
 ```html
-<div class="tabs">
-  <button class="tab-btn active" data-tab="tab1">탭 1</button>
-  <button class="tab-btn" data-tab="tab2">탭 2</button>
+<div class="dewp-tabs">
+  <button class="dewp-tab-btn active" data-tab="tab1">탭 1</button>
+  <button class="dewp-tab-btn" data-tab="tab2">탭 2</button>
 </div>
 
-<div class="tab-content">
-  <div class="tab-pane active" data-tab="tab1">탭 1 내용</div>
-  <div class="tab-pane" data-tab="tab2">탭 2 내용</div>
+<div class="dewp-tab-content">
+  <div class="dewp-tab-pane active" data-tab="tab1">탭 1 내용</div>
+  <div class="dewp-tab-pane" data-tab="tab2">탭 2 내용</div>
 </div>
 
 <script>
@@ -202,7 +202,7 @@ window.DEWP.initTabs();
 window.DEWP.activateTab('tab2');
 
 // 활성 탭 정보 가져오기
-const activeTab = window.DEWP.getActiveTab('.tabs');
+const activeTab = window.DEWP.getActiveTab('.dewp-tabs');
 </script>
 ```
 
