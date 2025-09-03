@@ -23,10 +23,10 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.3/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.2.3/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
@@ -498,5 +498,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.3/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.3/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.3.0/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.3.0/)

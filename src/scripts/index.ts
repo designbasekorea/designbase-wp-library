@@ -93,6 +93,10 @@ import {
     destroyAllAccordions
 } from './components/dewp-accordion';
 
+import {
+    DEWPSidebar
+} from './components/dewp-sidebar';
+
 /**
  * DEWP 메인 객체
  * window.DEWP로 접근 가능
@@ -181,6 +185,9 @@ export default {
     isDrawerOpen,
     autoInitializeDrawers,
 
+    // 사이드바
+    DEWPSidebar,
+
     // 편의 함수
     ready: onDOMReady,
 
@@ -213,7 +220,7 @@ if (typeof window !== 'undefined') {
         getTabInstance, destroyTabs, initAccordion, toggleAccordionItem,
         openAccordionItem, closeAccordionItem, openAllAccordionItems,
         closeAllAccordionItems, getActiveAccordionItems, isAccordionItemOpen,
-        getAccordionInstance, destroyAccordion, destroyAllAccordions,
+        getAccordionInstance, destroyAccordion, destroyAllAccordions, DEWPSidebar,
         ready: onDOMReady, version: '1.0.0', info: {
             name: 'DesignBase WordPress Library',
             description: '간단하고 강력한 프론트엔드 라이브러리',
