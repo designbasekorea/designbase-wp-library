@@ -1,0 +1,417 @@
+/**
+ * DesignBase Frontend Kit - 사이드바 컴포넌트
+ * 페이지의 측면에 위치하는 네비게이션 및 콘텐츠 영역
+ */
+
+.dewp-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: $bg-primary;
+    border-right: 1px solid $border-01;
+    box-shadow: $shadow-lg;
+    z-index: $z-sidebar;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // 사이드바 헤더
+    .dewp-sidebar-header {
+        padding: $padding-l;
+        border-bottom: 1px solid $border-01;
+        background: $bg-secondary;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .dewp-sidebar-title {
+            font-size: $font-size-l;
+            font-weight: $font-weight-semibold;
+            color: $text-primary;
+            margin: 0;
+        }
+
+        .dewp-sidebar-close {
+            background: none;
+            border: none;
+            color: $text-muted;
+            cursor: pointer;
+            padding: $padding-xs;
+            border-radius: $radius-s;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: $bg-muted;
+                color: $text-primary;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
+            }
+        }
+    }
+
+    // 사이드바 네비게이션
+    .dewp-sidebar-nav {
+        padding: $padding-m 0;
+
+        .dewp-sidebar-nav-item {
+            display: block;
+            width: 100%;
+            padding: $padding-s $padding-l;
+            color: $text-secondary;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: $font-size-base;
+            font-weight: $font-weight-medium;
+
+            &:hover {
+                background: $bg-secondary;
+                color: $text-primary;
+                transform: translateX(4px);
+            }
+
+            &.active {
+                background: $primary;
+                color: $white;
+                border-right: 3px solid $primary-700;
+
+                &:hover {
+                    background: $primary-700;
+                    transform: none;
+                }
+            }
+
+            // 아이콘이 있는 네비게이션 아이템
+            .dewp-sidebar-nav-icon {
+                width: 18px;
+                height: 18px;
+                margin-right: $padding-s;
+                vertical-align: middle;
+                fill: currentColor;
+            }
+
+            // 하위 메뉴가 있는 아이템
+            &.has-submenu {
+                position: relative;
+
+                .dewp-sidebar-submenu-toggle {
+                    position: absolute;
+                    right: $padding-l;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: transform 0.2s ease;
+                    color: $text-muted;
+
+                    &.expanded {
+                        transform: translateY(-50%) rotate(90deg);
+                    }
+                }
+            }
+        }
+
+        // 하위 메뉴
+        .dewp-sidebar-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: $bg-muted;
+
+            &.expanded {
+                max-height: 500px;
+            }
+
+            .dewp-sidebar-submenu-item {
+                padding: $padding-xs $padding-l $padding-xs $padding-xl;
+                color: $text-muted;
+                font-size: $font-size-s;
+                border: none;
+                background: none;
+                text-align: left;
+                cursor: pointer;
+                width: 100%;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: $bg-secondary;
+                    color: $text-primary;
+                }
+
+                &.active {
+                    background: rgba($primary, 0.1);
+                    color: $primary;
+                    border-right: 2px solid $primary;
+                }
+            }
+        }
+    }
+
+    // 사이드바 콘텐츠
+    .dewp-sidebar-content {
+        padding: $padding-l;
+        border-top: 1px solid $border-01;
+        flex: 1;
+
+        .dewp-sidebar-section {
+            margin-bottom: $margin-l;
+
+            .dewp-sidebar-section-title {
+                font-size: $font-size-s;
+                font-weight: $font-weight-semibold;
+                color: $text-muted;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-bottom: $margin-s;
+            }
+        }
+    }
+
+    // 사이드바 푸터
+    .dewp-sidebar-footer {
+        padding: $padding-l;
+        border-top: 1px solid $border-01;
+        background: $bg-secondary;
+        margin-top: auto;
+
+        .dewp-sidebar-footer-text {
+            font-size: $font-size-xs;
+            color: $text-muted;
+            text-align: center;
+            margin: 0;
+        }
+    }
+
+    // ============================================================================
+    // 사이드바 크기 변형
+    // ============================================================================
+
+    &-sm {
+        width: 200px;
+
+        .dewp-sidebar-header {
+            padding: $padding-s;
+            min-height: 50px;
+
+            .dewp-sidebar-title {
+                font-size: $font-size-base;
+            }
+        }
+
+        .dewp-sidebar-nav-item {
+            padding: $padding-xs $padding-s;
+            font-size: $font-size-s;
+        }
+    }
+
+    &-lg {
+        width: 360px;
+
+        .dewp-sidebar-header {
+            padding: $padding-xl;
+            min-height: 70px;
+
+            .dewp-sidebar-title {
+                font-size: $font-size-xl;
+            }
+        }
+
+        .dewp-sidebar-nav-item {
+            padding: $padding-m $padding-xl;
+            font-size: $font-size-l;
+        }
+    }
+
+    &-xl {
+        width: 480px;
+
+        .dewp-sidebar-header {
+            padding: $padding-xl $padding-xxl;
+            min-height: 80px;
+
+            .dewp-sidebar-title {
+                font-size: $font-size-xxl;
+            }
+        }
+
+        .dewp-sidebar-nav-item {
+            padding: $padding-l $padding-xxl;
+            font-size: $font-size-xl;
+        }
+    }
+
+    // ============================================================================
+    // 사이드바 위치 변형
+    // ============================================================================
+
+    &-right {
+        left: auto;
+        right: 0;
+        border-right: none;
+        border-left: 1px solid $border-01;
+    }
+
+    // ============================================================================
+    // 사이드바 상태 변형
+    // ============================================================================
+
+    &-collapsed {
+        transform: translateX(-100%);
+
+        &.dewp-sidebar-right {
+            transform: translateX(100%);
+        }
+    }
+
+    &-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($black, 0.5);
+        z-index: $z-sidebar - 1;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+
+        &.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    // ============================================================================
+    // 사이드바 테마 변형
+    // ============================================================================
+
+    &-dark {
+        background: $gray-900;
+        border-right-color: $gray-800;
+
+        .dewp-sidebar-header {
+            background: $gray-800;
+            border-bottom-color: $gray-700;
+        }
+
+        .dewp-sidebar-nav-item {
+            color: $gray-300;
+
+            &:hover {
+                background: $gray-800;
+                color: $white;
+            }
+
+            &.active {
+                background: $primary;
+                color: $white;
+            }
+        }
+
+        .dewp-sidebar-content {
+            border-top-color: $gray-700;
+        }
+
+        .dewp-sidebar-footer {
+            background: $gray-800;
+            border-top-color: $gray-700;
+        }
+    }
+
+    &-primary {
+        .dewp-sidebar-header {
+            background: $primary;
+            border-bottom-color: $primary-700;
+
+            .dewp-sidebar-title {
+                color: $white;
+            }
+
+            .dewp-sidebar-close {
+                color: $white;
+
+                &:hover {
+                    background: rgba($white, 0.2);
+                }
+            }
+        }
+
+        .dewp-sidebar-nav-item.active {
+            background: $primary;
+            color: $white;
+        }
+    }
+}
+
+// ============================================================================
+// 반응형 디자인
+// ============================================================================
+
+@include respond-below(md) {
+    .dewp-sidebar {
+        width: 100%;
+        max-width: 320px;
+
+        &-overlay {
+            display: block;
+        }
+    }
+}
+
+// ============================================================================
+// 접근성 및 애니메이션 최적화
+// ============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .dewp-sidebar {
+        transition: none;
+
+        .dewp-sidebar-nav-item,
+        .dewp-sidebar-submenu {
+            transition: none;
+        }
+    }
+}
+
+// ============================================================================
+// 사이드바 토글 버튼
+// ============================================================================
+
+.dewp-sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: $z-sidebar + 1;
+    background: $primary;
+    border: none;
+    color: $white;
+    padding: $padding-s;
+    border-radius: $radius-s;
+    cursor: pointer;
+    box-shadow: $shadow-md;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: $primary-700;
+        transform: scale(1.05);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+    &.dewp-sidebar-toggle-right {
+        left: auto;
+        right: 20px;
+    }
+}

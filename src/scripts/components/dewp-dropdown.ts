@@ -95,18 +95,29 @@ class DEWPDropdown {
         const container = this.findDropdownContainer(trigger as HTMLElement);
         if (!container) {
             console.error('🔽 드롭다운 컨테이너를 찾을 수 없음');
-            throw new Error('드롭다운 컨테이너를 찾을 수 없습니다. .dropdown 클래스가 있는 부모 요소가 필요합니다.');
+            throw new Error('드롭다운 컨테이너를 찾을 수 없습니다. .dewp-dropdown 클래스가 있는 부모 요소가 필요합니다.');
         }
         console.log('🔽 컨테이너 찾음:', container);
 
-        // 드롭다운 요소 생성
-        const dropdown = this.createDropdownElement(dropdownId, options);
-        console.log('🔽 드롭다운 요소 생성됨:', dropdown);
+        // 기존 메뉴 요소 찾기 (새로 생성하지 않음)
+        const existingMenu = container.querySelector('.dewp-dropdown-menu');
+        if (!existingMenu) {
+            console.error('🔽 기존 드롭다운 메뉴를 찾을 수 없음');
+            throw new Error('기존 드롭다운 메뉴를 찾을 수 없습니다.');
+        }
+        console.log('🔽 기존 메뉴 요소 찾음:', {
+            menu: existingMenu,
+            menuClasses: existingMenu.className,
+            container: container,
+            containerId: container.id,
+            trigger: trigger,
+            triggerClasses: trigger.className
+        });
 
-        // 드롭다운 인스턴스 생성
+        // 드롭다운 인스턴스 생성 (기존 메뉴 사용)
         const instance: DropdownInstance = {
             id: dropdownId,
-            element: dropdown,
+            element: existingMenu as HTMLElement, // 기존 메뉴 사용
             options: options,
             trigger: trigger as HTMLElement,
             container: container
@@ -114,14 +125,20 @@ class DEWPDropdown {
 
         this.dropdowns.set(dropdownId, instance);
         console.log('🔽 드롭다운 인스턴스 저장됨:', dropdownId);
+        console.log('🔽 현재 등록된 드롭다운 수:', this.dropdowns.size);
 
-        // 컨테이너에 드롭다운 추가
-        container.appendChild(dropdown);
-        console.log('🔽 컨테이너에 드롭다운 추가됨');
+        // 기존 메뉴에 이벤트 바인딩
+        this.bindDropdownItemEvents(existingMenu as HTMLElement, dropdownId);
+        console.log('🔽 기존 메뉴에 이벤트 바인딩 완료');
+
+        // 트리거 요소에 데이터 속성 추가 (디버깅용)
+        trigger.setAttribute('data-dropdown-id', dropdownId);
+        console.log('🔽 트리거에 드롭다운 ID 설정:', dropdownId);
 
         // 트리거 요소에 이벤트 바인딩
         this.bindTriggerEvents(instance);
         console.log('🔽 트리거 이벤트 바인딩 완료');
+        console.log('🔽 트리거 요소:', trigger);
 
         // 초기 텍스트 설정
         this.updateTriggerText(instance, options.placeholder || '선택하세요');
@@ -132,34 +149,62 @@ class DEWPDropdown {
     }
 
     private findDropdownContainer(trigger: HTMLElement): HTMLElement | null {
-        // 트리거 요소에서 시작해서 .dropdown 클래스를 가진 부모 요소 찾기
+        console.log('🔽 드롭다운 컨테이너 찾기 시작');
+        console.log('🔽 트리거 요소:', trigger);
+        console.log('🔽 트리거 클래스:', trigger.className);
+        console.log('🔽 트리거 부모:', trigger.parentElement?.tagName, trigger.parentElement?.className, trigger.parentElement?.id);
+
         let current = trigger.parentElement;
-        while (current) {
-            if (current.classList.contains('dropdown')) {
-                return current;
+        let depth = 0;
+        const maxDepth = 10;
+
+        while (current && depth < maxDepth) {
+            console.log(`🔽 부모 ${depth} 검사:`, {
+                tagName: current.tagName,
+                className: current.className,
+                id: current.id,
+                isDropdown: current.classList.contains('dewp-dropdown')
+            });
+
+            if (current.classList.contains('dewp-dropdown')) {
+                // 컨테이너에 메뉴가 있는지 확인
+                const hasMenu = current.querySelector('.dewp-dropdown-menu');
+                console.log('🔽 컨테이너 후보 발견:', {
+                    container: current,
+                    containerClasses: current.className,
+                    containerId: current.id,
+                    hasMenu: !!hasMenu,
+                    menuElement: hasMenu
+                });
+
+                if (hasMenu) {
+                    console.log('✅ 유효한 컨테이너 찾음:', current);
+                    return current;
+                } else {
+                    console.log('⚠️ 컨테이너에 메뉴가 없음, 계속 검색');
+                }
             }
+
             current = current.parentElement;
+            depth++;
         }
+
+        console.log('❌ 드롭다운 컨테이너를 찾을 수 없음');
+        console.log('🔽 부모 체인:', this.getParentChain(trigger));
         return null;
     }
 
-    private createDropdownElement(id: string, options: DropdownOptions): HTMLElement {
-        const dropdown = document.createElement('div');
-        dropdown.id = id;
-        dropdown.className = 'dewp-dropdown-menu';
-
-        // 컨텐츠 추가
-        if (typeof options.content === 'string') {
-            dropdown.innerHTML = options.content;
-        } else {
-            dropdown.appendChild(options.content);
+    private getParentChain(element: HTMLElement): string[] {
+        const chain: string[] = [];
+        let current = element.parentElement;
+        while (current) {
+            chain.push(`${current.tagName.toLowerCase()}.${current.className.replace(/\s+/g, '.')}`);
+            current = current.parentElement;
         }
-
-        // 드롭다운 아이템에 클릭 이벤트 추가
-        this.bindDropdownItemEvents(dropdown, id);
-
-        return dropdown;
+        return chain;
     }
+
+
 
     private bindDropdownItemEvents(dropdown: HTMLElement, dropdownId: string): void {
         const items = dropdown.querySelectorAll('.dewp-dropdown-item');
@@ -221,40 +266,65 @@ class DEWPDropdown {
 
     private bindTriggerEvents(instance: DropdownInstance): void {
         const { trigger, id } = instance;
+        console.log('🔽 트리거 이벤트 바인딩 시작:', id);
+        console.log('🔽 트리거 요소:', trigger);
+        console.log('🔽 트리거 클래스:', trigger.className);
+
+        // 클로저를 사용해서 정확한 인스턴스 ID 참조
+        const dropdownId = id;
 
         trigger.addEventListener('click', (e) => {
+            console.log('🔽 트리거 클릭 이벤트 발생:', dropdownId);
+            console.log('🔽 클릭된 요소:', e.target);
+            console.log('🔽 현재 활성 드롭다운:', this.activeDropdown?.id);
+            console.log('🔽 이 트리거가 연결된 드롭다운 ID:', dropdownId);
+            console.log('🔽 트리거의 data-dropdown-id:', trigger.getAttribute('data-dropdown-id'));
+
             e.preventDefault();
             e.stopPropagation();
 
             // 현재 드롭다운이 열려있으면 닫기
-            if (this.activeDropdown && this.activeDropdown.id === id) {
-                this.hide(id);
+            if (this.activeDropdown && this.activeDropdown.id === dropdownId) {
+                console.log('🔽 현재 열린 드롭다운 닫기:', dropdownId);
+                this.hide(dropdownId);
             } else {
                 // 다른 드롭다운이 열려있으면 닫고 새로 열기
                 if (this.activeDropdown) {
+                    console.log('🔽 다른 드롭다운 닫기:', this.activeDropdown.id);
                     this.hide(this.activeDropdown.id);
                 }
-                this.show(id);
+                console.log('🔽 새 드롭다운 열기:', dropdownId);
+                this.show(dropdownId);
             }
         });
+
+        console.log('🔽 트리거 이벤트 바인딩 완료:', dropdownId);
     }
 
     show(id: string): void {
+        console.log('🔽 드롭다운 show 호출:', id);
+
         const instance = this.dropdowns.get(id);
-        if (!instance) return;
+        if (!instance) {
+            console.error('🔽 드롭다운 인스턴스를 찾을 수 없음:', id);
+            return;
+        }
 
         // 기존 활성 드롭다운 닫기
         if (this.activeDropdown && this.activeDropdown.id !== id) {
+            console.log('🔽 기존 활성 드롭다운 닫기:', this.activeDropdown.id);
             this.hide(this.activeDropdown.id);
         }
 
         this.activeDropdown = instance;
+        console.log('🔽 활성 드롭다운 설정:', id);
 
         // 위치 계산 및 설정
         this.positionDropdown(instance);
 
         // 표시
         instance.element.classList.add('show');
+        console.log('🔽 드롭다운 표시됨:', id);
 
         // 이벤트 콜백
         if (instance.options.onShow) {
@@ -263,13 +333,20 @@ class DEWPDropdown {
     }
 
     hide(id: string): void {
+        console.log('🔽 드롭다운 hide 호출:', id);
+
         const instance = this.dropdowns.get(id);
-        if (!instance) return;
+        if (!instance) {
+            console.error('🔽 드롭다운 인스턴스를 찾을 수 없음:', id);
+            return;
+        }
 
         instance.element.classList.remove('show');
+        console.log('🔽 드롭다운 숨김됨:', id);
 
         if (this.activeDropdown && this.activeDropdown.id === id) {
             this.activeDropdown = null;
+            console.log('🔽 활성 드롭다운 해제:', id);
         }
 
         // 이벤트 콜백
@@ -284,9 +361,16 @@ class DEWPDropdown {
         const align = options.align || 'start';
         const offset = options.offset || 8;
 
+        console.log('🔽 드롭다운 위치 계산 시작:', instance.id);
+        console.log('🔽 위치 설정:', position, align, offset);
+
         const triggerRect = trigger.getBoundingClientRect();
         const containerRect = instance.container.getBoundingClientRect();
         const dropdownRect = element.getBoundingClientRect();
+
+        console.log('🔽 트리거 위치:', triggerRect);
+        console.log('🔽 컨테이너 위치:', containerRect);
+        console.log('🔽 드롭다운 크기:', dropdownRect);
 
         let top = 0;
         let left = 0;
@@ -328,20 +412,31 @@ class DEWPDropdown {
                 break;
         }
 
+        console.log('🔽 계산된 위치:', { top, left });
+
         // 위치 설정
         element.style.top = `${top}px`;
         element.style.left = `${left}px`;
         element.style.zIndex = `${this.zIndex++}`;
+
+        console.log('🔽 드롭다운 위치 설정 완료:', { top, left, zIndex: this.zIndex - 1 });
     }
 
     // 편의 메서드들
     toggle(id: string): void {
+        console.log('🔽 드롭다운 toggle 호출:', id);
+
         const instance = this.dropdowns.get(id);
-        if (!instance) return;
+        if (!instance) {
+            console.error('🔽 드롭다운 인스턴스를 찾을 수 없음:', id);
+            return;
+        }
 
         if (this.activeDropdown && this.activeDropdown.id === id) {
+            console.log('🔽 드롭다운이 열려있음, 닫기:', id);
             this.hide(id);
         } else {
+            console.log('🔽 드롭다운이 닫혀있음, 열기:', id);
             this.show(id);
         }
     }
@@ -391,6 +486,77 @@ class DEWPDropdown {
         }
         this.dropdowns.delete(id);
     }
+
+    // 자동 감지 및 초기화
+    autoInitialize(): void {
+        console.log('🔽 자동 드롭다운 초기화 시작');
+
+        // 모든 .dewp-dropdown 요소 찾기
+        const dropdownContainers = document.querySelectorAll('.dewp-dropdown');
+        console.log(`📋 찾은 드롭다운 컨테이너: ${dropdownContainers.length}개`);
+
+        dropdownContainers.forEach((container, index) => {
+            console.log(`\n🔍 드롭다운 ${index + 1} 분석 시작:`, {
+                container: container,
+                containerId: container.id,
+                containerClasses: container.className
+            });
+
+            // 각 컨테이너 내에서만 요소 찾기 (독립성 보장)
+            const trigger = container.querySelector('.dewp-dropdown-toggle');
+            const menu = container.querySelector('.dewp-dropdown-menu');
+
+            console.log(`🔍 드롭다운 ${index + 1} 요소 검색 결과:`, {
+                hasTrigger: !!trigger,
+                hasMenu: !!menu,
+                trigger: trigger,
+                triggerClasses: trigger?.className,
+                menu: menu,
+                menuClasses: menu?.className
+            });
+
+            if (trigger && menu) {
+                console.log(`✅ 드롭다운 ${index + 1} 구조 완성, 초기화 시작:`, {
+                    container: container,
+                    containerId: container.id,
+                    containerClasses: container.className,
+                    trigger: trigger,
+                    triggerClasses: trigger.className,
+                    menu: menu,
+                    menuClasses: menu.className
+                });
+
+                try {
+                    const dropdownId = this.create({
+                        trigger: trigger as HTMLElement,
+                        content: '', // content는 더 이상 사용하지 않음
+                        position: 'bottom',
+                        align: 'start',
+                        autoClose: true,
+                        placeholder: '선택하세요',
+                        onSelect: (value, text) => {
+                            console.log(`🔽 드롭다운 ${dropdownId} 선택됨: ${value} - ${text}`);
+                            // 선택된 텍스트를 토글 버튼에 표시
+                            const textElement = container.querySelector('.dewp-dropdown-text');
+                            if (textElement) {
+                                textElement.textContent = text;
+                            }
+                        }
+                    });
+                    console.log(`🎉 드롭다운 자동 초기화 완료: ${dropdownId} (컨테이너: ${index + 1}, ID: ${container.id})`);
+                } catch (error) {
+                    console.error(`❌ 드롭다운 자동 초기화 실패 (${index + 1}):`, error);
+                }
+            } else {
+                console.warn(`⚠️ 드롭다운 ${index + 1} 구조 불완전:`, {
+                    hasTrigger: !!trigger,
+                    hasMenu: !!menu,
+                    container: container,
+                    containerId: container.id
+                });
+            }
+        });
+    }
 }
 
 // 싱글톤 인스턴스 생성
@@ -427,6 +593,10 @@ export const getSelectedText = (id: string): string | undefined => {
 
 export const setDropdownValue = (id: string, value: string, text: string): void => {
     return dewpDropdown.setValue(id, value, text);
+};
+
+export const autoInitializeDropdowns = (): void => {
+    return dewpDropdown.autoInitialize();
 };
 
 // 기본 export

@@ -181,11 +181,11 @@ $btn-primary-text: $white;
 $btn-primary-hover-bg: darken($primary, 10%);
 $btn-primary-hover-border: darken($primary, 10%);
 
-$btn-secondary-bg: $secondary;
-$btn-secondary-border: $secondary;
-$btn-secondary-text: $white;
-$btn-secondary-hover-bg: darken($secondary, 10%);
-$btn-secondary-hover-border: darken($secondary, 10%);
+$btn-secondary-bg: $primary-100;
+$btn-secondary-border: $primary-100;
+$btn-secondary-text: $primary;
+$btn-secondary-hover-bg: darken($primary-100, 10%);
+$btn-secondary-hover-border: darken($primary-100, 10%);
 
 // 입력 필드
 $input-border: $border-01;

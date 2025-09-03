@@ -23,10 +23,10 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.2/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.3/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.2.2/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.2.3/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
@@ -237,7 +237,38 @@ const activeTab = window.DEWP.getActiveTab('.dewp-tabs');
 </div>
 ```
 
-### 7. DOM 유틸리티
+### 7. Drawer 컴포넌트
+```html
+<!-- 기본 Drawer 구조 -->
+<div class="dewp-drawer" id="my-drawer">
+  <div class="dewp-drawer-header">
+    <h3 class="dewp-drawer-title">제목</h3>
+    <button class="dewp-drawer-close">
+      <svg viewBox="0 0 24 24">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="dewp-drawer-content">
+    <!-- Drawer 내용 -->
+  </div>
+</div>
+
+<script>
+// Drawer 생성 및 제어
+const drawerId = window.DEWP.createDrawer({
+  target: '#my-drawer',
+  overlay: true,
+  closeOnEscape: true
+});
+
+window.DEWP.openDrawer(drawerId);
+window.DEWP.closeDrawer(drawerId);
+window.DEWP.toggleDrawer(drawerId);
+</script>
+```
+
+### 8. DOM 유틸리티
 ```javascript
 // DOM 요소 선택
 const element = window.DEWP.qs('.my-class');
@@ -467,5 +498,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.2/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.2/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.2.3/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.2.3/)

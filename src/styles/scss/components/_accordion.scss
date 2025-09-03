@@ -1,0 +1,560 @@
+/**
+ * DesignBase Frontend Kit - 아코디언 컴포넌트
+ * 접을 수 있는 콘텐츠 섹션을 제공하는 컴포넌트 스타일을 정의
+ */
+
+.dewp-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+
+    // ============================================================================
+    // 아코디언 아이템
+    // ============================================================================
+
+    .dewp-accordion-item {
+        border-bottom: 1px solid #f3f4f6;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &.active {
+            .dewp-accordion-header {
+                background: #f8fafc;
+                border-bottom-color: #e5e7eb;
+
+                .dewp-accordion-icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .dewp-accordion-content {
+                display: block;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 헤더
+    // ============================================================================
+
+    .dewp-accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        background: #ffffff;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        user-select: none;
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        text-align: left;
+        width: 100%;
+        min-height: 56px;
+
+        &:hover {
+            background: #f9fafb;
+            color: #111827;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        &:active {
+            background: #f3f4f6;
+        }
+
+        // 헤더 내부 콘텐츠
+        .dewp-accordion-title {
+            flex: 1;
+            margin-right: 16px;
+            line-height: 1.4;
+        }
+
+        .dewp-accordion-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6b7280;
+            margin-top: 4px;
+            display: block;
+        }
+
+        // 헤더 우측 요소들
+        .dewp-accordion-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+        }
+
+        .dewp-accordion-badge {
+            background: #e5e7eb;
+            color: #6b7280;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .dewp-accordion-count {
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        // 화살표 아이콘
+        .dewp-accordion-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #9ca3af;
+            flex-shrink: 0;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                fill: currentColor;
+            }
+        }
+
+        // 커스텀 아이콘
+        .dewp-accordion-custom-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            flex-shrink: 0;
+
+            svg {
+                width: 100%;
+                height: 100%;
+                fill: currentColor;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 콘텐츠
+    // ============================================================================
+
+    .dewp-accordion-content {
+        display: none;
+        padding: 0;
+        background: #ffffff;
+        color: #374151;
+        line-height: 1.6;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .dewp-accordion-content-inner {
+            padding: 20px;
+        }
+
+        // 콘텐츠 내부 요소들
+        p {
+            margin: 0 0 16px 0;
+            color: #4b5563;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        ul,
+        ol {
+            margin: 0 0 16px 0;
+            padding-left: 20px;
+            color: #4b5563;
+
+            li {
+                margin-bottom: 8px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        // 콘텐츠 내부 테이블
+        .dewp-table {
+            margin: 16px 0;
+        }
+
+        // 콘텐츠 내부 폼
+        .dewp-form-group {
+            margin-bottom: 16px;
+        }
+
+        // 콘텐츠 내부 버튼
+        .dewp-btn {
+            margin-right: 8px;
+            margin-bottom: 8px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 크기
+    // ============================================================================
+
+    &-sm {
+        .dewp-accordion-header {
+            padding: 12px 16px;
+            min-height: 48px;
+            font-size: 14px;
+
+            .dewp-accordion-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .dewp-accordion-custom-icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+        }
+
+        .dewp-accordion-content {
+
+            .dewp-accordion-content-inner {
+                padding: 16px;
+            }
+        }
+    }
+
+    &-lg {
+        .dewp-accordion-header {
+            padding: 20px 24px;
+            min-height: 64px;
+            font-size: 18px;
+
+            .dewp-accordion-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .dewp-accordion-custom-icon {
+                width: 28px;
+                height: 28px;
+                margin-right: 16px;
+            }
+        }
+
+        .dewp-accordion-content {
+
+            .dewp-accordion-content-inner {
+                padding: 24px;
+                font-size: 16px;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 변형
+    // ============================================================================
+
+    &-bordered {
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+
+        .dewp-accordion-item {
+            border-bottom: 1px solid #e5e7eb;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    &-separated {
+        gap: 8px;
+        border: none;
+        background: transparent;
+
+        .dewp-accordion-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+
+            &:last-child {
+                border-bottom: 1px solid #e5e7eb;
+            }
+        }
+    }
+
+    &-minimal {
+        border: none;
+        background: transparent;
+        gap: 0;
+
+        .dewp-accordion-item {
+            border: none;
+            background: transparent;
+
+            .dewp-accordion-header {
+                background: transparent;
+                padding: 12px 0;
+                border-bottom: 1px solid #f3f4f6;
+
+                &:hover {
+                    background: transparent;
+                    color: #3b82f6;
+                }
+            }
+
+            .dewp-accordion-content {
+                padding: 0 0 16px 0;
+            }
+
+            &.active .dewp-accordion-header {
+                background: transparent;
+                color: #3b82f6;
+                border-bottom-color: #3b82f6;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 테마
+    // ============================================================================
+
+    &-primary {
+        .dewp-accordion-header {
+            &.active {
+                background: #eff6ff;
+                color: #1e40af;
+                border-bottom-color: #3b82f6;
+
+                .dewp-accordion-icon {
+                    color: #3b82f6;
+                }
+            }
+
+            &:hover {
+                background: #f0f9ff;
+            }
+        }
+    }
+
+    &-success {
+        .dewp-accordion-header {
+            &.active {
+                background: #f0fdf4;
+                color: #166534;
+                border-bottom-color: #22c55e;
+
+                .dewp-accordion-icon {
+                    color: #22c55e;
+                }
+            }
+
+            &:hover {
+                background: #f0fdf4;
+            }
+        }
+    }
+
+    &-warning {
+        .dewp-accordion-header {
+            &.active {
+                background: #fffbeb;
+                color: #92400e;
+                border-bottom-color: #f59e0b;
+
+                .dewp-accordion-icon {
+                    color: #f59e0b;
+                }
+            }
+
+            &:hover {
+                background: #fffbeb;
+            }
+        }
+    }
+
+    &-danger {
+        .dewp-accordion-header {
+            &.active {
+                background: #fef2f2;
+                color: #991b1b;
+                border-bottom-color: #ef4444;
+
+                .dewp-accordion-icon {
+                    color: #ef4444;
+                }
+            }
+
+            &:hover {
+                background: #fef2f2;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 상태
+    // ============================================================================
+
+    &-disabled {
+        opacity: 0.6;
+        pointer-events: none;
+
+        .dewp-accordion-header {
+            cursor: not-allowed;
+            color: #9ca3af;
+        }
+    }
+
+    &-loading {
+        .dewp-accordion-header {
+            cursor: wait;
+
+            .dewp-accordion-icon {
+                animation: spin 1s linear infinite;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 아코디언 애니메이션
+    // ============================================================================
+
+    &-animated {
+        .dewp-accordion-content {
+            transition: all 0.3s ease;
+        }
+
+        .dewp-accordion-header {
+            .dewp-accordion-icon {
+                transition: transform 0.3s ease;
+            }
+        }
+    }
+
+    // ============================================================================
+    // 반응형 디자인
+    // ============================================================================
+
+    @media (max-width: 768px) {
+        .dewp-accordion-header {
+            padding: 14px 16px;
+            min-height: 52px;
+            font-size: 15px;
+
+            .dewp-accordion-meta {
+                gap: 8px;
+            }
+
+            .dewp-accordion-subtitle {
+                font-size: 13px;
+            }
+        }
+
+        .dewp-accordion-content {
+            padding: 0 16px 18px;
+        }
+
+        &-lg .dewp-accordion-header {
+            padding: 18px 20px;
+            min-height: 60px;
+            font-size: 17px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .dewp-accordion-header {
+            padding: 12px 14px;
+            min-height: 48px;
+            font-size: 14px;
+
+            .dewp-accordion-meta {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 4px;
+            }
+
+            .dewp-accordion-subtitle {
+                font-size: 12px;
+            }
+        }
+
+        .dewp-accordion-content {
+            padding: 0 14px 16px;
+            font-size: 14px;
+        }
+    }
+}
+
+// ============================================================================
+// 유틸리티 클래스
+// ============================================================================
+
+.dewp-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dewp-accordion-inline {
+    display: inline-block;
+    min-width: 300px;
+}
+
+// ============================================================================
+// 애니메이션 키프레임
+// ============================================================================
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// ============================================================================
+// 접근성 개선
+// ============================================================================
+
+.dewp-accordion {
+    [role="button"] {
+        cursor: pointer;
+    }
+
+    [role="region"] {
+        overflow: hidden;
+    }
+
+    [aria-expanded="true"] {
+        .dewp-accordion-icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    [aria-expanded="false"] {
+        .dewp-accordion-icon {
+            transform: rotate(0deg);
+        }
+    }
+}

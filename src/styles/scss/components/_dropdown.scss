@@ -1,41 +1,32 @@
 /**
  * DesignBase Frontend Kit - 드롭다운 컴포넌트
- * 메뉴나 옵션을 표시하는 드롭다운 스타일을 정의
+ * 기본적인 드롭다운 스타일만 정의
  */
 
 .dewp-dropdown {
-    position: relative; // 부모 요소 기준으로 상대 위치
+    position: relative;
     display: inline-block;
-
-    // 드롭다운이 열린 상태에서 버튼 스타일
-    &:has(.dewp-dropdown-menu.show) .dewp-dropdown-toggle {
-        background-color: $bg-secondary;
-        color: $text-primary;
-    }
 
     // 드롭다운 메뉴
     .dewp-dropdown-menu {
-        position: absolute; // 부모 기준으로 절대 위치
+        position: absolute;
+        top: 100%;
+        left: 0;
         background: $bg-primary;
         border: 1px solid $border-01;
         border-radius: $radius-2;
         box-shadow: $shadow-lg;
         z-index: $z-dropdown;
         min-width: 160px;
-        max-width: 300px;
         opacity: 0;
         visibility: hidden;
-        transform: scale(0.95) translateY(-8px);
-        transition: all $transition-fast ease;
-        overflow: hidden;
-        pointer-events: none; // 숨겨진 상태에서는 클릭 불가
+        transition: all 0.2s ease;
+        margin-top: 4px;
 
         // 표시 상태
         &.show {
             opacity: 1;
             visibility: visible;
-            transform: scale(1) translateY(0);
-            pointer-events: auto; // 표시된 상태에서만 클릭 가능
         }
 
         // 드롭다운 아이템
@@ -45,12 +36,11 @@
             padding: $padding-s $padding-l;
             background: none;
             border: none;
-            box-shadow: none;
             text-align: left;
             font-size: $font-size-s;
             color: $text-primary;
             cursor: pointer;
-            transition: background-color $transition-fast ease;
+            transition: background-color 0.15s ease;
             text-decoration: none;
             line-height: $line-height-base;
             border-bottom: 1px solid $border-01;
@@ -62,176 +52,18 @@
             &:hover {
                 background-color: $bg-secondary;
             }
-
-            &:focus {
-                background-color: $bg-secondary;
-                @include focus-ring;
-            }
-
-            &:active {
-                background-color: $gray-200;
-            }
-
-            // 아이콘과 텍스트 조합
-            .dropdown-icon {
-                width: 14px;
-                height: 14px;
-                margin-right: $margin-s;
-                vertical-align: middle;
-                fill: currentColor;
-            }
-
-            // 상태별 색상
-            &.dropdown-item-primary {
-                color: $primary;
-
-                &:hover {
-                    background-color: rgba($primary, 0.1);
-                }
-            }
-
-            &.dropdown-item-success {
-                color: $success;
-
-                &:hover {
-                    background-color: rgba($success, 0.1);
-                }
-            }
-
-            &.dropdown-item-warning {
-                color: $warning;
-
-                &:hover {
-                    background-color: rgba($warning, 0.1);
-                }
-            }
-
-            &.dropdown-item-danger {
-                color: $danger;
-
-                &:hover {
-                    background-color: rgba($danger, 0.1);
-                }
-            }
-
-            &.dropdown-item-info {
-                color: $info;
-
-                &:hover {
-                    background-color: rgba($info, 0.1);
-                }
-            }
-
-            // 비활성화 상태
-            &:disabled,
-            &.disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-                pointer-events: none;
-            }
-
-            // 구분선
-            &.dropdown-divider {
-                padding: 0;
-                height: 1px;
-                background-color: $border-01;
-                margin: $margin-xs 0;
-                pointer-events: none;
-                border-bottom: none;
-
-                &:hover {
-                    background-color: $border-01;
-                }
-            }
-
-            // 헤더 스타일
-            &.dropdown-header {
-                padding: $padding-xs $padding-l;
-                font-size: $font-size-xs;
-                font-weight: $font-weight-semibold;
-                color: $text-muted;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                pointer-events: none;
-                border-bottom: none;
-
-                &:hover {
-                    background-color: transparent;
-                }
-            }
-        }
-
-        // 크기 변형
-        &.dropdown-sm {
-            min-width: 140px;
-
-            .dewp-dropdown-item {
-                padding: $padding-xs $padding-s;
-                font-size: $font-size-xs;
-            }
-        }
-
-        &.dropdown-lg {
-            min-width: 200px;
-
-            .dewp-dropdown-item {
-                padding: $padding-l $padding-xl;
-                font-size: $font-size-base;
-            }
-        }
-
-        // 스타일 변형
-        &.dropdown-bordered {
-            border: 2px solid $border-01;
-        }
-
-        &.dropdown-shadow-lg {
-            box-shadow: $shadow-xl;
-        }
-
-        &.dropdown-rounded {
-            border-radius: $radius-l;
-        }
-
-        &.dropdown-no-border {
-            border: none;
-        }
-
-        // 스크롤 가능한 드롭다운
-        &.dropdown-scrollable {
-            max-height: 300px;
-            overflow-y: auto;
-
-            &::-webkit-scrollbar {
-                width: 6px;
-            }
-
-            &::-webkit-scrollbar-track {
-                background: $bg-secondary;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: $gray-400;
-                border-radius: 3px;
-
-                &:hover {
-                    background: $gray-500;
-                }
-            }
         }
     }
 
     // 드롭다운 토글 버튼
     .dewp-dropdown-toggle {
-        background: none;
-        border: none;
-        padding: 8px 12px;
-        background-color: $bg-primary;
+        background: $bg-primary;
         border: 1px solid $border-01;
         border-radius: $radius-s;
+        padding: 8px 12px;
         cursor: pointer;
         color: $text-secondary;
-        transition: all $transition-fast ease;
+        transition: all 0.2s ease;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -240,16 +72,12 @@
         gap: 8px;
 
         &:hover {
-            color: $text-primary;
             background-color: $bg-secondary;
-        }
-
-        &:focus {
-            @include focus-ring;
+            border-color: $border-02;
         }
 
         // 드롭다운 텍스트
-        .dropdown-text {
+        .dewp-dropdown-text {
             flex: 1;
             text-align: left;
             white-space: nowrap;
@@ -258,252 +86,17 @@
         }
 
         // SVG 화살표
-        .dropdown-arrow {
+        .dewp-dropdown-arrow {
             width: 16px;
             height: 16px;
             fill: currentColor;
-            transition: transform $transition-fast ease;
+            transition: transform 0.2s ease;
             flex-shrink: 0;
         }
-
-        // 드롭다운이 열린 상태에서 화살표 회전
-        .dropdown:has(.dewp-dropdown-menu.show) & .dropdown-arrow {
-            transform: rotate(180deg);
-        }
     }
 
-    // ============================================================================
-    // 드롭다운 크기 변형
-    // ============================================================================
-
-    &-sm {
-        .dewp-dropdown-toggle {
-            min-width: 28px;
-            min-height: 28px;
-            padding: $padding-xs;
-
-            svg {
-                width: 14px;
-                height: 14px;
-            }
-        }
-
-        .dewp-dropdown-menu {
-            min-width: 140px;
-
-            .dewp-dropdown-item {
-                padding: $padding-xs $padding-s;
-                font-size: $font-size-xs;
-            }
-        }
-    }
-
-    &-lg {
-        .dewp-dropdown-toggle {
-            min-width: 40px;
-            min-height: 40px;
-            padding: $padding-s;
-
-            svg {
-                width: 18px;
-                height: 18px;
-            }
-        }
-
-        .dewp-dropdown-menu {
-            min-width: 200px;
-
-            .dewp-dropdown-item {
-                padding: $padding-l $padding-xl;
-                font-size: $font-size-base;
-            }
-        }
-    }
-
-    // ============================================================================
-    // 드롭다운 스타일 변형
-    // ============================================================================
-
-    &-bordered {
-        .dewp-dropdown-menu {
-            border: 2px solid $border-01;
-        }
-    }
-
-    &-shadow-lg {
-        .dewp-dropdown-menu {
-            box-shadow: $shadow-xl;
-        }
-    }
-
-    &-rounded {
-        .dewp-dropdown-menu {
-            border-radius: $radius-l;
-        }
-    }
-
-    &-no-border {
-        .dewp-dropdown-menu {
-            border: none;
-        }
-    }
-
-    // ============================================================================
-    // 드롭다운 색상 변형
-    // ============================================================================
-
-    &-primary {
-        .dewp-dropdown-toggle {
-            background-color: $primary;
-            border-color: $primary;
-            color: $white;
-
-            &:hover {
-                background-color: darken($primary, 10%);
-                border-color: darken($primary, 10%);
-            }
-        }
-    }
-
-    &-success {
-        .dewp-dropdown-toggle {
-            background-color: $success;
-            border-color: $success;
-            color: $white;
-
-            &:hover {
-                background-color: darken($success, 10%);
-                border-color: darken($success, 10%);
-            }
-        }
-    }
-
-    &-warning {
-        .dewp-dropdown-toggle {
-            background-color: $warning;
-            border-color: $warning;
-            color: $text-primary;
-
-            &:hover {
-                background-color: darken($warning, 10%);
-                border-color: darken($warning, 10%);
-            }
-        }
-    }
-
-    &-danger {
-        .dewp-dropdown-toggle {
-            background-color: $danger;
-            border-color: $danger;
-            color: $white;
-
-            &:hover {
-                background-color: darken($danger, 10%);
-                border-color: darken($danger, 10%);
-            }
-        }
-    }
-
-    &-info {
-        .dewp-dropdown-toggle {
-            background-color: $info;
-            border-color: $info;
-            color: $white;
-
-            &:hover {
-                background-color: darken($info, 10%);
-                border-color: darken($info, 10%);
-            }
-        }
-    }
-
-    // ============================================================================
-    // 드롭다운 위치 변형
-    // ============================================================================
-
-    &-up {
-        .dewp-dropdown-menu {
-            top: auto;
-            bottom: 100%;
-            margin-bottom: $margin-xs;
-        }
-    }
-
-    &-left {
-        .dewp-dropdown-menu {
-            right: auto;
-            left: 0;
-        }
-    }
-
-    &-right {
-        .dewp-dropdown-menu {
-            left: auto;
-            right: 0;
-        }
-    }
-
-    &-center {
-        .dewp-dropdown-menu {
-            right: auto;
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-
-            &.show {
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-    }
-
-    &-full-width {
-        width: 100%;
-
-        .dewp-dropdown-toggle {
-            width: 100%;
-            justify-content: space-between;
-        }
-
-        .dewp-dropdown-menu {
-            width: 100%;
-            min-width: 100%;
-        }
-    }
-
-    &-auto-width {
-        .dewp-dropdown-menu {
-            width: auto;
-            min-width: auto;
-            white-space: nowrap;
-        }
-    }
-}
-
-// ============================================================================
-// 반응형 디자인
-// ============================================================================
-
-@include respond-below(md) {
-
-    .dewp-dropdown,
-    .dewp-dropdown-container .dewp-dropdown-menu {
-        min-width: 180px;
-        box-shadow: $shadow-xl;
-    }
-}
-
-// ============================================================================
-// 접근성 및 애니메이션 최적화
-// ============================================================================
-
-@media (prefers-reduced-motion: reduce) {
-
-    .dewp-dropdown,
-    .dewp-dropdown-container {
-
-        .dewp-dropdown-toggle,
-        .dewp-dropdown-menu,
-        .dewp-dropdown-item {
-            transition: none;
-        }
+    // 드롭다운이 열린 상태에서 화살표 회전
+    &:has(.dewp-dropdown-menu.show) .dewp-dropdown-arrow {
+        transform: rotate(180deg);
     }
 }

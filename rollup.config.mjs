@@ -15,15 +15,15 @@ export default [
                 sourcemap: false,
                 extend: false,
                 globals: {},
-                exports: 'named',
-                intro: 'if (typeof window !== "undefined") { window.DEWP = {}; }'
+                intro: ''
             }
         ],
         plugins: [
             resolve({ browser: true }),
             commonjs(),
             typescript({
-                tsconfig: './tsconfig.json'
+                tsconfig: './tsconfig.json',
+                declaration: false
             }),
             terser()
         ]
