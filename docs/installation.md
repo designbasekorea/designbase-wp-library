@@ -38,22 +38,31 @@ pnpm add designbase-wp-library
 <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
 ```
 
+#### jsDelivr 최신 버전
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/css/dewp.min.css">
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+```
+
 #### 특정 버전
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
 ```
 
 #### jsDelivr CDN (대안)
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
 ```
 
 ### 3. 로컬 파일 다운로드
@@ -88,7 +97,7 @@ your-project/
   <title>DEWP 라이브러리 테스트</title>
   
   <!-- DEWP CSS 로드 -->
-  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 </head>
 <body>
   <!-- 페이지 콘텐츠 -->
@@ -101,7 +110,7 @@ your-project/
   </div>
   
   <!-- DEWP JavaScript 로드 -->
-  <script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
   
   <script>
     // DEWP 라이브러리 로드 확인
@@ -140,17 +149,17 @@ function my_plugin_load_dewp() {
         // CSS 로드
         wp_enqueue_style(
             'dewp-library',
-            'https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css',
+            'https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css',
             array(),
-            '0.3.0'
+            null
         );
         
         // JavaScript 로드
         wp_enqueue_script(
             'dewp-library',
-            'https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js',
+            'https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js',
             array(),
-            '0.3.0',
+            null,
             true // footer에 로드
         );
     }
@@ -203,16 +212,16 @@ function my_theme_load_dewp() {
     if (is_admin()) {
         wp_enqueue_style(
             'dewp-library',
-            'https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css',
+            'https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css',
             array(),
-            '0.3.0'
+            null
         );
         
         wp_enqueue_script(
             'dewp-library',
-            'https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js',
+            'https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js',
             array(),
-            '0.3.0',
+            null,
             true
         );
     }
@@ -306,7 +315,7 @@ export default defineConfig({
   <div id="app"></div>
   
   <!-- DEWP 라이브러리 로드 -->
-  <script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
@@ -324,13 +333,21 @@ export default defineConfig({
   <title>React + DEWP</title>
   
   <!-- DEWP CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 </head>
 <body>
   <div id="root"></div>
   
   <!-- DEWP JavaScript -->
-  <script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+
+## 🆕 최신 버전 사용 요약
+
+- npm: `npm install designbase-wp-library@latest`
+- unpkg: `https://unpkg.com/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}`
+- jsDelivr: `https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}`
+
+주의: 프로덕션에서는 예기치 않은 변경을 피하려면 고정 버전(예: `@0.4.0`)을 권장합니다. 개발/프리뷰 환경에는 `@latest`가 편리합니다.
 </body>
 </html>
 ```

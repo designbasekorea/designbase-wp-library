@@ -16,10 +16,10 @@ npm install designbase-wp-library
 #### CDN을 통한 연결
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
 ```
 
 ### 기본 사용법
@@ -27,13 +27,13 @@ npm install designbase-wp-library
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 </head>
 <body>
   <!-- 버튼 컴포넌트 예시 -->
   <button class="dewp-btn dewp-btn-primary">Primary Button</button>
   
-  <script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+  <script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
   <script>
     // DEWP 객체를 통해 컴포넌트 제어
     if (window.DEWP) {
@@ -57,19 +57,29 @@ npm install designbase-wp-library
 - [**아코디언 (Accordion)**](./components/accordion.md) - 접을 수 있는 콘텐츠 섹션
 - [**드롭다운 (Dropdown)**](./components/dropdown.md) - 선택 메뉴
 - [**모달 (Modal)**](./components/modal.md) - 팝업 다이얼로그
-- [**토스트 (Toast)**](./components/toast.md) - 알림 메시지
+- [**툴팁 (Tooltip)**](./components/tooltip.md) - 간단한 설명
+- [**팝오버 (Popover)**](./components/popover.md) - 인접 컨텐츠
+- (토스트 문서는 추후 보강 예정)
 
 ### 레이아웃 컴포넌트
-- [**헤더 (Header)**](./components/header.md) - 페이지 제목 및 액션
-- [**섹션 (Section)**](./components/section.md) - 콘텐츠 그룹화
+- [**헤더 (Header)**](./components/header.md) - 페이지 제목 및 액션 (문서화 예정)
+- [**섹션 (Section)**](./components/section.md) - 콘텐츠 그룹화 (문서화 예정)
 - [**사이드바 (Sidebar)**](./components/sidebar.md) - 고정 위치 네비게이션
 - [**드로어 (Drawer)**](./components/drawer.md) - 슬라이드 아웃 패널
 
 ### 유틸리티 컴포넌트
-- [**알림 (Notice)**](./components/notice.md) - 정보, 경고, 오류 메시지
-- [**페이지네이션 (Pagination)**](./components/pagination.md) - 페이지 네비게이션
-- [**빈 상태 (Empty State)**](./components/empty-state.md) - 데이터 없음 상태
-- [**토글 (Toggle)**](./components/toggle.md) - 스위치 형태의 입력
+- [**알림 (Notice)**](./components/notice.md) - 정보, 경고, 오류 메시지 (문서화 예정)
+- [**페이지네션 (Pagination)**](./components/pagination.md) - 페이지 네비게이션 (문서화 예정)
+- [**빈 상태 (Empty State)**](./components/empty-state.md) - 데이터 없음 상태 (문서화 예정)
+- [**토글 (Toggle)**](./components/toggle.md) - 스위치 형태의 입력 (문서화 예정)
+- [**스피너 (Spinner)**](./components/spinner.md) - 로딩 인디케이터
+- [**스탯 (Stat)**](./components/stat.md) - 지표 카드
+- [**브레드크럼 (Breadcrumb)**](./components/breadcrumb.md) - 경로 표시
+- [**칩 (Chip)**](./components/chip.md) - 태그/필터
+- [**디바이더 (Divider)**](./components/divider.md) - 구분선
+- [**프로그레스 (Progress)**](./components/progress.md) - 진행 바
+- [**레인지 슬라이더 (Range Slider)**](./components/range-slider.md) - 단일/듀얼 슬라이더
+- [**스테퍼 (Stepper)**](./components/stepper.md) - 숫자 증감 UI
 
 ## 🎨 테마 및 커스터마이징
 
@@ -105,17 +115,17 @@ $spacing-xl: 32px;
 window.DEWP // 모든 컴포넌트 함수들이 포함된 객체
 ```
 
-### 주요 함수들
+### 주요 함수들 (발췌)
 ```javascript
 // 컴포넌트 초기화
 DEWP.initTabs(container, options)
 DEWP.initAccordion(container, options)
-DEWP.createModal(options)
-DEWP.createDrawer(options)
-DEWP.createSidebar(config)
+DEWP.createModal(options); DEWP.openModal(id); DEWP.closeModal(id)
+DEWP.createDrawer(options); DEWP.openDrawer(id); DEWP.closeDrawer(id)
+DEWPSidebar // new DEWPSidebar(config)
 
 // 컴포넌트 제어
-DEWP.switchTab(containerId, tabId)
+DEWP.activateTab(containerId, tabId)
 DEWP.toggleAccordionItem(containerId, itemId)
 DEWP.showModal(modalId)
 DEWP.openDrawer(drawerId)
@@ -173,6 +183,6 @@ console.log('아코디언 컨테이너:', document.querySelectorAll('[data-accor
 
 ---
 
-**버전**: 0.3.0  
+**버전**: 0.4.0  
 **최종 업데이트**: 2024년 1월  
 **호환성**: WordPress 5.0+, 모던 브라우저

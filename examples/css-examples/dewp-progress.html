@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Progress</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">프로그레스</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-progress" style="max-width:480px;">
+        <div class="dewp-progress-bar" id="pb" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Progress 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>작업 진행 정도를 백분율로 시각화합니다.</p>
+      </section>
+
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-progress"&gt;
+  &lt;div class="dewp-progress-bar" style="width:50%"&gt;&lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>JS 제어</h4>
+        <pre>
+<code class="language-js">const bar = document.querySelector('.dewp-progress-bar');
+bar.style.width = '75%';</code>
+        </pre>
+      </section>
+
+      <p>자세한 내용은 <code>docs/components/progress.md</code> 참고.</p>
+    </div>
+  </div>
+
+  <script>
+    let v = 0; const el = document.getElementById('pb');
+    const t = setInterval(() => { v = Math.min(100, v + 5); el.style.width = v + '%'; if (v === 100) clearInterval(t); }, 150);
+  </script>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./_examples-manifest.js"></script>
+  <script src="./_examples-shell.js"></script>
+</body>
+
+</html>

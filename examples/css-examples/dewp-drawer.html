@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Drawer</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">드로어</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <button class="dewp-btn dewp-btn-primary" id="openDrawer">드로어 열기</button>
+      <div id="my-drawer" class="dewp-drawer dewp-drawer-right dewp-drawer-md" style="padding:16px;">
+        <div class="dewp-drawer-header">
+          <h3 class="dewp-drawer-title">제목</h3>
+          <button class="dewp-drawer-close" type="button" aria-label="닫기" title="닫기" role="button">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+            </svg>
+          </button>
+        </div>
+        <div class="dewp-drawer-content">
+          내용
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Drawer 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>화면 측면에서 슬라이드 인/아웃하는 패널. 오버레이/ESC로 닫기 옵션을 지원합니다.</p>
+      </section>
+
+      <section>
+        <h4>생성/열기</h4>
+        <pre>
+<code class="language-js">const id = DEWP.createDrawer({ target: '#my-drawer', overlay: true, closeOnEscape: true, closeOnOverlayClick: true });
+DEWP.openDrawer(id);</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>API</h4>
+        <pre>
+<code class="language-js">DEWP.closeDrawer(id);
+DEWP.toggleDrawer(id);
+DEWP.closeAllDrawers();</code>
+        </pre>
+      </section>
+
+      <p>자세한 내용은 <code>docs/components/drawer.md</code> 참고.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script>
+    let id;
+    document.getElementById('openDrawer').addEventListener('click', function () {
+      if (!window.DEWP) return;
+      if (!id) id = window.DEWP.createDrawer({ target: '#my-drawer', overlay: true, closeOnEscape: true, closeOnOverlayClick: true });
+      window.DEWP.openDrawer(id);
+    });
+  </script>
+
+  <script src="./_examples-manifest.js"></script>
+  <script src="./_examples-shell.js"></script>
+</body>
+
+</html>

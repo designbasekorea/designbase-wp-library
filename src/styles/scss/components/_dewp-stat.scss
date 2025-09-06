@@ -20,7 +20,7 @@
 .dewp-stat {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: $margin-l;
     padding: $padding-l;
     background: $bg-primary;
     border: 1px solid $border-01;

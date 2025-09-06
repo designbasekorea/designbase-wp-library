@@ -135,6 +135,20 @@
             }
         }
 
+        // 기본 화살표 (커스텀 아이콘이 없을 때 자동 표시)
+        &:not(:has(.dewp-accordion-icon))::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-left: $spacing-3;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 16px 16px;
+            transition: transform $transition-base;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3e%3cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z' clip-rule='evenodd'/%3e%3c/svg%3e");
+        }
+
         // 커스텀 아이콘
         .dewp-accordion-custom-icon {
             width: 24px;
@@ -147,6 +161,11 @@
                 height: 100%;
                 fill: currentColor;
             }
+        }
+
+        // 열린 상태에서 기본 화살표 회전
+        &[aria-expanded="true"]:not(:has(.dewp-accordion-icon))::after {
+            transform: rotate(180deg);
         }
     }
 

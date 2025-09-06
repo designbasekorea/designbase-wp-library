@@ -1,6 +1,7 @@
 /**
  * DEWP Breadcrumb Component
  */
+@use "sass:color";
 @use "../basic/index" as *;
 
 .dewp-breadcrumb {
@@ -13,21 +14,23 @@
     .dewp-breadcrumb-item {
         display: inline-flex;
         align-items: center;
-        color: $text-secondary;
+        color: $text-muted; // 기본은 덜 강조
 
         a {
-            color: inherit;
+            color: $primary; // 이전 스텝 링크는 더 강조
+            font-weight: $font-weight-medium;
             text-decoration: none;
             transition: color $transition-fast;
 
             &:hover {
-                color: $text-primary;
+                color: color.adjust($primary, $lightness: -10%);
+                text-decoration: underline;
             }
         }
 
         &.is-active {
-            color: $text-primary;
-            font-weight: $font-weight-medium;
+            color: $text-secondary; // 현재 페이지는 덜 보이게
+            font-weight: $font-weight-normal;
         }
 
         .dewp-breadcrumb-separator {

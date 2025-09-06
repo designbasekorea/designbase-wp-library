@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Table</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">기본 테이블</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <table class="dewp-table" style="max-width:800px;">
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>역할</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>김철수</td>
+            <td>kim@example.com</td>
+            <td><span class="dewp-badge dewp-badge-primary">관리자</span></td>
+          </tr>
+          <tr>
+            <td>이영희</td>
+            <td>lee@example.com</td>
+            <td><span class="dewp-badge dewp-badge-secondary">사용자</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Table 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>데이터를 행/열 구조로 표시하는 표 컴포넌트입니다.</p>
+      </section>
+
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;table class="dewp-table"&gt;
+  &lt;thead&gt;...&lt;/thead&gt;
+  &lt;tbody&gt;...&lt;/tbody&gt;
+&lt;/table&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>추천 사용</h4>
+        <ul>
+          <li>셀 내용 정렬은 셀 클래스 또는 유틸리티 사용</li>
+          <li>배지/버튼과 조합해 상태 표시</li>
+        </ul>
+      </section>
+
+      <p>자세한 내용은 <code>docs/components/table.md</code> 참고.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./_examples-manifest.js"></script>
+  <script src="./_examples-shell.js"></script>
+</body>
+
+</html>

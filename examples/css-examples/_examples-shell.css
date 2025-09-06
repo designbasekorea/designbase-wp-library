@@ -1,0 +1,159 @@
+/* 예시 공통 레이아웃: 좌측 고정 사이드바 + 우측 컨텐츠 */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.ex-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: 100%;
+}
+
+.ex-sidebar {
+  border-right: 1px solid #e5e7eb;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+.ex-sidebar .ex-brand {
+  padding: 16px;
+  font-weight: 600;
+}
+
+.ex-sidebar nav {
+  padding: 8px 0;
+}
+
+.ex-sidebar a {
+  display: block;
+  padding: 10px 16px;
+  color: #111827;
+  text-decoration: none;
+}
+
+.ex-sidebar a.active {
+  background: #eef2ff;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.ex-content {
+  overflow: auto;
+}
+
+.ex-content .ex-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ex-content .ex-main {
+  padding: 20px;
+}
+
+/* Example-only section (docs-like) */
+.ex-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  margin: 16px 20px;
+}
+
+.ex-section+.ex-section {
+  margin-top: 20px;
+}
+
+.ex-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ex-section-title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ex-section-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.ex-section-description {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.ex-section-content {
+  padding: 16px;
+}
+
+/* 모바일: 상단으로 접기 */
+@media (max-width: 1024px) {
+  .ex-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .ex-sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+/* Sidebar demo: place component sidebar inside content (absolute) */
+body.ex-demo-sidebar .ex-content {
+  position: relative;
+}
+
+body.ex-demo-sidebar .ex-content .dewp-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  border-right: 1px solid #e5e7eb;
+  background: #fff;
+  z-index: 1;
+}
+
+body.ex-demo-sidebar .ex-content .ex-main {
+  margin-left: 260px;
+}
+
+/* Docs summary styles */
+.ex-section-content.ex-docs {
+  display: grid;
+  gap: 20px;
+}
+
+.ex-section-content.ex-docs h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.ex-section-content.ex-docs p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.ex-section-content.ex-docs pre {
+  margin: 0;
+}
+
+.ex-section-content.ex-docs ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #374151;
+}

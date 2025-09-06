@@ -130,13 +130,10 @@ DEWP.initTabs(container, {
 ### 탭 제어 함수
 ```javascript
 // 특정 탭으로 전환
-DEWP.switchTab('my-tabs', 'tab2');
+DEWP.activateTab('my-tabs', 'tab2');
 
 // 현재 활성 탭 확인
 const activeTab = DEWP.getActiveTab('my-tabs');
-
-// 특정 탭 활성화 여부 확인
-const isActive = DEWP.isTabActive('my-tabs', 'tab1');
 ```
 
 ## 📱 여러 탭 그룹 사용법

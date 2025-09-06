@@ -12,6 +12,8 @@
     overflow: hidden;
     background: $bg-primary;
 
+    .dewp-stepper-decrement,
+    .dewp-stepper-increment,
     .dewp-stepper-btn {
         appearance: none;
         background: $bg-secondary;

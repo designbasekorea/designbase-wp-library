@@ -13,6 +13,7 @@
         z-index: $z-popover;
         min-width: 220px;
         max-width: 320px;
+        display: block;
         padding: $spacing-3 $spacing-4;
         background: $bg-primary;
         color: $text-primary;
