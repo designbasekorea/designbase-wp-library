@@ -3,6 +3,8 @@
  * 페이지 측면에서 슬라이드되어 나타나는 서랍 형태의 패널
  */
 
+@use "../basic/index" as *;
+
 .dewp-drawer {
     position: fixed;
     top: 0;

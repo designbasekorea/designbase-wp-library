@@ -1,6 +1,6 @@
 {
     "name": "designbase-wp-library",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Reusable CSS/JS kit for WordPress plugins (frontend/admin).",
     "license": "MIT",
     "type": "module",
@@ -16,8 +16,8 @@
     ],
     "scripts": {
         "clean": "rimraf dist",
-        "build:css": "sass src/styles/scss/main.scss:dist/css/dewp.min.css --style=compressed --no-source-map",
-        "build:css:watch": "sass src/styles/scss/main.scss:dist/css/dewp.min.css --watch",
+        "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --style=compressed --no-source-map",
+        "build:css:watch": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --watch",
         "build:js": "rollup -c",
         "build:js:watch": "rollup -c -w",
         "build": "npm run clean && npm run build:css && npm run build:js",
@@ -29,15 +29,22 @@
         "changeset": "changeset",
         "version": "changeset version",
         "release": "npm run build && changeset publish",
-        "preview": "npm run build && npm pack --dry-run"
+        "preview": "npm run build && npm pack --dry-run",
+        "serve:site": "http-server -p 5173 -c-1 .",
+        "test:e2e": "playwright test",
+        "test:e2e:ui": "playwright test --ui",
+        "test:e2e:report": "playwright show-report"
     },
     "devDependencies": {
+        "@axe-core/playwright": "^4.10.2",
         "@changesets/cli": "^2.29.6",
+        "@playwright/test": "^1.55.0",
         "@rollup/plugin-commonjs": "^26.0.0",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
         "autoprefixer": "^10.4.19",
+        "http-server": "^14.1.1",
         "postcss": "^8.4.41",
         "postcss-cli": "^11.0.0",
         "postcss-csso": "^6.0.1",

@@ -3,6 +3,11 @@
  * 폰트, 텍스트 스타일링을 정의
  */
 
+@use "sass:color";
+@use 'colors' as *;
+@use 'spacing' as *;
+@use 'radius' as *;
+
 // ============================================================================
 // 트랜지션 변수
 // ============================================================================
@@ -226,7 +231,7 @@ a {
     transition: color $transition-fast;
 
     &:hover {
-        color: darken($primary, 10%);
+        color: color.adjust($primary, $lightness: -10%);
         text-decoration: underline;
     }
 

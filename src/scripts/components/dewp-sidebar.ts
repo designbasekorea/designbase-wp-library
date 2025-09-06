@@ -125,14 +125,14 @@ export class DEWPSidebar {
       ` : '';
 
             const submenu = item.hasSubmenu && item.submenu ? `
-        <ul class="dewp-sidebar-submenu">
+        <ul class="dewp-sidebar-submenu" id="submenu-${item.id}" aria-hidden="true">
           ${this.renderMenuItems(item.submenu)}
         </ul>
       ` : '';
 
             return `
         <li class="dewp-sidebar-menu-item ${item.isActive ? 'is-active' : ''} ${item.hasSubmenu ? 'has-submenu' : ''}" data-item-id="${item.id}">
-          <a href="${item.url || '#'}" class="dewp-sidebar-menu-link" ${item.url ? '' : 'onclick="return false;"'}>
+          <a href="${item.url || '#'}" class="dewp-sidebar-menu-link" ${item.url ? '' : 'onclick="return false;"'} ${item.hasSubmenu ? 'role="button" aria-expanded="false" aria-controls="submenu-' + item.id + '"' : ''}>
             ${icon}
             <span class="dewp-sidebar-menu-text">${item.text}</span>
             ${arrow}
@@ -202,9 +202,15 @@ export class DEWPSidebar {
         if (isExpanded) {
             submenu.classList.remove('expanded');
             submenu.style.maxHeight = '0';
+            const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement;
+            toggle?.setAttribute('aria-expanded', 'false');
+            submenu.setAttribute('aria-hidden', 'true');
         } else {
             submenu.classList.add('expanded');
             submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement;
+            toggle?.setAttribute('aria-expanded', 'true');
+            submenu.setAttribute('aria-hidden', 'false');
         }
     }
 

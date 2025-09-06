@@ -2,6 +2,8 @@
  * Header Component
  * 워드프레스 어드민 페이지 상단 헤더
  */
+@use "../basic/index" as *;
+@use "sass:color";
 
 .dewp-header {
     display: flex;
@@ -86,27 +88,6 @@
                 padding: 0;
             }
         }
-
-        // 헤더 전용 버튼 스타일
-        .dewp-header-btn {
-            @extend .dewp-btn;
-            padding: $spacing-2 $spacing-4;
-            font-size: $font-size-s;
-            font-weight: $font-weight-medium;
-            border-radius: $radius-m;
-            transition: all $transition-base;
-
-            // 헤더 버튼 크기 변형
-            &.dewp-header-btn-sm {
-                padding: $spacing-1 $spacing-3;
-                font-size: $font-size-xs;
-            }
-
-            &.dewp-header-btn-lg {
-                padding: $spacing-3 $spacing-5;
-                font-size: $font-size-base;
-            }
-        }
     }
 
     // 헤더 상태별 스타일
@@ -140,7 +121,7 @@
 
     // 헤더 테마별 스타일
     &.dewp-header-primary {
-        background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+        background: linear-gradient(135deg, $primary 0%, #{color.adjust($primary, $lightness: -10%)} 100%);
         color: $white;
 
         .dewp-header-title,
@@ -148,7 +129,7 @@
             color: $white;
         }
 
-        .dewp-header-btn {
+        .dewp-header-actions .dewp-btn {
             background: rgba($white, 0.1);
             border-color: rgba($white, 0.2);
             color: $white;

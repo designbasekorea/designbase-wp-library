@@ -4,17 +4,17 @@
  */
 
 // ============================================================================
-// 기본 시스템 import
+// 기본 시스템 use (namespaced → wildcard to preserve existing variable usage)
 // ============================================================================
 
-@import 'colors';
-@import 'spacing';
-@import 'radius';
-@import 'animation';
-@import 'typography';
-@import 'layout';
-@import 'mixins';
-@import 'z-index';
+@use 'colors' as *;
+@use 'spacing' as *;
+@use 'radius' as *;
+@use 'animation' as *;
+@use 'typography' as *;
+@use 'layout' as *;
+@use 'mixins' as *;
+@use 'z-index' as *;
 
 // ============================================================================
 // 트랜지션

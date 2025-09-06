@@ -3,11 +3,14 @@
  * 상태 표시, 카운터 등을 위한 배지 스타일을 정의
  */
 
+@use "../basic/index" as *;
+@use "sass:color";
+
 .dewp-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: $padding-xs $padding-s;
+    padding: $spacing-1 $spacing-2;
     font-size: $font-size-xs;
     font-weight: $font-weight-medium;
     line-height: 1;
@@ -19,11 +22,11 @@
 
     // 아이콘이 있는 경우
     .icon {
-        margin-right: $margin-xs;
+        margin-right: $spacing-1;
 
         &:last-child {
             margin-right: 0;
-            margin-left: $margin-xs;
+            margin-left: $spacing-1;
         }
     }
 
@@ -47,17 +50,17 @@
     }
 
     &-s {
-        padding: $padding-xs $padding-s;
+        padding: $spacing-1 $spacing-2;
         font-size: $font-size-xs;
     }
 
     &-m {
-        padding: $padding-s $padding-l;
+        padding: $spacing-2 $spacing-4;
         font-size: $font-size-s;
     }
 
     &-l {
-        padding: $padding-l $padding-xl;
+        padding: $spacing-3 $spacing-5;
         font-size: $font-size-base;
     }
 
@@ -70,7 +73,7 @@
         background-color: $primary;
 
         &[href]:hover {
-            background-color: darken($primary, 10%);
+            background-color: color.adjust($primary, $lightness: -10%);
         }
     }
 
@@ -79,7 +82,7 @@
         background-color: $secondary;
 
         &[href]:hover {
-            background-color: darken($secondary, 10%);
+            background-color: color.adjust($secondary, $lightness: -10%);
         }
     }
 
@@ -88,7 +91,7 @@
         background-color: $success;
 
         &[href]:hover {
-            background-color: darken($success, 10%);
+            background-color: color.adjust($success, $lightness: -10%);
         }
     }
 
@@ -97,7 +100,7 @@
         background-color: $warning;
 
         &[href]:hover {
-            background-color: darken($warning, 10%);
+            background-color: color.adjust($warning, $lightness: -10%);
         }
     }
 
@@ -106,7 +109,7 @@
         background-color: $danger;
 
         &[href]:hover {
-            background-color: darken($danger, 10%);
+            background-color: color.adjust($danger, $lightness: -10%);
         }
     }
 
@@ -115,7 +118,7 @@
         background-color: $info;
 
         &[href]:hover {
-            background-color: darken($info, 10%);
+            background-color: color.adjust($info, $lightness: -10%);
         }
     }
 
@@ -194,11 +197,11 @@
     // ============================================================================
 
     &-rounded {
-        border-radius: $radius-m;
+        border-radius: $radius-3;
     }
 
     &-pill {
-        border-radius: $radius-xxl;
+        border-radius: $radius-6;
     }
 
     &-square {
@@ -332,7 +335,7 @@
     align-items: center;
 
     .dewp-badge {
-        margin-right: $margin-xs;
+        margin-right: $spacing-1;
 
         &:last-child {
             margin-right: 0;
@@ -344,7 +347,7 @@
 
         .dewp-badge {
             margin-right: 0;
-            margin-bottom: $margin-xs;
+            margin-bottom: $spacing-1;
 
             &:last-child {
                 margin-bottom: 0;

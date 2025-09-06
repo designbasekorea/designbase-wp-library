@@ -23,10 +23,10 @@ npm install designbase-wp-library
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.3.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.3.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
 ```
 
 ## 🏗️ 프로젝트 구조
@@ -73,29 +73,13 @@ src/
 
 #### 브라우저에서 직접 사용
 ```html
-<script src="https://unpkg.com/designbase-wp-library@0.2.2/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
 <script>
   // 전역 DEWP 객체 사용
   window.DEWP.showToast('안녕하세요!', 'success', 3000, 'md');
   
   // 모달 표시
-  window.DEWP.showModal('알림', '모달이 표시됩니다!', {
-    size: 'md'
-  });
-  
-  // 확인 모달
-  window.DEWP.showConfirmModal('정말로 진행하시겠습니까?')
-    .then((confirmed) => {
-      if (confirmed) {
-        console.log('사용자가 확인했습니다');
-      }
-    });
-  
-  // 드롭다운 초기화
-  window.DEWP.initDropdowns();
-  
-  // 탭 초기화
-  window.DEWP.initTabs();
+  window.DEWP.showModal({ title: '알림', content: '모달이 표시됩니다!', size: 'md' });
 </script>
 ```
 
@@ -107,21 +91,16 @@ import { showToast, showModal, showConfirmModal } from 'designbase-wp-library';
 showToast('성공!', 'success');
 
 // 모달 표시
-showModal('제목', '내용', { size: 'lg' });
+showModal({ title: '제목', content: '내용', size: 'lg' });
 
 // 확인 모달
-showConfirmModal('정말 삭제하시겠습니까?')
-  .then((confirmed) => {
-    if (confirmed) {
-      // 삭제 로직
-    }
-  });
+showConfirmModal({ message: '정말 삭제하시겠습니까?' });
 ```
 
 ### CSS 사용
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.2.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
 ```
 
 ## 🧩 컴포넌트
@@ -141,27 +120,22 @@ window.DEWP.showInfoToast('정보 메시지', 3000, 'sm');
 ### 2. 모달 (Modal)
 ```javascript
 // 기본 모달
-window.DEWP.showModal('제목', '내용');
+window.DEWP.showModal({ title: '제목', content: '내용' });
 
 // 확인 모달
-window.DEWP.showConfirmModal('정말 삭제하시겠습니까?')
-  .then((confirmed) => {
-    if (confirmed) {
-      // 확인 시 실행할 코드
-    }
-  });
+window.DEWP.showConfirmModal({ message: '정말 삭제하시겠습니까?' });
 
 // 모달 생성 및 제어
-const modal = window.DEWP.createModal('제목', '내용');
-window.DEWP.openModal(modal);
-window.DEWP.closeModal(modal);
+const modalId = window.DEWP.createModal({ title: '제목', content: '내용' });
+window.DEWP.openModal(modalId);
+window.DEWP.closeModal(modalId);
 ```
 
 ### 3. 드롭다운 (Dropdown)
 ```html
 <div class="dewp-dropdown">
   <button class="dewp-dropdown-toggle">
-    선택하세요 <i class="designbase-icon-arrow-down"></i>
+    선택하세요
   </button>
   <div class="dewp-dropdown-menu">
     <div class="dewp-dropdown-item" data-value="option1">옵션 1</div>
@@ -170,15 +144,8 @@ window.DEWP.closeModal(modal);
 </div>
 
 <script>
-// 드롭다운 초기화
-window.DEWP.initDropdowns();
-
-// 선택된 값 가져오기
-const value = window.DEWP.getSelectedValue('.dewp-dropdown');
-const text = window.DEWP.getSelectedText('.dewp-dropdown');
-
-// 값 설정
-window.DEWP.setDropdownValue('.dewp-dropdown', 'option1');
+// 드롭다운 자동 초기화 (전역)
+window.DEWP.autoInitializeDropdowns();
 </script>
 ```
 
@@ -498,5 +465,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.3.0/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.3.0/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.4.0/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.4.0/)

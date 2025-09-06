@@ -3,6 +3,8 @@
  * 데이터가 없거나 로딩 중일 때 표시하는 빈 상태 스타일을 정의
  */
 
+@use "../basic/index" as *;
+
 .dewp-empty-state {
     @include flex-center;
     flex-direction: column;

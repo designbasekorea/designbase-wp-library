@@ -3,6 +3,8 @@
  * 기본적인 드롭다운 스타일만 정의
  */
 
+@use "../basic/index" as *;
+
 .dewp-dropdown {
     position: relative;
     display: inline-block;
@@ -22,11 +24,15 @@
         visibility: hidden;
         transition: all 0.2s ease;
         margin-top: 4px;
+        pointer-events: none;
+        transform: translateY(4px);
 
         // 표시 상태
         &.show {
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
         // 드롭다운 아이템

@@ -94,8 +94,17 @@ import {
 } from './components/dewp-accordion';
 
 import {
+    createPopover,
+    openPopover,
+    closePopover,
+    togglePopover
+} from './components/dewp-popover';
+
+import {
     DEWPSidebar
 } from './components/dewp-sidebar';
+
+import { DEWPStepper, initStepper } from './components/dewp-stepper';
 
 /**
  * DEWP 메인 객체
@@ -185,8 +194,16 @@ export default {
     isDrawerOpen,
     autoInitializeDrawers,
 
+    // Popover
+    createPopover,
+    openPopover,
+    closePopover,
+    togglePopover,
+
     // 사이드바
     DEWPSidebar,
+    DEWPStepper,
+    initStepper,
 
     // 편의 함수
     ready: onDOMReady,
@@ -221,6 +238,8 @@ if (typeof window !== 'undefined') {
         openAccordionItem, closeAccordionItem, openAllAccordionItems,
         closeAllAccordionItems, getActiveAccordionItems, isAccordionItemOpen,
         getAccordionInstance, destroyAccordion, destroyAllAccordions, DEWPSidebar,
+        // Popover
+        createPopover, openPopover, closePopover, togglePopover,
         ready: onDOMReady, version: '1.0.0', info: {
             name: 'DesignBase WordPress Library',
             description: '간단하고 강력한 프론트엔드 라이브러리',
@@ -238,4 +257,22 @@ if (typeof window !== 'undefined') {
     console.log('🚀 DEWP 라이브러리 전역 객체 설정 완료');
     console.log('window.DEWP:', (window as any).DEWP);
     console.log('사용 가능한 함수들:', Object.keys((window as any).DEWP));
+
+    // 기본 컴포넌트 자동 초기화 (접근성 속성 포함)
+    onDOMReady(() => {
+        try {
+            autoInitializeDropdowns();
+        } catch { }
+        try {
+            autoInitializeDrawers();
+        } catch { }
+    });
+
+    // DOM이 이미 로드된 상태일 경우 즉시 초기화 (테스트 안정화)
+    try {
+        if (document.readyState !== 'loading') {
+            autoInitializeDropdowns();
+            autoInitializeDrawers();
+        }
+    } catch { }
 }

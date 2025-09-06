@@ -3,6 +3,8 @@
  * 색상 팔레트와 테마를 위한 변수와 믹스인을 정의
  */
 
+@use "sass:color";
+
 // ============================================================================
 // 기본 색상
 // ============================================================================
@@ -131,33 +133,33 @@ $border-02: $gray-200;
 $border-03: $gray-300;
 
 $link-color: $primary;
-$link-hover-color: darken($primary, 10%);
-$link-visited-color: darken($primary, 20%);
+$link-hover-color: color.adjust($primary, $lightness: -10%);
+$link-visited-color: color.adjust($primary, $lightness: -20%);
 
 // 상태별 시맨틱 컬러
 $status-success: $success;
 $status-success-light: $success-50;
 $status-success-bg: rgba($success, 0.1);
 $status-success-border: $success;
-$status-success-text: darken($success, 20%);
+$status-success-text: color.adjust($success, $lightness: -20%);
 
 $status-warning: $warning;
 $status-warning-light: $warning-50;
 $status-warning-bg: rgba($warning, 0.1);
 $status-warning-border: $warning;
-$status-warning-text: darken($warning, 20%);
+$status-warning-text: color.adjust($warning, $lightness: -20%);
 
 $status-danger: $danger;
 $status-danger-light: $danger-50;
 $status-danger-bg: rgba($danger, 0.1);
 $status-danger-border: $danger;
-$status-danger-text: darken($danger, 20%);
+$status-danger-text: color.adjust($danger, $lightness: -20%);
 
 $status-info: $info;
 $status-info-light: $info-50;
 $status-info-bg: rgba($info, 0.1);
 $status-info-border: $info;
-$status-info-text: darken($info, 20%);
+$status-info-text: color.adjust($info, $lightness: -20%);
 
 $shadow-color: rgba($black, 0.1);
 $shadow-color-light: rgba($black, 0.05);
@@ -178,14 +180,14 @@ $shadow-xl: 0 1rem 2rem $shadow-color-dark;
 $btn-primary-bg: $primary;
 $btn-primary-border: $primary;
 $btn-primary-text: $white;
-$btn-primary-hover-bg: darken($primary, 10%);
-$btn-primary-hover-border: darken($primary, 10%);
+$btn-primary-hover-bg: color.adjust($primary, $lightness: -10%);
+$btn-primary-hover-border: color.adjust($primary, $lightness: -10%);
 
 $btn-secondary-bg: $primary-100;
 $btn-secondary-border: $primary-100;
 $btn-secondary-text: $primary;
-$btn-secondary-hover-bg: darken($primary-100, 10%);
-$btn-secondary-hover-border: darken($primary-100, 10%);
+$btn-secondary-hover-bg: color.adjust($primary-100, $lightness: -10%);
+$btn-secondary-hover-border: color.adjust($primary-100, $lightness: -10%);
 
 // 입력 필드
 $input-border: $border-01;

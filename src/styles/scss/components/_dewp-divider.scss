@@ -1,0 +1,34 @@
+/**
+ * DEWP Divider Component
+ */
+@use "../basic/index" as *;
+
+.dewp-divider {
+    width: 100%;
+    height: 1px;
+    background: $border-01;
+    margin: $spacing-3 0;
+
+    &-dashed {
+        background: none;
+        border-top: 1px dashed $border-02;
+        height: 0;
+    }
+
+    &-thick {
+        height: 2px;
+        background: $border-02;
+    }
+
+    &-muted {
+        background: $bg-muted;
+    }
+
+    &-vertical {
+        width: 1px;
+        height: 100%;
+        background: $border-01;
+        margin: 0 $spacing-3;
+        align-self: stretch;
+    }
+}

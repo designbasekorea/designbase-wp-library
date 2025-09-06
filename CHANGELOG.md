@@ -1,5 +1,25 @@
 # designbase-wp-library
 
+## 0.4.0
+
+### Minor Changes
+
+- 새 기능 추가 및 개선:
+
+  - SCSS: `_dewp-spinner.scss`(크기/색상 변형), `_dewp-stat.scss`(KPI 카드), `_dewp-range-slider.scss`(단일/듀얼, 라벨/틱, 변수화된 트랙·썸), `_dewp-stepper.scss` 추가
+  - JS: `dewp-stepper.ts` 추가, `initStepper`/`DEWPStepper` 노출
+  - 모달: 긴 내용 스크롤 영역 개선(`flex` 레이아웃, 바디 자동 스크롤)
+  - 데모: Range/Stepper/Spinner/Stat 섹션 및 듀얼 슬라이더 예시 추가
+
+  변경사항:
+
+  - Range Slider 썸 정렬 문제 수정(브라우저별 수직 보정 변수 지원)
+  - 사이드바/테이블/섹션 색상·간격 토큰 정리
+
+  마이그레이션 노트:
+
+  - 범위 슬라이더 커스터마이징은 CSS 변수로 제어: `--dewp-track-size`, `--dewp-thumb-size`, `--dewp-thumb-shift-y`, `--dewp-range-start/end`
+
 ## 0.3.0
 
 ### Minor Changes

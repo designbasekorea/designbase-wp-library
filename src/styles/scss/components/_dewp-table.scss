@@ -1,11 +1,17 @@
 /**
+ * Table Component
+ */
+@use "../basic/index" as *;
+@use "sass:color";
+
+/**
  * DesignBase Frontend Kit - 테이블 컴포넌트
  * 데이터 표시를 위한 테이블 스타일을 정의
  */
 
 .dewp-table {
     width: 100%;
-    margin-bottom: $spacing-4;
+    margin-bottom: $margin-l;
     color: $text-primary;
     background-color: $bg-primary;
     border-collapse: collapse;
@@ -15,7 +21,7 @@
 
     th,
     td {
-        padding: $spacing-2 $spacing-4;
+        padding: $padding-s $padding-l;
         text-align: left;
         vertical-align: middle;
         border-bottom: 1px solid $border-01;
@@ -31,7 +37,7 @@
         transition: background-color $transition-fast;
 
         &:hover {
-            background-color: darken($bg-secondary, 3%);
+            background-color: color.adjust($bg-secondary, $lightness: -3%);
         }
 
         &.sortable {
@@ -41,7 +47,7 @@
             &::after {
                 content: '↕';
                 position: absolute;
-                right: $spacing-2;
+                right: $margin-s;
                 top: 50%;
                 transform: translateY(-50%);
                 opacity: 0.5;
@@ -134,7 +140,7 @@
 
         th,
         td {
-            padding: $spacing-1 $spacing-2;
+            padding: $padding-xs $padding-s;
             font-size: $font-size-s;
         }
     }
@@ -143,7 +149,7 @@
 
         th,
         td {
-            padding: $spacing-4 $spacing-6;
+            padding: $padding-l $padding-xl;
             font-size: $font-size-m;
         }
     }
@@ -260,7 +266,7 @@
 
         th,
         td {
-            padding: $spacing-1;
+            padding: $padding-xs;
             font-size: $font-size-xs;
         }
     }
@@ -269,7 +275,7 @@
 
         th,
         td {
-            padding: $spacing-6 $spacing-8;
+            padding: $padding-xl $padding-xxl;
             font-size: $font-size-m;
         }
     }
@@ -295,11 +301,11 @@
 // ============================================================================
 
 .dewp-form-table {
-    margin-bottom: $spacing-4;
+    margin-bottom: $margin-l;
 
     th {
         width: 160px;
-        padding: $spacing-2 0;
+        padding: $padding-s 0;
         font-weight: $font-weight-semibold;
         color: $text-primary;
         text-align: left;
@@ -307,7 +313,7 @@
     }
 
     td {
-        padding: $spacing-2;
+        padding: $padding-s;
         vertical-align: top;
 
         &:last-child {
@@ -324,13 +330,13 @@
     }
 
     input[type="checkbox"] {
-        margin-right: $spacing-2;
+        margin-right: $margin-s;
     }
 
     .description {
         font-size: $font-size-xs;
         color: $text-muted;
-        margin-top: $spacing-1;
+        margin-top: $margin-xs;
         line-height: $line-height-base;
     }
 }
@@ -356,13 +362,13 @@
         }
 
         th {
-            padding-bottom: $spacing-1;
+            padding-bottom: $padding-xs;
             border-bottom: 1px solid $border-01;
         }
 
         td {
-            padding-top: $spacing-2;
-            padding-bottom: $spacing-4;
+            padding-top: $padding-s;
+            padding-bottom: $padding-l;
         }
     }
 }

@@ -3,21 +3,24 @@
  * 접을 수 있는 콘텐츠 섹션을 제공하는 컴포넌트 스타일을 정의
  */
 
+@use "../basic/index" as *;
+@use "sass:color";
+
 .dewp-accordion {
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    gap: $spacing-1;
+    border: 1px solid $border-02;
+    border-radius: $radius-2;
     overflow: hidden;
-    background: #ffffff;
+    background: $bg-primary;
 
     // ============================================================================
     // 아코디언 아이템
     // ============================================================================
 
     .dewp-accordion-item {
-        border-bottom: 1px solid #f3f4f6;
+        border-bottom: 1px solid $border-01;
 
         &:last-child {
             border-bottom: none;
@@ -25,8 +28,8 @@
 
         &.active {
             .dewp-accordion-header {
-                background: #f8fafc;
-                border-bottom-color: #e5e7eb;
+                background: $bg-secondary;
+                border-bottom-color: $border-02;
 
                 .dewp-accordion-icon {
                     transform: rotate(180deg);
@@ -47,46 +50,45 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 16px 20px;
-        background: #ffffff;
+        padding: $spacing-4 $spacing-5;
+        background: $bg-primary;
         border: none;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all $transition-base;
         user-select: none;
         font-family: inherit;
-        font-size: 16px;
-        font-weight: 600;
-        color: #1f2937;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        color: $text-primary;
         text-align: left;
         width: 100%;
         min-height: 56px;
 
         &:hover {
-            background: #f9fafb;
-            color: #111827;
+            background: $bg-secondary;
+            color: $text-primary;
         }
 
         &:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            @include focus-ring($primary);
         }
 
         &:active {
-            background: #f3f4f6;
+            background: $bg-secondary;
         }
 
         // 헤더 내부 콘텐츠
         .dewp-accordion-title {
             flex: 1;
-            margin-right: 16px;
+            margin-right: $spacing-4;
             line-height: 1.4;
         }
 
         .dewp-accordion-subtitle {
-            font-size: 14px;
-            font-weight: 400;
-            color: #6b7280;
-            margin-top: 4px;
+            font-size: $font-size-s;
+            font-weight: $font-weight-normal;
+            color: $text-secondary;
+            margin-top: $spacing-1;
             display: block;
         }
 
@@ -94,26 +96,26 @@
         .dewp-accordion-meta {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: $spacing-3;
             margin-left: auto;
         }
 
         .dewp-accordion-badge {
-            background: #e5e7eb;
-            color: #6b7280;
-            font-size: 12px;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 500;
+            background: $border-02;
+            color: $text-secondary;
+            font-size: $font-size-xs;
+            padding: $spacing-1 $spacing-2;
+            border-radius: $radius-3;
+            font-weight: $font-weight-medium;
         }
 
         .dewp-accordion-count {
-            background: #f3f4f6;
-            color: #6b7280;
-            font-size: 12px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 500;
+            background: $bg-secondary;
+            color: $text-secondary;
+            font-size: $font-size-xs;
+            padding: $spacing-1 $spacing-2;
+            border-radius: $radius-1;
+            font-weight: $font-weight-medium;
             min-width: 20px;
             text-align: center;
         }
@@ -122,8 +124,8 @@
         .dewp-accordion-icon {
             width: 20px;
             height: 20px;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: #9ca3af;
+            transition: transform $transition-base;
+            color: $text-muted;
             flex-shrink: 0;
 
             svg {
@@ -137,7 +139,7 @@
         .dewp-accordion-custom-icon {
             width: 24px;
             height: 24px;
-            margin-right: 12px;
+            margin-right: $spacing-3;
             flex-shrink: 0;
 
             svg {
@@ -155,20 +157,20 @@
     .dewp-accordion-content {
         display: none;
         padding: 0;
-        background: #ffffff;
-        color: #374151;
+        background: $bg-primary;
+        color: $text-primary;
         line-height: 1.6;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
         .dewp-accordion-content-inner {
-            padding: 20px;
+            padding: $spacing-5;
         }
 
         // 콘텐츠 내부 요소들
         p {
-            margin: 0 0 16px 0;
-            color: #4b5563;
+            margin: 0 0 $spacing-4 0;
+            color: $text-secondary;
 
             &:last-child {
                 margin-bottom: 0;
@@ -177,12 +179,12 @@
 
         ul,
         ol {
-            margin: 0 0 16px 0;
-            padding-left: 20px;
-            color: #4b5563;
+            margin: 0 0 $spacing-4 0;
+            padding-left: $spacing-5;
+            color: $text-secondary;
 
             li {
-                margin-bottom: 8px;
+                margin-bottom: $spacing-2;
 
                 &:last-child {
                     margin-bottom: 0;
@@ -192,18 +194,18 @@
 
         // 콘텐츠 내부 테이블
         .dewp-table {
-            margin: 16px 0;
+            margin: $spacing-4 0;
         }
 
         // 콘텐츠 내부 폼
         .dewp-form-group {
-            margin-bottom: 16px;
+            margin-bottom: $spacing-4;
         }
 
         // 콘텐츠 내부 버튼
         .dewp-btn {
-            margin-right: 8px;
-            margin-bottom: 8px;
+            margin-right: $spacing-2;
+            margin-bottom: $spacing-2;
 
             &:last-child {
                 margin-right: 0;
@@ -217,9 +219,9 @@
 
     &-sm {
         .dewp-accordion-header {
-            padding: 12px 16px;
+            padding: $spacing-3 $spacing-4;
             min-height: 48px;
-            font-size: 14px;
+            font-size: $font-size-s;
 
             .dewp-accordion-icon {
                 width: 16px;
@@ -229,7 +231,7 @@
             .dewp-accordion-custom-icon {
                 width: 20px;
                 height: 20px;
-                margin-right: 10px;
+                margin-right: $spacing-2;
             }
         }
 
@@ -262,8 +264,8 @@
         .dewp-accordion-content {
 
             .dewp-accordion-content-inner {
-                padding: 24px;
-                font-size: 16px;
+                padding: $spacing-6;
+                font-size: $font-size-base;
             }
         }
     }

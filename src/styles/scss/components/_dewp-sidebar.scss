@@ -1,4 +1,9 @@
 /**
+ * Sidebar Component
+ */
+@use "../basic/index" as *;
+
+/**
  * DesignBase Frontend Kit - 사이드바 컴포넌트
  * 페이지의 측면에 위치하는 네비게이션 및 콘텐츠 영역
  */
@@ -10,9 +15,9 @@
     left: 0;
     width: 250px;
     height: 100vh;
-    background: #fff;
-    border-right: 1px solid #ddd;
-    z-index: 1000;
+    background: $bg-primary;
+    border-right: 1px solid $border-01;
+    z-index: $z-sticky;
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -26,46 +31,46 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background: #ccc;
+        background: $border-02;
         border-radius: 2px;
 
         &:hover {
-            background: #999;
+            background: $border-03;
         }
     }
 }
 
 // 사이드바 내부 컨테이너
 .dewp-sidebar-inner {
-    padding: 20px 0;
+    padding: $padding-l 0;
     min-height: 100%;
 }
 
 // 사이드바 헤더 (로고/제목 영역)
 .dewp-sidebar-header {
-    padding: 0 20px 20px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    padding: 0 $padding-l $padding-l;
+    border-bottom: 1px solid $border-01;
+    margin-bottom: $margin-l;
 
     .dewp-sidebar-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
+        font-size: $font-size-m;
+        font-weight: $font-weight-semibold;
+        color: $text-primary;
         margin: 0;
         line-height: 1.2;
     }
 
     .dewp-sidebar-subtitle {
-        font-size: 12px;
-        color: #666;
-        margin: 5px 0 0;
-        font-weight: 400;
+        font-size: $font-size-xs;
+        color: $text-secondary;
+        margin: $margin-xs 0 0;
+        font-weight: $font-weight-normal;
     }
 }
 
 // 사이드바 메뉴 그룹
 .dewp-sidebar-group {
-    margin-bottom: 25px;
+    margin-bottom: $margin-xl;
 
     &:last-child {
         margin-bottom: 0;
@@ -74,14 +79,14 @@
 
 // 메뉴 그룹 제목
 .dewp-sidebar-group-title {
-    font-size: 11px;
-    font-weight: 600;
-    color: #666;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $text-secondary;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 0 20px 8px;
+    padding: 0 $padding-l $padding-xs;
     margin: 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid $border-01;
 }
 
 // 사이드바 메뉴 아이템
@@ -97,30 +102,30 @@
     .dewp-sidebar-menu-link {
         display: flex;
         align-items: center;
-        padding: 12px 20px;
-        color: #555;
+        padding: $padding-m $padding-l;
+        color: $text-secondary;
         text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: $font-size-s;
+        font-weight: $font-weight-medium;
         transition: all 0.2s ease;
         border-left: 3px solid transparent;
 
         &:hover {
-            background: #f8f9fa;
-            color: #333;
+            background: $bg-secondary;
+            color: $text-primary;
             text-decoration: none;
-            border-left-color: #0073aa;
+            border-left-color: $primary;
         }
 
         &:active {
-            background: #e9ecef;
+            background: $bg-muted;
         }
 
         // 아이콘이 있는 경우
         .dewp-sidebar-menu-icon {
             width: 20px;
             height: 20px;
-            margin-right: 12px;
+            margin-right: $margin-s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -142,7 +147,7 @@
         .dewp-sidebar-menu-arrow {
             width: 16px;
             height: 16px;
-            margin-left: 8px;
+            margin-left: $margin-xs;
             opacity: 0.5;
             transition: transform 0.2s ease;
 
@@ -156,12 +161,12 @@
 
     // 활성화된 메뉴
     &.is-active .dewp-sidebar-menu-link {
-        background: #0073aa;
-        color: #fff;
-        border-left-color: #005a87;
+        background: $primary;
+        color: $text-white;
+        border-left-color: $primary;
 
         &:hover {
-            background: #005a87;
+            background: $primary;
         }
 
         .dewp-sidebar-menu-arrow {
@@ -182,27 +187,27 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background: #f8f9fa;
-    border-left: 3px solid #e9ecef;
-    margin-left: 20px;
+    background: $bg-secondary;
+    border-left: 3px solid $border-02;
+    margin-left: $margin-l;
 
     .dewp-sidebar-menu-item {
         .dewp-sidebar-menu-link {
-            padding: 10px 20px;
-            font-size: 13px;
-            color: #666;
+            padding: $padding-s $padding-l;
+            font-size: $font-size-xs;
+            color: $text-secondary;
             border-left: none;
 
             &:hover {
-                background: #e9ecef;
-                color: #333;
+                background: $bg-muted;
+                color: $text-primary;
                 border-left-color: transparent;
             }
         }
 
         &.is-active .dewp-sidebar-menu-link {
-            background: #0073aa;
-            color: #fff;
+            background: $primary;
+            color: $text-white;
             border-left-color: transparent;
         }
     }
@@ -211,20 +216,20 @@
 // 구분선
 .dewp-sidebar-divider {
     height: 1px;
-    background: #eee;
-    margin: 20px;
+    background: $border-01;
+    margin: $margin-l;
     opacity: 0.6;
 }
 
 // 사이드바 푸터 (하단 고정 영역)
 .dewp-sidebar-footer {
-    padding: 20px;
-    border-top: 1px solid #eee;
+    padding: $padding-l;
+    border-top: 1px solid $border-01;
     margin-top: auto;
 
     .dewp-sidebar-footer-text {
-        font-size: 11px;
-        color: #999;
+        font-size: $font-size-xs;
+        color: $text-muted;
         text-align: center;
         margin: 0;
     }

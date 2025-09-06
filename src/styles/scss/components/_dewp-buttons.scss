@@ -3,6 +3,9 @@
  * 다양한 버튼 스타일과 변형을 정의
  */
 
+@use "../basic/index" as *;
+@use "sass:color";
+
 .dewp-btn {
     display: inline-flex;
     align-items: center;
@@ -93,8 +96,8 @@
 
         &:hover {
             color: $white;
-            background-color: darken($primary, 10%);
-            border-color: darken($primary, 10%);
+            background-color: color.adjust($primary, $lightness: -10%);
+            border-color: color.adjust($primary, $lightness: -10%);
         }
 
         &:focus {
@@ -102,8 +105,8 @@
         }
 
         &:active {
-            background-color: darken($primary, 15%);
-            border-color: darken($primary, 15%);
+            background-color: color.adjust($primary, $lightness: -15%);
+            border-color: color.adjust($primary, $lightness: -15%);
         }
     }
 
@@ -114,8 +117,8 @@
 
         &:hover {
             color: $white;
-            background-color: darken($secondary, 10%);
-            border-color: darken($secondary, 10%);
+            background-color: color.adjust($secondary, $lightness: -10%);
+            border-color: color.adjust($secondary, $lightness: -10%);
         }
 
         &:focus {
@@ -123,8 +126,8 @@
         }
 
         &:active {
-            background-color: darken($secondary, 15%);
-            border-color: darken($secondary, 15%);
+            background-color: color.adjust($secondary, $lightness: -15%);
+            border-color: color.adjust($secondary, $lightness: -15%);
         }
     }
 
@@ -156,8 +159,8 @@
 
         &:hover {
             color: $white;
-            background-color: darken($success, 10%);
-            border-color: darken($success, 10%);
+            background-color: color.adjust($success, $lightness: -10%);
+            border-color: color.adjust($success, $lightness: -10%);
         }
 
         &:focus {
@@ -165,8 +168,8 @@
         }
 
         &:active {
-            background-color: darken($success, 15%);
-            border-color: darken($success, 15%);
+            background-color: color.adjust($success, $lightness: -15%);
+            border-color: color.adjust($success, $lightness: -15%);
         }
     }
 
@@ -177,8 +180,8 @@
 
         &:hover {
             color: $text-primary;
-            background-color: darken($warning, 10%);
-            border-color: darken($warning, 10%);
+            background-color: color.adjust($warning, $lightness: -10%);
+            border-color: color.adjust($warning, $lightness: -10%);
         }
 
         &:focus {
@@ -186,8 +189,8 @@
         }
 
         &:active {
-            background-color: darken($warning, 15%);
-            border-color: darken($warning, 15%);
+            background-color: color.adjust($warning, $lightness: -15%);
+            border-color: color.adjust($warning, $lightness: -15%);
         }
     }
 
@@ -198,8 +201,8 @@
 
         &:hover {
             color: $white;
-            background-color: darken($danger, 10%);
-            border-color: darken($danger, 10%);
+            background-color: color.adjust($danger, $lightness: -10%);
+            border-color: color.adjust($danger, $lightness: -10%);
         }
 
         &:focus {
@@ -207,8 +210,8 @@
         }
 
         &:active {
-            background-color: darken($danger, 15%);
-            border-color: darken($danger, 15%);
+            background-color: color.adjust($danger, $lightness: -15%);
+            border-color: color.adjust($danger, $lightness: -15%);
         }
     }
 
@@ -219,8 +222,8 @@
 
         &:hover {
             color: $white;
-            background-color: darken($info, 10%);
-            border-color: darken($info, 10%);
+            background-color: color.adjust($info, $lightness: -10%);
+            border-color: color.adjust($info, $lightness: -10%);
         }
 
         &:focus {
@@ -228,8 +231,8 @@
         }
 
         &:active {
-            background-color: darken($info, 15%);
-            border-color: darken($info, 15%);
+            background-color: color.adjust($info, $lightness: -15%);
+            border-color: color.adjust($info, $lightness: -15%);
         }
     }
 
@@ -296,8 +299,8 @@
 
         &:active {
             color: $white;
-            background-color: darken($primary, 15%);
-            border-color: darken($primary, 15%);
+            background-color: color.adjust($primary, $lightness: -15%);
+            border-color: color.adjust($primary, $lightness: -15%);
         }
     }
 
@@ -318,8 +321,8 @@
 
         &:active {
             color: $white;
-            background-color: darken($secondary, 15%);
-            border-color: darken($secondary, 15%);
+            background-color: color.adjust($secondary, $lightness: -15%);
+            border-color: color.adjust($secondary, $lightness: -15%);
         }
     }
 
@@ -362,8 +365,8 @@
 
         &:active {
             color: $white;
-            background-color: darken($success, 15%);
-            border-color: darken($success, 15%);
+            background-color: color.adjust($success, $lightness: -15%);
+            border-color: color.adjust($success, $lightness: -15%);
         }
     }
 
@@ -384,8 +387,8 @@
 
         &:active {
             color: $text-primary;
-            background-color: darken($warning, 15%);
-            border-color: darken($warning, 15%);
+            background-color: color.adjust($warning, $lightness: -15%);
+            border-color: color.adjust($warning, $lightness: -15%);
         }
     }
 
@@ -406,8 +409,8 @@
 
         &:active {
             color: $white;
-            background-color: darken($danger, 15%);
-            border-color: darken($danger, 15%);
+            background-color: color.adjust($danger, $lightness: -15%);
+            border-color: color.adjust($danger, $lightness: -15%);
         }
     }
 

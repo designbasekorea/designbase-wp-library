@@ -1,0 +1,74 @@
+/**
+ * DEWP Chip Component
+ */
+@use "../basic/index" as *;
+
+.dewp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-1;
+    padding: 0 $spacing-2;
+    height: 28px;
+    font-size: $font-size-xs;
+    color: $text-primary;
+    background: $bg-secondary;
+    border: 1px solid $border-01;
+    border-radius: $radius-l;
+
+    &-avatar {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &-icon {
+        font-size: 14px;
+        color: $text-secondary;
+    }
+
+    &-label {
+        line-height: 1;
+    }
+
+    &-close {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: $text-secondary;
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            color: $text-primary;
+        }
+    }
+
+    &-primary {
+        background: rgba($primary, .1);
+        border-color: rgba($primary, .3);
+        color: $primary;
+    }
+
+    &-success {
+        background: rgba($success, .1);
+        border-color: rgba($success, .3);
+        color: $success;
+    }
+
+    &-warning {
+        background: rgba($warning, .1);
+        border-color: rgba($warning, .3);
+        color: $warning;
+    }
+
+    &-danger {
+        background: rgba($danger, .1);
+        border-color: rgba($danger, .3);
+        color: $danger;
+    }
+}

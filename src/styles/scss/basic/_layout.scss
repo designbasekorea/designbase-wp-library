@@ -3,6 +3,8 @@
  * 그리드, 컨테이너, 유틸리티 클래스 등을 정의
  */
 
+@use "sass:math";
+@use 'spacing' as *;
 
 * {
     box-sizing: border-box;
@@ -50,7 +52,7 @@ $breakpoint-xxl: 1400px;
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 (-$spacing-4 / 2);
+    margin: 0 (math.div(-$spacing-4, 2));
 }
 
 .col,
@@ -69,7 +71,7 @@ $breakpoint-xxl: 1400px;
 .col-12 {
     position: relative;
     width: 100%;
-    padding: 0 ($spacing-4 / 2);
+    padding: 0 (math.div($spacing-4, 2));
 }
 
 .col {
@@ -84,8 +86,8 @@ $breakpoint-xxl: 1400px;
 // 그리드 컬럼 클래스들
 @for $i from 1 through 12 {
     .col-#{$i} {
-        flex: 0 0 percentage($i / 12);
-        max-width: percentage($i / 12);
+        flex: 0 0 math.percentage(math.div($i, 12));
+        max-width: math.percentage(math.div($i, 12));
     }
 }
 
@@ -97,8 +99,8 @@ $breakpoint-xxl: 1400px;
     @media (min-width: $value) {
         @for $i from 1 through 12 {
             .col-#{$breakpoint}-#{$i} {
-                flex: 0 0 percentage($i / 12);
-                max-width: percentage($i / 12);
+                flex: 0 0 math.percentage(math.div($i, 12));
+                max-width: math.percentage(math.div($i, 12));
             }
         }
 

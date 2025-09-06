@@ -1,0 +1,38 @@
+/**
+ * DEWP Breadcrumb Component
+ */
+@use "../basic/index" as *;
+
+.dewp-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    font-size: $font-size-s;
+
+    .dewp-breadcrumb-item {
+        display: inline-flex;
+        align-items: center;
+        color: $text-secondary;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color $transition-fast;
+
+            &:hover {
+                color: $text-primary;
+            }
+        }
+
+        &.is-active {
+            color: $text-primary;
+            font-weight: $font-weight-medium;
+        }
+
+        .dewp-breadcrumb-separator {
+            margin: 0 $spacing-1;
+            color: $border-02;
+        }
+    }
+}

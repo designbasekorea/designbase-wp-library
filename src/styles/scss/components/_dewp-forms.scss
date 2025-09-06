@@ -3,6 +3,8 @@
  * 입력 필드, 셀렉트박스, 체크박스, 라디오 버튼 등의 스타일을 정의
  */
 
+@use "../basic/index" as *;
+
 $form-input-height: 40px;
 $form-input-padding-x: $spacing-3;
 $form-input-padding-y: $spacing-2;

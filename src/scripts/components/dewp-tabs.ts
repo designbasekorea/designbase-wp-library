@@ -53,6 +53,12 @@ class DEWPTabs {
             this.destroy(containerId);
         }
 
+        // 탭 리스트 역할/속성 설정 (ARIA)
+        const tabsList = container.querySelector('.dewp-tabs');
+        if (tabsList) {
+            tabsList.setAttribute('role', 'tablist');
+        }
+
         // 탭과 패널 요소들 찾기
         const tabs = this.findTabElements(container);
         const panels = this.findPanelElements(container);
@@ -72,6 +78,23 @@ class DEWPTabs {
         };
 
         this.tabInstances.set(containerId, instance);
+
+        // 탭/패널 ARIA 초기화
+        tabs.forEach((tabEl, key) => {
+            const tabId = `${containerId}-tab-${key}`;
+            const panelEl = panels.get(key);
+            if (panelEl) {
+                const panelId = `${containerId}-panel-${key}`;
+                tabEl.setAttribute('id', tabId);
+                tabEl.setAttribute('role', 'tab');
+                tabEl.setAttribute('aria-controls', panelId);
+                tabEl.setAttribute('tabindex', '-1');
+                panelEl.setAttribute('id', panelId);
+                panelEl.setAttribute('role', 'tabpanel');
+                panelEl.setAttribute('aria-labelledby', tabId);
+                panelEl.setAttribute('tabindex', '0');
+            }
+        });
 
         // 이벤트 바인딩
         this.bindTabEvents(instance);
@@ -139,6 +162,26 @@ class DEWPTabs {
                 e.preventDefault();
                 this.activateTab(instance.id, tabId);
             });
+
+            tabElement.addEventListener('keydown', (e: KeyboardEvent) => {
+                const keys = ['Enter', ' '];
+                if (keys.includes(e.key)) {
+                    e.preventDefault();
+                    this.activateTab(instance.id, tabId);
+                }
+                // 좌우 화살표 이동
+                const tabKeys = Array.from(tabs.keys());
+                const currentIndex = tabKeys.indexOf(tabId);
+                if (e.key === 'ArrowRight') {
+                    const next = tabKeys[(currentIndex + 1) % tabKeys.length];
+                    const nextEl = tabs.get(next);
+                    nextEl?.focus();
+                } else if (e.key === 'ArrowLeft') {
+                    const prev = tabKeys[(currentIndex - 1 + tabKeys.length) % tabKeys.length];
+                    const prevEl = tabs.get(prev);
+                    prevEl?.focus();
+                }
+            });
         });
     }
 
@@ -160,6 +203,7 @@ class DEWPTabs {
             if (previousTab) {
                 previousTab.classList.remove('active');
                 previousTab.setAttribute('aria-selected', 'false');
+                previousTab.setAttribute('tabindex', '-1');
             }
 
             if (previousPanel) {
@@ -171,6 +215,9 @@ class DEWPTabs {
         // 새 활성 탭 활성화
         targetTab.classList.add('active');
         targetTab.setAttribute('aria-selected', 'true');
+        targetTab.setAttribute('tabindex', '0');
+        // 활성 탭에 포커스 이동
+        targetTab.focus();
         targetPanel.classList.add('active');
         targetPanel.setAttribute('aria-hidden', 'false');
 

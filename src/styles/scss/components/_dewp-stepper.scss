@@ -1,0 +1,56 @@
+/**
+ * Stepper (Number Input with Controls)
+ */
+@use "../basic/index" as *;
+
+.dewp-stepper {
+    display: inline-flex;
+    align-items: stretch;
+    border: 1px solid $border-01;
+    border-radius: $radius-3;
+    padding: $padding-xs;
+    overflow: hidden;
+    background: $bg-primary;
+
+    .dewp-stepper-btn {
+        appearance: none;
+        background: $bg-secondary;
+        border: none;
+        color: $text-primary;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        border-radius: $radius-2;
+
+        &:hover {
+            background: $bg-muted;
+        }
+
+        &:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+
+    .dewp-stepper-input {
+        width: 4rem;
+        padding: 0 $padding-s;
+        border: none;
+        text-align: center;
+        color: $text-primary;
+        background: transparent;
+        outline: none;
+        -moz-appearance: textfield;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}

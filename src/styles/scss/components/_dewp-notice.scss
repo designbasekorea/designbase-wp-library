@@ -2,6 +2,7 @@
  * DesignBase Frontend Kit - 알림 컴포넌트
  * 사용자에게 정보, 경고, 성공, 에러 메시지를 표시하는 알림 스타일을 정의
  */
+@use "../basic/index" as *;
 
 .dewp-notice {
     display: flex;

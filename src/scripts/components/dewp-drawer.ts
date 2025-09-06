@@ -133,8 +133,22 @@ export class DEWPDrawer {
         // 닫기 버튼 이벤트
         const closeBtn = element.querySelector('.dewp-drawer-close');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
+            const closeEl = closeBtn as HTMLElement;
+            // 접근성 이름과 역할 부여
+            closeEl.setAttribute('type', 'button');
+            closeEl.setAttribute('aria-label', '닫기');
+            closeEl.setAttribute('title', '닫기');
+            closeEl.setAttribute('role', 'button');
+            closeEl.addEventListener('click', () => {
                 this.close(id);
+            });
+            // 키보드 접근성 (Enter/Space)
+            closeEl.addEventListener('keydown', (e) => {
+                const ke = e as KeyboardEvent;
+                if (ke.key === 'Enter' || ke.key === ' ') {
+                    ke.preventDefault();
+                    this.close(id);
+                }
             });
         }
 
