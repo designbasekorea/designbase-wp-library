@@ -3,6 +3,8 @@
     function buildSidebar(manifest) {
         var nav = document.createElement('nav');
         var path = location.pathname.split('/').pop();
+        var fullPath = location.pathname;
+        var inComponents = fullPath.indexOf('/components/') !== -1;
         var sorted = manifest.slice().sort(function (a, b) {
             var ta = (a.title || '').toLowerCase();
             var tb = (b.title || '').toLowerCase();
@@ -12,7 +14,7 @@
         });
         sorted.forEach(function (item) {
             var a = document.createElement('a');
-            a.href = item.file;
+            a.href = (inComponents ? '' : 'components/') + item.file;
             a.textContent = item.title;
             if (path === item.file) a.className = 'active';
             nav.appendChild(a);
