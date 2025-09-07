@@ -330,52 +330,9 @@ window.DEWP.onDOMReady(() => {
 </div>
 ```
 
-### 유틸리티 클래스
+<!-- 유틸리티 클래스 섹션은 문서 사이트에서 관리합니다. -->
 
-#### 간격
-```html
-<div class="p-3 m-2">패딩과 마진</div>
-<div class="px-4 py-2">가로/세로 패딩</div>
-```
-
-#### 플렉스
-```html
-<div class="d-flex justify-between align-center">
-  <span>Left</span>
-  <span>Right</span>
-</div>
-```
-
-#### 색상
-```html
-<p class="text-primary">Primary 텍스트</p>
-<div class="bg-secondary">Secondary 배경</div>
-```
-
-## 🎨 SCSS 커스터마이징
-
-### 변수 재정의
-```scss
-// _custom-variables.scss
-$primary: #your-color;
-$font-family-base: 'Your Font', sans-serif;
-
-// main.scss
-@import 'custom-variables';
-@import 'basic/variables';
-// ... 나머지 import
-```
-
-### 믹스인 사용
-```scss
-.my-component {
-  @include flex-center;
-  @include shadow(2);
-  @include respond-to(md) {
-    // 중간 화면 이상에서만 적용
-  }
-}
-```
+<!-- SCSS 커스터마이징 가이드는 문서 사이트로 이관했습니다. -->
 
 ## 📱 반응형 브레이크포인트
 
@@ -421,7 +378,7 @@ npm publish
 
 ## 📄 라이선스
 
-MIT License
+이 프로젝트는 MIT License를 따릅니다. 재배포 시 원저작권 고지와 라이선스 전문을 반드시 포함해 주세요(출처 표기).
 
 ## 🤝 기여
 
@@ -434,6 +391,8 @@ MIT License
 ## 📞 지원
 
 문제가 있거나 질문이 있으시면 이슈를 생성해 주세요.
+
+- 이메일: designbasekorea@gmail.com
 
 ## 🔗 관련 링크
 
