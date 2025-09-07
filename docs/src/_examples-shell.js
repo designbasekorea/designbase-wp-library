@@ -4,10 +4,10 @@
         var nav = document.createElement('nav');
         var path = location.pathname.split('/').pop();
         var fullPath = location.pathname;
-        var inDocs = fullPath.indexOf('/docs/') !== -1;
+        var inDocs = fullPath.indexOf('/docs/') !== -1; // kept for backward compat, not used for links
         // 홈(index) 링크를 최상단에 추가
         var home = document.createElement('a');
-        home.href = inDocs ? './index.html' : './docs/index.html';
+        home.href = './index.html';
         home.textContent = 'Getting Started';
         if (path === 'index.html') home.className = 'active';
         nav.appendChild(home);
@@ -20,7 +20,7 @@
         });
         sorted.forEach(function (item) {
             var a = document.createElement('a');
-            a.href = (inDocs ? '' : 'docs/') + item.file;
+            a.href = './' + item.file;
             a.textContent = item.title;
             if (path === item.file) a.className = 'active';
             nav.appendChild(a);
