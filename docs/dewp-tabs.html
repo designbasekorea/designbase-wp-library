@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Tabs</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">기본(Default)</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div id="tabs-default" data-tabs="tabs-default">
+        <div class="dewp-tabs">
+          <button class="dewp-tab-btn" data-tab="tab1">탭 1</button>
+          <button class="dewp-tab-btn" data-tab="tab2">탭 2</button>
+          <button class="dewp-tab-btn" data-tab="tab3">탭 3</button>
+        </div>
+        <div class="dewp-tab-content">
+          <div class="dewp-tab-panel" data-panel="tab1">내용 1</div>
+          <div class="dewp-tab-panel" data-panel="tab2">내용 2</div>
+          <div class="dewp-tab-panel" data-panel="tab3">내용 3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Pills / Underline</h3>
+      </div>
+    </div>
+    <div class="ex-section-content" style="display:grid; gap:20px;">
+      <div id="tabs-pills" data-tabs="tabs-pills">
+        <div class="dewp-tabs dewp-tabs-pills">
+          <button class="dewp-tab-btn" data-tab="a">알약 A</button>
+          <button class="dewp-tab-btn" data-tab="b">알약 B</button>
+        </div>
+        <div class="dewp-tab-content">
+          <div class="dewp-tab-panel" data-panel="a">Pills A</div>
+          <div class="dewp-tab-panel" data-panel="b">Pills B</div>
+        </div>
+      </div>
+
+      <div id="tabs-underline" data-tabs="tabs-underline">
+        <div class="dewp-tabs dewp-tabs-underline">
+          <button class="dewp-tab-btn" data-tab="u1">밑줄 1</button>
+          <button class="dewp-tab-btn" data-tab="u2">밑줄 2</button>
+        </div>
+        <div class="dewp-tab-content">
+          <div class="dewp-tab-panel" data-panel="u1">Underline 1</div>
+          <div class="dewp-tab-panel" data-panel="u2">Underline 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Vertical & Themed</h3>
+      </div>
+    </div>
+    <div class="ex-section-content"
+      style="display:grid; gap:20px; grid-template-columns: repeat(2, minmax(260px, 1fr));">
+      <div id="tabs-vertical" data-tabs="tabs-vertical">
+        <div class="dewp-tabs dewp-tabs-vertical">
+          <button class="dewp-tab-btn" data-tab="v1">세로 1</button>
+          <button class="dewp-tab-btn" data-tab="v2">세로 2</button>
+        </div>
+        <div class="dewp-tab-content">
+          <div class="dewp-tab-panel" data-panel="v1">Vertical 1</div>
+          <div class="dewp-tab-panel" data-panel="v2">Vertical 2</div>
+        </div>
+      </div>
+
+      <div id="tabs-themed" data-tabs="tabs-themed">
+        <div class="dewp-tabs dewp-tabs-primary">
+          <button class="dewp-tab-btn" data-tab="p1">Primary</button>
+          <button class="dewp-tab-btn" data-tab="p2">Primary 2</button>
+        </div>
+        <div class="dewp-tab-content">
+          <div class="dewp-tab-panel" data-panel="p1">Primary Theme</div>
+          <div class="dewp-tab-panel" data-panel="p2">Primary Theme 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Tabs 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>서로 다른 패널을 동일한 영역에서 전환해 보여줍니다.</p>
+      </section>
+
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;div data-tabs="my-tabs"&gt;
+  &lt;div class="dewp-tabs"&gt;
+    &lt;button class="dewp-tab-btn" data-tab="a"&gt;A&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-tab-content"&gt;
+    &lt;div class="dewp-tab-panel" data-panel="a"&gt;내용&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>JavaScript 초기화</h4>
+        <pre>
+<code class="language-js">DEWP.initTabs(
+  document.querySelector('[data-tabs="my-tabs"]'),
+  { activeTab: 'a' }
+);</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>변형</h4>
+        <ul>
+          <li>Pills: <code>.dewp-tabs-pills</code></li>
+          <li>Underline: <code>.dewp-tabs-underline</code></li>
+          <li>Vertical: <code>.dewp-tabs-vertical</code></li>
+          <li>Theme: <code>.dewp-tabs-primary</code> 등</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>접근성</h4>
+        <ul>
+          <li>역할: <code>tablist</code>/<code>tab</code>/<code>tabpanel</code></li>
+          <li>키보드: Arrow, Home/End, Enter/Space</li>
+          <li>ARIA: <code>aria-selected</code>, <code>aria-controls</code>, <code>aria-labelledby</code></li>
+        </ul>
+      </section>
+
+      <p>자세한 내용은 <code>docs/components/tabs.md</code> 참고.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.DEWP) return;
+      document.querySelectorAll('[data-tabs]').forEach(function (el) {
+        var first = el.querySelector('.dewp-tab-btn');
+        var active = first ? first.getAttribute('data-tab') : undefined;
+        window.DEWP.initTabs(el, { activeTab: active });
+      });
+    });
+  </script>
+
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+</body>
+
+</html>

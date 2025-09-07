@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Sidebar</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body class="ex-demo-sidebar">
+
+  <div class="ex-main" style="padding: 16px;">
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
+          <h3 class="ex-section-title">사이드바</h3>
+          <p class="ex-section-description">ex-content 기준 좌측 절대 배치(예시 전용)</p>
+        </div>
+      </div>
+      <div class="ex-section-content">
+        <p>좌측 예시 내비와 겹치지 않도록, 이 데모에서는 콘텐츠 영역(ex-content) 기준 왼쪽에 고정합니다.</p>
+        <p style="margin-top:16px;">본문 스크롤 테스트를 위한 더미 내용</p>
+        <div style="height: 1200px"></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
+          <h3 class="ex-section-title">문서 요약</h3>
+          <p class="ex-section-description">Sidebar 핵심 사용 가이드</p>
+        </div>
+      </div>
+      <div class="ex-section-content ex-docs">
+        <section>
+          <h4>개요</h4>
+          <p>워드프레스 관리자용 좌측 고정 내비게이션. 그룹/구분선/서브메뉴를 지원합니다.</p>
+        </section>
+
+        <section>
+          <h4>생성</h4>
+          <pre>
+<code class="language-js">const sidebar = new DEWPSidebar({
+  title: 'DEWP Admin',
+  groups: [{ id: 'general', title: '일반', items: [{ id: 'dashboard', text: '대시보드', url: '#' }] }]
+});</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>API</h4>
+          <pre>
+<code class="language-js">sidebar.addGroup({ id: 'new', title: '새 그룹', items: [] });
+sidebar.addMenuItem('general', { id: 'settings', text: '설정', url: '#' });
+sidebar.toggle('tools');
+sidebar.destroy();</code>
+          </pre>
+        </section>
+
+        <p>자세한 내용은 <code>docs/components/sidebar.md</code> 참고.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script>
+    function buildSidebar() {
+      const config = {
+        title: 'DEWP Admin',
+        subtitle: '빠른 이동',
+        groups: [
+          {
+            id: 'general',
+            title: '일반',
+            items: [
+              { id: 'dashboard', text: '대시보드', url: '#', isActive: true },
+              { id: 'settings', text: '설정', url: '#' },
+              {
+                id: 'tools', text: '도구', hasSubmenu: true, submenu: [
+                  { id: 'import', text: '가져오기', url: '#' },
+                  { id: 'export', text: '내보내기', url: '#' }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'contents',
+            title: '콘텐츠',
+            items: [
+              { id: 'posts', text: '게시글', url: '#' },
+              { id: 'pages', text: '페이지', url: '#' },
+              { id: 'media', text: '미디어', url: '#' }
+            ]
+          }
+        ],
+        footerText: 'DesignBase'
+      };
+      // 기존 인스턴스 제거 후 재생성
+      try { window.__demoSidebar?.destroy(); } catch { }
+      window.__demoSidebar = new window.DEWPSidebar(config);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.DEWPSidebar) buildSidebar();
+    });
+  </script>
+
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+</body>
+
+</html>

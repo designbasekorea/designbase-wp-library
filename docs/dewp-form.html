@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Form</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">기본 폼</h3>
+        <p class="ex-section-description">입력, 체크박스, 라디오</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <form class="dewp-form" style="max-width:560px;">
+        <div class="dewp-form-group">
+          <label class="dewp-form-label" for="name">이름</label>
+          <input id="name" type="text" class="dewp-form-input" placeholder="이름" />
+        </div>
+
+        <div class="dewp-form-group">
+          <label class="dewp-form-label" for="email">이메일</label>
+          <input id="email" type="email" class="dewp-form-input" placeholder="email@example.com" />
+        </div>
+
+        <div class="dewp-form-group">
+          <label class="dewp-form-label">알림 설정</label>
+          <div class="dewp-form-check dewp-form-checkbox">
+            <input type="checkbox" class="dewp-form-check-input" id="c1" />
+            <label class="dewp-form-check-label" for="c1">이메일 알림</label>
+          </div>
+          <div class="dewp-form-check dewp-form-radio">
+            <input type="radio" class="dewp-form-check-input" name="rad" id="r1" />
+            <label class="dewp-form-check-label" for="r1">라디오 1</label>
+          </div>
+          <div class="dewp-form-check dewp-form-radio">
+            <input type="radio" class="dewp-form-check-input" name="rad" id="r2" checked />
+            <label class="dewp-form-check-label" for="r2">라디오 2</label>
+          </div>
+        </div>
+
+        <div class="dewp-form-actions">
+          <button type="submit" class="dewp-btn dewp-btn-primary">저장</button>
+          <button type="button" class="dewp-btn dewp-btn-secondary">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Form 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>입력, 선택, 체크/라디오 컨트롤을 위한 기본 폼 컴포넌트입니다.</p>
+      </section>
+
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;form class="dewp-form"&gt;
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="name"&gt;이름&lt;/label&gt;
+    &lt;input id="name" class="dewp-form-input" /&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+    &lt;input class="dewp-form-check-input" type="checkbox" id="c1" /&gt;
+    &lt;label class="dewp-form-check-label" for="c1"&gt;체크&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>워드프레스 호환</h4>
+        <p>관리자 화면에서는 기본 스타일 우선순위를 이기기 위해 일부 속성에 <code>!important</code>가 적용됩니다.</p>
+      </section>
+
+      <p>자세한 내용은 <code>docs/components/form.md</code> 참고.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+</body>
+
+</html>
