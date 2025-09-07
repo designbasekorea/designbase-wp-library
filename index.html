@@ -7,34 +7,31 @@
   <title>DEWP 설치 및 연결 가이드</title>
   <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
   <link rel="stylesheet" href="./docs/src/_examples-shell.css">
-  <style>
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; background: #fff; }
-    .list { padding-left: 18px; }
-    h2 { margin-top: 32px; }
-  </style>
+
 </head>
 
 <body>
-  <div class="container">
-    <div class="ex-section">
-      <div class="ex-section-header">
-        <div class="ex-section-title-area">
-          <h3 class="ex-section-title">설치 및 연결 가이드</h3>
-          <p class="ex-section-description">DEWP v0.4.x</p>
-        </div>
-      </div>
-      <div class="ex-section-content">
-        <p>DEWP 라이브러리를 프로젝트에 설치하고 연결하는 방법을 단계별로 설명합니다.</p>
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">설치 및 연결 가이드</h3>
+        <p class="ex-section-description">DEWP v0.4.x</p>
       </div>
     </div>
+    <div class="ex-section-content">
+      <p>DEWP 라이브러리를 프로젝트에 설치하고 연결하는 방법을 단계별로 설명합니다.</p>
+    </div>
+  </div>
 
-    <div class="grid">
-      <div class="card">
-        <h2>🚀 설치 방법</h2>
-        <h3>1) NPM 설치 (권장)</h3>
-        <pre><code># 프로덕션 의존성으로 설치
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🚀 설치 방법</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <h3>1) NPM 설치 (권장)</h3>
+      <pre><code># 프로덕션 의존성으로 설치
 npm install designbase-wp-library
 
 # 개발 의존성으로 설치
@@ -46,26 +43,32 @@ yarn add designbase-wp-library
 # pnpm
 pnpm add designbase-wp-library</code></pre>
 
-        <h3>2) CDN 연결</h3>
-        <p>최신 버전 (권장)</p>
-        <pre><code>&lt;!-- CSS --&gt;
+      <h3>2) CDN 연결</h3>
+      <p>최신 버전 (권장)</p>
+      <pre><code>&lt;!-- CSS --&gt;
 &lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css"&gt;
 
 &lt;!-- JavaScript --&gt;
 &lt;script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"&gt;&lt;/script&gt;</code></pre>
 
-        <p>jsDelivr 최신</p>
-        <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/css/dewp.min.css"&gt;
+      <p>jsDelivr 최신</p>
+      <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/css/dewp.min.css"&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/js/dewp.min.js"&gt;&lt;/script&gt;</code></pre>
 
-        <p>특정 버전 예시</p>
-        <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.1/dist/css/dewp.min.css"&gt;
+      <p>특정 버전 예시</p>
+      <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.1/dist/css/dewp.min.css"&gt;
 &lt;script src="https://unpkg.com/designbase-wp-library@0.4.1/dist/js/dewp.min.js"&gt;&lt;/script&gt;</code></pre>
-      </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🔗 HTML 연결 예시</h2>
-        <pre><code>&lt;!DOCTYPE html&gt;
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🔗 HTML 연결 예시</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="ko"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8" /&gt;
@@ -83,80 +86,115 @@ pnpm add designbase-wp-library</code></pre>
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-      </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🧩 WordPress 연동</h2>
-        <h3>플러그인 (admin_enqueue_scripts)</h3>
-        <pre><code>wp_enqueue_style('dewp-library', 'https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css');
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🧩 WordPress 연동</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <h3>플러그인 (admin_enqueue_scripts)</h3>
+      <pre><code>wp_enqueue_style('dewp-library', 'https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css');
 wp_enqueue_script('dewp-library', 'https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js', [], null, true);</code></pre>
-        <h3>테마 (wp_enqueue_scripts)</h3>
-        <pre><code>wp_enqueue_style('dewp-library', 'https://unpkg.com/designbase-wp-library@0.4.1/dist/css/dewp.min.css', [], '0.4.1');
+      <h3>테마 (wp_enqueue_scripts)</h3>
+      <pre><code>wp_enqueue_style('dewp-library', 'https://unpkg.com/designbase-wp-library@0.4.1/dist/css/dewp.min.css', [], '0.4.1');
 wp_enqueue_script('dewp-library', 'https://unpkg.com/designbase-wp-library@0.4.1/dist/js/dewp.min.js', [], '0.4.1', true);</code></pre>
-      </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🔧 빌드 도구 통합</h2>
-        <h3>Webpack</h3>
-        <pre><code>import '@dewp/dist/css/dewp.min.css';</code></pre>
-        <h3>Vite</h3>
-        <pre><code>// index.html에 스크립트 추가
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🔧 빌드 도구 통합</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <h3>Webpack</h3>
+      <pre><code>import '@dewp/dist/css/dewp.min.css';</code></pre>
+      <h3>Vite</h3>
+      <pre><code>// index.html에 스크립트 추가
 &lt;script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"&gt;&lt;/script&gt;</code></pre>
-        <h3>CRA</h3>
-        <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css"&gt;
+      <h3>CRA</h3>
+      <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css"&gt;
 &lt;script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"&gt;&lt;/script&gt;</code></pre>
-      </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>📱 반응형/모바일</h2>
-        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"&gt;</code></pre>
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">📱 반응형/모바일</h3>
       </div>
+    </div>
+    <div class="ex-section-content">
+      <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"&gt;</code></pre>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🔍 디버깅 체크리스트</h2>
-        <ul class="list">
-          <li>CSS/JS가 200으로 응답되는지</li>
-          <li>window.DEWP 존재 여부</li>
-          <li>콘솔 오류 여부</li>
-          <li>우선순위 문제 시 !important로 보정</li>
-        </ul>
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🔍 디버깅 체크리스트</h3>
       </div>
+    </div>
+    <div class="ex-section-content">
+      <ul class="list">
+        <li>CSS/JS가 200으로 응답되는지</li>
+        <li>window.DEWP 존재 여부</li>
+        <li>콘솔 오류 여부</li>
+        <li>우선순위 문제 시 !important로 보정</li>
+      </ul>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🆕 최신 버전 요약</h2>
-        <pre><code>npm i designbase-wp-library@latest
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🆕 최신 버전 요약</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <pre><code>npm i designbase-wp-library@latest
 https://unpkg.com/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}
 https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}</code></pre>
-        <p class="muted">프로덕션에서는 고정 버전(@0.4.1 등) 사용을 권장합니다.</p>
-      </div>
+      <p class="muted">프로덕션에서는 고정 버전(@0.4.1 등) 사용을 권장합니다.</p>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>🔗 예제 바로가기</h2>
-        <p>컴포넌트별 데모는 아래 링크에서 확인하세요.</p>
-        <ul class="list">
-          <li><a href="./docs/dewp-accordion.html">Accordion</a></li>
-          <li><a href="./docs/dewp-breadcrumb.html">Breadcrumb</a></li>
-          <li><a href="./docs/dewp-chip.html">Chip</a></li>
-          <li><a href="./docs/dewp-divider.html">Divider</a></li>
-          <li><a href="./docs/dewp-drawer.html">Drawer</a></li>
-          <li><a href="./docs/dewp-dropdown.html">Dropdown</a></li>
-          <li><a href="./docs/dewp-form.html">Form</a></li>
-          <li><a href="./docs/dewp-header.html">Header</a></li>
-          <li><a href="./docs/dewp-modal.html">Modal</a></li>
-          <li><a href="./docs/dewp-popover.html">Popover</a></li>
-          <li><a href="./docs/dewp-progress.html">Progress</a></li>
-          <li><a href="./docs/dewp-range-slider.html">Range Slider</a></li>
-          <li><a href="./docs/dewp-section.html">Section</a></li>
-          <li><a href="./docs/dewp-sidebar.html">Sidebar</a></li>
-          <li><a href="./docs/dewp-spinner.html">Spinner</a></li>
-          <li><a href="./docs/dewp-stat.html">Stat</a></li>
-          <li><a href="./docs/dewp-stepper.html">Stepper</a></li>
-          <li><a href="./docs/dewp-table.html">Table</a></li>
-          <li><a href="./docs/dewp-tabs.html">Tabs</a></li>
-          <li><a href="./docs/dewp-toast.html">Toast</a></li>
-          <li><a href="./docs/dewp-tooltip.html">Tooltip</a></li>
-        </ul>
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">🔗 예제 바로가기</h3>
       </div>
+    </div>
+    <div class="ex-section-content">
+      <p>컴포넌트별 데모는 아래 링크에서 확인하세요.</p>
+      <ul class="list">
+        <li><a href="./docs/dewp-accordion.html">Accordion</a></li>
+        <li><a href="./docs/dewp-breadcrumb.html">Breadcrumb</a></li>
+        <li><a href="./docs/dewp-chip.html">Chip</a></li>
+        <li><a href="./docs/dewp-divider.html">Divider</a></li>
+        <li><a href="./docs/dewp-drawer.html">Drawer</a></li>
+        <li><a href="./docs/dewp-dropdown.html">Dropdown</a></li>
+        <li><a href="./docs/dewp-form.html">Form</a></li>
+        <li><a href="./docs/dewp-header.html">Header</a></li>
+        <li><a href="./docs/dewp-modal.html">Modal</a></li>
+        <li><a href="./docs/dewp-popover.html">Popover</a></li>
+        <li><a href="./docs/dewp-progress.html">Progress</a></li>
+        <li><a href="./docs/dewp-range-slider.html">Range Slider</a></li>
+        <li><a href="./docs/dewp-section.html">Section</a></li>
+        <li><a href="./docs/dewp-sidebar.html">Sidebar</a></li>
+        <li><a href="./docs/dewp-spinner.html">Spinner</a></li>
+        <li><a href="./docs/dewp-stat.html">Stat</a></li>
+        <li><a href="./docs/dewp-stepper.html">Stepper</a></li>
+        <li><a href="./docs/dewp-table.html">Table</a></li>
+        <li><a href="./docs/dewp-tabs.html">Tabs</a></li>
+        <li><a href="./docs/dewp-toast.html">Toast</a></li>
+        <li><a href="./docs/dewp-tooltip.html">Tooltip</a></li>
+      </ul>
     </div>
   </div>
   <script src="./docs/src/_examples-manifest.js"></script>

@@ -3,6 +3,10 @@ html, body {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -60,7 +64,7 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background: #fff;
-  margin: 16px 20px;
+  margin-bottom: 20px;
 }
 
 .ex-section+.ex-section {
@@ -71,7 +75,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 16px;
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -134,8 +138,10 @@ body.ex-demo-sidebar .ex-content .ex-main {
 
 /* Docs summary styles */
 .ex-section-content.ex-docs {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .ex-section-content.ex-docs h4 {
@@ -150,6 +156,7 @@ body.ex-demo-sidebar .ex-content .ex-main {
 
 .ex-section-content.ex-docs pre {
   margin: 0;
+  width: 100%;
 }
 
 .ex-section-content.ex-docs ul {
@@ -160,9 +167,9 @@ body.ex-demo-sidebar .ex-content .ex-main {
 
 /* Shared basics (moved from root index.html) */
 .container {
-  max-width: 980px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 32px 20px;
+  padding: 0 20px;
 }
 
 .header {

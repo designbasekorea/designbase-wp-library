@@ -48,11 +48,14 @@
         header.innerHTML = '<strong>' + document.title + '</strong>';
         var main = document.createElement('div');
         main.className = 'ex-main';
+        var container = document.createElement('div');
+        container.className = 'container';
 
-        // 기존 body 내용을 main으로 이동
+        // 기존 body 내용을 container로 이동 후 main에 부착
         while (document.body.firstChild) {
-            main.appendChild(document.body.firstChild);
+            container.appendChild(document.body.firstChild);
         }
+        main.appendChild(container);
 
         content.appendChild(header);
         content.appendChild(main);
