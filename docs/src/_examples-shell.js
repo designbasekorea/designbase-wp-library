@@ -5,6 +5,12 @@
         var path = location.pathname.split('/').pop();
         var fullPath = location.pathname;
         var inDocs = fullPath.indexOf('/docs/') !== -1;
+        // 홈(index) 링크를 최상단에 추가
+        var home = document.createElement('a');
+        home.href = inDocs ? '../index.html' : './index.html';
+        home.textContent = 'Getting Started';
+        if (!inDocs || path === 'index.html') home.className = 'active';
+        nav.appendChild(home);
         var sorted = manifest.slice().sort(function (a, b) {
             var ta = (a.title || '').toLowerCase();
             var tb = (b.title || '').toLowerCase();
