@@ -45,7 +45,21 @@
         content.className = 'ex-content';
         var header = document.createElement('div');
         header.className = 'ex-header';
-        header.innerHTML = '<strong>' + document.title + '</strong>';
+        var title = document.createElement('div');
+        title.innerHTML = '<strong>' + document.title + '</strong>';
+        var toggle = document.createElement('button');
+        toggle.className = 'ex-sidebar-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-label', '사이드바 열기/닫기');
+        toggle.textContent = '더보기';
+        toggle.addEventListener('click', function () {
+            var isMobile = window.matchMedia('(max-width: 1024px)').matches;
+            if (isMobile) {
+                shell.classList.toggle('is-sidebar-open');
+            } else {
+                shell.classList.toggle('is-sidebar-collapsed');
+            }
+        });
         var main = document.createElement('div');
         main.className = 'ex-main';
         var container = document.createElement('div');
@@ -57,11 +71,20 @@
         }
         main.appendChild(container);
 
+        header.appendChild(title);
+        header.appendChild(toggle);
         content.appendChild(header);
         content.appendChild(main);
 
+        var overlay = document.createElement('div');
+        overlay.className = 'ex-overlay';
+        overlay.addEventListener('click', function () {
+            shell.classList.remove('is-sidebar-open');
+        });
+
         shell.appendChild(sidebar);
         shell.appendChild(content);
+        shell.appendChild(overlay);
         document.body.appendChild(shell);
     }
 
