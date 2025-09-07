@@ -7,9 +7,9 @@
         var inDocs = fullPath.indexOf('/docs/') !== -1;
         // 홈(index) 링크를 최상단에 추가
         var home = document.createElement('a');
-        home.href = inDocs ? '../index.html' : './index.html';
+        home.href = inDocs ? './index.html' : './docs/index.html';
         home.textContent = 'Getting Started';
-        if (!inDocs || path === 'index.html') home.className = 'active';
+        if (path === 'index.html') home.className = 'active';
         nav.appendChild(home);
         var sorted = manifest.slice().sort(function (a, b) {
             var ta = (a.title || '').toLowerCase();
