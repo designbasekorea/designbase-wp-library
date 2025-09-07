@@ -51,7 +51,7 @@
         toggle.className = 'ex-sidebar-toggle';
         toggle.type = 'button';
         toggle.setAttribute('aria-label', '사이드바 열기/닫기');
-        toggle.textContent = '더보기';
+        toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
         toggle.addEventListener('click', function () {
             var isMobile = window.matchMedia('(max-width: 1024px)').matches;
             if (isMobile) {
@@ -71,8 +71,8 @@
         }
         main.appendChild(container);
 
-        header.appendChild(title);
         header.appendChild(toggle);
+        header.appendChild(title);
         content.appendChild(header);
         content.appendChild(main);
 
