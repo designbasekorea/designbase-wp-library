@@ -4,7 +4,7 @@
 
 > **DEWP** - DesignBase WordPress Library의 약자로, `mcp-` 접두사를 `dewp-`로 변경한 최신 버전입니다.
 
-## �� 특징
+## ✨ 특징
 
 - **모듈화된 구조**: TypeScript로 작성된 컴포넌트 기반 아키텍처
 - **체계적인 SCSS**: 변수, 믹스인, 컴포넌트를 체계적으로 구성
@@ -19,53 +19,26 @@
 npm install designbase-wp-library
 ```
 
+### 문서/데모 사이트
+
+- 최신 문서와 라이브 데모: [DEWP Docs & Examples](https://designbasekorea.github.io/designbase-wp-library/)
+
 ### CDN 사용
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
 ```
 
-## 🏗️ 프로젝트 구조
+## 🔗 빠른 시작 링크
 
-```
-src/
-├── scripts/
-│   ├── components/       # 컴포넌트 스크립트
-│   │   ├── dewp-modal.ts      # 모달 컴포넌트
-│   │   ├── dewp-dropdown.ts   # 드롭다운 컴포넌트
-│   │   ├── dewp-tabs.ts       # 탭 컴포넌트
-│   │   ├── dewp-toast.ts      # 토스트 알림 컴포넌트
-│   │   └── dewp-validate.ts   # 폼 검증 컴포넌트
-│   ├── utils/
-│   │   └── dom.ts             # DOM 유틸리티 함수
-│   └── index.ts               # 메인 진입점
-├── styles/
-│   └── scss/
-│       ├── basic/             # 기본 스타일 (변수, 믹스인, 타이포그래피, 레이아웃)
-│       ├── components/        # 재사용 가능한 컴포넌트
-│       │   ├── _badge.scss        # 배지 컴포넌트
-│       │   ├── _buttons.scss      # 버튼 컴포넌트
-│       │   ├── _dropdown.scss     # 드롭다운 컴포넌트
-│       │   ├── _empty-state.scss  # 빈 상태 컴포넌트
-│       │   ├── _forms.scss        # 폼 컴포넌트
-│       │   ├── _modal.scss        # 모달 컴포넌트
-│       │   ├── _notice.scss       # 알림 컴포넌트
-│       │   ├── _pagination.scss   # 페이지네이션 컴포넌트
-│       │   ├── _table.scss        # 테이블 컴포넌트
-│       │   ├── _tabs.scss         # 탭 컴포넌트
-│       │   ├── _toast.scss        # 토스트 컴포넌트
-│       │   └── _toggle.scss       # 토글 컴포넌트
-│       └── main.scss              # 메인 스타일시트
-└── dist/                         # 빌드 출력
-    ├── css/
-    │   └── dewp.min.css          # 압축된 CSS
-    └── js/
-        └── dewp.min.js           # 압축된 JavaScript
-```
+- 문서/예제: https://designbasekorea.github.io/designbase-wp-library/
+- npm: `npm i designbase-wp-library@latest`
+- unpkg: `https://unpkg.com/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}`
+- jsDelivr: `https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/{css|js}/dewp.min.{css|js}`
 
 ## 🎯 사용법
 
@@ -73,7 +46,7 @@ src/
 
 #### 브라우저에서 직접 사용
 ```html
-<script src="https://unpkg.com/designbase-wp-library@0.4.0/dist/js/dewp.min.js"></script>
+<script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
 <script>
   // 전역 DEWP 객체 사용
   window.DEWP.showToast('안녕하세요!', 'success', 3000, 'md');
@@ -100,7 +73,7 @@ showConfirmModal({ message: '정말 삭제하시겠습니까?' });
 ### CSS 사용
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@0.4.0/dist/css/dewp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 ```
 
 ## 🧩 컴포넌트
@@ -465,5 +438,5 @@ MIT License
 ## 🔗 관련 링크
 
 - [npm 패키지](https://www.npmjs.com/package/designbase-wp-library)
-- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@0.4.0/)
-- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@0.4.0/)
+- [CDN (unpkg)](https://unpkg.com/designbase-wp-library@latest/)
+- [CDN (jsDelivr)](https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/)
