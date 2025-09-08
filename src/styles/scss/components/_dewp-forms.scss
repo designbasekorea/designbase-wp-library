@@ -122,6 +122,10 @@ $form-success-color: $status-success;
             background-repeat: no-repeat !important;
         }
     }
+
+    input[type="checkbox"]:checked::before {
+        display: none !important;
+    }
 }
 
 .dewp-form-row {
