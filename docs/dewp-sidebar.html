@@ -12,166 +12,213 @@
 <body class="ex-demo-sidebar">
 
   <div class="ex-main" style="padding: 16px;">
-    <div class="ex-section">
-      <div class="ex-section-header">
-        <div class="ex-section-title-area">
-          <h3 class="ex-section-title">사이드바</h3>
-          <p class="ex-section-description">타입(basic/wrapper)과 포지션(fixed/sticky/static) 예시</p>
-        </div>
-      </div>
-      <div class="ex-section-content">
-        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
-          <label class="dewp-form-label">타입:
-            <select id="sidebarType" class="dewp-form-select">
-              <option value="basic">basic</option>
-              <option value="wrapper" selected>wrapper</option>
-            </select>
-          </label>
-          <label class="dewp-form-label">포지션:
-            <select id="sidebarPosition" class="dewp-form-select">
-              <option value="fixed">fixed</option>
-              <option value="sticky" selected>sticky</option>
-              <option value="static">static</option>
-            </select>
-          </label>
-          <label class="dewp-form-label">top(px):
-            <input id="sidebarTop" type="number" value="0" class="dewp-form-input" style="width:80px;" />
-          </label>
-          <label class="dewp-form-label">width(px):
-            <input id="sidebarWidth" type="number" value="250" class="dewp-form-input" style="width:80px;" />
-          </label>
-          <button id="toggleCollapse" class="dewp-btn dewp-btn-secondary">사이드바 토글(접기/펼치기)</button>
-        </div>
-        <p>좌측 예시 내비와 겹치지 않도록, 이 데모에서는 콘텐츠 영역(ex-content) 기준으로 사이드바를 표시합니다.</p>
-        <p style="margin-top:16px;">본문 스크롤 테스트를 위한 더미 내용</p>
-        <div style="height: 1200px"></div>
-      </div>
-    </div>
-    <div class="ex-section">
-      <div class="ex-section-header">
-        <div class="ex-section-title-area">
-          <h3 class="ex-section-title">문서 요약</h3>
-          <p class="ex-section-description">Sidebar 핵심 사용 가이드</p>
-        </div>
-      </div>
-      <div class="ex-section-content ex-docs">
-        <section>
-          <h4>개요</h4>
-          <p>워드프레스 관리자용 좌측 고정 내비게이션. 그룹/구분선/서브메뉴를 지원합니다.</p>
-        </section>
+    <div class="sidebar-demo-layout" style="display:flex; gap:16px; align-items:flex-start;">
+      <!-- 좌측: 정적 사이드바 -->
+      <aside class="dewp-sidebar dewp-sidebar--wrapper is-sticky"
+        style="--dewp-sidebar-top: 0px; --dewp-sidebar-width: 250px;">
+        <div class="dewp-sidebar-inner">
+          <div class="dewp-sidebar-header">
+            <h1 class="dewp-sidebar-title">DEWP Admin</h1>
+            <p class="dewp-sidebar-subtitle">빠른 이동</p>
+          </div>
 
-        <section>
-          <h4>생성</h4>
-          <pre>
-<code class="language-js">const sidebar = new DEWPSidebar({
-  title: 'DEWP Admin',
-  groups: [{ id: 'general', title: '일반', items: [{ id: 'dashboard', text: '대시보드', url: '#' }] }]
-});</code>
-          </pre>
-        </section>
+          <div class="dewp-sidebar-group" data-group-id="general">
+            <h2 class="dewp-sidebar-group-title">일반</h2>
+            <ul class="dewp-sidebar-menu">
+              <li class="dewp-sidebar-menu-item is-active" data-item-id="dashboard">
+                <a href="#" class="dewp-sidebar-menu-link">
+                  <span class="dewp-sidebar-menu-text">대시보드</span>
+                </a>
+              </li>
+              <li class="dewp-sidebar-menu-item" data-item-id="settings">
+                <a href="#" class="dewp-sidebar-menu-link">
+                  <span class="dewp-sidebar-menu-text">설정</span>
+                </a>
+              </li>
+              <li class="dewp-sidebar-menu-item has-submenu" data-item-id="tools">
+                <a href="#" class="dewp-sidebar-menu-link" role="button" aria-expanded="false"
+                  aria-controls="submenu-tools">
+                  <span class="dewp-sidebar-menu-text">도구</span>
+                  <span class="dewp-sidebar-menu-arrow">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+                    </svg>
+                  </span>
+                </a>
+                <ul class="dewp-sidebar-submenu" id="submenu-tools" aria-hidden="true">
+                  <li class="dewp-sidebar-menu-item" data-item-id="import">
+                    <a href="#" class="dewp-sidebar-menu-link"><span class="dewp-sidebar-menu-text">가져오기</span></a>
+                  </li>
+                  <li class="dewp-sidebar-menu-item" data-item-id="export">
+                    <a href="#" class="dewp-sidebar-menu-link"><span class="dewp-sidebar-menu-text">내보내기</span></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-        <section>
-          <h4>API</h4>
-          <pre>
-<code class="language-js">sidebar.addGroup({ id: 'new', title: '새 그룹', items: [] });
-sidebar.addMenuItem('general', { id: 'settings', text: '설정', url: '#' });
-sidebar.toggle('tools');
-sidebar.destroy();</code>
-          </pre>
-        </section>
+          <div class="dewp-sidebar-group" data-group-id="contents">
+            <h2 class="dewp-sidebar-group-title">콘텐츠</h2>
+            <ul class="dewp-sidebar-menu">
+              <li class="dewp-sidebar-menu-item" data-item-id="posts">
+                <a href="#" class="dewp-sidebar-menu-link"><span class="dewp-sidebar-menu-text">게시글</span></a>
+              </li>
+              <li class="dewp-sidebar-menu-item" data-item-id="pages">
+                <a href="#" class="dewp-sidebar-menu-link"><span class="dewp-sidebar-menu-text">페이지</span></a>
+              </li>
+              <li class="dewp-sidebar-menu-item" data-item-id="media">
+                <a href="#" class="dewp-sidebar-menu-link"><span class="dewp-sidebar-menu-text">미디어</span></a>
+              </li>
+            </ul>
+          </div>
 
-        <section>
-          <h4>접근성</h4>
-          <ul>
-            <li>서브메뉴 토글에 <code>aria-expanded</code>/<code>aria-controls</code> 제공</li>
-            <li>서브메뉴는 <code>aria-hidden</code> 상태 업데이트</li>
-          </ul>
-        </section>
+          <div class="dewp-sidebar-footer">
+            <p class="dewp-sidebar-footer-text">DesignBase</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 우측: 컨트롤 및 문서 섹션 -->
+      <div class="ex-right" style="flex:1; min-width:0;">
+        <div class="ex-section">
+          <div class="ex-section-header">
+            <div class="ex-section-title-area">
+              <h3 class="ex-section-title">사이드바</h3>
+              <p class="ex-section-description">타입(basic/wrapper)과 포지션(fixed/sticky/static) 예시</p>
+            </div>
+          </div>
+          <div class="ex-section-content">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
+              <label class="dewp-form-label">타입:
+                <select id="sidebarType" class="dewp-form-select">
+                  <option value="basic">basic</option>
+                  <option value="wrapper" selected>wrapper</option>
+                </select>
+              </label>
+              <label class="dewp-form-label">포지션:
+                <select id="sidebarPosition" class="dewp-form-select">
+                  <option value="fixed">fixed</option>
+                  <option value="sticky" selected>sticky</option>
+                  <option value="static">static</option>
+                </select>
+              </label>
+              <label class="dewp-form-label">top(px):
+                <input id="sidebarTop" type="number" value="0" class="dewp-form-input" style="width:80px;" />
+              </label>
+              <label class="dewp-form-label">width(px):
+                <input id="sidebarWidth" type="number" value="250" class="dewp-form-input" style="width:80px;" />
+              </label>
+              <button id="toggleCollapse" class="dewp-btn dewp-btn-secondary">사이드바 토글(접기/펼치기)</button>
+            </div>
+            <p>좌측 정적 사이드바와 우측 컨텐츠의 2열 레이아웃입니다. 포지션이 sticky 일 때 스크롤에 따라 고정됩니다.</p>
+            <p style="margin-top:16px;">본문 스크롤 테스트를 위한 더미 내용</p>
+            <div style="height: 1200px"></div>
+          </div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-section-header">
+            <div class="ex-section-title-area">
+              <h3 class="ex-section-title">문서 요약</h3>
+              <p class="ex-section-description">Sidebar 핵심 사용 가이드</p>
+            </div>
+          </div>
+          <div class="ex-section-content ex-docs">
+            <section>
+              <h4>개요</h4>
+              <p>워드프레스 관리자용 좌측 고정 내비게이션. 그룹/구분선/서브메뉴(아코디언)를 지원합니다.</p>
+            </section>
+            <section>
+              <h4>접근성</h4>
+              <ul>
+                <li>서브메뉴 토글에 <code>aria-expanded</code>/<code>aria-controls</code> 제공</li>
+                <li>서브메뉴는 <code>aria-hidden</code> 상태 업데이트</li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
   <script>
-    function buildSidebar() {
-      const config = {
-        title: 'DEWP Admin',
-        subtitle: '빠른 이동',
-        groups: [
-          {
-            id: 'general',
-            title: '일반',
-            items: [
-              { id: 'dashboard', text: '대시보드', url: '#', isActive: true },
-              { id: 'settings', text: '설정', url: '#' },
-              {
-                id: 'tools', text: '도구', hasSubmenu: true, submenu: [
-                  { id: 'import', text: '가져오기', url: '#' },
-                  { id: 'export', text: '내보내기', url: '#' }
-                ]
-              }
-            ]
-          },
-          {
-            id: 'contents',
-            title: '콘텐츠',
-            items: [
-              { id: 'posts', text: '게시글', url: '#' },
-              { id: 'pages', text: '페이지', url: '#' },
-              { id: 'media', text: '미디어', url: '#' }
-            ]
-          }
-        ],
-        footerText: 'DesignBase'
-      };
-      // 기존 인스턴스 제거 후 재생성
-      try { window.__demoSidebar?.destroy(); } catch { }
-      window.__demoSidebar = new window.DEWPSidebar(config);
-      applySidebarVariants();
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
-      if (window.DEWPSidebar) buildSidebar();
+      const sidebar = document.querySelector('.dewp-sidebar');
+      const typeSel = document.getElementById('sidebarType');
+      const posSel = document.getElementById('sidebarPosition');
+      const topInp = document.getElementById('sidebarTop');
+      const widthInp = document.getElementById('sidebarWidth');
+      const collapseBtn = document.getElementById('toggleCollapse');
 
-      const els = {
-        type: document.getElementById('sidebarType'),
-        pos: document.getElementById('sidebarPosition'),
-        top: document.getElementById('sidebarTop'),
-        width: document.getElementById('sidebarWidth'),
-        collapse: document.getElementById('toggleCollapse')
-      };
+      function applySidebarVariants() {
+        if (!sidebar) return;
+        const type = (typeSel as HTMLSelectElement)?.value || 'wrapper';
+        const pos = (posSel as HTMLSelectElement)?.value || 'sticky';
+        const top = parseInt((topInp as HTMLInputElement)?.value || '0', 10) || 0;
+        const width = parseInt((widthInp as HTMLInputElement)?.value || '250', 10) || 250;
 
-      function onChange() {
-        applySidebarVariants();
+        sidebar.classList.remove('dewp-sidebar--basic', 'dewp-sidebar--wrapper');
+        sidebar.classList.add(type === 'wrapper' ? 'dewp-sidebar--wrapper' : 'dewp-sidebar--basic');
+
+        sidebar.classList.remove('is-fixed', 'is-sticky', 'is-static');
+        sidebar.classList.add(pos === 'sticky' ? 'is-sticky' : (pos === 'static' ? 'is-static' : 'is-fixed'));
+
+        (sidebar as HTMLElement).style.setProperty('--dewp-sidebar-top', top + 'px');
+        (sidebar as HTMLElement).style.setProperty('--dewp-sidebar-width', width + 'px');
       }
 
-      els.type?.addEventListener('change', onChange);
-      els.pos?.addEventListener('change', onChange);
-      els.top?.addEventListener('input', onChange);
-      els.width?.addEventListener('input', onChange);
-      els.collapse?.addEventListener('click', function () {
-        try { window.__demoSidebar?.toggleCollapse(); } catch { }
+      // 아코디언 토글 (정적 DOM)
+      sidebar?.addEventListener('click', function (e) {
+        const target = e.target as HTMLElement;
+        const menuItem = target.closest('.dewp-sidebar-menu-item.has-submenu');
+        if (!menuItem) return;
+        e.preventDefault();
+        const submenu = menuItem.querySelector('.dewp-sidebar-submenu') as HTMLElement | null;
+        const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement | null;
+        if (!submenu) return;
+
+        // 같은 레벨의 다른 서브메뉴 닫기
+        const siblings = menuItem.parentElement?.querySelectorAll('.has-submenu');
+        siblings?.forEach((sib) => {
+          if (sib !== menuItem) {
+            const sibSub = sib.querySelector('.dewp-sidebar-submenu') as HTMLElement | null;
+            const sibTog = sib.querySelector('.dewp-sidebar-menu-link') as HTMLElement | null;
+            if (sibSub && sibSub.classList.contains('expanded')) {
+              sibSub.classList.remove('expanded');
+              sibSub.style.maxHeight = '0';
+              sibTog?.setAttribute('aria-expanded', 'false');
+              sibSub.setAttribute('aria-hidden', 'true');
+            }
+            sib.classList.remove('is-open');
+          }
+        });
+
+        const isExpanded = submenu.classList.contains('expanded');
+        if (isExpanded) {
+          submenu.classList.remove('expanded');
+          submenu.style.maxHeight = '0';
+          toggle?.setAttribute('aria-expanded', 'false');
+          submenu.setAttribute('aria-hidden', 'true');
+          menuItem.classList.remove('is-open');
+        } else {
+          submenu.classList.add('expanded');
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          toggle?.setAttribute('aria-expanded', 'true');
+          submenu.setAttribute('aria-hidden', 'false');
+          menuItem.classList.add('is-open');
+        }
       });
+
+      // 컨트롤 이벤트
+      typeSel?.addEventListener('change', applySidebarVariants);
+      posSel?.addEventListener('change', applySidebarVariants);
+      topInp?.addEventListener('input', applySidebarVariants);
+      widthInp?.addEventListener('input', applySidebarVariants);
+      collapseBtn?.addEventListener('click', function () {
+        sidebar?.classList.toggle('is-collapsed');
+      });
+
+      applySidebarVariants();
     });
-
-    function applySidebarVariants() {
-      const sidebar = document.querySelector('.dewp-sidebar');
-      if (!sidebar) return;
-
-      const type = document.getElementById('sidebarType')?.value || 'basic';
-      const pos = document.getElementById('sidebarPosition')?.value || 'fixed';
-      const top = parseInt(document.getElementById('sidebarTop')?.value || '0', 10) || 0;
-      const width = parseInt(document.getElementById('sidebarWidth')?.value || '250', 10) || 250;
-
-      sidebar.classList.remove('dewp-sidebar--basic', 'dewp-sidebar--wrapper');
-      sidebar.classList.add(type === 'wrapper' ? 'dewp-sidebar--wrapper' : 'dewp-sidebar--basic');
-
-      sidebar.classList.remove('is-fixed', 'is-sticky', 'is-static');
-      sidebar.classList.add(pos === 'sticky' ? 'is-sticky' : (pos === 'static' ? 'is-static' : 'is-fixed'));
-
-      sidebar.style.setProperty('--dewp-sidebar-top', top + 'px');
-      sidebar.style.setProperty('--dewp-sidebar-width', width + 'px');
-    }
   </script>
 
   <script src="./src/_examples-manifest.js"></script>
