@@ -70,14 +70,89 @@
       <section>
         <h4>HTML 구조</h4>
         <pre>
-<code class="language-html">&lt;form class="dewp-form"&gt;
-  &lt;div class="dewp-form-group"&gt;
-    &lt;label class="dewp-form-label" for="name"&gt;이름&lt;/label&gt;
-    &lt;input id="name" class="dewp-form-input" /&gt;
+<code class="language-html">&lt;!-- 기본 입력 --&gt;
+&lt;form class=&quot;dewp-form&quot;&gt;
+  &lt;div class=&quot;dewp-form-group&quot;&gt;
+    &lt;label class=&quot;dewp-form-label&quot; for=&quot;name&quot;&gt;이름&lt;/label&gt;
+    &lt;input id=&quot;name&quot; type=&quot;text&quot; class=&quot;dewp-form-input&quot; placeholder=&quot;이름&quot; /&gt;
+    &lt;small class=&quot;dewp-form-help&quot;&gt;실명으로 입력해 주세요.&lt;/small&gt;
   &lt;/div&gt;
-  &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
-    &lt;input class="dewp-form-check-input" type="checkbox" id="c1" /&gt;
-    &lt;label class="dewp-form-check-label" for="c1"&gt;체크&lt;/label&gt;
+
+  &lt;!-- 체크박스 --&gt;
+  &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;agree&quot; /&gt;
+    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;agree&quot;&gt;약관 동의&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 라디오(그룹은 name 속성으로 묶음) --&gt;
+  &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
+    &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;gender&quot; id=&quot;g-m&quot; /&gt;
+    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;g-m&quot;&gt;남성&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
+    &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;gender&quot; id=&quot;g-f&quot; /&gt;
+    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;g-f&quot;&gt;여성&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 셀렉트 --&gt;
+  &lt;div class=&quot;dewp-form-group&quot;&gt;
+    &lt;label class=&quot;dewp-form-label&quot; for=&quot;country&quot;&gt;국가&lt;/label&gt;
+    &lt;select id=&quot;country&quot; class=&quot;dewp-form-select&quot;&gt;
+      &lt;option&gt;Korea&lt;/option&gt;
+      &lt;option&gt;USA&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 텍스트영역 --&gt;
+  &lt;div class=&quot;dewp-form-group&quot;&gt;
+    &lt;label class=&quot;dewp-form-label&quot; for=&quot;memo&quot;&gt;메모&lt;/label&gt;
+    &lt;textarea id=&quot;memo&quot; class=&quot;dewp-form-textarea&quot; rows=&quot;4&quot; placeholder=&quot;내용을 입력하세요&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 체크 그룹 --&gt;
+  &lt;div class=&quot;dewp-form-check-group&quot;&gt;
+    &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;opt1&quot; /&gt;
+      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;opt1&quot;&gt;옵션 1&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;opt2&quot; /&gt;
+      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;opt2&quot;&gt;옵션 2&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 라디오 그룹 --&gt;
+  &lt;div class=&quot;dewp-form-check-group&quot;&gt;
+    &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
+      &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;pay&quot; id=&quot;pay-card&quot; /&gt;
+      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;pay-card&quot;&gt;카드&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
+      &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;pay&quot; id=&quot;pay-bank&quot; /&gt;
+      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;pay-bank&quot;&gt;계좌이체&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 파일 업로드 --&gt;
+  &lt;div class=&quot;dewp-form-file&quot;&gt;
+    &lt;input id=&quot;file&quot; type=&quot;file&quot; class=&quot;dewp-form-file-input&quot; /&gt;
+    &lt;label class=&quot;dewp-form-file-label&quot; for=&quot;file&quot;&gt;
+      &lt;span class=&quot;dewp-form-file-icon&quot;&gt;📁&lt;/span&gt; 파일 선택
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 입력 그룹 --&gt;
+  &lt;div class=&quot;dewp-form-input-group&quot;&gt;
+    &lt;span class=&quot;dewp-form-input-group-text&quot;&gt;https://&lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;dewp-form-input&quot; placeholder=&quot;domain.com&quot; /&gt;
+    &lt;button type=&quot;button&quot; class=&quot;dewp-btn dewp-btn-secondary&quot;&gt;확인&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- 상태 표시 --&gt;
+  &lt;div class=&quot;dewp-form-group has-error&quot;&gt;
+    &lt;label class=&quot;dewp-form-label&quot; for=&quot;email2&quot;&gt;이메일&lt;/label&gt;
+    &lt;input id=&quot;email2&quot; type=&quot;email&quot; class=&quot;dewp-form-input form-input-error&quot; /&gt;
+    &lt;small class=&quot;dewp-form-error&quot;&gt;유효한 이메일을 입력해 주세요.&lt;/small&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code>
         </pre>
@@ -88,7 +163,7 @@
         <p>관리자 화면에서는 기본 스타일 우선순위를 이기기 위해 일부 속성에 <code>!important</code>가 적용됩니다.</p>
       </section>
 
-      <p>자세한 내용은 <code>docs/components/form.md</code> 참고.</p>
+
     </div>
   </div>
 
