@@ -353,4 +353,42 @@ export class DEWPDrawer {
 
                 // dev log removed
             } catch (error) {
-                console.error(`
+                console.error('❌ Drawer 자동 초기화 실패:', error);
+            }
+        });
+    }
+
+    private detectPosition(element: Element): 'left' | 'right' | 'top' | 'bottom' {
+        if (element.classList.contains('dewp-drawer-right')) return 'right';
+        if (element.classList.contains('dewp-drawer-top')) return 'top';
+        if (element.classList.contains('dewp-drawer-bottom')) return 'bottom';
+        return 'left';
+    }
+
+    private detectSize(element: Element): 'sm' | 'md' | 'lg' | 'xl' {
+        if (element.classList.contains('dewp-drawer-sm')) return 'sm';
+        if (element.classList.contains('dewp-drawer-lg')) return 'lg';
+        if (element.classList.contains('dewp-drawer-xl')) return 'xl';
+        return 'md';
+    }
+
+    private detectTheme(element: Element): 'default' | 'dark' | 'primary' {
+        if (element.classList.contains('dewp-drawer-dark')) return 'dark';
+        if (element.classList.contains('dewp-drawer-primary')) return 'primary';
+        return 'default';
+    }
+}
+
+// 싱글톤 인스턴스 생성 및 유틸리티 export (기존 API 유지)
+const dewpDrawer = new DEWPDrawer();
+
+export const createDrawer = (options: DrawerOptions): string => dewpDrawer.create(options);
+export const openDrawer = (id: string): void => { dewpDrawer.open(id); };
+export const closeDrawer = (id: string): void => { dewpDrawer.close(id); };
+export const toggleDrawer = (id: string): void => { dewpDrawer.toggle(id); };
+export const closeAllDrawers = (): void => { dewpDrawer.closeAll(); };
+export const destroyDrawer = (id: string): void => { dewpDrawer.destroy(id); };
+export const isDrawerOpen = (id: string): boolean => dewpDrawer.isOpen(id);
+export const autoInitializeDrawers = (): void => { dewpDrawer.autoInitialize(); };
+
+export default dewpDrawer;

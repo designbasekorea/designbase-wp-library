@@ -106,6 +106,9 @@ import {
 
 import { DEWPStepper, initStepper } from './components/dewp-stepper';
 
+// 빌드 시 치환되는 전역 토큰에 대한 타입 선언
+declare const __DEWP_VERSION__: string;
+
 // 현재 번들 버전(빌드시 package.json에서 주입)
 const DEWP_VERSION = __DEWP_VERSION__ as string;
 
