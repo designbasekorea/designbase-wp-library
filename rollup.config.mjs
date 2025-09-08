@@ -2,6 +2,10 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
+import replace from '@rollup/plugin-replace';
+import { readFileSync } from 'fs';
+
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url)));
 
 export default [
     // 하나의 메인 번들만 생성
@@ -24,6 +28,12 @@ export default [
             typescript({
                 tsconfig: './tsconfig.json',
                 declaration: false
+            }),
+            replace({
+                preventAssignment: true,
+                values: {
+                    __DEWP_VERSION__: JSON.stringify(pkg.version)
+                }
             }),
             terser()
         ]

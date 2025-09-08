@@ -106,8 +106,8 @@ import {
 
 import { DEWPStepper, initStepper } from './components/dewp-stepper';
 
-// 현재 번들 버전 (배포 시 수동 갱신)
-const DEWP_VERSION = '0.5.0';
+// 현재 번들 버전(빌드시 package.json에서 주입)
+const DEWP_VERSION = __DEWP_VERSION__ as string;
 
 /**
  * DEWP 메인 객체
