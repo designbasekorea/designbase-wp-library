@@ -16,11 +16,32 @@
       <div class="ex-section-header">
         <div class="ex-section-title-area">
           <h3 class="ex-section-title">사이드바</h3>
-          <p class="ex-section-description">ex-content 기준 좌측 절대 배치(예시 전용)</p>
+          <p class="ex-section-description">타입(basic/wrapper)과 포지션(fixed/sticky/static) 예시</p>
         </div>
       </div>
       <div class="ex-section-content">
-        <p>좌측 예시 내비와 겹치지 않도록, 이 데모에서는 콘텐츠 영역(ex-content) 기준 왼쪽에 고정합니다.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
+          <label>타입:
+            <select id="sidebarType">
+              <option value="basic">basic</option>
+              <option value="wrapper">wrapper</option>
+            </select>
+          </label>
+          <label>포지션:
+            <select id="sidebarPosition">
+              <option value="fixed">fixed</option>
+              <option value="sticky">sticky</option>
+              <option value="static">static</option>
+            </select>
+          </label>
+          <label>top(px):
+            <input id="sidebarTop" type="number" value="0" style="width:80px;" />
+          </label>
+          <label>width(px):
+            <input id="sidebarWidth" type="number" value="250" style="width:80px;" />
+          </label>
+        </div>
+        <p>좌측 예시 내비와 겹치지 않도록, 이 데모에서는 콘텐츠 영역(ex-content) 기준으로 사이드바를 표시합니다.</p>
         <p style="margin-top:16px;">본문 스크롤 테스트를 위한 더미 내용</p>
         <div style="height: 1200px"></div>
       </div>
@@ -105,11 +126,47 @@ sidebar.destroy();</code>
       // 기존 인스턴스 제거 후 재생성
       try { window.__demoSidebar?.destroy(); } catch { }
       window.__demoSidebar = new window.DEWPSidebar(config);
+      applySidebarVariants();
     }
 
     document.addEventListener('DOMContentLoaded', function () {
       if (window.DEWPSidebar) buildSidebar();
+
+      const els = {
+        type: document.getElementById('sidebarType'),
+        pos: document.getElementById('sidebarPosition'),
+        top: document.getElementById('sidebarTop'),
+        width: document.getElementById('sidebarWidth')
+      };
+
+      function onChange() {
+        applySidebarVariants();
+      }
+
+      els.type?.addEventListener('change', onChange);
+      els.pos?.addEventListener('change', onChange);
+      els.top?.addEventListener('input', onChange);
+      els.width?.addEventListener('input', onChange);
     });
+
+    function applySidebarVariants() {
+      const sidebar = document.querySelector('.dewp-sidebar');
+      if (!sidebar) return;
+
+      const type = document.getElementById('sidebarType')?.value || 'basic';
+      const pos = document.getElementById('sidebarPosition')?.value || 'fixed';
+      const top = parseInt(document.getElementById('sidebarTop')?.value || '0', 10) || 0;
+      const width = parseInt(document.getElementById('sidebarWidth')?.value || '250', 10) || 250;
+
+      sidebar.classList.remove('dewp-sidebar--basic', 'dewp-sidebar--wrapper');
+      sidebar.classList.add(type === 'wrapper' ? 'dewp-sidebar--wrapper' : 'dewp-sidebar--basic');
+
+      sidebar.classList.remove('is-fixed', 'is-sticky', 'is-static');
+      sidebar.classList.add(pos === 'sticky' ? 'is-sticky' : (pos === 'static' ? 'is-static' : 'is-fixed'));
+
+      sidebar.style.setProperty('--dewp-sidebar-top', top + 'px');
+      sidebar.style.setProperty('--dewp-sidebar-width', width + 'px');
+    }
   </script>
 
   <script src="./src/_examples-manifest.js"></script>

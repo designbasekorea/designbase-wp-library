@@ -11,10 +11,10 @@
 // 사이드바 기본 구조
 .dewp-sidebar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
+    top: var(--dewp-sidebar-top, 0);
+    left: var(--dewp-sidebar-left, 0);
+    width: var(--dewp-sidebar-width, 250px);
+    height: var(--dewp-sidebar-height, 100vh);
     background: $bg-primary;
     border-right: 1px solid $border-01;
     z-index: $z-sticky;
@@ -38,6 +38,35 @@
             background: $border-03;
         }
     }
+}
+
+// 타입 변형: 기본(basic), 래퍼(wrapper)
+.dewp-sidebar--basic {
+    border-right: 1px solid $border-01;
+}
+
+.dewp-sidebar--wrapper {
+    border: 1px solid $border-01;
+    border-radius: $radius-xl; // 20px
+}
+
+// 포지션 변형: 고정, 스티키, 정적
+.dewp-sidebar.is-fixed {
+    position: fixed;
+    top: var(--dewp-sidebar-top, 0);
+}
+
+.dewp-sidebar.is-sticky {
+    position: sticky;
+    top: var(--dewp-sidebar-top, 0);
+    height: auto;
+    max-height: calc(100vh - var(--dewp-sidebar-top, 0));
+    overflow-y: auto;
+}
+
+.dewp-sidebar.is-static {
+    position: static;
+    height: auto;
 }
 
 // 사이드바 내부 컨테이너
