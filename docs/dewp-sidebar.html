@@ -140,6 +140,7 @@
     </div>
   </div>
 
+  <!-- 브라우저에서 동작하는 순수 JS 스크립트 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const sidebar = document.querySelector('.dewp-sidebar');
@@ -151,10 +152,10 @@
 
       function applySidebarVariants() {
         if (!sidebar) return;
-        const type = (typeSel as HTMLSelectElement)?.value || 'wrapper';
-        const pos = (posSel as HTMLSelectElement)?.value || 'sticky';
-        const top = parseInt((topInp as HTMLInputElement)?.value || '0', 10) || 0;
-        const width = parseInt((widthInp as HTMLInputElement)?.value || '250', 10) || 250;
+        const type = typeSel ? (typeSel.value || 'wrapper') : 'wrapper';
+        const pos = posSel ? (posSel.value || 'sticky') : 'sticky';
+        const top = parseInt(topInp ? (topInp.value || '0') : '0', 10) || 0;
+        const width = parseInt(widthInp ? (widthInp.value || '250') : '250', 10) || 250;
 
         sidebar.classList.remove('dewp-sidebar--basic', 'dewp-sidebar--wrapper');
         sidebar.classList.add(type === 'wrapper' ? 'dewp-sidebar--wrapper' : 'dewp-sidebar--basic');
@@ -162,70 +163,84 @@
         sidebar.classList.remove('is-fixed', 'is-sticky', 'is-static');
         sidebar.classList.add(pos === 'sticky' ? 'is-sticky' : (pos === 'static' ? 'is-static' : 'is-fixed'));
 
-        (sidebar as HTMLElement).style.setProperty('--dewp-sidebar-top', top + 'px');
-        (sidebar as HTMLElement).style.setProperty('--dewp-sidebar-width', width + 'px');
+        sidebar.style.setProperty('--dewp-sidebar-top', top + 'px');
+        sidebar.style.setProperty('--dewp-sidebar-width', width + 'px');
       }
 
-      // 아코디언 토글 (정적 DOM)
-      sidebar?.addEventListener('click', function (e) {
-        const target = e.target as HTMLElement;
-        const menuItem = target.closest('.dewp-sidebar-menu-item.has-submenu');
-        if (!menuItem) return;
-        e.preventDefault();
-        const submenu = menuItem.querySelector('.dewp-sidebar-submenu') as HTMLElement | null;
-        const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement | null;
-        if (!submenu) return;
+      // 아코디언 토글 (정적 DOM) — TS 문법 제거
+      if (sidebar) {
+        sidebar.addEventListener('click', function (e) {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          const menuItem = target.closest('.dewp-sidebar-menu-item.has-submenu');
+          if (!menuItem) return;
+          e.preventDefault();
 
-        // 같은 레벨의 다른 서브메뉴 닫기
-        const siblings = menuItem.parentElement?.querySelectorAll('.has-submenu');
-        siblings?.forEach((sib) => {
-          if (sib !== menuItem) {
-            const sibSub = sib.querySelector('.dewp-sidebar-submenu') as HTMLElement | null;
-            const sibTog = sib.querySelector('.dewp-sidebar-menu-link') as HTMLElement | null;
-            if (sibSub && sibSub.classList.contains('expanded')) {
-              sibSub.classList.remove('expanded');
-              sibSub.style.maxHeight = '0';
-              sibTog?.setAttribute('aria-expanded', 'false');
-              sibSub.setAttribute('aria-hidden', 'true');
-            }
-            sib.classList.remove('is-open');
+          const submenu = menuItem.querySelector('.dewp-sidebar-submenu');
+          const toggle = menuItem.querySelector('.dewp-sidebar-menu-link');
+          if (!submenu) return;
+
+          // 같은 레벨의 다른 서브메뉴 닫기
+          const parent = menuItem.parentElement;
+          const siblings = parent ? parent.querySelectorAll('.has-submenu') : null;
+          if (siblings) {
+            siblings.forEach(function (sib) {
+              if (sib !== menuItem) {
+                const sibSub = sib.querySelector('.dewp-sidebar-submenu');
+                const sibTog = sib.querySelector('.dewp-sidebar-menu-link');
+                if (sibSub && sibSub.classList.contains('expanded')) {
+                  sibSub.classList.remove('expanded');
+                  sibSub.style.maxHeight = '0';
+                  if (sibTog) sibTog.setAttribute('aria-expanded', 'false');
+                  sibSub.setAttribute('aria-hidden', 'true');
+                }
+                sib.classList.remove('is-open');
+              }
+            });
+          }
+
+          // 항상 펼치기(토글 아님): 클릭 시 무조건 오픈
+          if (!submenu.classList.contains('expanded')) {
+            submenu.classList.add('expanded');
+            submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            if (toggle) toggle.setAttribute('aria-expanded', 'true');
+            submenu.setAttribute('aria-hidden', 'false');
+            menuItem.classList.add('is-open');
           }
         });
-
-        // 항상 펼치기(토글 아님): 클릭 시 무조건 오픈
-        if (!submenu.classList.contains('expanded')) {
-          submenu.classList.add('expanded');
-          submenu.style.maxHeight = submenu.scrollHeight + 'px';
-          toggle?.setAttribute('aria-expanded', 'true');
-          submenu.setAttribute('aria-hidden', 'false');
-          menuItem.classList.add('is-open');
-        }
-      });
+      }
 
       // 컨트롤 이벤트
-      typeSel?.addEventListener('change', applySidebarVariants);
-      posSel?.addEventListener('change', applySidebarVariants);
-      topInp?.addEventListener('input', applySidebarVariants);
-      widthInp?.addEventListener('input', applySidebarVariants);
-      collapseBtn?.addEventListener('click', function () {
-        sidebar?.classList.toggle('is-collapsed');
-      });
+      if (typeSel) typeSel.addEventListener('change', applySidebarVariants);
+      if (posSel) posSel.addEventListener('change', applySidebarVariants);
+      if (topInp) topInp.addEventListener('input', applySidebarVariants);
+      if (widthInp) widthInp.addEventListener('input', applySidebarVariants);
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', function () {
+          if (sidebar) sidebar.classList.toggle('is-collapsed');
+        });
+      }
 
       // 화살표 자동 추가(서브메뉴가 있는데 화살표 요소가 없는 경우)
-      sidebar?.querySelectorAll('.dewp-sidebar-menu-item.has-submenu').forEach((item) => {
-        const link = item.querySelector('.dewp-sidebar-menu-link');
-        const arrow = item.querySelector('.dewp-sidebar-menu-arrow');
-        if (link && !arrow) {
-          const span = document.createElement('span');
-          span.className = 'dewp-sidebar-menu-arrow';
-          span.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>';
-          link.appendChild(span);
-        }
-      });
+      if (sidebar) {
+        sidebar.querySelectorAll('.dewp-sidebar-menu-item.has-submenu').forEach(function (item) {
+          const link = item.querySelector('.dewp-sidebar-menu-link');
+          const arrow = item.querySelector('.dewp-sidebar-menu-arrow');
+          if (link && !arrow) {
+            const span = document.createElement('span');
+            span.className = 'dewp-sidebar-menu-arrow';
+            span.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>';
+            link.appendChild(span);
+          }
+        });
+      }
 
       applySidebarVariants();
     });
   </script>
+
+  <!-- 필요 시: 클래스 방식으로 생성하려면 아래 JS를 추가로 로드 -->
+  <!-- <script src="./dewp-sidebar.js"></script> -->
 
   <script src="./src/_examples-manifest.js"></script>
   <script src="./src/_examples-shell.js"></script>
