@@ -106,6 +106,9 @@ import {
 
 import { DEWPStepper, initStepper } from './components/dewp-stepper';
 
+// 현재 번들 버전 (배포 시 수동 갱신)
+const DEWP_VERSION = '0.5.0';
+
 /**
  * DEWP 메인 객체
  * window.DEWP로 접근 가능
@@ -209,11 +212,11 @@ export default {
     ready: onDOMReady,
 
     // 버전 정보
-    version: '1.0.0',
+    version: DEWP_VERSION,
     info: {
         name: 'DesignBase WordPress Library',
         description: '간단하고 강력한 프론트엔드 라이브러리',
-        version: '1.0.0',
+        version: DEWP_VERSION,
         author: 'DesignBase',
         license: 'MIT'
     }
@@ -240,10 +243,10 @@ if (typeof window !== 'undefined') {
         getAccordionInstance, destroyAccordion, destroyAllAccordions, DEWPSidebar,
         // Popover
         createPopover, openPopover, closePopover, togglePopover,
-        ready: onDOMReady, version: '1.0.0', info: {
+        ready: onDOMReady, version: DEWP_VERSION, info: {
             name: 'DesignBase WordPress Library',
             description: '간단하고 강력한 프론트엔드 라이브러리',
-            version: '1.0.0',
+            version: DEWP_VERSION,
             author: 'DesignBase',
             license: 'MIT'
         }
@@ -253,10 +256,8 @@ if (typeof window !== 'undefined') {
         (globalDEWP as any)[key] = (dewpFunctions as any)[key];
     });
 
-    // 디버깅을 위한 로그
-    console.log('🚀 DEWP 라이브러리 전역 객체 설정 완료');
-    console.log('window.DEWP:', (window as any).DEWP);
-    console.log('사용 가능한 함수들:', Object.keys((window as any).DEWP));
+    // 단일 버전 로그만 출력
+    try { console.log(`[DEWP] v${DEWP_VERSION} loaded`); } catch { }
 
     // 기본 컴포넌트 자동 초기화 (접근성 속성 포함)
     onDOMReady(() => {

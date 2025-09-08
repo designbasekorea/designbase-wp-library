@@ -37,7 +37,7 @@ class DEWPToast {
     }
 
     show(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info', duration: number = 5000, size: 'sm' | 'md' | 'lg' = 'md'): string {
-        console.log('🔔 토스트 표시:', { message, type, duration, size });
+        // dev log removed
 
         if (!this.container) {
             this.createContainer();

@@ -38,7 +38,7 @@ export class DEWPDrawer {
 
     create(options: DrawerOptions): string {
         const drawerId = 'dewp-drawer-' + Date.now();
-        console.log('🔲 Drawer 생성 시작:', drawerId);
+        // dev log removed
 
         // 기존 Drawer 요소 찾기 (ID 또는 선택자로)
         let drawerElement: HTMLElement | null = null;
@@ -71,12 +71,12 @@ export class DEWPDrawer {
         };
 
         this.drawers.set(drawerId, instance);
-        console.log('🔲 Drawer 인스턴스 저장됨:', drawerId);
+        // dev log removed
 
         // 이벤트 바인딩
         this.bindDrawerEvents(instance);
 
-        console.log('🔲 Drawer 생성 완료:', drawerId);
+        // dev log removed
         return drawerId;
     }
 
@@ -182,7 +182,7 @@ export class DEWPDrawer {
         const instance = this.drawers.get(id);
         if (!instance || instance.isOpen) return;
 
-        console.log('🔲 Drawer 열기:', id);
+        // dev log removed
 
         // 다른 Drawer 닫기
         this.closeAll();
@@ -210,14 +210,14 @@ export class DEWPDrawer {
             instance.options.onOpen();
         }
 
-        console.log('🔲 Drawer 열림 완료:', id);
+        // dev log removed
     }
 
     close(id: string): void {
         const instance = this.drawers.get(id);
         if (!instance || !instance.isOpen) return;
 
-        console.log('🔲 Drawer 닫기:', id);
+        // dev log removed
 
         // Before Close 콜백
         if (instance.options.onBeforeClose) {
@@ -242,7 +242,7 @@ export class DEWPDrawer {
             instance.options.onClose();
         }
 
-        console.log('🔲 Drawer 닫힘 완료:', id);
+        // dev log removed
     }
 
     closeAll(): void {
@@ -279,7 +279,7 @@ export class DEWPDrawer {
         // Map에서 제거
         this.drawers.delete(id);
 
-        console.log('🔲 Drawer 제거됨:', id);
+        // dev log removed
     }
 
     getInstance(id: string): DrawerInstance | undefined {
@@ -309,7 +309,7 @@ export class DEWPDrawer {
 
     private adjustDrawerPosition(instance: DrawerInstance): void {
         // Drawer 위치 조정 로직 (필요시 구현)
-        console.log('🔲 Drawer 위치 조정:', instance.id);
+        // dev log removed
     }
 
     private getDrawerTitle(options: DrawerOptions): string {
@@ -323,11 +323,11 @@ export class DEWPDrawer {
 
     // 자동 초기화
     autoInitialize(): void {
-        console.log('🔲 Drawer 자동 초기화 시작');
+        // dev log removed
 
         // 모든 .dewp-drawer 요소 찾기
         const drawerElements = document.querySelectorAll('.dewp-drawer');
-        console.log(`📋 찾은 Drawer 요소: ${drawerElements.length}개`);
+        // dev log removed
 
         drawerElements.forEach((element, index) => {
             const drawerId = `auto-drawer-${index + 1}`;
@@ -351,69 +351,6 @@ export class DEWPDrawer {
                 // 원본 요소에 ID 설정
                 element.setAttribute('data-drawer-id', id);
 
-                console.log(`🎉 Drawer 자동 초기화 완료: ${id}`);
+                // dev log removed
             } catch (error) {
-                console.error(`❌ Drawer 자동 초기화 실패 (${index + 1}):`, error);
-            }
-        });
-    }
-
-    private detectPosition(element: Element): 'left' | 'right' | 'top' | 'bottom' {
-        if (element.classList.contains('dewp-drawer-right')) return 'right';
-        if (element.classList.contains('dewp-drawer-top')) return 'top';
-        if (element.classList.contains('dewp-drawer-bottom')) return 'bottom';
-        return 'left'; // 기본값
-    }
-
-    private detectSize(element: Element): 'sm' | 'md' | 'lg' | 'xl' {
-        if (element.classList.contains('dewp-drawer-sm')) return 'sm';
-        if (element.classList.contains('dewp-drawer-lg')) return 'lg';
-        if (element.classList.contains('dewp-drawer-xl')) return 'xl';
-        return 'md'; // 기본값
-    }
-
-    private detectTheme(element: Element): 'default' | 'dark' | 'primary' {
-        if (element.classList.contains('dewp-drawer-dark')) return 'dark';
-        if (element.classList.contains('dewp-drawer-primary')) return 'primary';
-        return 'default';
-    }
-}
-
-// 싱글톤 인스턴스 생성
-const dewpDrawer = new DEWPDrawer();
-
-// 전역 함수들 export
-export const createDrawer = (options: DrawerOptions): string => {
-    return dewpDrawer.create(options);
-};
-
-export const openDrawer = (id: string): void => {
-    dewpDrawer.open(id);
-};
-
-export const closeDrawer = (id: string): void => {
-    dewpDrawer.close(id);
-};
-
-export const toggleDrawer = (id: string): void => {
-    dewpDrawer.toggle(id);
-};
-
-export const closeAllDrawers = (): void => {
-    dewpDrawer.closeAll();
-};
-
-export const destroyDrawer = (id: string): void => {
-    dewpDrawer.destroy(id);
-};
-
-export const isDrawerOpen = (id: string): boolean => {
-    return dewpDrawer.isOpen(id);
-};
-
-export const autoInitializeDrawers = (): void => {
-    return dewpDrawer.autoInitialize();
-};
-
-// 기본 export
-export default dewpDrawer;
+                console.error(`

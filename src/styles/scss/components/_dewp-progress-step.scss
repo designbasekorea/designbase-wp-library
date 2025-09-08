@@ -121,7 +121,7 @@
     .dewp-progress-step-item {
         display: grid;
         grid-template-columns: auto 1fr; // 마커 | 라벨
-        grid-template-rows: auto auto;   // 1행: 마커/라벨, 2행: 커넥터
+        grid-template-rows: auto auto; // 1행: 마커/라벨, 2행: 커넥터
         align-items: center;
         column-gap: $spacing-2;
     }
@@ -147,14 +147,20 @@
         background-color: $border-02;
     }
 
-    .dewp-progress-step-item:last-child .dewp-progress-step-connector { display: none; }
+    .dewp-progress-step-item:last-child .dewp-progress-step-connector {
+        display: none;
+    }
 }
 
 // 세로형 + 크기 변형 보정
 .dewp-progress-step-vertical.dewp-progress-step-sm {
-    .dewp-progress-step-connector { height: 24px; }
+    .dewp-progress-step-connector {
+        height: 24px;
+    }
 }
 
 .dewp-progress-step-vertical.dewp-progress-step-lg {
-    .dewp-progress-step-connector { height: 40px; }
+    .dewp-progress-step-connector {
+        height: 40px;
+    }
 }
