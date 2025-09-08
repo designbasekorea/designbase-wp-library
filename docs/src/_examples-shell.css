@@ -184,10 +184,6 @@ body.ex-demo-sidebar .ex-content {
 }
 
 
-body.ex-demo-sidebar .ex-content .ex-main {
-  margin-left: 260px;
-}
-
 /* Docs summary styles */
 .ex-section-content.ex-docs {
   display: flex;
