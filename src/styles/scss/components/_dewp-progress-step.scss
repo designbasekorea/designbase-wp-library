@@ -109,3 +109,55 @@
         height: 3px;
     }
 }
+
+// 세로형 변형
+.dewp-progress-step-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    .dewp-progress-step-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    // 순서: 마커 -> 커넥터 -> 라벨
+    .dewp-progress-step-marker {
+        order: 1;
+    }
+
+    .dewp-progress-step-connector {
+        order: 2;
+        width: 2px;
+        height: 32px;
+        margin: $spacing-2 0 $spacing-2 11px; // 마커(24px) 중심 정렬 근사치
+        background-color: $border-02;
+    }
+
+    .dewp-progress-step-label {
+        order: 3;
+        margin-left: 0;
+        margin-top: $spacing-1;
+    }
+
+    .dewp-progress-step-item:last-child .dewp-progress-step-connector {
+        display: none;
+    }
+}
+
+// 세로형 + 크기 변형 보정
+.dewp-progress-step-vertical.dewp-progress-step-sm {
+    .dewp-progress-step-connector {
+        height: 24px;
+        margin-left: 8px;
+    }
+}
+
+.dewp-progress-step-vertical.dewp-progress-step-lg {
+    .dewp-progress-step-connector {
+        height: 40px;
+        margin-left: 15px;
+    }
+}
