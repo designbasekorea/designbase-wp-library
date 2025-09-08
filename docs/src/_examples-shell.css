@@ -183,16 +183,6 @@ body.ex-demo-sidebar .ex-content {
   position: relative;
 }
 
-body.ex-demo-sidebar .ex-content .dewp-sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 260px;
-  border-right: 1px solid #e5e7eb;
-  background: #fff;
-  z-index: 1;
-}
 
 body.ex-demo-sidebar .ex-content .ex-main {
   margin-left: 260px;

@@ -1,5 +1,36 @@
 # designbase-wp-library
 
+## 0.5.5
+
+### Patch Changes
+
+- 5e5c8cc: Sidebar 확장: 아코디언/기본값/콜랩스 + 데모 폼 클래스 적용
+
+  - 서브메뉴 아코디언 동작 추가(동레벨 단일 오픈)
+  - 기본 타입/포지션: `dewp-sidebar--wrapper` + `is-sticky`
+  - 전체 콜랩스 토글(`is-collapsed`) 및 전용 스타일 추가
+  - CSS 변수 지원 강화: `--dewp-sidebar-top`, `--dewp-sidebar-width` 등
+  - docs: 사이드바 데모 컨트롤에 `dewp-form-select`, `dewp-form-input` 적용 및 콜랩스 토글 버튼 추가
+
+- 351dab7: Docs: Sidebar 데모를 정적 2열 레이아웃으로 전환 및 UX 개선
+
+  - 좌측 고정(정적 DOM) 사이드바 + 우측 설명 컨텐츠 구성
+  - 상위 메뉴 클릭 시 하위메뉴 강제 펼침(아코디언 단일 오픈)
+  - 서브메뉴 보유 항목에 화살표 자동 삽입
+  - 컨트롤 UI(wrapper/sticky 기본, top/width 조정, collapse 토글) 유지
+
+## 0.5.4
+
+### Patch Changes
+
+- 5e5c8cc: Sidebar 확장: 아코디언/기본값/콜랩스 + 데모 폼 클래스 적용
+
+  - 서브메뉴 아코디언 동작 추가(동레벨 단일 오픈)
+  - 기본 타입/포지션: `dewp-sidebar--wrapper` + `is-sticky`
+  - 전체 콜랩스 토글(`is-collapsed`) 및 전용 스타일 추가
+  - CSS 변수 지원 강화: `--dewp-sidebar-top`, `--dewp-sidebar-width` 등
+  - docs: 사이드바 데모 컨트롤에 `dewp-form-select`, `dewp-form-input` 적용 및 콜랩스 토글 버튼 추가
+
 ## 0.5.3
 
 ### Patch Changes
