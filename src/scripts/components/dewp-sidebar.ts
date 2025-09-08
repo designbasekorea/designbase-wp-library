@@ -30,6 +30,7 @@ export class DEWPSidebar {
     private sidebar: HTMLElement | null = null;
     private config: SidebarConfig;
     private activeItemId: string | null = null;
+    private isCollapsed: boolean = false;
 
     constructor(config: SidebarConfig) {
         this.config = config;
@@ -58,7 +59,8 @@ export class DEWPSidebar {
 
         // 사이드바 컨테이너 생성
         this.sidebar = document.createElement('div');
-        this.sidebar.className = 'dewp-sidebar';
+        // 기본 타입/포지션: wrapper + sticky
+        this.sidebar.className = 'dewp-sidebar dewp-sidebar--wrapper is-sticky';
         this.sidebar.id = 'dewp-sidebar';
 
         // body에 추가
@@ -199,18 +201,36 @@ export class DEWPSidebar {
 
         const isExpanded = submenu.classList.contains('expanded');
 
+        // 아코디언: 같은 레벨의 다른 서브메뉴는 닫기
+        const siblings = menuItem.parentElement?.querySelectorAll('.dewp-sidebar-menu-item.has-submenu');
+        siblings?.forEach((sib) => {
+            if (sib !== menuItem) {
+                const sibSub = sib.querySelector('.dewp-sidebar-submenu') as HTMLElement | null;
+                const sibToggle = sib.querySelector('.dewp-sidebar-menu-link') as HTMLElement | null;
+                if (sibSub && sibSub.classList.contains('expanded')) {
+                    sibSub.classList.remove('expanded');
+                    sibSub.style.maxHeight = '0';
+                    sibToggle?.setAttribute('aria-expanded', 'false');
+                    sibSub.setAttribute('aria-hidden', 'true');
+                }
+                sib.classList.remove('is-open');
+            }
+        });
+
         if (isExpanded) {
             submenu.classList.remove('expanded');
             submenu.style.maxHeight = '0';
             const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement;
             toggle?.setAttribute('aria-expanded', 'false');
             submenu.setAttribute('aria-hidden', 'true');
+            menuItem.classList.remove('is-open');
         } else {
             submenu.classList.add('expanded');
             submenu.style.maxHeight = submenu.scrollHeight + 'px';
             const toggle = menuItem.querySelector('.dewp-sidebar-menu-link') as HTMLElement;
             toggle?.setAttribute('aria-expanded', 'true');
             submenu.setAttribute('aria-hidden', 'false');
+            menuItem.classList.add('is-open');
         }
     }
 
@@ -292,6 +312,29 @@ export class DEWPSidebar {
         if (window.innerWidth <= 768) {
             this.sidebar.classList.toggle('is-open');
         }
+    }
+
+    /**
+     * 사이드바 콜랩스/확장 토글 (아이콘 전용 모드)
+     */
+    public toggleCollapse(): void {
+        if (!this.sidebar) return;
+        this.isCollapsed = !this.isCollapsed;
+        this.sidebar.classList.toggle('is-collapsed', this.isCollapsed);
+    }
+
+    /** 사이드바 콜랩스 */
+    public collapse(): void {
+        if (!this.sidebar) return;
+        this.isCollapsed = true;
+        this.sidebar.classList.add('is-collapsed');
+    }
+
+    /** 사이드바 확장 */
+    public expand(): void {
+        if (!this.sidebar) return;
+        this.isCollapsed = false;
+        this.sidebar.classList.remove('is-collapsed');
     }
 
     /**

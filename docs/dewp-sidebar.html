@@ -21,25 +21,26 @@
       </div>
       <div class="ex-section-content">
         <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
-          <label>타입:
-            <select id="sidebarType">
+          <label class="dewp-form-label">타입:
+            <select id="sidebarType" class="dewp-form-select">
               <option value="basic">basic</option>
-              <option value="wrapper">wrapper</option>
+              <option value="wrapper" selected>wrapper</option>
             </select>
           </label>
-          <label>포지션:
-            <select id="sidebarPosition">
+          <label class="dewp-form-label">포지션:
+            <select id="sidebarPosition" class="dewp-form-select">
               <option value="fixed">fixed</option>
-              <option value="sticky">sticky</option>
+              <option value="sticky" selected>sticky</option>
               <option value="static">static</option>
             </select>
           </label>
-          <label>top(px):
-            <input id="sidebarTop" type="number" value="0" style="width:80px;" />
+          <label class="dewp-form-label">top(px):
+            <input id="sidebarTop" type="number" value="0" class="dewp-form-input" style="width:80px;" />
           </label>
-          <label>width(px):
-            <input id="sidebarWidth" type="number" value="250" style="width:80px;" />
+          <label class="dewp-form-label">width(px):
+            <input id="sidebarWidth" type="number" value="250" class="dewp-form-input" style="width:80px;" />
           </label>
+          <button id="toggleCollapse" class="dewp-btn dewp-btn-secondary">사이드바 토글(접기/펼치기)</button>
         </div>
         <p>좌측 예시 내비와 겹치지 않도록, 이 데모에서는 콘텐츠 영역(ex-content) 기준으로 사이드바를 표시합니다.</p>
         <p style="margin-top:16px;">본문 스크롤 테스트를 위한 더미 내용</p>
@@ -136,7 +137,8 @@ sidebar.destroy();</code>
         type: document.getElementById('sidebarType'),
         pos: document.getElementById('sidebarPosition'),
         top: document.getElementById('sidebarTop'),
-        width: document.getElementById('sidebarWidth')
+        width: document.getElementById('sidebarWidth'),
+        collapse: document.getElementById('toggleCollapse')
       };
 
       function onChange() {
@@ -147,6 +149,9 @@ sidebar.destroy();</code>
       els.pos?.addEventListener('change', onChange);
       els.top?.addEventListener('input', onChange);
       els.width?.addEventListener('input', onChange);
+      els.collapse?.addEventListener('click', function () {
+        try { window.__demoSidebar?.toggleCollapse(); } catch { }
+      });
     });
 
     function applySidebarVariants() {
