@@ -192,14 +192,8 @@
           }
         });
 
-        const isExpanded = submenu.classList.contains('expanded');
-        if (isExpanded) {
-          submenu.classList.remove('expanded');
-          submenu.style.maxHeight = '0';
-          toggle?.setAttribute('aria-expanded', 'false');
-          submenu.setAttribute('aria-hidden', 'true');
-          menuItem.classList.remove('is-open');
-        } else {
+        // 항상 펼치기(토글 아님): 클릭 시 무조건 오픈
+        if (!submenu.classList.contains('expanded')) {
           submenu.classList.add('expanded');
           submenu.style.maxHeight = submenu.scrollHeight + 'px';
           toggle?.setAttribute('aria-expanded', 'true');
@@ -215,6 +209,18 @@
       widthInp?.addEventListener('input', applySidebarVariants);
       collapseBtn?.addEventListener('click', function () {
         sidebar?.classList.toggle('is-collapsed');
+      });
+
+      // 화살표 자동 추가(서브메뉴가 있는데 화살표 요소가 없는 경우)
+      sidebar?.querySelectorAll('.dewp-sidebar-menu-item.has-submenu').forEach((item) => {
+        const link = item.querySelector('.dewp-sidebar-menu-link');
+        const arrow = item.querySelector('.dewp-sidebar-menu-arrow');
+        if (link && !arrow) {
+          const span = document.createElement('span');
+          span.className = 'dewp-sidebar-menu-arrow';
+          span.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>';
+          link.appendChild(span);
+        }
       });
 
       applySidebarVariants();
