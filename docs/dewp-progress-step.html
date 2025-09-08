@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Progress Step</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">기본 단계</h3>
+        <p class="ex-section-description">완료/활성/대기</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-progress-step" style="flex-wrap:wrap;">
+        <div class="dewp-progress-step-item is-completed">
+          <div class="dewp-progress-step-marker">1</div>
+          <div class="dewp-progress-step-label">계정</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item is-active">
+          <div class="dewp-progress-step-marker">2</div>
+          <div class="dewp-progress-step-label">프로필</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item">
+          <div class="dewp-progress-step-marker">3</div>
+          <div class="dewp-progress-step-label">완료</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">사이즈</h3>
+      </div>
+    </div>
+    <div class="ex-section-content" style="display:grid; gap:20px;">
+      <div class="dewp-progress-step dewp-progress-step-sm">
+        <div class="dewp-progress-step-item is-completed">
+          <div class="dewp-progress-step-marker">1</div>
+          <div class="dewp-progress-step-label">계정</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item is-active">
+          <div class="dewp-progress-step-marker">2</div>
+          <div class="dewp-progress-step-label">프로필</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item">
+          <div class="dewp-progress-step-marker">3</div>
+          <div class="dewp-progress-step-label">완료</div>
+        </div>
+      </div>
+
+      <div class="dewp-progress-step dewp-progress-step-lg">
+        <div class="dewp-progress-step-item is-completed">
+          <div class="dewp-progress-step-marker">1</div>
+          <div class="dewp-progress-step-label">계정</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item is-active">
+          <div class="dewp-progress-step-marker">2</div>
+          <div class="dewp-progress-step-label">프로필</div>
+          <div class="dewp-progress-step-connector"></div>
+        </div>
+        <div class="dewp-progress-step-item">
+          <div class="dewp-progress-step-marker">3</div>
+          <div class="dewp-progress-step-label">완료</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Progress Step 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>여러 단계를 순차적으로 보여주는 진행 표시 UI입니다. 완료/현재/대기 상태를 구분합니다.</p>
+      </section>
+
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-progress-step"&gt;
+  &lt;div class="dewp-progress-step-item is-completed"&gt;
+    &lt;div class="dewp-progress-step-marker"&gt;1&lt;/div&gt;
+    &lt;div class="dewp-progress-step-label"&gt;계정&lt;/div&gt;
+    &lt;div class="dewp-progress-step-connector"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-progress-step-item is-active"&gt;
+    &lt;div class="dewp-progress-step-marker"&gt;2&lt;/div&gt;
+    &lt;div class="dewp-progress-step-label"&gt;프로필&lt;/div&gt;
+    &lt;div class="dewp-progress-step-connector"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-progress-step-item"&gt;
+    &lt;div class="dewp-progress-step-marker"&gt;3&lt;/div&gt;
+    &lt;div class="dewp-progress-step-label"&gt;완료&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>상태 클래스</h4>
+        <ul>
+          <li>완료: <code>.is-completed</code></li>
+          <li>현재: <code>.is-active</code></li>
+          <li>대기: 상태 클래스 미적용</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>크기 변형</h4>
+        <ul>
+          <li><code>.dewp-progress-step-sm</code>, <code>.dewp-progress-step-lg</code></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+</body>
+
+</html>

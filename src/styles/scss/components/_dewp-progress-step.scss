@@ -1,0 +1,111 @@
+@use "../basic/index" as *;
+
+// Progress Step (수평 단계 진행 표시)
+
+.dewp-progress-step {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.dewp-progress-step-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dewp-progress-step-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid $border-02;
+    background-color: $bg-primary;
+    color: $text-secondary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    box-sizing: border-box;
+}
+
+.dewp-progress-step-label {
+    margin-left: $spacing-2;
+    color: $text-primary;
+    font-size: $font-size-base;
+}
+
+.dewp-progress-step-connector {
+    width: 64px;
+    height: 2px;
+    background-color: $border-02;
+    margin: 0 $spacing-3;
+}
+
+.dewp-progress-step-item:last-child .dewp-progress-step-connector {
+    display: none;
+}
+
+// 상태
+.dewp-progress-step-item.is-completed {
+    .dewp-progress-step-marker {
+        background-color: $primary;
+        border-color: $primary;
+        color: #fff;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 12px;
+    }
+
+    .dewp-progress-step-connector {
+        background-color: $primary;
+    }
+}
+
+.dewp-progress-step-item.is-active {
+    .dewp-progress-step-marker {
+        border-color: $primary;
+    }
+
+    .dewp-progress-step-label {
+        color: $text-primary;
+        font-weight: $font-weight-medium;
+    }
+}
+
+// 크기 변형
+.dewp-progress-step-sm {
+    .dewp-progress-step-marker {
+        width: 18px;
+        height: 18px;
+        border-width: 2px;
+        font-size: $font-size-xs;
+    }
+
+    .dewp-progress-step-label {
+        font-size: $font-size-s;
+    }
+
+    .dewp-progress-step-connector {
+        width: 48px;
+    }
+}
+
+.dewp-progress-step-lg {
+    .dewp-progress-step-marker {
+        width: 32px;
+        height: 32px;
+        border-width: 2px;
+        font-size: $font-size-s;
+    }
+
+    .dewp-progress-step-label {
+        font-size: $font-size-l;
+    }
+
+    .dewp-progress-step-connector {
+        width: 80px;
+        height: 3px;
+    }
+}

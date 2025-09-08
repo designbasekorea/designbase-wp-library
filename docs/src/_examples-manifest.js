@@ -12,6 +12,7 @@ window.DEWP_EXAMPLES = [
   { id: 'modal', title: 'Modal', file: 'dewp-modal.html' },
   { id: 'popover', title: 'Popover', file: 'dewp-popover.html' },
   { id: 'progress', title: 'Progress', file: 'dewp-progress.html' },
+  { id: 'progress-step', title: 'Progress Step', file: 'dewp-progress-step.html' },
   { id: 'range-slider', title: 'Range Slider', file: 'dewp-range-slider.html' },
   { id: 'section', title: 'Section', file: 'dewp-section.html' },
   { id: 'sidebar', title: 'Sidebar', file: 'dewp-sidebar.html' },
