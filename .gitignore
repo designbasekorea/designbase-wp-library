@@ -106,3 +106,9 @@ temp/
 
 # Local configuration files
 *.local
+
+# Test files (로컬 테스트용)
+test/
+
+# Source code (소스 코드는 공개하지 않음)
+src/

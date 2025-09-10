@@ -15,21 +15,89 @@
 
 ## 📦 설치
 
+### 기본 설치
 ```bash
 npm install designbase-wp-library
 ```
+
+### 추가 기능 (선택사항)
+
+#### npm 설치 방식
+```bash
+# 아이콘 시스템 사용시
+npm install @designbasekorea/icons-webfont
+
+# 테마 시스템 사용시  
+npm install @designbasekorea/theme
+```
+
+#### CDN 방식 (권장)
+```html
+<!-- 아이콘 시스템 -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
+
+<!-- 테마 시스템 -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
+```
+
+> **💡 팁**: CDN 방식을 사용하면 자동으로 최신 버전이 적용되며, 별도 설치나 업데이트가 필요 없습니다!
 
 ### 문서/데모 사이트
 
 - 최신 문서와 라이브 데모: [DEWP Docs & Examples](https://designbasekorea.github.io/designbase-wp-library/)
 
+### 로컬 테스트
+
+로컬에서 라이브러리를 테스트하려면:
+
+```bash
+# 1. 라이브러리 빌드
+npm run build
+
+# 2. 로컬 서버 실행
+python3 -m http.server 8000
+
+# 3. 브라우저에서 테스트
+# http://localhost:8000/test/local-test.html
+```
+
+> **💡 팁**: `test/` 폴더는 `.gitignore`에 포함되어 있어 Git에 커밋되지 않습니다.
+
+> **🔒 보안**: `src/` 폴더(소스 코드)도 `.gitignore`에 포함되어 있어 핵심 코드가 공개되지 않습니다.
+
 ### CDN 사용
 
+#### 기본 DEWP 라이브러리
 ```html
 <!-- CSS -->
 <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 
 <!-- JavaScript -->
+<script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+```
+
+#### 아이콘 시스템 (선택사항)
+```html
+<!-- 아이콘 CSS -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
+```
+
+#### 테마 시스템 (선택사항)
+```html
+<!-- 테마 CSS -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
+```
+
+#### 전체 패키지 (권장)
+```html
+<!-- 테마 시스템 -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
+
+<!-- 아이콘 시스템 -->
+<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
+
+<!-- DEWP 라이브러리 -->
+<link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
 ```
 
