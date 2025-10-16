@@ -59,8 +59,8 @@ body {
 }
 
 .ex-sidebar a.active {
-  background: var(--db-brand-primary-bg);
-  color: var(--db-brand-primary-fg);
+  background: var(--db-surface-layer-1);
+  color: var(--db-color-primary);
   font-weight: 600;
 }
 
