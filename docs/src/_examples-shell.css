@@ -20,6 +20,7 @@ body {
   display: grid;
   grid-template-columns: 260px 1fr;
   height: 100%;
+  background: var(--db-surface-base);
 }
 
 /* Collapsed state (desktop) */
@@ -43,6 +44,7 @@ body {
 .ex-sidebar .ex-brand {
   padding: 16px;
   font-weight: 600;
+  color: var(--db-text-primary);
 }
 
 .ex-sidebar nav {
@@ -107,6 +109,10 @@ body {
   border-radius: var(--db-radius-l);
   background: var(--db-surface-base);
   margin-bottom: 20px;
+
+  section {
+    margin: 0;
+  }
 }
 
 .ex-section+.ex-section {
