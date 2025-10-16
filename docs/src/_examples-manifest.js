@@ -3,6 +3,7 @@
 window.DEWP_EXAMPLES = [
   { id: 'accordion', title: 'Accordion', file: 'dewp-accordion.html' },
   { id: 'breadcrumb', title: 'Breadcrumb', file: 'dewp-breadcrumb.html' },
+  { id: 'button', title: 'Button', file: 'dewp-button.html' },
   { id: 'card', title: 'Card', file: 'dewp-card.html' },
   { id: 'chip', title: 'Chip', file: 'dewp-chip.html' },
   { id: 'divider', title: 'Divider', file: 'dewp-divider.html' },

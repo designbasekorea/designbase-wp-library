@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Button</title>
+  <!-- 테마 & 아이콘 CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
+  <!-- CDN CSS 사용 -->
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js" defer></script>
+  <script src="./src/_examples-manifest.js" defer></script>
+  <script src="./src/_examples-shell.js" defer></script>
+</head>
+
+<body>
+  <div style="padding: 16px;">
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
+          <h3 class="ex-section-title">버튼(Button)</h3>
+          <p class="ex-section-description">THEME_GUIDE.md v0.1.16 기준</p>
+        </div>
+      </div>
+      <div class="ex-section-content">
+        <h4>기본 버튼</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--primary">Primary</button>
+          <button class="dewp-button dewp-button--secondary">Secondary</button>
+          <button class="dewp-button dewp-button--tertiary">Tertiary</button>
+        </div>
+
+        <h4>상태별 버튼</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--success">Success</button>
+          <button class="dewp-button dewp-button--warning">Warning</button>
+          <button class="dewp-button dewp-button--danger">Danger</button>
+          <button class="dewp-button dewp-button--info">Info</button>
+        </div>
+
+        <h4>Outline 버튼</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--outline-primary">Outline Primary</button>
+          <button class="dewp-button dewp-button--outline-secondary">Outline Secondary</button>
+          <button class="dewp-button dewp-button--outline-success">Outline Success</button>
+          <button class="dewp-button dewp-button--outline-danger">Outline Danger</button>
+        </div>
+
+        <h4>크기 변형</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--primary dewp-button--xs">Extra Small</button>
+          <button class="dewp-button dewp-button--primary dewp-button--s">Small</button>
+          <button class="dewp-button dewp-button--primary dewp-button--m">Medium</button>
+          <button class="dewp-button dewp-button--primary dewp-button--l">Large</button>
+          <button class="dewp-button dewp-button--primary dewp-button--xl">Extra Large</button>
+        </div>
+
+        <h4>비활성화 상태</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--primary" disabled>Disabled Primary</button>
+          <button class="dewp-button dewp-button--secondary" disabled>Disabled Secondary</button>
+          <button class="dewp-button dewp-button--outline-primary" disabled>Disabled Outline</button>
+        </div>
+
+        <h4>로딩 상태</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--primary dewp-button--loading">
+            <span class="dewp-button-text">Loading...</span>
+          </button>
+        </div>
+
+        <h4>전체 너비</h4>
+        <div style="margin-bottom: 24px;">
+          <button class="dewp-button dewp-button--primary dewp-button--block">Block Button</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
+          <h3 class="ex-section-title">사용법</h3>
+        </div>
+      </div>
+      <div class="ex-section-content ex-docs">
+        <pre><code class="language-html">&lt;button class="dewp-button dewp-button--primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="dewp-button dewp-button--outline-secondary"&gt;Outline Button&lt;/button&gt;
+&lt;button class="dewp-button dewp-button--success dewp-button--lg"&gt;Large Success&lt;/button&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
