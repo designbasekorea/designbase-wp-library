@@ -1,230 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEWP Radio Buttons - Documentation</title>
-    
-    <!-- CDN -->
-    <link rel="stylesheet" href="./src/_examples-shell.css">
-    <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
-    
-    <!-- CDN JS -->
-    <script src="./src/_examples-shell.js"></script>
-    <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Radio Buttons</title>
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
 </head>
+
 <body>
-    <div class="ex-shell">
-        <!-- Sidebar -->
-        <div class="ex-sidebar">
-            <div class="ex-brand">DEWP Radio</div>
-            <a href="./index.html">← Back to Index</a>
-            <a href="./dewp-button.html">Button</a>
-            <a href="./dewp-form.html">Form</a>
-            <a href="./dewp-checkbox.html" class="active">Radio</a>
-        </div>
 
-        <!-- Main Content -->
-        <div class="ex-content">
-            <div class="ex-section">
-                <div class="ex-section-header">
-                    <h2>Radio Buttons</h2>
-                    <p class="ex-section-description">라디오 버튼 컴포넌트 예시입니다.</p>
-                </div>
-                <div class="ex-section-content">
-                    <!-- Basic Radio -->
-                    <section>
-                        <h3>Basic Radio</h3>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio1" value="option1">
-                            <label class="dewp-form-check-label" for="radio1">
-                                Option 1
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio2" value="option2">
-                            <label class="dewp-form-check-label" for="radio2">
-                                Option 2
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio3" value="option3" checked>
-                            <label class="dewp-form-check-label" for="radio3">
-                                Option 3 (Selected)
-                            </label>
-                        </div>
-                    </section>
-
-                    <!-- Radio Group -->
-                    <section>
-                        <h3>Radio Group</h3>
-                        <div class="dewp-form-check-group">
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="group-radio" id="group1" value="small">
-                                <label class="dewp-form-check-label" for="group1">
-                                    Small
-                                </label>
-                            </div>
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="group-radio" id="group2" value="medium" checked>
-                                <label class="dewp-form-check-label" for="group2">
-                                    Medium (Default)
-                                </label>
-                            </div>
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="group-radio" id="group3" value="large">
-                                <label class="dewp-form-check-label" for="group3">
-                                    Large
-                                </label>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Disabled Radio -->
-                    <section>
-                        <h3>Disabled Radio</h3>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled1" value="enabled">
-                            <label class="dewp-form-check-label" for="disabled1">
-                                Enabled Option
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled2" value="disabled" disabled>
-                            <label class="dewp-form-check-label" for="disabled2">
-                                Disabled Option
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled3" value="disabled-checked" disabled checked>
-                            <label class="dewp-form-check-label" for="disabled3">
-                                Disabled & Checked
-                            </label>
-                        </div>
-                    </section>
-
-                    <!-- Radio with Description -->
-                    <section>
-                        <h3>Radio with Description</h3>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc1" value="basic">
-                            <label class="dewp-form-check-label" for="desc1">
-                                <strong>Basic Plan</strong>
-                                <small class="dewp-form-help">Free plan with basic features</small>
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc2" value="pro" checked>
-                            <label class="dewp-form-check-label" for="desc2">
-                                <strong>Pro Plan</strong>
-                                <small class="dewp-form-help">Advanced features and priority support</small>
-                            </label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio">
-                            <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc3" value="enterprise">
-                            <label class="dewp-form-check-label" for="desc3">
-                                <strong>Enterprise Plan</strong>
-                                <small class="dewp-form-help">Full features with custom solutions</small>
-                            </label>
-                        </div>
-                    </section>
-
-                    <!-- Inline Radio -->
-                    <section>
-                        <h3>Inline Radio</h3>
-                        <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
-                            <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline1" value="yes">
-                            <label class="dewp-form-check-label" for="inline1">Yes</label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
-                            <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline2" value="no" checked>
-                            <label class="dewp-form-check-label" for="inline2">No</label>
-                        </div>
-                        <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
-                            <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline3" value="maybe">
-                            <label class="dewp-form-check-label" for="inline3">Maybe</label>
-                        </div>
-                    </section>
-
-                    <!-- Radio with Error State -->
-                    <section>
-                        <h3>Radio with Error State</h3>
-                        <div class="dewp-form-group has-error">
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="error-radio" id="error1" value="option1">
-                                <label class="dewp-form-check-label" for="error1">
-                                    Option 1
-                                </label>
-                            </div>
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="error-radio" id="error2" value="option2">
-                                <label class="dewp-form-check-label" for="error2">
-                                    Option 2
-                                </label>
-                            </div>
-                            <div class="dewp-form-error">Please select an option</div>
-                        </div>
-                    </section>
-
-                    <!-- Radio with Success State -->
-                    <section>
-                        <h3>Radio with Success State</h3>
-                        <div class="dewp-form-group has-success">
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="success-radio" id="success1" value="option1">
-                                <label class="dewp-form-check-label" for="success1">
-                                    Option 1
-                                </label>
-                            </div>
-                            <div class="dewp-form-check dewp-form-radio">
-                                <input class="dewp-form-check-input" type="radio" name="success-radio" id="success2" value="option2" checked>
-                                <label class="dewp-form-check-label" for="success2">
-                                    Option 2 (Selected)
-                                </label>
-                            </div>
-                            <div class="dewp-form-success">Great choice!</div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Basic Radio</h3>
+      </div>
     </div>
+    <div class="ex-section-content">
+      <div class="dewp-form-check-group">
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio1" value="option1">
+          <label class="dewp-form-check-label" for="radio1">
+            Option 1
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio2" value="option2">
+          <label class="dewp-form-check-label" for="radio2">
+            Option 2
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="basic-radio" id="radio3" value="option3" checked>
+          <label class="dewp-form-check-label" for="radio3">
+            Option 3 (Selected)
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-        // Radio button functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add change event listeners to all radio buttons
-            const radioButtons = document.querySelectorAll('input[type="radio"]');
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Disabled Radio</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-form-check-group">
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled1" value="enabled">
+          <label class="dewp-form-check-label" for="disabled1">
+            Enabled Option
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled2" value="disabled" disabled>
+          <label class="dewp-form-check-label" for="disabled2">
+            Disabled Option
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="disabled-radio" id="disabled3" value="disabled-checked" disabled checked>
+          <label class="dewp-form-check-label" for="disabled3">
+            Disabled & Checked
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Inline Radio</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
+        <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline1" value="yes">
+        <label class="dewp-form-check-label" for="inline1">Yes</label>
+      </div>
+      <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
+        <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline2" value="no" checked>
+        <label class="dewp-form-check-label" for="inline2">No</label>
+      </div>
+      <div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline">
+        <input class="dewp-form-check-input" type="radio" name="inline-radio" id="inline3" value="maybe">
+        <label class="dewp-form-check-label" for="inline3">Maybe</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Radio with Description</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-form-check-group">
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc1" value="basic">
+          <label class="dewp-form-check-label" for="desc1">
+            <strong>Basic Plan</strong>
+            <small class="dewp-form-help">Free plan with basic features</small>
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc2" value="pro" checked>
+          <label class="dewp-form-check-label" for="desc2">
+            <strong>Pro Plan</strong>
+            <small class="dewp-form-help">Advanced features and priority support</small>
+          </label>
+        </div>
+        <div class="dewp-form-check dewp-form-radio">
+          <input class="dewp-form-check-input" type="radio" name="desc-radio" id="desc3" value="enterprise">
+          <label class="dewp-form-check-label" for="desc3">
+            <strong>Enterprise Plan</strong>
+            <small class="dewp-form-help">Full features with custom solutions</small>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">Error & Success States</h3>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-form-group has-error" style="margin-bottom: 20px;">
+        <div class="dewp-form-check-group">
+          <div class="dewp-form-check dewp-form-radio">
+            <input class="dewp-form-check-input" type="radio" name="error-radio" id="error1" value="option1">
+            <label class="dewp-form-check-label" for="error1">
+              Option 1
+            </label>
+          </div>
+          <div class="dewp-form-check dewp-form-radio">
+            <input class="dewp-form-check-input" type="radio" name="error-radio" id="error2" value="option2">
+            <label class="dewp-form-check-label" for="error2">
+              Option 2
+            </label>
+          </div>
+        </div>
+        <div class="dewp-form-error">Please select an option</div>
+      </div>
+
+      <div class="dewp-form-group has-success">
+        <div class="dewp-form-check-group">
+          <div class="dewp-form-check dewp-form-radio">
+            <input class="dewp-form-check-input" type="radio" name="success-radio" id="success1" value="option1">
+            <label class="dewp-form-check-label" for="success1">
+              Option 1
+            </label>
+          </div>
+          <div class="dewp-form-check dewp-form-radio">
+            <input class="dewp-form-check-input" type="radio" name="success-radio" id="success2" value="option2" checked>
+            <label class="dewp-form-check-label" for="success2">
+              Option 2 (Selected)
+            </label>
+          </div>
+        </div>
+        <div class="dewp-form-success">Great choice!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Radio Button 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>개요</h4>
+        <p>라디오 버튼은 여러 옵션 중 하나만 선택할 수 있는 폼 요소입니다.</p>
+      </section>
+
+      <section>
+        <h4>Basic Radio</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-check dewp-form-radio"&gt;
+  &lt;input class="dewp-form-check-input" type="radio" name="group" id="radio1" value="option1"&gt;
+  &lt;label class="dewp-form-check-label" for="radio1"&gt;Option 1&lt;/label&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>Radio Group</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-check-group"&gt;
+  &lt;div class="dewp-form-check dewp-form-radio"&gt;
+    &lt;input class="dewp-form-check-input" type="radio" name="size" id="small" value="small"&gt;
+    &lt;label class="dewp-form-check-label" for="small"&gt;Small&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-form-check dewp-form-radio"&gt;
+    &lt;input class="dewp-form-check-input" type="radio" name="size" id="medium" value="medium" checked&gt;
+    &lt;label class="dewp-form-check-label" for="medium"&gt;Medium&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>Inline Radio</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-check dewp-form-radio dewp-form-check-label-inline"&gt;
+  &lt;input class="dewp-form-check-input" type="radio" name="inline" id="yes" value="yes"&gt;
+  &lt;label class="dewp-form-check-label" for="yes"&gt;Yes&lt;/label&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>Disabled Radio</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-check dewp-form-radio"&gt;
+  &lt;input class="dewp-form-check-input" type="radio" name="disabled" id="disabled" disabled&gt;
+  &lt;label class="dewp-form-check-label" for="disabled"&gt;Disabled Option&lt;/label&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>Error & Success States</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-group has-error"&gt;
+  &lt;div class="dewp-form-check dewp-form-radio"&gt;
+    &lt;input class="dewp-form-check-input" type="radio" name="error" id="error1"&gt;
+    &lt;label class="dewp-form-check-label" for="error1"&gt;Option 1&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-form-error"&gt;Please select an option&lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>CSS 클래스</h4>
+        <ul>
+          <li><code>.dewp-form-check</code>: 라디오 버튼 컨테이너</li>
+          <li><code>.dewp-form-radio</code>: 라디오 버튼 스타일</li>
+          <li><code>.dewp-form-check-group</code>: 라디오 버튼 그룹</li>
+          <li><code>.dewp-form-check-label-inline</code>: 인라인 레이아웃</li>
+          <li><code>.has-error</code>: 에러 상태</li>
+          <li><code>.has-success</code>: 성공 상태</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Radio button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add change event listeners to all radio buttons
+      const radioButtons = document.querySelectorAll('input[type="radio"]');
+      
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+          console.log('Radio changed:', this.name, this.value, this.checked);
+          
+          // Remove error state when user makes a selection
+          const formGroup = this.closest('.dewp-form-group');
+          if (formGroup && formGroup.classList.contains('has-error')) {
+            formGroup.classList.remove('has-error');
+            formGroup.classList.add('has-success');
             
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    console.log('Radio changed:', this.name, this.value, this.checked);
-                    
-                    // Remove error state when user makes a selection
-                    const formGroup = this.closest('.dewp-form-group');
-                    if (formGroup && formGroup.classList.contains('has-error')) {
-                        formGroup.classList.remove('has-error');
-                        formGroup.classList.add('has-success');
-                        
-                        // Update error message to success message
-                        const errorMsg = formGroup.querySelector('.dewp-form-error');
-                        if (errorMsg) {
-                            errorMsg.textContent = 'Selection saved successfully!';
-                            errorMsg.className = 'dewp-form-success';
-                        }
-                    }
-                });
-            });
-
-            // Demo: Auto-select option after 3 seconds for error state
-            setTimeout(() => {
-                const errorRadio = document.querySelector('input[name="error-radio"]');
-                if (errorRadio && !document.querySelector('input[name="error-radio"]:checked')) {
-                    errorRadio.checked = true;
-                    errorRadio.dispatchEvent(new Event('change'));
-                }
-            }, 3000);
+            // Update error message to success message
+            const errorMsg = formGroup.querySelector('.dewp-form-error');
+            if (errorMsg) {
+              errorMsg.textContent = 'Selection saved successfully!';
+              errorMsg.className = 'dewp-form-success';
+            }
+          }
         });
-    </script>
+      });
+
+      // Demo: Auto-select option after 3 seconds for error state
+      setTimeout(() => {
+        const errorRadio = document.querySelector('input[name="error-radio"]');
+        if (errorRadio && !document.querySelector('input[name="error-radio"]:checked')) {
+          errorRadio.checked = true;
+          errorRadio.dispatchEvent(new Event('change'));
+        }
+      }, 3000);
+    });
+  </script>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
 </body>
+
 </html>
