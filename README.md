@@ -27,13 +27,7 @@ npm install designbase-wp-library
 
 ### CDN (권장)
 ```html
-<!-- 1. Theme System (필수) -->
-<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
-
-<!-- 2. Icon System (필수) -->
-<link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
-
-<!-- 3. DEWP Library -->
+<!-- 통합 CDN (테마, 아이콘, 컴포넌트 모두 포함) -->
 <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
 ```
@@ -52,9 +46,7 @@ npm install designbase-wp-library
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEWP 라이브러리</title>
   
-  <!-- CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css">
-  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css">
+  <!-- 통합 CDN (테마, 아이콘, 컴포넌트 모두 포함) -->
   <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css">
 </head>
 <body>
@@ -509,8 +501,8 @@ https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/js/dewp.min.js
 
 ## 🔗 관련 프로젝트
 
-- [@designbasekorea/theme](https://www.npmjs.com/package/@designbasekorea/theme) - 디자인 토큰 시스템
-- [@designbasekorea/icons-webfont](https://www.npmjs.com/package/@designbasekorea/icons-webfont) - 아이콘 시스템
+- [@designbasekorea/theme](https://www.npmjs.com/package/@designbasekorea/theme) - 디자인 토큰 시스템 (통합됨)
+- [@designbasekorea/icons-webfont](https://www.npmjs.com/package/@designbasekorea/icons-webfont) - 아이콘 시스템 (통합됨)
 
 ---
 
