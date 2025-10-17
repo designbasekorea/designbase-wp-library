@@ -19,7 +19,7 @@
     ],
     "scripts": {
         "clean": "rimraf dist",
-        "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.temp.css --style=compressed --no-source-map && cat node_modules/@designbasekorea/theme/dist/css/theme.css dist/css/dewp.temp.css > dist/css/dewp.temp2.css && cleancss -o dist/css/dewp.min.css dist/css/dewp.temp2.css && rm dist/css/dewp.temp.css dist/css/dewp.temp2.css",
+        "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.temp.css --style=compressed --no-source-map && cat node_modules/@designbasekorea/theme/dist/css/theme.css dist/css/dewp.temp.css > dist/css/dewp.temp2.css && cleancss -o dist/css/dewp.min.css --format=keep-breaks:false --inline=all --inline=imports dist/css/dewp.temp2.css && rm dist/css/dewp.temp.css dist/css/dewp.temp2.css",
         "build:css:watch": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --watch",
         "build:js": "rollup -c",
         "build:js:watch": "rollup -c -w",
