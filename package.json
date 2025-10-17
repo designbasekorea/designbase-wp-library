@@ -1,6 +1,6 @@
 {
     "name": "designbase-wp-library",
-    "version": "0.8.2",
+    "version": "0.9.0",
     "description": "Reusable CSS/JS kit for WordPress plugins (frontend/admin).",
     "license": "MIT",
     "type": "module",
@@ -19,7 +19,7 @@
     ],
     "scripts": {
         "clean": "rimraf dist",
-        "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --style=compressed --no-source-map",
+        "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.temp.css --style=compressed --no-source-map && cat node_modules/@designbasekorea/theme/dist/css/theme.css node_modules/@designbasekorea/icons-webfont/dist/webfont/icons.css dist/css/dewp.temp.css > dist/css/dewp.temp2.css && cleancss -o dist/css/dewp.min.css dist/css/dewp.temp2.css && rm dist/css/dewp.temp.css dist/css/dewp.temp2.css",
         "build:css:watch": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --watch",
         "build:js": "rollup -c",
         "build:js:watch": "rollup -c -w",
@@ -48,6 +48,7 @@
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
         "autoprefixer": "^10.4.19",
+        "clean-css-cli": "^5.6.3",
         "http-server": "^14.1.1",
         "postcss": "^8.4.41",
         "postcss-cli": "^11.0.0",
