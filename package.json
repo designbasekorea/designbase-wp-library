@@ -1,6 +1,6 @@
 {
     "name": "designbase-wp-library",
-    "version": "0.9.1",
+    "version": "0.9.3",
     "description": "Reusable CSS/JS kit for WordPress plugins (frontend/admin).",
     "license": "MIT",
     "type": "module",
@@ -22,6 +22,7 @@
         "build:css": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.temp.css --style=compressed --no-source-map && cat node_modules/@designbasekorea/theme/dist/css/theme.css dist/css/dewp.temp.css > dist/css/dewp.temp2.css && cleancss -o dist/css/dewp.min.css --format=keep-breaks:false --inline=all --inline=imports dist/css/dewp.temp2.css && rm dist/css/dewp.temp.css dist/css/dewp.temp2.css",
         "build:css:watch": "sass src/styles/scss/dewp-styles.scss:dist/css/dewp.min.css --watch",
         "build:js": "rollup -c",
+        "build:watch": "npm run build:css:watch & npm run build:js:watch",
         "build:js:watch": "rollup -c -w",
         "build": "npm run clean && npm run build:css && npm run build:js",
         "build:prod": "npm run clean && npm run build:css && npm run build:js",
@@ -63,7 +64,7 @@
         "typescript": "^5.5.4"
     },
     "dependencies": {
-        "@designbasekorea/icons-webfont": "^0.1.3",
-        "@designbasekorea/theme": "^0.1.19"
+        "@designbasekorea/icons-webfont": "^0.1.4",
+        "@designbasekorea/theme": "^0.2.0"
     }
 }

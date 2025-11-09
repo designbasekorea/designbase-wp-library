@@ -52,13 +52,29 @@
       </section>
 
       <section>
-        <h4>JavaScript 생성</h4>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-popover"&gt;
+  &lt;button class="dewp-btn" id="helpBtn"&gt;도움말&lt;/button&gt;
+  &lt;div class="dewp-popover-content dewp-popover-bottom" id="helpContent" hidden&gt;
+    도움말 내용
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+        <p><code>.dewp-popover</code> 컨테이너 안에 트리거와 콘텐츠를 배치하고, 콘텐츠는 <code>hidden</code> 상태로 둡니다.</p>
+      </section>
+
+      <section>
+        <h4>JavaScript 사용</h4>
         <pre>
 <code class="language-js">DEWP.createPopover({
   trigger: '#helpBtn',
   content: document.getElementById('helpContent'),
   placement: 'bottom' // top | bottom | left | right
-});</code>
+});
+const trigger = document.getElementById('helpBtn');
+DEWP.togglePopover(trigger);
+DEWP.closePopover(trigger);</code>
         </pre>
       </section>
 

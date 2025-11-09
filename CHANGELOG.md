@@ -1,5 +1,11 @@
 # designbase-wp-library
 
+## 0.9.3
+
+### Patch Changes
+
+- docs: update list examples, modal/popover guides, and README component usage
+
 ## 0.8.0
 
 ### Minor Changes

@@ -49,11 +49,34 @@
       </section>
 
       <section>
-        <h4>JS API</h4>
+        <h4>HTML 구조</h4>
         <pre>
-<code class="language-js">DEWP.showModal({ title: '제목', content: '&lt;p&gt;내용&lt;/p&gt;', size: 'md' });
-DEWP.closeAllModals();
-// 헬퍼: showConfirmModal, showAlertModal, openModal/closeModal 등</code>
+<code class="language-html">&lt;button class="dewp-btn dewp-btn-primary" id="openModal"&gt;모달 열기&lt;/button&gt;</code>
+        </pre>
+        <p>모달 자체는 JavaScript로 생성되므로, 트리거 버튼만 준비하면 됩니다. 여러 모달을 사용하려면 각 버튼에 고유한 ID를 부여하세요.</p>
+      </section>
+
+      <section>
+        <h4>JS 사용</h4>
+        <pre>
+<code class="language-js">const trigger = document.getElementById('openModal');
+trigger.addEventListener('click', () =&gt; {
+  DEWP.showModal({
+    title: '알림',
+    content: '&lt;p&gt;모달 내용입니다.&lt;/p&gt;',
+    size: 'md',
+    closeOnOverlayClick: true,
+  });
+});
+
+// 제어 메서드
+DEWP.closeModal(trigger);      // 특정 모달 닫기
+DEWP.closeAllModals();         // 열린 모든 모달 닫기
+DEWP.showConfirmModal({        // 헬퍼: 확인/취소 다이얼로그
+  title: '삭제',
+  content: '&lt;p&gt;정말 삭제할까요?&lt;/p&gt;',
+  onConfirm: () =&gt; console.log('confirmed'),
+});</code>
         </pre>
       </section>
 

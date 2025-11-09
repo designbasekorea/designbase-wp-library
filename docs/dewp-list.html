@@ -51,6 +51,89 @@
     <div class="ex-section">
       <div class="ex-section-header">
         <div class="ex-section-title-area">
+          <h3 class="ex-section-title">리스트(List) - 액션(Action)</h3>
+          <p class="ex-section-description">좌측 콘텐츠, 우측 액션 버튼 영역</p>
+        </div>
+      </div>
+      <div class="ex-section-content">
+        <ul class="dewp-list dewp-list--divided" style="max-width:720px;">
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-content">
+              <div class="dewp-list-item-title">회원 가입 요청</div>
+              <div class="dewp-list-item-subtitle">신규 요청 · 2분 전</div>
+            </div>
+            <div class="dewp-list-item-actions">
+              <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm">자세히</button>
+              <button class="dewp-btn dewp-btn-primary dewp-btn-sm">승인</button>
+            </div>
+          </li>
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-content">
+              <div class="dewp-list-item-title">데이터 백업 완료</div>
+              <div class="dewp-list-item-subtitle">자동 백업 · 12시간 전</div>
+            </div>
+            <div class="dewp-list-item-actions">
+              <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm">로그 보기</button>
+            </div>
+          </li>
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-content">
+              <div class="dewp-list-item-title">콘텐츠 리뷰 요청</div>
+              <div class="dewp-list-item-subtitle">마케팅팀 · 1일 전</div>
+            </div>
+            <div class="dewp-list-item-actions">
+              <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm">거절</button>
+              <button class="dewp-btn dewp-btn-primary dewp-btn-sm">승인</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
+          <h3 class="ex-section-title">리스트(List) - 분리형(Split)</h3>
+          <p class="ex-section-description">레이블/값 구조 (어드민 설정 패널용)</p>
+        </div>
+      </div>
+      <div class="ex-section-content">
+        <ul class="dewp-list dewp-list--divided dewp-list--split" style="max-width:720px;">
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-label">사이트 제목</div>
+            <div class="dewp-list-item-value">
+              <strong>Designbase Library</strong>
+              <p class="dewp-list-item-description">워드프레스 상단에 표시될 이름입니다.</p>
+            </div>
+          </li>
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-label">기본 언어</div>
+            <div class="dewp-list-item-value">
+              <select class="dewp-field-select" style="max-width:200px;">
+                <option>한국어 (KO)</option>
+                <option>English (EN)</option>
+                <option>日本語 (JA)</option>
+              </select>
+              <p class="dewp-list-item-description">방문자 언어를 자동으로 감지할 수 없을 때 사용됩니다.</p>
+            </div>
+          </li>
+          <li class="dewp-list-item">
+            <div class="dewp-list-item-label">공지 노출</div>
+            <div class="dewp-list-item-value">
+              <label class="dewp-toggle">
+                <input type="checkbox" class="dewp-toggle-input" checked />
+                <span class="dewp-toggle-slider"></span>
+              </label>
+              <p class="dewp-list-item-description">활성화 시 방문자에게 공지 배너가 표시됩니다.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ex-section">
+      <div class="ex-section-header">
+        <div class="ex-section-title-area">
           <h3 class="ex-section-title">문서 요약</h3>
           <p class="ex-section-description">구조와 변형</p>
         </div>
@@ -62,6 +145,27 @@
     &lt;div&gt;
       &lt;div class="dewp-list-item-title"&gt;타이틀&lt;/div&gt;
       &lt;div class="dewp-list-item-subtitle"&gt;서브 텍스트&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <pre><code class="language-html">&lt;ul class="dewp-list dewp-list--divided"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-content"&gt;
+      &lt;div class="dewp-list-item-title"&gt;콘텐츠 제목&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;보조 텍스트&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="dewp-list-item-actions"&gt;
+      &lt;button class="dewp-btn dewp-btn-tertiary dewp-btn-sm"&gt;자세히&lt;/button&gt;
+      &lt;button class="dewp-btn dewp-btn-primary dewp-btn-sm"&gt;승인&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <pre><code class="language-html">&lt;ul class="dewp-list dewp-list--divided dewp-list--split"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-label"&gt;레이블&lt;/div&gt;
+    &lt;div class="dewp-list-item-value"&gt;
+      &lt;strong&gt;값 내용&lt;/strong&gt;
+      &lt;p class="dewp-list-item-description"&gt;추가 설명&lt;/p&gt;
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>

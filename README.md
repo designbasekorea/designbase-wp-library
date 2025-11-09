@@ -122,6 +122,45 @@ window.DEWP.showConfirmModal({
 });
 ```
 
+### 3-1. 리스트 (List)
+```html
+<!-- 기본/호버/구분선 리스트 -->
+<ul class="dewp-list dewp-list--hover dewp-list--divided" style="max-width:560px;">
+  <li class="dewp-list-item">
+    <span class="dewp-list-item-icon">📄</span>
+    <div>
+      <div class="dewp-list-item-title">문서 1</div>
+      <div class="dewp-list-item-subtitle">서브 텍스트</div>
+    </div>
+  </li>
+</ul>
+
+<!-- 액션 영역 리스트 -->
+<ul class="dewp-list dewp-list--divided" style="max-width:720px;">
+  <li class="dewp-list-item">
+    <div class="dewp-list-item-content">
+      <div class="dewp-list-item-title">회원 가입 요청</div>
+      <div class="dewp-list-item-subtitle">신규 요청 · 2분 전</div>
+    </div>
+    <div class="dewp-list-item-actions">
+      <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm">자세히</button>
+      <button class="dewp-btn dewp-btn-primary dewp-btn-sm">승인</button>
+    </div>
+  </li>
+</ul>
+
+<!-- 분리형 리스트 -->
+<ul class="dewp-list dewp-list--divided dewp-list--split" style="max-width:720px;">
+  <li class="dewp-list-item">
+    <div class="dewp-list-item-label">사이트 제목</div>
+    <div class="dewp-list-item-value">
+      <strong>Designbase Library</strong>
+      <p class="dewp-list-item-description">워드프레스 상단에 표시될 이름입니다.</p>
+    </div>
+  </li>
+</ul>
+```
+
 ### 4. 토스트 (Toast)
 ```javascript
 // 타입별 토스트
@@ -461,7 +500,18 @@ https://cdn.jsdelivr.net/npm/designbase-wp-library@latest/dist/js/dewp.min.js
 
 ## 🔄 버전 히스토리
 
-### v0.6.0 (최신)
+### v0.9.3 (최신)
+- 🧱 `dewp-list-item-content / actions / label / value` 구조를 추가해 리스트 액션/분리형 패턴 지원
+- 📚 문서(`docs/dewp-list.html`, `docs/dewp-modal.html`, `docs/dewp-popover.html`)에 HTML 구조 및 JS 예제 보강
+- 🛠 README를 최신 컴포넌트 사용 예로 갱신
+
+### v0.9.2
+- 🎨 THEME_GUIDE.md v0.1.16 기준 전체 변수 시스템 통일
+- ✨ 새로운 변수 시스템 적용 (Surface, Border, Feedback, Interactive, Brand)
+- 🗑️ 하드코딩된 색상 및 수동 다크모드 제거
+- ♿ 접근성 개선
+
+### v0.6.0
 - 🎨 THEME_GUIDE.md v0.1.16 기준 전체 변수 시스템 통일
 - ✨ 새로운 변수 시스템 적용 (Surface, Border, Feedback, Interactive, Brand)
 - 🗑️ 하드코딩된 색상 및 수동 다크모드 제거
