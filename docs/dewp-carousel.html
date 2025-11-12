@@ -21,7 +21,8 @@
       </div>
     </div>
     <div class="ex-section-content">
-      <div class="dewp-carousel dewp-carousel--image" id="docsCarouselBasic" data-dewp-carousel data-carousel-indicators="true">
+      <div class="dewp-carousel dewp-carousel--image" id="docsCarouselBasic" data-dewp-carousel
+        data-carousel-indicators="true">
         <div class="dewp-carousel__viewport">
           <div class="dewp-carousel__track">
             <div class="dewp-carousel__slide">
@@ -45,17 +46,21 @@
 
       <div class="dewp-carousel-thumbnails" style="margin-top: var(--db-gap-l);" data-carousel-thumbs>
         <button type="button" data-carousel-thumb="0">
-          <img src="https://images.unsplash.com/photo-1526481280695-3c46977c643a?auto=format&fit=crop&w=360&q=60" alt="" />
+          <img src="https://images.unsplash.com/photo-1526481280695-3c46977c643a?auto=format&fit=crop&w=360&q=60"
+            alt="" />
         </button>
         <button type="button" data-carousel-thumb="1">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=60" alt="" />
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=60"
+            alt="" />
         </button>
         <button type="button" data-carousel-thumb="2">
-          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=360&q=60" alt="" />
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=360&q=60"
+            alt="" />
         </button>
       </div>
 
-      <div class="dewp-btn-group" style="margin-top: var(--db-gap-m); display:flex; flex-wrap:wrap; gap: var(--db-gap-xs);">
+      <div class="dewp-btn-group"
+        style="margin-top: var(--db-gap-m); display:flex; flex-wrap:wrap; gap: var(--db-gap-xs);">
         <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm" id="carouselAutoStart">자동 재생 시작</button>
         <button class="dewp-btn dewp-btn-secondary dewp-btn-sm" id="carouselAutoStop">자동 재생 정지</button>
       </div>
@@ -70,8 +75,9 @@
       </div>
     </div>
     <div class="ex-section-content">
-      <div class="dewp-carousel dewp-carousel--minimal" id="docsCarouselAuto" data-dewp-carousel data-carousel-autoplay="true"
-        data-carousel-interval="3500" data-carousel-loop="true" data-carousel-indicators="true">
+      <div class="dewp-carousel dewp-carousel--minimal" id="docsCarouselAuto" data-dewp-carousel
+        data-carousel-autoplay="true" data-carousel-interval="3500" data-carousel-loop="true"
+        data-carousel-indicators="true">
         <div class="dewp-carousel__viewport">
           <div class="dewp-carousel__track">
             <div class="dewp-carousel__slide">
@@ -83,7 +89,8 @@
             <div class="dewp-carousel__slide">
               <div style="padding: var(--db-padding-xl); text-align: center;">
                 <h4 style="margin-bottom: var(--db-gap-s);">액션 중심 CTA</h4>
-                <p style="color: var(--db-text-secondary); margin-bottom: var(--db-gap-m);">중요한 버튼을 강조해 사용자 행동을 유도합니다.</p>
+                <p style="color: var(--db-text-secondary); margin-bottom: var(--db-gap-m);">중요한 버튼을 강조해 사용자 행동을 유도합니다.
+                </p>
                 <button class="dewp-btn dewp-btn-primary">액션 실행</button>
               </div>
             </div>
@@ -108,76 +115,313 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>HTML 구조</h4>
+        <h4>1. HTML 구조 - 필수 요소</h4>
+        <p>Carousel을 사용하기 위한 최소한의 HTML 구조입니다:</p>
         <pre>
-<code class="language-html">&lt;div class="dewp-carousel" data-dewp-carousel&gt;
+<code class="language-html">&lt;!-- 기본 구조 --&gt;
+&lt;div class="dewp-carousel" data-dewp-carousel&gt;
   &lt;div class="dewp-carousel__viewport"&gt;
     &lt;div class="dewp-carousel__track"&gt;
-      &lt;div class="dewp-carousel__slide"&gt;...&lt;/div&gt;
-      &lt;div class="dewp-carousel__slide"&gt;...&lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;
+        &lt;!-- 첫 번째 슬라이드 콘텐츠 --&gt;
+        &lt;img src="image1.jpg" alt="이미지 1"&gt;
+      &lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;
+        &lt;!-- 두 번째 슬라이드 콘텐츠 --&gt;
+        &lt;img src="image2.jpg" alt="이미지 2"&gt;
+      &lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;
+        &lt;!-- 세 번째 슬라이드 콘텐츠 --&gt;
+        &lt;div&gt;텍스트나 HTML 콘텐츠도 가능합니다&lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;!-- 필요 시 자동 생성되는 내비게이션/인디케이터 --&gt;
 &lt;/div&gt;</code>
         </pre>
-        <p><code>data-dewp-carousel</code> 속성이 있으면 자동 초기화합니다. 수동으로 제어하려면 <code>DEWP.initCarousel</code>을 호출하세요.</p>
+        <p><strong>중요:</strong></p>
+        <ul>
+          <li><code>dewp-carousel</code>: 최상위 컨테이너 클래스 (필수)</li>
+          <li><code>data-dewp-carousel</code>: 자동 초기화를 위한 데이터 속성 (선택, 있으면 자동 초기화)</li>
+          <li><code>dewp-carousel__viewport</code>: 가시 영역을 감싸는 래퍼 (필수)</li>
+          <li><code>dewp-carousel__track</code>: 슬라이드들을 담는 트랙 (필수)</li>
+          <li><code>dewp-carousel__slide</code>: 각 슬라이드 요소 (최소 1개 필요)</li>
+        </ul>
+        <p><strong>자동 생성 요소:</strong> 네비게이션 버튼(이전/다음)과 인디케이터(점)는 옵션에 따라 자동으로 생성됩니다. HTML에 미리 작성할 필요가 없습니다.</p>
       </section>
 
       <section>
-        <h4>JS 사용</h4>
+        <h4>2. 자동 초기화 vs 수동 초기화</h4>
+        <h5>방법 1: 자동 초기화 (권장)</h5>
         <pre>
-<code class="language-js">const carouselEl = document.getElementById('docsCarouselBasic');
+<code class="language-html">&lt;!-- HTML에 data-dewp-carousel 속성 추가 --&gt;
+&lt;div class="dewp-carousel" data-dewp-carousel&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// 페이지 로드 시 자동으로 모든 캐러셀 초기화
+DEWP.autoInitializeCarousels();
+&lt;/script&gt;</code>
+        </pre>
+
+        <h5>방법 2: 수동 초기화</h5>
+        <pre>
+<code class="language-js">// 특정 요소를 선택하여 초기화
+const carouselEl = document.getElementById('myCarousel');
 const carouselId = DEWP.initCarousel(carouselEl, {
   loop: true,
-  indicators: true,
+  autoplay: false,
+  indicators: true
 });
 
-DEWP.nextCarousel(carouselEl);      // 다음 슬라이드
-DEWP.prevCarousel(carouselEl);      // 이전 슬라이드
-DEWP.goToCarousel(carouselEl, 2);   // 특정 인덱스로 이동
-DEWP.destroyCarousel(carouselId);   // 인스턴스 제거</code>
+// 또는 CSS 셀렉터 사용
+const carouselId2 = DEWP.initCarousel('#myCarousel', {
+  loop: true
+});</code>
         </pre>
-        <p>초기화 시 반환되는 ID는 <code>destroyCarousel</code>에 사용할 수 있습니다. Element 참조를 그대로 넘겨도 됩니다.</p>
+        <p><strong>반환값:</strong> <code>initCarousel</code>은 캐러셀 인스턴스의 고유 ID를 반환합니다. 이 ID는 나중에
+          <code>destroyCarousel</code>에 사용할 수 있지만, Element 참조를 직접 사용해도 됩니다.
+        </p>
       </section>
 
       <section>
-        <h4>데이터 속성</h4>
-        <ul>
-          <li><code>data-carousel-loop</code> (기본값: <code>true</code>)</li>
-          <li><code>data-carousel-autoplay</code>: 자동 재생 여부</li>
-          <li><code>data-carousel-interval</code>: 자동 재생 간격(ms)</li>
-          <li><code>data-carousel-pause-on-hover</code>: 마우스 오버 시 일시정지</li>
-          <li><code>data-carousel-indicators</code>, <code>data-carousel-keyboard</code>, <code>data-carousel-swipe</code></li>
-        </ul>
-        <p>모든 속성은 옵션 객체로도 전달 가능합니다.</p>
-      </section>
-
-      <section>
-        <h4>높이 자동 조절</h4>
-        <p>활성 슬라이드의 콘텐츠 높이에 맞춰 캐러셀 뷰포트 높이가 부드럽게 변경됩니다. 정적인 높이를 지정할 필요가 없어, 다양한 비율의 이미지나 카드 콘텐츠를 섞어서 사용할 수 있습니다.</p>
-      </section>
-
-      <section>
-        <h4>오토 슬라이드 제어</h4>
+        <h4>3. JavaScript API - 전체 메서드 목록</h4>
+        <h5>초기화 및 제거</h5>
         <pre>
-<code class="language-js">DEWP.startCarouselAutoplay(carouselEl, 5000); // 자동 재생 시작 (간격 지정)
-DEWP.stopCarouselAutoplay(carouselEl);        // 자동 재생 정지
-DEWP.setCarouselAutoplay(carouselEl, true, 7000); // 토글 + 간격 변경</code>
+<code class="language-js">// 초기화 (ID 또는 Element 반환)
+const carouselId = DEWP.initCarousel(element, options);
+
+// 제거 (ID 또는 Element 사용 가능)
+DEWP.destroyCarousel(carouselId);
+DEWP.destroyCarousel(element);</code>
         </pre>
-        <p><code>startCarouselAutoplay</code>와 <code>stopCarouselAutoplay</code>를 통해 런타임에서도 손쉽게 자동 재생을 제어할 수 있습니다.</p>
+
+        <h5>슬라이드 이동</h5>
+        <pre>
+<code class="language-js">// 다음 슬라이드로 이동
+DEWP.nextCarousel(element);
+
+// 이전 슬라이드로 이동
+DEWP.prevCarousel(element);
+
+// 특정 인덱스로 이동 (0부터 시작)
+DEWP.goToCarousel(element, 2);</code>
+        </pre>
+
+        <h5>자동 재생 제어</h5>
+        <pre>
+<code class="language-js">// 자동 재생 시작 (간격을 밀리초로 지정, 기본값: 5000ms)
+DEWP.startCarouselAutoplay(element, 5000);
+
+// 자동 재생 정지
+DEWP.stopCarouselAutoplay(element);
+
+// 자동 재생 토글 (enabled: true/false, interval: 선택사항)
+DEWP.setCarouselAutoplay(element, true, 7000);
+DEWP.setCarouselAutoplay(element, false);</code>
+        </pre>
+
+        <h5>자동 초기화</h5>
+        <pre>
+<code class="language-js">// 페이지의 모든 [data-dewp-carousel] 요소를 자동으로 초기화
+DEWP.autoInitializeCarousels();</code>
+        </pre>
       </section>
 
       <section>
-        <h4>동기화 썸네일</h4>
-        <p>썸네일 클릭으로 슬라이드를 이동하려면 <code>DEWP.goToCarousel</code>을 호출하세요. 현재 인덱스를 감지해 썸네일 스타일을 업데이트하면 됩니다.</p>
+        <h4>4. 옵션 설정 - 데이터 속성 vs JavaScript 객체</h4>
+        <h5>방법 1: HTML 데이터 속성으로 설정</h5>
+        <pre>
+<code class="language-html">&lt;div class="dewp-carousel" 
+     data-dewp-carousel
+     data-carousel-loop="true"
+     data-carousel-autoplay="true"
+     data-carousel-interval="3000"
+     data-carousel-pause-on-hover="true"
+     data-carousel-keyboard="true"
+     data-carousel-swipe="true"
+     data-carousel-indicators="true"
+     data-carousel-initial-index="0"&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;</code>
+        </pre>
+
+        <h5>방법 2: JavaScript 옵션 객체로 설정</h5>
+        <pre>
+<code class="language-js">DEWP.initCarousel(element, {
+  loop: true,                    // 무한 루프 (기본값: true)
+  autoplay: true,                // 자동 재생 (기본값: false)
+  interval: 5000,                // 자동 재생 간격(ms) (기본값: 5000)
+  pauseOnHover: true,             // 마우스 오버 시 일시정지 (기본값: true)
+  keyboard: true,                 // 키보드 화살표 키 지원 (기본값: true)
+  swipe: true,                   // 터치/마우스 드래그 스와이프 (기본값: true)
+  indicators: true,              // 인디케이터(점) 표시 (기본값: true)
+  initialIndex: 0                // 초기 슬라이드 인덱스 (기본값: 0)
+});</code>
+        </pre>
+
+        <h5>옵션 상세 설명</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-top: var(--db-gap-m);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--db-border);">
+              <th style="padding: var(--db-padding-s); text-align: left;">옵션</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">타입</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">기본값</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>loop</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">마지막 슬라이드에서 다음 버튼 클릭 시 첫 번째로, 첫 번째에서 이전 버튼 클릭 시 마지막으로 이동</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>autoplay</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">false</td>
+              <td style="padding: var(--db-padding-s);">자동으로 슬라이드가 넘어가는지 여부</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>interval</code></td>
+              <td style="padding: var(--db-padding-s);">number</td>
+              <td style="padding: var(--db-padding-s);">5000</td>
+              <td style="padding: var(--db-padding-s);">자동 재생 간격(밀리초), 최소 1500ms</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>pauseOnHover</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">마우스를 올렸을 때 자동 재생 일시정지</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>keyboard</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">← → 화살표 키로 슬라이드 이동 (컨테이너에 포커스 필요)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>swipe</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">터치/마우스 드래그로 슬라이드 이동 (20% 이상 드래그 시)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>indicators</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">하단에 인디케이터(점) 표시 (슬라이드가 2개 이상일 때만)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>initialIndex</code></td>
+              <td style="padding: var(--db-padding-s);">number</td>
+              <td style="padding: var(--db-padding-s);">0</td>
+              <td style="padding: var(--db-padding-s);">초기에 표시할 슬라이드 인덱스 (0부터 시작)</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section>
-        <h4>접근성</h4>
+        <h4>5. 실제 사용 예시 - 썸네일과 연동</h4>
+        <pre>
+<code class="language-html">&lt;!-- 캐러셀 --&gt;
+&lt;div class="dewp-carousel" id="productCarousel" data-dewp-carousel&gt;
+  &lt;div class="dewp-carousel__viewport"&gt;
+    &lt;div class="dewp-carousel__track"&gt;
+      &lt;div class="dewp-carousel__slide"&gt;&lt;img src="img1.jpg"&gt;&lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;&lt;img src="img2.jpg"&gt;&lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;&lt;img src="img3.jpg"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 썸네일 --&gt;
+&lt;div class="dewp-carousel-thumbnails"&gt;
+  &lt;button type="button" data-carousel-thumb="0"&gt;
+    &lt;img src="thumb1.jpg" alt=""&gt;
+  &lt;/button&gt;
+  &lt;button type="button" data-carousel-thumb="1"&gt;
+    &lt;img src="thumb2.jpg" alt=""&gt;
+  &lt;/button&gt;
+  &lt;button type="button" data-carousel-thumb="2"&gt;
+    &lt;img src="thumb3.jpg" alt=""&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code>
+        </pre>
+        <pre>
+<code class="language-js">const carousel = document.getElementById('productCarousel');
+const carouselId = DEWP.initCarousel(carousel, { indicators: true });
+
+// 썸네일 클릭 시 해당 슬라이드로 이동
+const thumbs = document.querySelectorAll('[data-carousel-thumb]');
+thumbs.forEach((thumb) => {
+  thumb.addEventListener('click', () => {
+    const index = Number(thumb.dataset.carouselThumb);
+    DEWP.goToCarousel(carousel, index);
+    
+    // 썸네일 활성 상태 업데이트
+    thumbs.forEach((t, i) => {
+      t.classList.toggle('is-active', i === index);
+    });
+  });
+});
+
+// 캐러셀 슬라이드 변경 시 썸네일 동기화
+// (활성 슬라이드에 'is-active' 클래스가 추가되므로 이를 감지)
+const observer = new MutationObserver(() => {
+  const activeSlide = carousel.querySelector('.dewp-carousel__slide.is-active');
+  const activeIndex = Array.from(carousel.querySelectorAll('.dewp-carousel__slide'))
+    .indexOf(activeSlide);
+  
+  thumbs.forEach((thumb, i) => {
+    thumb.classList.toggle('is-active', i === activeIndex);
+  });
+});
+
+observer.observe(carousel, {
+  childList: false,
+  subtree: true,
+  attributes: true,
+  attributeFilter: ['class']
+});</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>6. 동적 높이 조절</h4>
+        <p>Carousel은 활성 슬라이드의 콘텐츠 높이에 맞춰 뷰포트 높이를 자동으로 조절합니다. 이는 다음과 같은 장점이 있습니다:</p>
         <ul>
-          <li>컨테이너에 <code>tabindex="0"</code>를 부여해 키보드 포커스 가능</li>
-          <li>좌우 화살표 키로 슬라이드 이동 (<code>keyboard</code> 옵션)</li>
-          <li>네비게이션 버튼과 인디케이터에 ARIA 라벨 자동 부여</li>
+          <li>다양한 비율의 이미지를 섞어 사용 가능</li>
+          <li>텍스트 콘텐츠와 이미지를 함께 사용 가능</li>
+          <li>반응형 레이아웃에서 유연하게 대응</li>
+        </ul>
+        <p><strong>주의사항:</strong> 이미지가 로드되는 동안 높이가 변경될 수 있으므로, 이미지에 <code>loading="lazy"</code>를 사용하거나 미리 높이를 지정하는 것을
+          권장합니다.</p>
+      </section>
+
+      <section>
+        <h4>7. 접근성 (A11y)</h4>
+        <p>Carousel은 웹 접근성을 고려하여 설계되었습니다:</p>
+        <ul>
+          <li><strong>키보드 네비게이션:</strong> <code>keyboard</code> 옵션이 활성화되면 컨테이너에 <code>tabindex="0"</code>이 자동으로 추가되어 포커스
+            가능해집니다.</li>
+          <li><strong>화살표 키:</strong> ← (이전), → (다음) 키로 슬라이드 이동</li>
+          <li><strong>ARIA 라벨:</strong> 네비게이션 버튼과 인디케이터에 자동으로 적절한 ARIA 라벨이 추가됩니다.</li>
+          <li><strong>단일 슬라이드:</strong> 슬라이드가 1개일 때는 네비게이션과 인디케이터가 자동으로 숨겨집니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>8. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>슬라이드 최소 개수:</strong> 최소 1개의 <code>dewp-carousel__slide</code> 요소가 필요합니다.</li>
+          <li><strong>인스턴스 중복:</strong> 같은 요소를 두 번 초기화하면 기존 인스턴스 ID를 반환합니다. 제거하려면 <code>destroyCarousel</code>을 먼저
+            호출하세요.</li>
+          <li><strong>동적 콘텐츠:</strong> 슬라이드를 동적으로 추가/제거한 후에는 새로 초기화해야 합니다.</li>
+          <li><strong>자동 재생 간격:</strong> 최소 1500ms 이상을 권장합니다. 너무 짧으면 사용자 경험이 저하될 수 있습니다.</li>
+          <li><strong>이미지 최적화:</strong> 큰 이미지는 적절히 최적화하여 로딩 성능을 개선하세요.</li>
         </ul>
       </section>
     </div>
@@ -241,5 +485,3 @@ DEWP.setCarouselAutoplay(carouselEl, true, 7000); // 토글 + 간격 변경</cod
 </body>
 
 </html>
-
-
