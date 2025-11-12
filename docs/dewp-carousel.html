@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Carousel</title>
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css" />
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">기본 이미지 캐러셀</h3>
+        <p class="ex-section-description">썸네일과 함께 좌우 네비게이션 사용</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-carousel dewp-carousel--image" id="docsCarouselBasic" data-dewp-carousel data-carousel-indicators="true">
+        <div class="dewp-carousel__viewport">
+          <div class="dewp-carousel__track">
+            <div class="dewp-carousel__slide">
+              <img src="https://images.unsplash.com/photo-1526481280695-3c46977c643a?auto=format&fit=crop&w=1200&q=80"
+                alt="도심 위로 지는 노을" />
+              <div class="dewp-carousel__slide-caption">Golden Hour in the City</div>
+            </div>
+            <div class="dewp-carousel__slide">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+                alt="파도 위를 걷는 사람" />
+              <div class="dewp-carousel__slide-caption">Walk on the Waves</div>
+            </div>
+            <div class="dewp-carousel__slide">
+              <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=80"
+                alt="푸른 숲과 안개" />
+              <div class="dewp-carousel__slide-caption">Morning Fog in the Forest</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dewp-carousel-thumbnails" style="margin-top: var(--db-gap-l);" data-carousel-thumbs>
+        <button type="button" data-carousel-thumb="0">
+          <img src="https://images.unsplash.com/photo-1526481280695-3c46977c643a?auto=format&fit=crop&w=360&q=60" alt="" />
+        </button>
+        <button type="button" data-carousel-thumb="1">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=60" alt="" />
+        </button>
+        <button type="button" data-carousel-thumb="2">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=360&q=60" alt="" />
+        </button>
+      </div>
+
+      <div class="dewp-btn-group" style="margin-top: var(--db-gap-m); display:flex; flex-wrap:wrap; gap: var(--db-gap-xs);">
+        <button class="dewp-btn dewp-btn-tertiary dewp-btn-sm" id="carouselAutoStart">자동 재생 시작</button>
+        <button class="dewp-btn dewp-btn-secondary dewp-btn-sm" id="carouselAutoStop">자동 재생 정지</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">자동 재생 &amp; 최소화 스타일</h3>
+        <p class="ex-section-description">비디오/콘텐츠 캐러셀 예시</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-carousel dewp-carousel--minimal" id="docsCarouselAuto" data-dewp-carousel data-carousel-autoplay="true"
+        data-carousel-interval="3500" data-carousel-loop="true" data-carousel-indicators="true">
+        <div class="dewp-carousel__viewport">
+          <div class="dewp-carousel__track">
+            <div class="dewp-carousel__slide">
+              <div style="padding: var(--db-padding-xl); text-align: center;">
+                <h4 style="margin-bottom: var(--db-gap-s);">간결한 데이터 카드</h4>
+                <p style="color: var(--db-text-secondary); margin: 0;">KPI와 상태를 한눈에 확인하세요.</p>
+              </div>
+            </div>
+            <div class="dewp-carousel__slide">
+              <div style="padding: var(--db-padding-xl); text-align: center;">
+                <h4 style="margin-bottom: var(--db-gap-s);">액션 중심 CTA</h4>
+                <p style="color: var(--db-text-secondary); margin-bottom: var(--db-gap-m);">중요한 버튼을 강조해 사용자 행동을 유도합니다.</p>
+                <button class="dewp-btn dewp-btn-primary">액션 실행</button>
+              </div>
+            </div>
+            <div class="dewp-carousel__slide">
+              <div style="padding: var(--db-padding-xl); text-align: center;">
+                <h4 style="margin-bottom: var(--db-gap-s);">차트 콘텐츠</h4>
+                <p style="color: var(--db-text-secondary); margin: 0;">캔버스 기반 차트나 카드도 손쉽게 넣을 수 있습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Carousel 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-carousel" data-dewp-carousel&gt;
+  &lt;div class="dewp-carousel__viewport"&gt;
+    &lt;div class="dewp-carousel__track"&gt;
+      &lt;div class="dewp-carousel__slide"&gt;...&lt;/div&gt;
+      &lt;div class="dewp-carousel__slide"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- 필요 시 자동 생성되는 내비게이션/인디케이터 --&gt;
+&lt;/div&gt;</code>
+        </pre>
+        <p><code>data-dewp-carousel</code> 속성이 있으면 자동 초기화합니다. 수동으로 제어하려면 <code>DEWP.initCarousel</code>을 호출하세요.</p>
+      </section>
+
+      <section>
+        <h4>JS 사용</h4>
+        <pre>
+<code class="language-js">const carouselEl = document.getElementById('docsCarouselBasic');
+const carouselId = DEWP.initCarousel(carouselEl, {
+  loop: true,
+  indicators: true,
+});
+
+DEWP.nextCarousel(carouselEl);      // 다음 슬라이드
+DEWP.prevCarousel(carouselEl);      // 이전 슬라이드
+DEWP.goToCarousel(carouselEl, 2);   // 특정 인덱스로 이동
+DEWP.destroyCarousel(carouselId);   // 인스턴스 제거</code>
+        </pre>
+        <p>초기화 시 반환되는 ID는 <code>destroyCarousel</code>에 사용할 수 있습니다. Element 참조를 그대로 넘겨도 됩니다.</p>
+      </section>
+
+      <section>
+        <h4>데이터 속성</h4>
+        <ul>
+          <li><code>data-carousel-loop</code> (기본값: <code>true</code>)</li>
+          <li><code>data-carousel-autoplay</code>: 자동 재생 여부</li>
+          <li><code>data-carousel-interval</code>: 자동 재생 간격(ms)</li>
+          <li><code>data-carousel-pause-on-hover</code>: 마우스 오버 시 일시정지</li>
+          <li><code>data-carousel-indicators</code>, <code>data-carousel-keyboard</code>, <code>data-carousel-swipe</code></li>
+        </ul>
+        <p>모든 속성은 옵션 객체로도 전달 가능합니다.</p>
+      </section>
+
+      <section>
+        <h4>높이 자동 조절</h4>
+        <p>활성 슬라이드의 콘텐츠 높이에 맞춰 캐러셀 뷰포트 높이가 부드럽게 변경됩니다. 정적인 높이를 지정할 필요가 없어, 다양한 비율의 이미지나 카드 콘텐츠를 섞어서 사용할 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h4>오토 슬라이드 제어</h4>
+        <pre>
+<code class="language-js">DEWP.startCarouselAutoplay(carouselEl, 5000); // 자동 재생 시작 (간격 지정)
+DEWP.stopCarouselAutoplay(carouselEl);        // 자동 재생 정지
+DEWP.setCarouselAutoplay(carouselEl, true, 7000); // 토글 + 간격 변경</code>
+        </pre>
+        <p><code>startCarouselAutoplay</code>와 <code>stopCarouselAutoplay</code>를 통해 런타임에서도 손쉽게 자동 재생을 제어할 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h4>동기화 썸네일</h4>
+        <p>썸네일 클릭으로 슬라이드를 이동하려면 <code>DEWP.goToCarousel</code>을 호출하세요. 현재 인덱스를 감지해 썸네일 스타일을 업데이트하면 됩니다.</p>
+      </section>
+
+      <section>
+        <h4>접근성</h4>
+        <ul>
+          <li>컨테이너에 <code>tabindex="0"</code>를 부여해 키보드 포커스 가능</li>
+          <li>좌우 화살표 키로 슬라이드 이동 (<code>keyboard</code> 옵션)</li>
+          <li>네비게이션 버튼과 인디케이터에 ARIA 라벨 자동 부여</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.DEWP) return;
+
+      const basic = document.getElementById('docsCarouselBasic');
+      const auto = document.getElementById('docsCarouselAuto');
+
+      const basicId = window.DEWP.initCarousel(basic, {
+        loop: true,
+        indicators: true
+      });
+
+      window.DEWP.initCarousel(auto, {
+        autoplay: true,
+        interval: 3500,
+        loop: true,
+        indicators: true
+      });
+
+      const syncThumbs = () => {
+        const slides = basic ? Array.from(basic.querySelectorAll('.dewp-carousel__slide')) : [];
+        if (!slides.length) return;
+        const activeIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
+        thumbs.forEach(function (el, idx) { el.classList.toggle('is-active', idx === (activeIndex >= 0 ? activeIndex : 0)); });
+      };
+
+      const thumbs = document.querySelectorAll('[data-carousel-thumb]');
+      thumbs.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const index = Number(button.dataset.carouselThumb || 0);
+          window.DEWP.goToCarousel(basic, index);
+
+          syncThumbs();
+        });
+      });
+
+      const startAutoBtn = document.getElementById('carouselAutoStart');
+      const stopAutoBtn = document.getElementById('carouselAutoStop');
+
+      startAutoBtn?.addEventListener('click', function () {
+        window.DEWP.startCarouselAutoplay(basic, 4500);
+      });
+
+      stopAutoBtn?.addEventListener('click', function () {
+        window.DEWP.stopCarouselAutoplay(basic);
+      });
+
+      // 주기적으로 썸네일과 활성 슬라이드를 동기화
+      syncThumbs();
+      window.setInterval(syncThumbs, 600);
+    });
+  </script>
+</body>
+
+</html>
+
+

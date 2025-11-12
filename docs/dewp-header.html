@@ -11,6 +11,31 @@
 
 <body>
 
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">뒤로가기 버튼 헤더</h3>
+        <p class="ex-section-description">상세 화면에서 목록으로 이동할 수 있는 패턴</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-header dewp-header-with-back" style="margin-bottom:16px;">
+        <button class="dewp-header-back-button" type="button">
+          <i class="icon-chevron-left" aria-hidden="true"></i>
+          목록으로
+        </button>
+        <div class="dewp-header-content">
+          <h1 class="dewp-header-title">게시글 상세</h1>
+          <p class="dewp-header-description">게시글 정보를 확인하고 세부 설정을 관리할 수 있는 페이지입니다.</p>
+        </div>
+        <div class="dewp-header-actions">
+          <button class="dewp-btn dewp-btn-outline-secondary">수정</button>
+          <button class="dewp-btn dewp-btn-primary">저장</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="dewp-header" style="margin-bottom:16px;">
     <div class="dewp-header-content">
       <h1 class="dewp-header-title">플러그인 설정</h1>
@@ -56,6 +81,7 @@
         <ul>
           <li>액션은 우측 정렬, 기본/보조 버튼의 시각적 위계 유지</li>
           <li>설명은 한 줄 내 가독성 유지</li>
+          <li>상세 페이지에는 <code>.dewp-header-with-back</code>과 <code>.dewp-header-back-button</code> 조합으로 뒤로가기 버튼을 제공합니다.</li>
         </ul>
       </section>
     </div>

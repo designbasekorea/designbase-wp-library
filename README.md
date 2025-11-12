@@ -245,6 +245,69 @@ window.DEWP.showToast('메시지', 'success', 3000, 'lg');
 </script>
 ```
 
+### 8-1. 캐러셀 (Carousel)
+```html
+<div class="dewp-carousel dewp-carousel--image" data-dewp-carousel data-carousel-indicators="true">
+  <div class="dewp-carousel__viewport">
+    <div class="dewp-carousel__track">
+      <div class="dewp-carousel__slide">
+        <img src="image-1.jpg" alt="첫 번째 슬라이드">
+        <div class="dewp-carousel__slide-caption">슬라이드 설명</div>
+      </div>
+      <div class="dewp-carousel__slide">
+        <img src="image-2.jpg" alt="두 번째 슬라이드">
+      </div>
+    </div>
+  </div>
+</div>
+```
+```javascript
+const carouselEl = document.querySelector('.dewp-carousel');
+const carouselId = DEWP.initCarousel(carouselEl, {
+  loop: true,
+  autoplay: true,
+  interval: 4000,
+  indicators: true,
+});
+
+DEWP.goToCarousel(carouselEl, 1);
+DEWP.nextCarousel(carouselEl);
+DEWP.prevCarousel(carouselEl);
+DEWP.startCarouselAutoplay(carouselEl, 4500);
+DEWP.stopCarouselAutoplay(carouselEl);
+```
+
+> 캐러셀은 활성 슬라이드의 콘텐츠 높이에 맞춰 자동으로 뷰포트 높이를 조절합니다.
+
+### 8-2. 라이트박스 (Lightbox)
+```html
+<div class="dewp-lightbox-gallery">
+  <button type="button"
+          data-dewp-lightbox="gallery-a"
+          data-lightbox-src="large-1.jpg"
+          data-lightbox-caption="이미지 설명 1">
+    <img src="thumb-1.jpg" alt="이미지 1 썸네일">
+  </button>
+  <button type="button"
+          data-dewp-lightbox="gallery-a"
+          data-lightbox-src="large-2.jpg"
+          data-lightbox-caption="이미지 설명 2">
+    <img src="thumb-2.jpg" alt="이미지 2 썸네일">
+  </button>
+</div>
+```
+```javascript
+DEWP.registerLightbox('.dewp-lightbox-gallery', {
+  loop: true,
+  swipe: true,
+  showCaption: true,
+});
+
+DEWP.openLightbox('gallery-a', 0);
+DEWP.nextLightbox();
+DEWP.closeLightbox();
+```
+
 ### 9. 폼 요소 (Forms)
 ```html
 <!-- 입력 필드 -->

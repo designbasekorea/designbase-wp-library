@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEWP – Lightbox</title>
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/theme@latest/dist/css/theme.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@designbasekorea/icons-webfont@latest/dist/webfont/icons.css" />
+  <link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" />
+  <link rel="stylesheet" href="./src/_examples-shell.css" />
+</head>
+
+<body>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">이미지 갤러리 라이트박스</h3>
+        <p class="ex-section-description">썸네일 클릭 시 전체 화면 확대 &amp; 스와이프</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div class="dewp-lightbox-gallery" id="docsLightboxGallery">
+        <button type="button" data-dewp-lightbox="travel"
+          data-lightbox-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80"
+          data-lightbox-caption="Sunset Walk">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=60"
+            alt="Sunset Walk" />
+        </button>
+        <button type="button" data-dewp-lightbox="travel"
+          data-lightbox-src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80"
+          data-lightbox-caption="Mountains &amp; Lakes">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=360&q=60"
+            alt="Mountains & Lakes" />
+        </button>
+        <button type="button" data-dewp-lightbox="travel"
+          data-lightbox-src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80"
+          data-lightbox-caption="City Lights">
+          <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=360&q=60"
+            alt="City Lights" />
+        </button>
+        <button type="button" data-dewp-lightbox="travel"
+          data-lightbox-src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80&sat=60"
+          data-lightbox-caption="Ocean Breeze">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=360&q=60&sat=60"
+            alt="Ocean Breeze" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">라이트박스 컨트롤</h3>
+        <p class="ex-section-description">자바스크립트로 직접 열기/닫기</p>
+      </div>
+    </div>
+    <div class="ex-section-content">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--db-gap-m);">
+        <button class="dewp-btn dewp-btn-primary" id="openLightboxFirst">첫 번째 이미지 열기</button>
+        <button class="dewp-btn" id="openLightboxLast">마지막 이미지 열기</button>
+        <button class="dewp-btn dewp-btn-tertiary" id="closeLightboxBtn">라이트박스 닫기</button>
+      </div>
+      <p style="margin-top: var(--db-gap-m); color: var(--db-text-secondary);">
+        <code>DEWP.openLightbox()</code>와 <code>DEWP.closeLightbox()</code>로 어디서든 제어할 수 있습니다.
+      </p>
+    </div>
+  </div>
+
+  <div class="ex-section">
+    <div class="ex-section-header">
+      <div class="ex-section-title-area">
+        <h3 class="ex-section-title">문서 요약</h3>
+        <p class="ex-section-description">Lightbox 핵심 사용 가이드</p>
+      </div>
+    </div>
+    <div class="ex-section-content ex-docs">
+      <section>
+        <h4>HTML 구조</h4>
+        <pre>
+<code class="language-html">&lt;button type="button"
+        data-dewp-lightbox="gallery-a"
+        data-lightbox-src="large.jpg"
+        data-lightbox-caption="이미지 설명"&gt;
+  &lt;img src="thumb.jpg" alt="썸네일"&gt;
+&lt;/button&gt;</code>
+        </pre>
+        <p><code>data-dewp-lightbox</code> 값이 같으면 동일한 그룹으로 묶입니다. <code>data-lightbox-src</code>가 없으면 <code>href</code> 또는 <code>src</code> 속성을 사용합니다.</p>
+      </section>
+
+      <section>
+        <h4>JS 사용</h4>
+        <pre>
+<code class="language-js">// 등록 (선택 사항: data-dewp-lightbox 있으면 자동)
+DEWP.registerLightbox('#docsLightboxGallery', {
+  loop: true,
+  closeOnBackdrop: true,
+  showCaption: true,
+});
+
+// 제어 메서드
+DEWP.openLightbox('travel', 0); // 그룹명 & 인덱스
+DEWP.nextLightbox();
+DEWP.prevLightbox();
+DEWP.closeLightbox();</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>옵션</h4>
+        <ul>
+          <li><code>loop</code>: 끝에서 다시 처음으로(기본: <code>true</code>)</li>
+          <li><code>swipe</code>: 터치/마우스 드래그 스와이프(기본: <code>true</code>)</li>
+          <li><code>keyboard</code>: ESC/←/→ 키 지원</li>
+          <li><code>closeOnBackdrop</code>: 빈 공간 클릭 시 닫기</li>
+          <li><code>showCaption</code>: 캡션 영역 표시 여부</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>접근성</h4>
+        <ul>
+          <li>열릴 때 포커스를 닫기 버튼으로 이동해 키보드 제어 제공</li>
+          <li>ESC 키로 닫기, 방향키로 탐색</li>
+          <li>닫으면 마지막으로 클릭한 트리거로 포커스를 복원</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"></script>
+  <script src="./src/_examples-manifest.js"></script>
+  <script src="./src/_examples-shell.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.DEWP) return;
+
+      const gallery = document.getElementById('docsLightboxGallery');
+      window.DEWP.registerLightbox(gallery, {
+        loop: true,
+        swipe: true,
+        showCaption: true
+      });
+
+      document.getElementById('openLightboxFirst').addEventListener('click', function () {
+        window.DEWP.openLightbox('travel', 0);
+      });
+
+      document.getElementById('openLightboxLast').addEventListener('click', function () {
+        window.DEWP.openLightbox('travel', 3);
+      });
+
+      document.getElementById('closeLightboxBtn').addEventListener('click', function () {
+        window.DEWP.closeLightbox();
+      });
+    });
+  </script>
+</body>
+
+</html>
+

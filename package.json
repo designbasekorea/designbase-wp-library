@@ -1,6 +1,6 @@
 {
     "name": "designbase-wp-library",
-    "version": "0.9.3",
+    "version": "0.9.5",
     "description": "Reusable CSS/JS kit for WordPress plugins (frontend/admin).",
     "license": "MIT",
     "type": "module",
