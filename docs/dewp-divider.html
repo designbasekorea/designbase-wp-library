@@ -37,25 +37,186 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>콘텐츠 그룹을 시각적으로 구분하거나 제목과 함께 구역을 나눕니다.</p>
+        <h4>1. HTML 구조 - 기본 사용법</h4>
+        <p>Divider를 사용하기 위한 기본 HTML 구조입니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 제목이 있는 디바이더 --&gt;
+&lt;div class="dewp-divider-with-title"&gt;
+  &lt;span class="dewp-divider-title"&gt;섹션 제목&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 단순 구분선 --&gt;
+&lt;hr class="dewp-divider" /&gt;</code>
+        </pre>
+        <p><strong>필수 요소:</strong></p>
+        <ul>
+          <li><code>dewp-divider-with-title</code>: 제목이 있는 디바이더 컨테이너 (선택사항)</li>
+          <li><code>dewp-divider-title</code>: 디바이더 제목 (제목형 디바이더 사용 시 필수)</li>
+          <li><code>dewp-divider</code>: 구분선 클래스 (단순 구분선 사용 시 필수)</li>
+        </ul>
+        <p><strong>주의사항:</strong> Divider는 순수 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
       </section>
 
       <section>
-        <h4>HTML 구조</h4>
+        <h4>2. 제목형 디바이더</h4>
+        <p>제목과 함께 섹션을 구분하는 디바이더:</p>
         <pre>
 <code class="language-html">&lt;div class="dewp-divider-with-title"&gt;
-  &lt;span class="dewp-divider-title"&gt;섹션 제목&lt;/span&gt;
+  &lt;span class="dewp-divider-title"&gt;일반 설정&lt;/span&gt;
 &lt;/div&gt;
-&lt;hr class="dewp-divider" /&gt;</code>
+&lt;p&gt;설정 내용이 여기에 표시됩니다.&lt;/p&gt;
+
+&lt;div class="dewp-divider-with-title"&gt;
+  &lt;span class="dewp-divider-title"&gt;고급 설정&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;고급 설정 내용이 여기에 표시됩니다.&lt;/p&gt;</code>
+        </pre>
+        <p><strong>사용 시나리오:</strong></p>
+        <ul>
+          <li>폼의 여러 섹션을 구분할 때</li>
+          <li>설정 페이지의 카테고리를 나눌 때</li>
+          <li>콘텐츠를 논리적으로 그룹화할 때</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>3. 단순 구분선</h4>
+        <p>제목 없이 단순히 콘텐츠를 구분하는 선:</p>
+        <pre>
+<code class="language-html">&lt;p&gt;첫 번째 섹션의 내용입니다.&lt;/p&gt;
+&lt;hr class="dewp-divider" /&gt;
+&lt;p&gt;두 번째 섹션의 내용입니다.&lt;/p&gt;</code>
+        </pre>
+        <p><strong>사용 시나리오:</strong></p>
+        <ul>
+          <li>리스트 항목 간 구분</li>
+          <li>간단한 콘텐츠 구분</li>
+          <li>제목이 필요 없는 경우</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>4. 실제 사용 예시</h4>
+        <h5>예시 1: 폼 섹션 구분</h5>
+        <pre>
+<code class="language-html">&lt;form&gt;
+  &lt;div class="dewp-divider-with-title"&gt;
+    &lt;span class="dewp-divider-title"&gt;기본 정보&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;이름&lt;/label&gt;
+    &lt;input type="text"&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-divider-with-title"&gt;
+    &lt;span class="dewp-divider-title"&gt;연락처 정보&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label&gt;이메일&lt;/label&gt;
+    &lt;input type="email"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code>
+        </pre>
+
+        <h5>예시 2: 설정 페이지</h5>
+        <pre>
+<code class="language-html">&lt;div class="dewp-divider-with-title"&gt;
+  &lt;span class="dewp-divider-title"&gt;계정 설정&lt;/span&gt;
+&lt;/div&gt;
+&lt;!-- 계정 설정 내용 --&gt;
+
+&lt;div class="dewp-divider-with-title"&gt;
+  &lt;span class="dewp-divider-title"&gt;알림 설정&lt;/span&gt;
+&lt;/div&gt;
+&lt;!-- 알림 설정 내용 --&gt;
+
+&lt;div class="dewp-divider-with-title"&gt;
+  &lt;span class="dewp-divider-title"&gt;개인정보 설정&lt;/span&gt;
+&lt;/div&gt;
+&lt;!-- 개인정보 설정 내용 --&gt;</code>
+        </pre>
+
+        <h5>예시 3: 리스트 구분</h5>
+        <pre>
+<code class="language-html">&lt;ul&gt;
+  &lt;li&gt;항목 1&lt;/li&gt;
+  &lt;li&gt;항목 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr class="dewp-divider" /&gt;
+&lt;ul&gt;
+  &lt;li&gt;항목 3&lt;/li&gt;
+  &lt;li&gt;항목 4&lt;/li&gt;
+&lt;/ul&gt;</code>
+        </pre>
+
+        <h5>예시 4: 카드 내부 구분</h5>
+        <pre>
+<code class="language-html">&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;h3&gt;카드 제목&lt;/h3&gt;
+    &lt;p&gt;첫 번째 내용&lt;/p&gt;
+    &lt;hr class="dewp-divider" /&gt;
+    &lt;p&gt;두 번째 내용&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
         </pre>
       </section>
 
       <section>
-        <h4>베스트 프랙티스</h4>
+        <h4>5. 스타일링 가이드</h4>
+        <p>Divider는 기본 스타일이 제공되지만, 필요에 따라 커스터마이징할 수 있습니다:</p>
+        <pre>
+<code class="language-css">/* 디바이더 간격 조정 */
+.dewp-divider {
+  margin: var(--db-gap-l) 0;
+}
+
+/* 제목 스타일 커스터마이징 */
+.dewp-divider-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--db-text-primary);
+}
+
+/* 구분선 색상 변경 */
+.dewp-divider {
+  border-color: var(--db-border-light);
+}
+
+/* 제목형 디바이더 여백 조정 */
+.dewp-divider-with-title {
+  margin: var(--db-gap-xl) 0 var(--db-gap-m) 0;
+}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>6. 접근성 (A11y)</h4>
+        <p>Divider는 웹 접근성을 고려하여 설계되었습니다:</p>
         <ul>
-          <li>제목형 디바이더로 섹션 의미를 명확히 함</li>
-          <li>시각적 간격은 섹션 주변 여백으로 조정</li>
+          <li><strong>시맨틱 HTML:</strong> <code>&lt;hr&gt;</code> 요소를 사용하여 구조적 의미 제공</li>
+          <li><strong>제목 사용:</strong> 제목형 디바이더는 섹션의 의미를 명확히 전달합니다</li>
+          <li><strong>스크린 리더:</strong> <code>&lt;hr&gt;</code> 요소는 스크린 리더에서 구분선으로 인식됩니다</li>
+          <li><strong>시각적 구분:</strong> 색상과 스타일로 명확한 시각적 구분 제공</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>제목형 디바이더는 적절한 제목 텍스트를 제공하세요.</li>
+          <li>너무 많은 디바이더는 콘텐츠를 과도하게 분할할 수 있으므로 적절히 사용하세요.</li>
+          <li>디바이더 주변에 적절한 여백을 유지하세요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>7. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>과도한 사용:</strong> 디바이더를 너무 많이 사용하면 콘텐츠가 조각나 보일 수 있습니다.</li>
+          <li><strong>일관성:</strong> 같은 페이지 내에서는 동일한 스타일의 디바이더를 사용하세요.</li>
+          <li><strong>여백 관리:</strong> 디바이더 위아래에 적절한 여백을 두어 시각적 균형을 유지하세요.</li>
+          <li><strong>제목 텍스트:</strong> 제목형 디바이더의 텍스트는 명확하고 간결해야 합니다.</li>
+          <li><strong>반응형:</strong> 작은 화면에서는 디바이더의 여백을 조정할 수 있습니다.</li>
+          <li><strong>색상 대비:</strong> 디바이더 선의 색상이 배경과 충분한 대비를 가져야 합니다.</li>
+          <li><strong>대체 방법:</strong> 간단한 구분이면 여백만으로도 충분할 수 있습니다.</li>
         </ul>
       </section>
     </div>

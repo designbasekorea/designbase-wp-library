@@ -59,11 +59,223 @@
         </div>
       </div>
       <div class="ex-section-content ex-docs">
-        <pre><code class="language-html">&lt;div class="dewp-card dewp-card--elevated"&gt;
-  &lt;div class="dewp-card-header"&gt;제목&lt;/div&gt;
-  &lt;div class="dewp-card-body"&gt;내용&lt;/div&gt;
-  &lt;div class="dewp-card-footer"&gt;푸터&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+        <section>
+          <h4>1. HTML 구조 - 필수 요소</h4>
+          <p>Card를 사용하기 위한 최소한의 HTML 구조입니다:</p>
+          <pre>
+<code class="language-html">&lt;!-- 기본 구조 --&gt;
+&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-header"&gt;카드 제목&lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;p&gt;카드 본문 내용입니다.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-footer"&gt;카드 푸터&lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+          <p><strong>필수 요소:</strong></p>
+          <ul>
+            <li><code>dewp-card</code>: 최상위 컨테이너 클래스 (필수)</li>
+            <li><code>dewp-card-header</code>: 헤더 영역 (선택사항, 제목이나 이미지 등)</li>
+            <li><code>dewp-card-body</code>: 본문 영역 (필수, 주요 콘텐츠)</li>
+            <li><code>dewp-card-footer</code>: 푸터 영역 (선택사항, 액션 버튼 등)</li>
+          </ul>
+          <p><strong>주의사항:</strong> Card는 순수 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
+        </section>
+
+        <section>
+          <h4>2. 기본 사용법</h4>
+          <h5>최소 구조 (본문만)</h5>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;p&gt;간단한 카드입니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+
+          <h5>완전한 구조 (헤더 + 본문 + 푸터)</h5>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-header"&gt;
+    &lt;h3&gt;카드 제목&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;p&gt;카드 본문 내용입니다.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-footer"&gt;
+    &lt;button class="dewp-button dewp-button--primary"&gt;액션&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>3. 카드 변형 (Variants)</h4>
+          <p>카드에 다양한 스타일 클래스를 추가하여 디자인을 변경할 수 있습니다:</p>
+          <pre>
+<code class="language-html">&lt;!-- 기본 카드 (약한 그림자) --&gt;
+&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-body"&gt;기본 카드&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Outlined 카드 (테두리만) --&gt;
+&lt;div class="dewp-card dewp-card--outlined"&gt;
+  &lt;div class="dewp-card-body"&gt;Outlined 카드&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Elevated 카드 (강한 그림자) --&gt;
+&lt;div class="dewp-card dewp-card--elevated"&gt;
+  &lt;div class="dewp-card-body"&gt;Elevated 카드&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Hover 카드 (마우스 오버 시 그림자 증가) --&gt;
+&lt;div class="dewp-card dewp-card--hover"&gt;
+  &lt;div class="dewp-card-body"&gt;Hover 카드&lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+          <p><strong>변형 설명:</strong></p>
+          <ul>
+            <li><code>dewp-card--outlined</code>: 그림자 없이 테두리만 있는 스타일</li>
+            <li><code>dewp-card--elevated</code>: 그림자가 강조된 스타일 (기본보다 더 강한 그림자)</li>
+            <li><code>dewp-card--hover</code>: 마우스를 올리면 그림자가 증가하는 인터랙티브 스타일</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>4. 실제 사용 예시</h4>
+          <h5>예시 1: 제품 카드</h5>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card dewp-card--elevated"&gt;
+  &lt;div class="dewp-card-header"&gt;
+    &lt;img src="product.jpg" alt="제품 이미지" style="width:100%; height:200px; object-fit:cover;"&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;h3&gt;제품명&lt;/h3&gt;
+    &lt;p&gt;제품 설명입니다.&lt;/p&gt;
+    &lt;div style="font-size:1.5em; font-weight:bold; color:var(--db-primary);"&gt;₩29,000&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-footer"&gt;
+    &lt;button class="dewp-button dewp-button--primary"&gt;장바구니 담기&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+
+          <h5>예시 2: 프로필 카드</h5>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-body" style="text-align:center;"&gt;
+    &lt;img src="avatar.jpg" alt="프로필" style="width:80px; height:80px; border-radius:50%; margin-bottom:var(--db-gap-m);"&gt;
+    &lt;h3&gt;사용자 이름&lt;/h3&gt;
+    &lt;p style="color:var(--db-text-secondary);"&gt;사용자 설명&lt;/p&gt;
+    &lt;div style="margin-top:var(--db-gap-m);"&gt;
+      &lt;button class="dewp-button dewp-button--primary dewp-button--s"&gt;팔로우&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+
+          <h5>예시 3: 통계 카드</h5>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card dewp-card--outlined"&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;div style="font-size:2em; font-weight:bold; color:var(--db-primary);"&gt;1,234&lt;/div&gt;
+    &lt;div style="color:var(--db-text-secondary); margin-top:var(--db-gap-xs);"&gt;총 방문자&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+
+          <h5>예시 4: 클릭 가능한 카드</h5>
+          <pre>
+<code class="language-html">&lt;a href="/detail" class="dewp-card dewp-card--hover" style="text-decoration:none; color:inherit; display:block;"&gt;
+  &lt;div class="dewp-card-header"&gt;
+    &lt;img src="thumbnail.jpg" alt="썸네일" style="width:100%; height:150px; object-fit:cover;"&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;h3&gt;카드 제목&lt;/h3&gt;
+    &lt;p&gt;카드 설명입니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/a&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>5. 카드 그리드 레이아웃</h4>
+          <p>여러 카드를 그리드로 배치하는 방법:</p>
+          <pre>
+<code class="language-html">&lt;!-- CSS Grid 사용 --&gt;
+&lt;div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--db-gap-m);"&gt;
+  &lt;div class="dewp-card"&gt;...&lt;/div&gt;
+  &lt;div class="dewp-card"&gt;...&lt;/div&gt;
+  &lt;div class="dewp-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Flexbox 사용 --&gt;
+&lt;div style="display:flex; gap: var(--db-gap-m); flex-wrap:wrap;"&gt;
+  &lt;div class="dewp-card" style="flex:1; min-width:240px;"&gt;...&lt;/div&gt;
+  &lt;div class="dewp-card" style="flex:1; min-width:240px;"&gt;...&lt;/div&gt;
+  &lt;div class="dewp-card" style="flex:1; min-width:240px;"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>6. 이미지와 함께 사용</h4>
+          <pre>
+<code class="language-html">&lt;div class="dewp-card"&gt;
+  &lt;div class="dewp-card-header" style="padding:0;"&gt;
+    &lt;img src="image.jpg" alt="이미지" style="width:100%; height:auto; display:block;"&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;h3&gt;이미지가 있는 카드&lt;/h3&gt;
+    &lt;p&gt;이미지 위에 오버레이 텍스트를 넣을 수도 있습니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 이미지 오버레이 --&gt;
+&lt;div class="dewp-card" style="position:relative;"&gt;
+  &lt;div class="dewp-card-header" style="padding:0; position:relative;"&gt;
+    &lt;img src="image.jpg" alt="이미지" style="width:100%; height:200px; object-fit:cover;"&gt;
+    &lt;div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.7)); color:white; padding:var(--db-padding-m);"&gt;
+      &lt;h3 style="margin:0;"&gt;오버레이 제목&lt;/h3&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-card-body"&gt;
+    &lt;p&gt;본문 내용&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>7. 접근성 (A11y)</h4>
+          <p>Card는 웹 접근성을 고려하여 설계되었습니다:</p>
+          <ul>
+            <li><strong>시맨틱 HTML:</strong> 적절한 HTML 요소를 사용하여 구조적 의미를 제공합니다.</li>
+            <li><strong>이미지 alt 텍스트:</strong> 카드 내 이미지는 항상 <code>alt</code> 속성을 포함해야 합니다.</li>
+            <li><strong>링크 카드:</strong> 카드 전체가 클릭 가능한 링크인 경우, 명확한 링크 텍스트를 제공하세요.</li>
+            <li><strong>키보드 접근:</strong> 링크나 버튼이 포함된 카드는 키보드로 접근 가능해야 합니다.</li>
+            <li><strong>색상 대비:</strong> 텍스트와 배경의 대비율이 WCAG AA 기준을 만족해야 합니다.</li>
+          </ul>
+          <p><strong>권장 사항:</strong></p>
+          <ul>
+            <li>카드 제목은 <code>&lt;h2&gt;</code>~<code>&lt;h6&gt;</code> 태그를 사용하세요.</li>
+            <li>카드가 클릭 가능한 경우, 포커스 스타일을 명확히 표시하세요.</li>
+            <li>여러 카드가 있을 때는 각 카드에 고유한 식별자를 제공하세요.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>8. 주의사항 및 팁</h4>
+          <ul>
+            <li><strong>본문 필수:</strong> <code>dewp-card-body</code>는 필수 요소입니다. 헤더와 푸터는 선택사항입니다.</li>
+            <li><code>dewp-card-header</code>에 이미지를 넣을 때는 <code>padding:0</code>을 추가하여 여백을 제거할 수 있습니다.</li>
+            <li><strong>그리드 레이아웃:</strong> 여러 카드를 배치할 때는 CSS Grid나 Flexbox를 사용하세요.</li>
+            <li><strong>반응형:</strong> 작은 화면에서는 카드 너비를 조절하거나 세로로 쌓이도록 설정하세요.</li>
+            <li><strong>일관성:</strong> 같은 페이지 내의 카드는 동일한 변형을 사용하는 것이 좋습니다.</li>
+            <li><strong>콘텐츠 길이:</strong> 카드 본문이 너무 길면 잘라내거나 "더보기" 링크를 추가하세요.</li>
+            <li><strong>성능:</strong> 많은 카드를 렌더링할 때는 가상 스크롤링을 고려하세요.</li>
+          </ul>
+        </section>
       </div>
     </div>
   </div>

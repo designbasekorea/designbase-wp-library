@@ -34,24 +34,200 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>짧은 상태/레이블을 표시하는 컴팩트한 배지형 컴포넌트입니다.</p>
+        <h4>1. HTML 구조 - 기본 사용법</h4>
+        <p>Chip을 사용하기 위한 기본 HTML 구조입니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 기본 칩 --&gt;
+&lt;span class="dewp-chip"&gt;기본&lt;/span&gt;
+
+&lt;!-- 색상 변형 --&gt;
+&lt;span class="dewp-chip dewp-chip-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="dewp-chip dewp-chip-success"&gt;Success&lt;/span&gt;
+&lt;span class="dewp-chip dewp-chip-danger"&gt;Danger&lt;/span&gt;</code>
+        </pre>
+        <p><strong>필수 요소:</strong></p>
+        <ul>
+          <li><code>dewp-chip</code>: 기본 칩 클래스 (필수)</li>
+          <li><code>dewp-chip-{variant}</code>: 색상 변형 클래스 (선택사항)</li>
+        </ul>
+        <p><strong>주의사항:</strong> Chip은 순수 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
       </section>
 
       <section>
-        <h4>HTML 구조</h4>
+        <h4>2. 색상 변형</h4>
+        <p>Chip에 다양한 색상 클래스를 추가하여 상태를 표현할 수 있습니다:</p>
         <pre>
-<code class="language-html">&lt;span class="dewp-chip"&gt;기본&lt;/span&gt;
-&lt;span class="dewp-chip dewp-chip-primary"&gt;Primary&lt;/span&gt;</code>
+<code class="language-html">&lt;!-- 기본 (회색) --&gt;
+&lt;span class="dewp-chip"&gt;기본&lt;/span&gt;
+
+&lt;!-- Primary (주요 색상) --&gt;
+&lt;span class="dewp-chip dewp-chip-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Success (성공/완료) --&gt;
+&lt;span class="dewp-chip dewp-chip-success"&gt;완료&lt;/span&gt;
+
+&lt;!-- Danger (위험/오류) --&gt;
+&lt;span class="dewp-chip dewp-chip-danger"&gt;오류&lt;/span&gt;
+
+&lt;!-- Warning (경고) --&gt;
+&lt;span class="dewp-chip dewp-chip-warning"&gt;경고&lt;/span&gt;
+
+&lt;!-- Info (정보) --&gt;
+&lt;span class="dewp-chip dewp-chip-info"&gt;정보&lt;/span&gt;</code>
+        </pre>
+        <p><strong>사용 가능한 색상:</strong></p>
+        <ul>
+          <li><code>dewp-chip-primary</code>: Primary 색상 (기본 액션)</li>
+          <li><code>dewp-chip-success</code>: Success 색상 (성공, 완료 상태)</li>
+          <li><code>dewp-chip-danger</code>: Danger 색상 (오류, 삭제 등)</li>
+          <li><code>dewp-chip-warning</code>: Warning 색상 (경고, 주의)</li>
+          <li><code>dewp-chip-info</code>: Info 색상 (정보, 알림)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>3. 실제 사용 예시</h4>
+        <h5>예시 1: 상태 표시</h5>
+        <pre>
+<code class="language-html">&lt;div style="display:flex; gap: var(--db-gap-xs); align-items:center;"&gt;
+  &lt;span&gt;주문 상태:&lt;/span&gt;
+  &lt;span class="dewp-chip dewp-chip-success"&gt;배송 완료&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div style="display:flex; gap: var(--db-gap-xs); align-items:center; margin-top: var(--db-gap-s);"&gt;
+  &lt;span&gt;결제 상태:&lt;/span&gt;
+  &lt;span class="dewp-chip dewp-chip-primary"&gt;결제 완료&lt;/span&gt;
+&lt;/div&gt;</code>
+        </pre>
+
+        <h5>예시 2: 태그/카테고리</h5>
+        <pre>
+<code class="language-html">&lt;div style="display:flex; gap: var(--db-gap-xs); flex-wrap:wrap;"&gt;
+  &lt;span class="dewp-chip"&gt;JavaScript&lt;/span&gt;
+  &lt;span class="dewp-chip"&gt;React&lt;/span&gt;
+  &lt;span class="dewp-chip"&gt;TypeScript&lt;/span&gt;
+  &lt;span class="dewp-chip"&gt;Node.js&lt;/span&gt;
+&lt;/div&gt;</code>
+        </pre>
+
+        <h5>예시 3: 필터 칩</h5>
+        <pre>
+<code class="language-html">&lt;div style="display:flex; gap: var(--db-gap-xs); flex-wrap:wrap;"&gt;
+  &lt;button class="dewp-chip dewp-chip-primary" type="button"&gt;전체&lt;/button&gt;
+  &lt;button class="dewp-chip" type="button"&gt;카테고리 1&lt;/button&gt;
+  &lt;button class="dewp-chip" type="button"&gt;카테고리 2&lt;/button&gt;
+  &lt;button class="dewp-chip" type="button"&gt;카테고리 3&lt;/button&gt;
+&lt;/div&gt;</code>
+        </pre>
+
+        <h5>예시 4: 아이콘과 함께 사용</h5>
+        <pre>
+<code class="language-html">&lt;span class="dewp-chip dewp-chip-success"&gt;
+  &lt;i class="icon-check"&gt;&lt;/i&gt;
+  &lt;span&gt;승인됨&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="dewp-chip dewp-chip-danger"&gt;
+  &lt;i class="icon-close"&gt;&lt;/i&gt;
+  &lt;span&gt;거부됨&lt;/span&gt;
+&lt;/span&gt;</code>
+        </pre>
+
+        <h5>예시 5: 제거 가능한 칩</h5>
+        <pre>
+<code class="language-html">&lt;span class="dewp-chip"&gt;
+  &lt;span&gt;선택된 항목&lt;/span&gt;
+  &lt;button type="button" aria-label="제거" style="background:none; border:none; cursor:pointer; margin-left:var(--db-gap-xs);"&gt;
+    &lt;i class="icon-close"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</code>
         </pre>
       </section>
 
       <section>
-        <h4>변형</h4>
+        <h4>4. 버튼으로 사용</h4>
+        <p>Chip을 클릭 가능한 버튼으로 사용할 수 있습니다:</p>
+        <pre>
+<code class="language-html">&lt;button class="dewp-chip dewp-chip-primary" type="button"&gt;
+  클릭 가능한 칩
+&lt;/button&gt;
+
+&lt;button class="dewp-chip" type="button" onclick="handleClick()"&gt;
+  액션 칩
+&lt;/button&gt;</code>
+        </pre>
+        <p><strong>주의사항:</strong> 버튼으로 사용할 때는 <code>type="button"</code>을 명시하여 폼 제출을 방지하세요.</p>
+      </section>
+
+      <section>
+        <h4>5. 링크로 사용</h4>
+        <pre>
+<code class="language-html">&lt;a href="/category/javascript" class="dewp-chip"&gt;
+  JavaScript
+&lt;/a&gt;
+
+&lt;a href="/tag/react" class="dewp-chip dewp-chip-primary"&gt;
+  React
+&lt;/a&gt;</code>
+        </pre>
+        <p><strong>권장사항:</strong> 링크로 사용할 때는 명확한 텍스트를 제공하고, 호버 상태를 고려하세요.</p>
+      </section>
+
+      <section>
+        <h4>6. 스타일링 가이드</h4>
+        <p>Chip은 기본 스타일이 제공되지만, 필요에 따라 커스터마이징할 수 있습니다:</p>
+        <pre>
+<code class="language-css">/* 칩 간격 조정 */
+.dewp-chip + .dewp-chip {
+  margin-left: var(--db-gap-xs);
+}
+
+/* 커스텀 색상 */
+.dewp-chip.custom-color {
+  background-color: #your-color;
+  color: #your-text-color;
+}
+
+/* 크기 조정 */
+.dewp-chip.small {
+  font-size: 0.875rem;
+  padding: var(--db-padding-xs) var(--db-padding-s);
+}
+
+.dewp-chip.large {
+  font-size: 1.125rem;
+  padding: var(--db-padding-m) var(--db-padding-l);
+}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>7. 접근성 (A11y)</h4>
+        <p>Chip은 웹 접근성을 고려하여 설계되었습니다:</p>
         <ul>
-          <li>색상: <code>.dewp-chip-primary</code> / <code>.dewp-chip-success</code> / <code>.dewp-chip-danger</code>
-          </li>
-          <li>크기/모양: SCSS 변수로 높이/라운드 변경 가능</li>
+          <li><strong>시맨틱 HTML:</strong> <code>&lt;span&gt;</code>, <code>&lt;button&gt</code>, <code>&lt;a&gt;</code> 등 적절한 요소 사용</li>
+          <li><strong>키보드 접근:</strong> 버튼이나 링크로 사용할 때는 키보드 포커스 가능</li>
+          <li><strong>색상 의존:</strong> 색상만으로 정보를 전달하지 말고, 텍스트나 아이콘을 함께 사용하세요</li>
+          <li><strong>제거 버튼:</strong> 제거 가능한 칩의 제거 버튼에는 <code>aria-label</code>을 추가하세요</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>칩의 텍스트는 명확하고 간결해야 합니다.</li>
+          <li>여러 칩을 나열할 때는 적절한 간격을 유지하세요.</li>
+          <li>색상 대비율이 WCAG AA 기준을 만족해야 합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>8. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>텍스트 길이:</strong> 칩은 짧은 텍스트를 위한 컴포넌트입니다. 긴 텍스트는 적절하지 않습니다.</li>
+          <li><strong>색상 의미:</strong> 색상은 일관된 의미를 가져야 합니다 (예: success=성공, danger=위험).</li>
+          <li><strong>그룹화:</strong> 관련된 칩들은 함께 그룹화하여 배치하세요.</li>
+          <li><strong>반응형:</strong> 작은 화면에서는 칩들이 자동으로 줄바꿈되도록 <code>flex-wrap:wrap</code>을 사용하세요.</li>
+          <li><strong>클릭 가능성:</strong> 칩이 클릭 가능한지 명확히 표시하세요 (호버 효과, 포커스 스타일 등).</li>
+          <li><strong>상태 표시:</strong> 동적 상태를 표시할 때는 적절한 색상 변형을 사용하세요.</li>
+          <li><strong>아이콘 사용:</strong> 아이콘과 함께 사용하면 시각적 정보 전달이 더 명확해집니다.</li>
         </ul>
       </section>
     </div>
