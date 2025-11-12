@@ -87,77 +87,336 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>접을 수 있는 콘텐츠 섹션을 제공하여 필요한 정보만 펼쳐볼 수 있게 합니다.</p>
-      </section>
-
-      <section>
-        <h4>HTML 구조</h4>
+        <h4>1. HTML 구조 - 필수 요소</h4>
+        <p>Accordion을 사용하기 위한 최소한의 HTML 구조입니다:</p>
         <pre>
-<code class="language-html">&lt;div class="dewp-accordion" data-accordion="my-accordion"&gt;
+<code class="language-html">&lt;!-- 기본 구조 --&gt;
+&lt;div class="dewp-accordion" data-accordion="my-accordion"&gt;
   &lt;div class="dewp-accordion-item" data-accordion-item="item-1"&gt;
     &lt;button class="dewp-accordion-header" data-accordion-header&gt;
       &lt;span class="dewp-accordion-title"&gt;첫 번째 아이템&lt;/span&gt;
     &lt;/button&gt;
     &lt;div class="dewp-accordion-content" data-accordion-content&gt;
-      &lt;div class="dewp-accordion-content-inner"&gt;내용&lt;/div&gt;
+      &lt;div class="dewp-accordion-content-inner"&gt;
+        &lt;p&gt;아코디언 콘텐츠입니다.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-accordion-item" data-accordion-item="item-2"&gt;
+    &lt;button class="dewp-accordion-header" data-accordion-header&gt;
+      &lt;span class="dewp-accordion-title"&gt;두 번째 아이템&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="dewp-accordion-content" data-accordion-content&gt;
+      &lt;div class="dewp-accordion-content-inner"&gt;
+        &lt;p&gt;두 번째 콘텐츠입니다.&lt;/p&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code>
         </pre>
-      </section>
-
-      <section>
-        <h4>JavaScript 초기화</h4>
-        <pre>
-<code class="language-js">DEWP.initAccordion(
-  document.querySelector('[data-accordion="my-accordion"]'),
-  { animation: true, multiple: false, autoClose: true }
-);</code>
-        </pre>
-      </section>
-
-      <section>
-        <h4>스타일/테마</h4>
+        <p><strong>필수 요소:</strong></p>
         <ul>
-          <li>분리형: <code>.dewp-accordion-separated</code></li>
-          <li>미니멀: <code>.dewp-accordion-minimal</code></li>
-          <li>테마: <code>.dewp-accordion-primary</code>, <code>.dewp-accordion-success</code>,
-            <code>.dewp-accordion-warning</code>
-          </li>
+          <li><code>dewp-accordion</code>: 최상위 컨테이너 클래스 (필수)</li>
+          <li><code>data-accordion</code>: 아코디언 인스턴스 ID (필수, 자동 초기화를 위해 필요)</li>
+          <li><code>dewp-accordion-item</code>: 각 아이템 컨테이너 (필수)</li>
+          <li><code>data-accordion-item</code>: 아이템 고유 ID (필수)</li>
+          <li><code>dewp-accordion-header</code>: 헤더 버튼 (필수)</li>
+          <li><code>data-accordion-header</code>: 헤더 식별 속성 (필수)</li>
+          <li><code>dewp-accordion-content</code>: 콘텐츠 영역 (필수)</li>
+          <li><code>data-accordion-content</code>: 콘텐츠 식별 속성 (필수)</li>
+          <li><code>dewp-accordion-content-inner</code>: 콘텐츠 내부 래퍼 (권장, 패딩/여백 관리용)</li>
         </ul>
+        <p><strong>대체 방법:</strong> 데이터 속성 대신 클래스만 사용해도 자동으로 감지됩니다. 단, <code>data-accordion-item</code>에 고유 ID를 지정하는 것을 권장합니다.</p>
       </section>
 
       <section>
-        <h4>JS API</h4>
+        <h4>2. 자동 초기화 vs 수동 초기화</h4>
+        <h5>방법 1: 자동 초기화 (권장)</h5>
         <pre>
-<code class="language-js">// 열기/닫기/토글
+<code class="language-html">&lt;!-- HTML에 data-accordion 속성이 있으면 자동 초기화 --&gt;
+&lt;div class="dewp-accordion" data-accordion="my-accordion"&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// 페이지 로드 시 자동으로 모든 아코디언 초기화
+// 별도 코드 불필요 - data-accordion 속성만 있으면 자동 초기화됨
+&lt;/script&gt;</code>
+        </pre>
+        <p><strong>자동 초기화 조건:</strong> <code>data-accordion</code> 속성이 있는 컨테이너는 페이지 로드 시 자동으로 초기화됩니다.</p>
+
+        <h5>방법 2: 수동 초기화</h5>
+        <pre>
+<code class="language-js">// 특정 컨테이너를 선택하여 초기화
+const accordionEl = document.querySelector('[data-accordion="my-accordion"]');
+const accordionId = DEWP.initAccordion(accordionEl, {
+  animation: true,
+  multiple: false,
+  autoClose: true,
+  activeItem: 'item-1',  // 초기 활성 아이템
+  onItemToggle: (itemId, isOpen) => {
+    console.log(`아이템 ${itemId}가 ${isOpen ? '열림' : '닫힘'}`);
+  }
+});
+
+// 또는 Element 직접 전달
+const accordionId2 = DEWP.initAccordion(document.getElementById('myAccordion'), {
+  animation: true
+});</code>
+        </pre>
+        <p><strong>반환값:</strong> <code>initAccordion</code>은 아코디언 인스턴스의 고유 ID를 반환합니다. 이 ID는 다른 API 메서드에서 사용됩니다.</p>
+      </section>
+
+      <section>
+        <h4>3. JavaScript API - 전체 메서드 목록</h4>
+        <h5>초기화 및 제거</h5>
+        <pre>
+<code class="language-js">// 초기화 (컨테이너 Element, 옵션 객체)
+const accordionId = DEWP.initAccordion(containerElement, options);
+
+// 아코디언 제거
+DEWP.destroyAccordion(accordionId);
+
+// 모든 아코디언 제거
+DEWP.destroyAllAccordions();</code>
+        </pre>
+
+        <h5>아이템 제어</h5>
+        <pre>
+<code class="language-js">// 특정 아이템 열기
 DEWP.openAccordionItem('my-accordion', 'item-1');
+
+// 특정 아이템 닫기
 DEWP.closeAccordionItem('my-accordion', 'item-1');
+
+// 아이템 토글 (열려있으면 닫고, 닫혀있으면 열기)
 DEWP.toggleAccordionItem('my-accordion', 'item-1');
 
-// 전체 제어
-DEWP.openAllAccordionItems('my-accordion');
-DEWP.closeAllAccordionItems('my-accordion');
+// 강제로 열기/닫기 (forceOpen: true/false)
+DEWP.toggleAccordionItem('my-accordion', 'item-1', true);  // 강제 열기
+DEWP.toggleAccordionItem('my-accordion', 'item-1', false); // 강제 닫기</code>
+        </pre>
 
-// 상태 조회
-DEWP.isAccordionItemOpen('my-accordion', 'item-1');
-DEWP.getActiveAccordionItems('my-accordion');</code>
+        <h5>전체 제어</h5>
+        <pre>
+<code class="language-js">// 모든 아이템 열기
+DEWP.openAllAccordionItems('my-accordion');
+
+// 모든 아이템 닫기
+DEWP.closeAllAccordionItems('my-accordion');</code>
+        </pre>
+
+        <h5>상태 조회</h5>
+        <pre>
+<code class="language-js">// 특정 아이템이 열려있는지 확인
+const isOpen = DEWP.isAccordionItemOpen('my-accordion', 'item-1');
+console.log(isOpen); // true 또는 false
+
+// 현재 열려있는 모든 아이템 ID 배열 반환
+const activeItems = DEWP.getActiveAccordionItems('my-accordion');
+console.log(activeItems); // ['item-1', 'item-3']</code>
         </pre>
       </section>
 
       <section>
-        <h4>접근성</h4>
+        <h4>4. 옵션 설정</h4>
+        <h5>옵션 객체</h5>
+        <pre>
+<code class="language-js">DEWP.initAccordion(containerElement, {
+  animation: true,              // 애니메이션 사용 여부 (기본값: true)
+  multiple: false,              // 여러 아이템 동시 열기 허용 (기본값: false)
+  autoClose: true,              // 다른 아이템 열 때 자동 닫기 (기본값: true)
+  activeItem: 'item-1',         // 초기 활성 아이템 ID (선택사항)
+  onItemToggle: (itemId, isOpen) => {
+    // 아이템 열기/닫기 시 콜백 함수
+    console.log(`아이템 ${itemId}: ${isOpen ? '열림' : '닫힘'}`);
+  }
+});</code>
+        </pre>
+
+        <h5>옵션 상세 설명</h5>
+        <table style="width: 100%; border-collapse: collapse; margin-top: var(--db-gap-m);">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--db-border);">
+              <th style="padding: var(--db-padding-s); text-align: left;">옵션</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">타입</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">기본값</th>
+              <th style="padding: var(--db-padding-s); text-align: left;">설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>animation</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">열기/닫기 애니메이션 사용 여부. false로 설정하면 즉시 표시/숨김</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>multiple</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">false</td>
+              <td style="padding: var(--db-padding-s);">true일 때 여러 아이템을 동시에 열 수 있음. false일 때는 하나만 열림</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>autoClose</code></td>
+              <td style="padding: var(--db-padding-s);">boolean</td>
+              <td style="padding: var(--db-padding-s);">true</td>
+              <td style="padding: var(--db-padding-s);">다른 아이템을 열 때 기존에 열려있던 아이템을 자동으로 닫을지 여부 (multiple이 false일 때만 적용)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>activeItem</code></td>
+              <td style="padding: var(--db-padding-s);">string</td>
+              <td style="padding: var(--db-padding-s);">undefined</td>
+              <td style="padding: var(--db-padding-s);">초기화 시 열어둘 아이템 ID. 지정하지 않으면 모든 아이템이 닫힌 상태로 시작</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--db-border-light);">
+              <td style="padding: var(--db-padding-s);"><code>onItemToggle</code></td>
+              <td style="padding: var(--db-padding-s);">function</td>
+              <td style="padding: var(--db-padding-s);">undefined</td>
+              <td style="padding: var(--db-padding-s);">아이템이 열리거나 닫힐 때 호출되는 콜백 함수. (itemId: string, isOpen: boolean) => void</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h4>5. 스타일/테마 변형</h4>
+        <p>아코디언에 다양한 스타일 클래스를 추가하여 디자인을 변경할 수 있습니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 분리형 스타일 --&gt;
+&lt;div class="dewp-accordion dewp-accordion-separated" data-accordion="sep-demo"&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+&lt;!-- 미니멀 스타일 --&gt;
+&lt;div class="dewp-accordion dewp-accordion-minimal" data-accordion="min-demo"&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+&lt;!-- 테마 색상 --&gt;
+&lt;div class="dewp-accordion dewp-accordion-primary" data-accordion="pri-demo"&gt;
+  &lt;!-- Primary 테마 --&gt;
+&lt;/div&gt;
+&lt;div class="dewp-accordion dewp-accordion-success" data-accordion="suc-demo"&gt;
+  &lt;!-- Success 테마 --&gt;
+&lt;/div&gt;
+&lt;div class="dewp-accordion dewp-accordion-warning" data-accordion="war-demo"&gt;
+  &lt;!-- Warning 테마 --&gt;
+&lt;/div&gt;
+&lt;div class="dewp-accordion dewp-accordion-danger" data-accordion="dan-demo"&gt;
+  &lt;!-- Danger 테마 --&gt;
+&lt;/div&gt;</code>
+        </pre>
+        <p><strong>사용 가능한 스타일:</strong></p>
         <ul>
-          <li>필수 데이터 속성: <code>data-accordion</code>, <code>data-accordion-item</code>,
-            <code>data-accordion-header</code>, <code>data-accordion-content</code>
-          </li>
-          <li>키보드: Tab 이동, Enter/Space로 열기/닫기</li>
-          <li>ARIA: 상태에 따라 <code>aria-expanded</code>, <code>aria-controls</code> 자동 적용</li>
+          <li><code>dewp-accordion-separated</code>: 아이템 간격이 분리된 스타일</li>
+          <li><code>dewp-accordion-minimal</code>: 최소한의 스타일</li>
+          <li><code>dewp-accordion-primary</code>: Primary 색상 테마</li>
+          <li><code>dewp-accordion-success</code>: Success 색상 테마</li>
+          <li><code>dewp-accordion-warning</code>: Warning 색상 테마</li>
+          <li><code>dewp-accordion-danger</code>: Danger 색상 테마</li>
         </ul>
       </section>
 
+      <section>
+        <h4>6. 실제 사용 예시</h4>
+        <h5>예시 1: 기본 아코디언 (단일 선택)</h5>
+        <pre>
+<code class="language-html">&lt;div class="dewp-accordion" data-accordion="faq"&gt;
+  &lt;div class="dewp-accordion-item" data-accordion-item="q1"&gt;
+    &lt;button class="dewp-accordion-header" data-accordion-header&gt;
+      &lt;span class="dewp-accordion-title"&gt;자주 묻는 질문 1&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="dewp-accordion-content" data-accordion-content&gt;
+      &lt;div class="dewp-accordion-content-inner"&gt;
+        &lt;p&gt;답변 내용입니다.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
 
+        <h5>예시 2: 여러 아이템 동시 열기 허용</h5>
+        <pre>
+<code class="language-js">DEWP.initAccordion(document.querySelector('[data-accordion="faq"]'), {
+  animation: true,
+  multiple: true,  // 여러 아이템 동시 열기 허용
+  autoClose: false
+});</code>
+        </pre>
+
+        <h5>예시 3: 외부 버튼으로 제어</h5>
+        <pre>
+<code class="language-html">&lt;div class="dewp-accordion" id="myAccordion" data-accordion="controlled"&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+&lt;button id="openFirst"&gt;첫 번째 열기&lt;/button&gt;
+&lt;button id="closeAll"&gt;모두 닫기&lt;/button&gt;
+
+&lt;script&gt;
+const accordionId = DEWP.initAccordion(document.getElementById('myAccordion'));
+
+document.getElementById('openFirst').addEventListener('click', () => {
+  DEWP.openAccordionItem(accordionId, 'item-1');
+});
+
+document.getElementById('closeAll').addEventListener('click', () => {
+  DEWP.closeAllAccordionItems(accordionId);
+});
+&lt;/script&gt;</code>
+        </pre>
+
+        <h5>예시 4: 콜백 함수 사용</h5>
+        <pre>
+<code class="language-js">DEWP.initAccordion(containerElement, {
+  onItemToggle: (itemId, isOpen) => {
+    // 분석 이벤트 전송
+    if (isOpen) {
+      analytics.track('accordion_opened', { itemId });
+    } else {
+      analytics.track('accordion_closed', { itemId });
+    }
+    
+    // URL 해시 업데이트
+    if (isOpen) {
+      window.location.hash = itemId;
+    }
+  }
+});</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>7. 접근성 (A11y)</h4>
+        <p>Accordion은 웹 접근성을 고려하여 설계되었습니다:</p>
+        <ul>
+          <li><strong>키보드 네비게이션:</strong> Tab 키로 헤더 버튼 간 이동, Enter 또는 Space 키로 열기/닫기</li>
+          <li><strong>ARIA 속성:</strong> 자동으로 다음 속성들이 추가됩니다:
+            <ul>
+              <li><code>aria-expanded</code>: 헤더에 현재 열림/닫힘 상태 표시</li>
+              <li><code>aria-controls</code>: 헤더에 연결된 콘텐츠 ID 참조</li>
+              <li><code>aria-labelledby</code>: 콘텐츠에 연결된 헤더 ID 참조</li>
+              <li><code>role="button"</code>: 헤더에 버튼 역할 부여</li>
+              <li><code>role="region"</code>: 콘텐츠에 영역 역할 부여</li>
+            </ul>
+          </li>
+          <li><strong>포커스 관리:</strong> 헤더에 <code>tabindex="0"</code>이 자동으로 추가되어 키보드 포커스 가능</li>
+          <li><strong>스크린 리더:</strong> 상태 변경 시 적절한 안내 제공</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>8. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>고유 ID:</strong> <code>data-accordion-item</code>에 고유한 ID를 지정해야 합니다. 중복되면 예상치 못한 동작이 발생할 수 있습니다.</li>
+          <li><strong>중첩 아코디언:</strong> 아코디언 내부에 또 다른 아코디언을 넣을 수 있지만, 각각 다른 <code>data-accordion</code> 값을 사용해야 합니다.</li>
+          <li><strong>동적 콘텐츠:</strong> 아이템을 동적으로 추가한 후에는 새로 초기화해야 합니다.</li>
+          <li><strong>애니메이션 성능:</strong> 콘텐츠가 매우 클 경우 애니메이션이 약간 느려질 수 있습니다. 필요시 <code>animation: false</code>로 설정하세요.</li>
+          <li><strong>초기 상태:</strong> 기본적으로 모든 아이템은 닫힌 상태로 시작합니다. 특정 아이템을 열어두려면 <code>activeItem</code> 옵션을 사용하세요.</li>
+          <li><strong>콘텐츠 높이:</strong> 콘텐츠 높이는 자동으로 계산되므로, 고정 높이를 지정하지 마세요.</li>
+        </ul>
+      </section>
     </div>
   </div>
 

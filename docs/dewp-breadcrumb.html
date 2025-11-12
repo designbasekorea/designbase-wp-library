@@ -38,28 +38,251 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>현재 위치를 단계적으로 보여주는 내비게이션. 이전 단계는 링크로 강조, 현재는 약하게 표시합니다.</p>
+        <h4>1. HTML 구조 - 필수 요소</h4>
+        <p>Breadcrumb을 사용하기 위한 최소한의 HTML 구조입니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 기본 구조 --&gt;
+&lt;nav class="dewp-breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;"&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/"&gt;홈&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/category"&gt;카테고리&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;
+      현재 페이지
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code>
+        </pre>
+        <p><strong>필수 요소:</strong></p>
+        <ul>
+          <li><code>dewp-breadcrumb</code>: 최상위 컨테이너 클래스 (필수)</li>
+          <li><code>aria-label="Breadcrumb"</code>: 접근성을 위한 라벨 (필수)</li>
+          <li><code>&lt;ol&gt;</code>: 순서 있는 목록 (필수, 스타일 초기화 필요: <code>list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;</code>)</li>
+          <li><code>dewp-breadcrumb-item</code>: 각 항목 클래스 (필수)</li>
+          <li><code>dewp-breadcrumb-separator</code>: 구분자 클래스 (필수, 마지막 항목 제외)</li>
+          <li><code>is-active</code>: 현재 페이지 표시 클래스 (필수, 마지막 항목에만)</li>
+          <li><code>aria-current="page"</code>: 현재 페이지 접근성 속성 (필수, 마지막 항목에만)</li>
+        </ul>
+        <p><strong>주의사항:</strong> Breadcrumb은 순수 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
       </section>
 
       <section>
-        <h4>HTML 구조</h4>
+        <h4>2. 기본 사용법</h4>
+        <h5>최소 구조</h5>
         <pre>
 <code class="language-html">&lt;nav class="dewp-breadcrumb" aria-label="Breadcrumb"&gt;
-  &lt;ol&gt;
-    &lt;li class="dewp-breadcrumb-item"&gt;&lt;a href="#"&gt;홈&lt;/a&gt;&lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="dewp-breadcrumb-item"&gt;&lt;a href="#"&gt;설정&lt;/a&gt;&lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;일반&lt;/li&gt;
+  &lt;ol style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;"&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;&lt;a href="/"&gt;홈&lt;/a&gt;&lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;현재&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code>
+        </pre>
+
+        <h5>여러 단계</h5>
+        <pre>
+<code class="language-html">&lt;nav class="dewp-breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;"&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/"&gt;홈&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/products"&gt;제품&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/products/electronics"&gt;전자제품&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;
+      스마트폰
+    &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/nav&gt;</code>
         </pre>
       </section>
 
       <section>
-        <h4>접근성</h4>
+        <h4>3. 구분자 커스터마이징</h4>
+        <p>구분자는 기본적으로 슬래시(<code>/</code>)를 사용하지만, 다른 문자나 아이콘으로 변경할 수 있습니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 기본 슬래시 --&gt;
+&lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+
+&lt;!-- 다른 문자 --&gt;
+&lt;span class="dewp-breadcrumb-separator"&gt;&gt;&lt;/span&gt;
+&lt;span class="dewp-breadcrumb-separator"&gt;·&lt;/span&gt;
+&lt;span class="dewp-breadcrumb-separator"&gt;→&lt;/span&gt;
+
+&lt;!-- 아이콘 사용 --&gt;
+&lt;span class="dewp-breadcrumb-separator"&gt;
+  &lt;i class="icon-chevron-right"&gt;&lt;/i&gt;
+&lt;/span&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>4. 실제 사용 예시</h4>
+        <h5>예시 1: 웹사이트 내비게이션</h5>
+        <pre>
+<code class="language-html">&lt;nav class="dewp-breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;"&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/"&gt;홈&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/blog"&gt;블로그&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;
+      최신 글
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code>
+        </pre>
+
+        <h5>예시 2: 제품 카테고리</h5>
+        <pre>
+<code class="language-html">&lt;nav class="dewp-breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;"&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/shop"&gt;쇼핑&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/shop/clothing"&gt;의류&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item"&gt;
+      &lt;a href="/shop/clothing/men"&gt;남성&lt;/a&gt;
+      &lt;span class="dewp-breadcrumb-separator"&gt;/&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="dewp-breadcrumb-item is-active" aria-current="page"&gt;
+      상의
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code>
+        </pre>
+
+        <h5>예시 3: 동적 생성 (JavaScript)</h5>
+        <pre>
+<code class="language-js">// 경로 배열로부터 브레드크럼 생성
+function createBreadcrumb(items) {
+  const nav = document.createElement('nav');
+  nav.className = 'dewp-breadcrumb';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+  
+  const ol = document.createElement('ol');
+  ol.style.cssText = 'list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap;';
+  
+  items.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = 'dewp-breadcrumb-item';
+    
+    if (index === items.length - 1) {
+      // 마지막 항목 (현재 페이지)
+      li.classList.add('is-active');
+      li.setAttribute('aria-current', 'page');
+      li.textContent = item.text;
+    } else {
+      // 링크 항목
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.textContent = item.text;
+      li.appendChild(link);
+      
+      const separator = document.createElement('span');
+      separator.className = 'dewp-breadcrumb-separator';
+      separator.textContent = '/';
+      li.appendChild(separator);
+    }
+    
+    ol.appendChild(li);
+  });
+  
+  nav.appendChild(ol);
+  return nav;
+}
+
+// 사용 예시
+const breadcrumb = createBreadcrumb([
+  { text: '홈', url: '/' },
+  { text: '제품', url: '/products' },
+  { text: '전자제품', url: '/products/electronics' },
+  { text: '스마트폰', url: '/products/electronics/smartphone' }
+]);
+
+document.body.appendChild(breadcrumb);</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>5. 스타일링 가이드</h4>
+        <p>Breadcrumb은 기본 스타일이 제공되지만, 필요에 따라 커스터마이징할 수 있습니다:</p>
+        <pre>
+<code class="language-css">/* 항목 간격 조정 */
+.dewp-breadcrumb ol {
+  gap: var(--db-gap-xs); /* 또는 원하는 간격 */
+}
+
+/* 링크 색상 변경 */
+.dewp-breadcrumb-item a {
+  color: var(--db-text-primary);
+  text-decoration: none;
+}
+
+.dewp-breadcrumb-item a:hover {
+  color: var(--db-primary);
+  text-decoration: underline;
+}
+
+/* 현재 페이지 스타일 */
+.dewp-breadcrumb-item.is-active {
+  color: var(--db-text-secondary);
+}
+
+/* 구분자 스타일 */
+.dewp-breadcrumb-separator {
+  margin: 0 var(--db-gap-xs);
+  color: var(--db-text-tertiary);
+}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>6. 접근성 (A11y)</h4>
+        <p>Breadcrumb은 웹 접근성을 고려하여 설계되었습니다:</p>
         <ul>
-          <li>내비게이션에 <code>aria-label="Breadcrumb"</code> 제공</li>
-          <li>현재 항목에 <code>aria-current="page"</code></li>
+          <li><strong>시맨틱 HTML:</strong> <code>&lt;nav&gt;</code>와 <code>&lt;ol&gt;</code> 요소를 사용하여 구조적 의미 제공</li>
+          <li><strong>aria-label:</strong> <code>aria-label="Breadcrumb"</code>로 스크린 리더에 내비게이션 유형 명시</li>
+          <li><strong>aria-current:</strong> 현재 페이지 항목에 <code>aria-current="page"</code> 속성 추가</li>
+          <li><strong>키보드 네비게이션:</strong> 링크 항목은 Tab 키로 포커스 가능</li>
+          <li><strong>스크린 리더:</strong> "Breadcrumb"로 시작하여 경로를 단계별로 읽어줌</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>각 링크에 명확한 텍스트 제공</li>
+          <li>현재 페이지는 링크가 아닌 일반 텍스트로 표시</li>
+          <li>구분자는 시각적으로만 표시하고 스크린 리더에는 읽히지 않도록 처리 (CSS로 숨김 가능)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>7. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>순서:</strong> 항목은 항상 홈에서 시작하여 현재 페이지까지 순차적으로 나열해야 합니다.</li>
+          <li><strong>마지막 항목:</strong> 마지막 항목은 항상 현재 페이지를 나타내며, 링크가 아닌 일반 텍스트로 표시합니다.</li>
+          <li><strong>구분자:</strong> 마지막 항목 뒤에는 구분자를 추가하지 않습니다.</li>
+          <li><strong>반응형:</strong> <code>flex-wrap:wrap</code>을 사용하여 작은 화면에서 자동으로 줄바꿈됩니다.</li>
+          <li><strong>URL 구조:</strong> Breadcrumb의 URL은 실제 페이지 구조와 일치해야 합니다.</li>
+          <li><strong>깊이 제한:</strong> 너무 많은 단계는 사용자 경험을 저하시킬 수 있으므로, 적절한 깊이를 유지하세요.</li>
+          <li><strong>동적 생성:</strong> SPA(Single Page Application)에서는 JavaScript로 동적으로 생성하는 것이 일반적입니다.</li>
         </ul>
       </section>
     </div>
