@@ -45,32 +45,321 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>화면 측면에서 슬라이드 인/아웃하는 패널. 오버레이/ESC로 닫기 옵션을 지원합니다.</p>
-      </section>
-
-      <section>
-        <h4>생성/열기</h4>
+        <h4>1. HTML 구조 - 필수 요소</h4>
+        <p>Drawer를 사용하기 위한 기본 HTML 구조입니다:</p>
         <pre>
-<code class="language-js">const id = DEWP.createDrawer({ target: '#my-drawer', overlay: true, closeOnEscape: true, closeOnOverlayClick: true });
-DEWP.openDrawer(id);</code>
+<code class="language-html">&lt;!-- Drawer 컨테이너 --&gt;
+&lt;div id="my-drawer" class="dewp-drawer dewp-drawer-right dewp-drawer-md"&gt;
+  &lt;div class="dewp-drawer-header"&gt;
+    &lt;h3 class="dewp-drawer-title"&gt;제목&lt;/h3&gt;
+    &lt;button class="dewp-drawer-close" type="button" aria-label="닫기" title="닫기" role="button"&gt;
+      &lt;svg viewBox="0 0 24 24"&gt;
+        &lt;path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-drawer-content"&gt;
+    &lt;p&gt;Drawer 내용이 여기에 표시됩니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
         </pre>
+        <p><strong>필수 요소:</strong></p>
+        <ul>
+          <li><code>dewp-drawer</code>: 최상위 컨테이너 클래스 (필수)</li>
+          <li><code>dewp-drawer-header</code>: 헤더 영역 (선택사항, 제목과 닫기 버튼)</li>
+          <li><code>dewp-drawer-title</code>: 제목 (헤더 내부, 선택사항)</li>
+          <li><code>dewp-drawer-close</code>: 닫기 버튼 (헤더 내부, 선택사항)</li>
+          <li><code>dewp-drawer-content</code>: 본문 영역 (필수, 주요 콘텐츠)</li>
+        </ul>
+        <p><strong>위치 클래스:</strong></p>
+        <ul>
+          <li><code>dewp-drawer-left</code>: 왼쪽에서 슬라이드</li>
+          <li><code>dewp-drawer-right</code>: 오른쪽에서 슬라이드 (기본값)</li>
+        </ul>
+        <p><strong>크기 클래스:</strong></p>
+        <ul>
+          <li><code>dewp-drawer-sm</code>: 작은 크기</li>
+          <li><code>dewp-drawer-md</code>: 중간 크기 (기본값)</li>
+          <li><code>dewp-drawer-lg</code>: 큰 크기</li>
+        </ul>
       </section>
 
       <section>
-        <h4>API</h4>
+        <h4>2. JavaScript 초기화</h4>
+        <h5>방법 1: createDrawer로 생성 후 열기</h5>
         <pre>
-<code class="language-js">DEWP.closeDrawer(id);
-DEWP.toggleDrawer(id);
+<code class="language-js">// Drawer 생성 및 초기화
+const drawerId = DEWP.createDrawer({
+  target: '#my-drawer',           // Drawer 요소 선택자 또는 Element
+  overlay: true,                    // 오버레이 표시 여부 (기본값: true)
+  closeOnEscape: true,             // ESC 키로 닫기 (기본값: true)
+  closeOnOverlayClick: true,       // 오버레이 클릭 시 닫기 (기본값: true)
+  onOpen: () => {                  // 열릴 때 콜백
+    console.log('Drawer가 열렸습니다.');
+  },
+  onClose: () => {                 // 닫힐 때 콜백
+    console.log('Drawer가 닫혔습니다.');
+  }
+});
+
+// Drawer 열기
+DEWP.openDrawer(drawerId);</code>
+        </pre>
+
+        <h5>방법 2: 한 번에 생성 및 열기</h5>
+        <pre>
+<code class="language-js">// 버튼 클릭 시 Drawer 열기 예시
+let drawerId;
+document.getElementById('openDrawer').addEventListener('click', function() {
+  if (!window.DEWP) return;
+  
+  // 처음 한 번만 생성
+  if (!drawerId) {
+    drawerId = DEWP.createDrawer({
+      target: '#my-drawer',
+      overlay: true,
+      closeOnEscape: true,
+      closeOnOverlayClick: true
+    });
+  }
+  
+  // Drawer 열기
+  DEWP.openDrawer(drawerId);
+});</code>
+        </pre>
+        <p><strong>반환값:</strong> <code>createDrawer</code>는 Drawer 인스턴스의 고유 ID를 반환합니다. 이 ID는 다른 API 메서드에서 사용됩니다.</p>
+      </section>
+
+      <section>
+        <h4>3. JavaScript API - 전체 메서드 목록</h4>
+        <h5>생성 및 제어</h5>
+        <pre>
+<code class="language-js">// Drawer 생성 (옵션 객체)
+const drawerId = DEWP.createDrawer(options);
+
+// Drawer 열기
+DEWP.openDrawer(drawerId);
+
+// Drawer 닫기
+DEWP.closeDrawer(drawerId);
+
+// Drawer 토글 (열려있으면 닫고, 닫혀있으면 열기)
+DEWP.toggleDrawer(drawerId);
+
+// 모든 Drawer 닫기
 DEWP.closeAllDrawers();</code>
         </pre>
       </section>
 
       <section>
-        <h4>위치/크기</h4>
+        <h4>4. 옵션 설정</h4>
+        <h5>옵션 객체 상세</h5>
+        <pre>
+<code class="language-js">DEWP.createDrawer({
+  target: '#my-drawer',              // 필수: Drawer 요소 선택자 또는 Element 객체
+  overlay: true,                      // 오버레이 표시 여부 (기본값: true)
+  closeOnEscape: true,                // ESC 키로 닫기 (기본값: true)
+  closeOnOverlayClick: true,         // 오버레이 클릭 시 닫기 (기본값: true)
+  onOpen: () => {                     // Drawer가 열릴 때 콜백 함수
+    console.log('Drawer opened');
+  },
+  onClose: () => {                    // Drawer가 닫힐 때 콜백 함수
+    console.log('Drawer closed');
+  }
+});</code>
+        </pre>
+        <p><strong>옵션 설명:</strong></p>
+        <table style="width:100%; border-collapse:collapse; margin-top:var(--db-gap-m);">
+          <thead>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <th style="text-align:left; padding:var(--db-padding-s);">옵션</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">타입</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">기본값</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>target</code></td>
+              <td style="padding:var(--db-padding-s);">string | Element</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">Drawer 요소의 선택자 또는 Element 객체 (필수)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>overlay</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">오버레이(배경 어둡게) 표시 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>closeOnEscape</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">ESC 키로 닫기 가능 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>closeOnOverlayClick</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">오버레이 클릭 시 닫기 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>onOpen</code></td>
+              <td style="padding:var(--db-padding-s);">function</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">Drawer가 열릴 때 실행되는 콜백 함수</td>
+            </tr>
+            <tr>
+              <td style="padding:var(--db-padding-s);"><code>onClose</code></td>
+              <td style="padding:var(--db-padding-s);">function</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">Drawer가 닫힐 때 실행되는 콜백 함수</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h4>5. 실제 사용 예시</h4>
+        <h5>예시 1: 기본 Drawer</h5>
+        <pre>
+<code class="language-html">&lt;button id="openDrawer" class="dewp-btn dewp-btn-primary"&gt;Drawer 열기&lt;/button&gt;
+
+&lt;div id="my-drawer" class="dewp-drawer dewp-drawer-right dewp-drawer-md"&gt;
+  &lt;div class="dewp-drawer-header"&gt;
+    &lt;h3 class="dewp-drawer-title"&gt;설정&lt;/h3&gt;
+    &lt;button class="dewp-drawer-close" type="button" aria-label="닫기"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-drawer-content"&gt;
+    &lt;p&gt;설정 내용이 여기에 표시됩니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  let drawerId;
+  document.getElementById('openDrawer').addEventListener('click', function() {
+    if (!window.DEWP) return;
+    if (!drawerId) {
+      drawerId = DEWP.createDrawer({
+        target: '#my-drawer',
+        overlay: true,
+        closeOnEscape: true,
+        closeOnOverlayClick: true
+      });
+    }
+    DEWP.openDrawer(drawerId);
+  });
+&lt;/script&gt;</code>
+        </pre>
+
+        <h5>예시 2: 왼쪽 Drawer</h5>
+        <pre>
+<code class="language-html">&lt;div id="left-drawer" class="dewp-drawer dewp-drawer-left dewp-drawer-lg"&gt;
+  &lt;div class="dewp-drawer-header"&gt;
+    &lt;h3 class="dewp-drawer-title"&gt;메뉴&lt;/h3&gt;
+    &lt;button class="dewp-drawer-close" type="button" aria-label="닫기"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dewp-drawer-content"&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;홈&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;소개&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;연락처&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+
+        <h5>예시 3: 콜백 함수 사용</h5>
+        <pre>
+<code class="language-js">const drawerId = DEWP.createDrawer({
+  target: '#my-drawer',
+  overlay: true,
+  closeOnEscape: true,
+  closeOnOverlayClick: true,
+  onOpen: () => {
+    console.log('Drawer가 열렸습니다.');
+    // 필요한 초기화 작업 수행
+  },
+  onClose: () => {
+    console.log('Drawer가 닫혔습니다.');
+    // 정리 작업 수행
+  }
+});</code>
+        </pre>
+
+        <h5>예시 4: 외부 버튼으로 제어</h5>
+        <pre>
+<code class="language-html">&lt;button id="openBtn" class="dewp-btn dewp-btn-primary"&gt;열기&lt;/button&gt;
+&lt;button id="closeBtn" class="dewp-btn dewp-btn-secondary"&gt;닫기&lt;/button&gt;
+&lt;button id="toggleBtn" class="dewp-btn dewp-btn-tertiary"&gt;토글&lt;/button&gt;
+
+&lt;div id="my-drawer" class="dewp-drawer dewp-drawer-right dewp-drawer-md"&gt;
+  &lt;div class="dewp-drawer-content"&gt;내용&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const drawerId = DEWP.createDrawer({ target: '#my-drawer' });
+  
+  document.getElementById('openBtn').addEventListener('click', () => {
+    DEWP.openDrawer(drawerId);
+  });
+  
+  document.getElementById('closeBtn').addEventListener('click', () => {
+    DEWP.closeDrawer(drawerId);
+  });
+  
+  document.getElementById('toggleBtn').addEventListener('click', () => {
+    DEWP.toggleDrawer(drawerId);
+  });
+&lt;/script&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>6. 위치 및 크기 설정</h4>
+        <p>Drawer의 위치와 크기는 HTML 클래스로 설정합니다:</p>
+        <pre>
+<code class="language-html">&lt;!-- 왼쪽, 작은 크기 --&gt;
+&lt;div class="dewp-drawer dewp-drawer-left dewp-drawer-sm"&gt;...&lt;/div&gt;
+
+&lt;!-- 오른쪽, 중간 크기 (기본) --&gt;
+&lt;div class="dewp-drawer dewp-drawer-right dewp-drawer-md"&gt;...&lt;/div&gt;
+
+&lt;!-- 오른쪽, 큰 크기 --&gt;
+&lt;div class="dewp-drawer dewp-drawer-right dewp-drawer-lg"&gt;...&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>7. 접근성 (A11y)</h4>
+        <p>Drawer는 웹 접근성을 고려하여 설계되었습니다:</p>
         <ul>
-          <li>위치: <code>.dewp-drawer-left</code> / <code>.dewp-drawer-right</code></li>
-          <li>크기: <code>.dewp-drawer-sm</code> / <code>.dewp-drawer-md</code> / <code>.dewp-drawer-lg</code></li>
+          <li><strong>키보드 접근:</strong> ESC 키로 닫기 가능</li>
+          <li><strong>포커스 관리:</strong> Drawer가 열릴 때 포커스가 Drawer 내부로 이동</li>
+          <li><strong>ARIA 속성:</strong> 적절한 ARIA 속성 사용 권장</li>
+          <li><strong>닫기 버튼:</strong> 닫기 버튼에 <code>aria-label</code> 속성 추가</li>
+          <li><strong>오버레이:</strong> 오버레이 클릭으로 닫기 가능</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>닫기 버튼에는 명확한 <code>aria-label</code>을 제공하세요.</li>
+          <li>Drawer 제목은 적절한 헤딩 레벨(<code>&lt;h2&gt;</code>~<code>&lt;h6&gt;</code>)을 사용하세요.</li>
+          <li>Drawer가 열릴 때 본문 스크롤을 막는 것을 고려하세요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>8. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>한 번만 생성:</strong> 같은 Drawer 요소에 대해 <code>createDrawer</code>를 여러 번 호출하지 마세요. 생성된 ID를 재사용하세요.</li>
+          <li><strong>동적 콘텐츠:</strong> Drawer 내부에 동적으로 추가되는 콘텐츠는 적절히 관리하세요.</li>
+          <li><strong>오버레이:</strong> <code>overlay: true</code>일 때는 배경 콘텐츠와의 시각적 구분이 명확합니다.</li>
+          <li><strong>모바일:</strong> 모바일 환경에서는 Drawer가 전체 화면을 차지하도록 고려하세요.</li>
+          <li><strong>애니메이션:</strong> Drawer는 자동으로 슬라이드 애니메이션을 제공합니다.</li>
+          <li><strong>여러 Drawer:</strong> 여러 Drawer를 동시에 열 수 있지만, UX를 고려하여 하나만 열도록 하는 것이 좋습니다.</li>
+          <li><strong>메모리 관리:</strong> 더 이상 사용하지 않는 Drawer는 적절히 정리하세요.</li>
         </ul>
       </section>
     </div>

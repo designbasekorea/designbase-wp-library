@@ -63,107 +63,285 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>입력, 선택, 체크/라디오 컨트롤을 위한 기본 폼 컴포넌트입니다.</p>
+        <h4>1. HTML 구조 - 기본 사용법</h4>
+        <p>Form 컴포넌트를 사용하기 위한 기본 HTML 구조입니다:</p>
+        <pre>
+<code class="language-html">&lt;form class="dewp-form"&gt;
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="name"&gt;이름&lt;/label&gt;
+    &lt;input id="name" type="text" class="dewp-form-input" placeholder="이름을 입력하세요" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code>
+        </pre>
+        <p><strong>필수 요소:</strong></p>
+        <ul>
+          <li><code>dewp-form</code>: 폼 컨테이너 클래스 (선택사항, 스타일링용)</li>
+          <li><code>dewp-form-group</code>: 입력 필드 그룹 컨테이너 (권장)</li>
+          <li><code>dewp-form-label</code>: 라벨 클래스 (권장)</li>
+          <li><code>dewp-form-input</code>: 입력 필드 클래스 (필수)</li>
+        </ul>
+        <p><strong>주의사항:</strong> Form은 주로 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
       </section>
 
       <section>
-        <h4>HTML 구조</h4>
+        <h4>2. 입력 필드 (Input)</h4>
         <pre>
-<code class="language-html">&lt;!-- 기본 입력 --&gt;
-&lt;form class=&quot;dewp-form&quot;&gt;
-  &lt;div class=&quot;dewp-form-group&quot;&gt;
-    &lt;label class=&quot;dewp-form-label&quot; for=&quot;name&quot;&gt;이름&lt;/label&gt;
-    &lt;input id=&quot;name&quot; type=&quot;text&quot; class=&quot;dewp-form-input&quot; placeholder=&quot;이름&quot; /&gt;
-    &lt;small class=&quot;dewp-form-help&quot;&gt;실명으로 입력해 주세요.&lt;/small&gt;
-  &lt;/div&gt;
+<code class="language-html">&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label" for="email"&gt;이메일&lt;/label&gt;
+  &lt;input id="email" type="email" class="dewp-form-input" placeholder="email@example.com" /&gt;
+  &lt;small class="dewp-form-help"&gt;유효한 이메일 주소를 입력하세요.&lt;/small&gt;
+&lt;/div&gt;
 
-  &lt;!-- 체크박스 --&gt;
-  &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;agree&quot; /&gt;
-    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;agree&quot;&gt;약관 동의&lt;/label&gt;
-  &lt;/div&gt;
+&lt;!-- 다양한 입력 타입 --&gt;
+&lt;input type="text" class="dewp-form-input" placeholder="텍스트" /&gt;
+&lt;input type="email" class="dewp-form-input" placeholder="이메일" /&gt;
+&lt;input type="password" class="dewp-form-input" placeholder="비밀번호" /&gt;
+&lt;input type="number" class="dewp-form-input" placeholder="숫자" /&gt;
+&lt;input type="tel" class="dewp-form-input" placeholder="전화번호" /&gt;
+&lt;input type="url" class="dewp-form-input" placeholder="URL" /&gt;
+&lt;input type="date" class="dewp-form-input" /&gt;
+&lt;input type="time" class="dewp-form-input" /&gt;</code>
+        </pre>
+      </section>
 
-  &lt;!-- 라디오(그룹은 name 속성으로 묶음) --&gt;
-  &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
-    &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;gender&quot; id=&quot;g-m&quot; /&gt;
-    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;g-m&quot;&gt;남성&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
-    &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;gender&quot; id=&quot;g-f&quot; /&gt;
-    &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;g-f&quot;&gt;여성&lt;/label&gt;
-  &lt;/div&gt;
+      <section>
+        <h4>3. 텍스트 영역 (Textarea)</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label" for="message"&gt;메시지&lt;/label&gt;
+  &lt;textarea id="message" class="dewp-form-textarea" rows="4" placeholder="메시지를 입력하세요"&gt;&lt;/textarea&gt;
+  &lt;small class="dewp-form-help"&gt;최대 500자까지 입력 가능합니다.&lt;/small&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
 
-  &lt;!-- 셀렉트 --&gt;
-  &lt;div class=&quot;dewp-form-group&quot;&gt;
-    &lt;label class=&quot;dewp-form-label&quot; for=&quot;country&quot;&gt;국가&lt;/label&gt;
-    &lt;select id=&quot;country&quot; class=&quot;dewp-form-select&quot;&gt;
-      &lt;option&gt;Korea&lt;/option&gt;
-      &lt;option&gt;USA&lt;/option&gt;
-    &lt;/select&gt;
-  &lt;/div&gt;
+      <section>
+        <h4>4. 셀렉트 (Select)</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label" for="country"&gt;국가&lt;/label&gt;
+  &lt;select id="country" class="dewp-form-select"&gt;
+    &lt;option value=""&gt;선택하세요&lt;/option&gt;
+    &lt;option value="kr"&gt;대한민국&lt;/option&gt;
+    &lt;option value="us"&gt;미국&lt;/option&gt;
+    &lt;option value="jp"&gt;일본&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
 
-  &lt;!-- 텍스트영역 --&gt;
-  &lt;div class=&quot;dewp-form-group&quot;&gt;
-    &lt;label class=&quot;dewp-form-label&quot; for=&quot;memo&quot;&gt;메모&lt;/label&gt;
-    &lt;textarea id=&quot;memo&quot; class=&quot;dewp-form-textarea&quot; rows=&quot;4&quot; placeholder=&quot;내용을 입력하세요&quot;&gt;&lt;/textarea&gt;
-  &lt;/div&gt;
+      <section>
+        <h4>5. 체크박스 (Checkbox)</h4>
+        <pre>
+<code class="language-html">&lt;!-- 단일 체크박스 --&gt;
+&lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+  &lt;input type="checkbox" class="dewp-form-check-input" id="agree" /&gt;
+  &lt;label class="dewp-form-check-label" for="agree"&gt;약관에 동의합니다&lt;/label&gt;
+&lt;/div&gt;
 
-  &lt;!-- 체크 그룹 --&gt;
-  &lt;div class=&quot;dewp-form-check-group&quot;&gt;
-    &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
-      &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;opt1&quot; /&gt;
-      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;opt1&quot;&gt;옵션 1&lt;/label&gt;
+&lt;!-- 체크박스 그룹 --&gt;
+&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label"&gt;관심 분야&lt;/label&gt;
+  &lt;div class="dewp-form-check-group"&gt;
+    &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+      &lt;input type="checkbox" class="dewp-form-check-input" id="interest1" name="interests" value="tech" /&gt;
+      &lt;label class="dewp-form-check-label" for="interest1"&gt;기술&lt;/label&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;dewp-form-check dewp-form-checkbox&quot;&gt;
-      &lt;input type=&quot;checkbox&quot; class=&quot;dewp-form-check-input&quot; id=&quot;opt2&quot; /&gt;
-      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;opt2&quot;&gt;옵션 2&lt;/label&gt;
+    &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+      &lt;input type="checkbox" class="dewp-form-check-input" id="interest2" name="interests" value="design" /&gt;
+      &lt;label class="dewp-form-check-label" for="interest2"&gt;디자인&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+      &lt;input type="checkbox" class="dewp-form-check-input" id="interest3" name="interests" value="business" /&gt;
+      &lt;label class="dewp-form-check-label" for="interest3"&gt;비즈니스&lt;/label&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
 
-  &lt;!-- 라디오 그룹 --&gt;
-  &lt;div class=&quot;dewp-form-check-group&quot;&gt;
-    &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
-      &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;pay&quot; id=&quot;pay-card&quot; /&gt;
-      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;pay-card&quot;&gt;카드&lt;/label&gt;
+      <section>
+        <h4>6. 라디오 버튼 (Radio)</h4>
+        <pre>
+<code class="language-html">&lt;!-- 라디오 그룹 (같은 name 속성으로 묶음) --&gt;
+&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label"&gt;성별&lt;/label&gt;
+  &lt;div class="dewp-form-check-group"&gt;
+    &lt;div class="dewp-form-check dewp-form-radio"&gt;
+      &lt;input type="radio" class="dewp-form-check-input" name="gender" id="gender-m" value="male" /&gt;
+      &lt;label class="dewp-form-check-label" for="gender-m"&gt;남성&lt;/label&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;dewp-form-check dewp-form-radio&quot;&gt;
-      &lt;input type=&quot;radio&quot; class=&quot;dewp-form-check-input&quot; name=&quot;pay&quot; id=&quot;pay-bank&quot; /&gt;
-      &lt;label class=&quot;dewp-form-check-label&quot; for=&quot;pay-bank&quot;&gt;계좌이체&lt;/label&gt;
+    &lt;div class="dewp-form-check dewp-form-radio"&gt;
+      &lt;input type="radio" class="dewp-form-check-input" name="gender" id="gender-f" value="female" checked /&gt;
+      &lt;label class="dewp-form-check-label" for="gender-f"&gt;여성&lt;/label&gt;
     &lt;/div&gt;
   &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+        <p><strong>주의사항:</strong> 라디오 버튼은 같은 <code>name</code> 속성 값을 가진 항목들이 하나의 그룹을 형성합니다.</p>
+      </section>
 
-  &lt;!-- 파일 업로드 --&gt;
-  &lt;div class=&quot;dewp-form-file&quot;&gt;
-    &lt;input id=&quot;file&quot; type=&quot;file&quot; class=&quot;dewp-form-file-input&quot; /&gt;
-    &lt;label class=&quot;dewp-form-file-label&quot; for=&quot;file&quot;&gt;
-      &lt;span class=&quot;dewp-form-file-icon&quot;&gt;📁&lt;/span&gt; 파일 선택
+      <section>
+        <h4>7. 파일 업로드 (File Input)</h4>
+        <pre>
+<code class="language-html">&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label"&gt;파일 업로드&lt;/label&gt;
+  &lt;div class="dewp-form-file"&gt;
+    &lt;input id="file" type="file" class="dewp-form-file-input" /&gt;
+    &lt;label class="dewp-form-file-label" for="file"&gt;
+      &lt;span class="dewp-form-file-icon"&gt;📁&lt;/span&gt;
+      &lt;span&gt;파일 선택&lt;/span&gt;
     &lt;/label&gt;
   &lt;/div&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
 
-  &lt;!-- 입력 그룹 --&gt;
-  &lt;div class=&quot;dewp-form-input-group&quot;&gt;
-    &lt;span class=&quot;dewp-form-input-group-text&quot;&gt;https://&lt;/span&gt;
-    &lt;input type=&quot;text&quot; class=&quot;dewp-form-input&quot; placeholder=&quot;domain.com&quot; /&gt;
-    &lt;button type=&quot;button&quot; class=&quot;dewp-btn dewp-btn-secondary&quot;&gt;확인&lt;/button&gt;
+      <section>
+        <h4>8. 입력 그룹 (Input Group)</h4>
+        <pre>
+<code class="language-html">&lt;!-- 텍스트와 입력 필드 결합 --&gt;
+&lt;div class="dewp-form-group"&gt;
+  &lt;label class="dewp-form-label"&gt;웹사이트&lt;/label&gt;
+  &lt;div class="dewp-form-input-group"&gt;
+    &lt;span class="dewp-form-input-group-text"&gt;https://&lt;/span&gt;
+    &lt;input type="text" class="dewp-form-input" placeholder="example.com" /&gt;
   &lt;/div&gt;
+&lt;/div&gt;
 
-  &lt;!-- 상태 표시 --&gt;
-  &lt;div class=&quot;dewp-form-group has-error&quot;&gt;
-    &lt;label class=&quot;dewp-form-label&quot; for=&quot;email2&quot;&gt;이메일&lt;/label&gt;
-    &lt;input id=&quot;email2&quot; type=&quot;email&quot; class=&quot;dewp-form-input form-input-error&quot; /&gt;
-    &lt;small class=&quot;dewp-form-error&quot;&gt;유효한 이메일을 입력해 주세요.&lt;/small&gt;
+&lt;!-- 입력 필드와 버튼 결합 --&gt;
+&lt;div class="dewp-form-input-group"&gt;
+  &lt;input type="text" class="dewp-form-input" placeholder="검색어 입력" /&gt;
+  &lt;button type="button" class="dewp-btn dewp-btn-primary"&gt;검색&lt;/button&gt;
+&lt;/div&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>9. 폼 액션 (Form Actions)</h4>
+        <pre>
+<code class="language-html">&lt;form class="dewp-form"&gt;
+  &lt;!-- 폼 필드들 --&gt;
+  
+  &lt;div class="dewp-form-actions"&gt;
+    &lt;button type="submit" class="dewp-btn dewp-btn-primary"&gt;저장&lt;/button&gt;
+    &lt;button type="button" class="dewp-btn dewp-btn-secondary"&gt;취소&lt;/button&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code>
         </pre>
       </section>
 
       <section>
-        <h4>워드프레스 호환</h4>
-        <p>관리자 화면에서는 기본 스타일 우선순위를 이기기 위해 일부 속성에 <code>!important</code>가 적용됩니다.</p>
+        <h4>10. 상태 표시 (Error, Success)</h4>
+        <pre>
+<code class="language-html">&lt;!-- 에러 상태 --&gt;
+&lt;div class="dewp-form-group has-error"&gt;
+  &lt;label class="dewp-form-label" for="email-error"&gt;이메일&lt;/label&gt;
+  &lt;input id="email-error" type="email" class="dewp-form-input form-input-error" value="invalid-email" /&gt;
+  &lt;small class="dewp-form-error"&gt;유효한 이메일 주소를 입력해 주세요.&lt;/small&gt;
+&lt;/div&gt;
+
+&lt;!-- 성공 상태 (필요시 커스텀) --&gt;
+&lt;div class="dewp-form-group has-success"&gt;
+  &lt;label class="dewp-form-label" for="email-success"&gt;이메일&lt;/label&gt;
+  &lt;input id="email-success" type="email" class="dewp-form-input form-input-success" value="valid@example.com" /&gt;
+  &lt;small class="dewp-form-help"&gt;유효한 이메일 주소입니다.&lt;/small&gt;
+&lt;/div&gt;</code>
+        </pre>
       </section>
 
+      <section>
+        <h4>11. 실제 사용 예시</h4>
+        <h5>예시 1: 로그인 폼</h5>
+        <pre>
+<code class="language-html">&lt;form class="dewp-form" style="max-width:400px;"&gt;
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="login-email"&gt;이메일&lt;/label&gt;
+    &lt;input id="login-email" type="email" class="dewp-form-input" placeholder="email@example.com" required /&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="login-password"&gt;비밀번호&lt;/label&gt;
+    &lt;input id="login-password" type="password" class="dewp-form-input" placeholder="비밀번호" required /&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-check dewp-form-checkbox"&gt;
+    &lt;input type="checkbox" class="dewp-form-check-input" id="remember" /&gt;
+    &lt;label class="dewp-form-check-label" for="remember"&gt;로그인 상태 유지&lt;/label&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-actions"&gt;
+    &lt;button type="submit" class="dewp-btn dewp-btn-primary"&gt;로그인&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code>
+        </pre>
 
+        <h5>예시 2: 회원가입 폼</h5>
+        <pre>
+<code class="language-html">&lt;form class="dewp-form" style="max-width:560px;"&gt;
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="name"&gt;이름&lt;/label&gt;
+    &lt;input id="name" type="text" class="dewp-form-input" placeholder="이름" required /&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label"&gt;성별&lt;/label&gt;
+    &lt;div class="dewp-form-check-group"&gt;
+      &lt;div class="dewp-form-check dewp-form-radio"&gt;
+        &lt;input type="radio" class="dewp-form-check-input" name="gender" id="g-m" value="male" /&gt;
+        &lt;label class="dewp-form-check-label" for="g-m"&gt;남성&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="dewp-form-check dewp-form-radio"&gt;
+        &lt;input type="radio" class="dewp-form-check-input" name="gender" id="g-f" value="female" /&gt;
+        &lt;label class="dewp-form-check-label" for="g-f"&gt;여성&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-group"&gt;
+    &lt;label class="dewp-form-label" for="bio"&gt;자기소개&lt;/label&gt;
+    &lt;textarea id="bio" class="dewp-form-textarea" rows="4" placeholder="자기소개를 입력하세요"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dewp-form-actions"&gt;
+    &lt;button type="submit" class="dewp-btn dewp-btn-primary"&gt;가입하기&lt;/button&gt;
+    &lt;button type="button" class="dewp-btn dewp-btn-secondary"&gt;취소&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>12. 접근성 (A11y)</h4>
+        <p>Form은 웹 접근성을 고려하여 설계되었습니다:</p>
+        <ul>
+          <li><strong>라벨 연결:</strong> <code>&lt;label&gt;</code>의 <code>for</code> 속성과 입력 필드의 <code>id</code> 연결</li>
+          <li><strong>필수 필드:</strong> <code>required</code> 속성 사용</li>
+          <li><strong>도움말 텍스트:</strong> <code>dewp-form-help</code> 클래스로 도움말 제공</li>
+          <li><strong>에러 메시지:</strong> <code>dewp-form-error</code> 클래스로 에러 표시</li>
+          <li><strong>키보드 접근:</strong> 모든 입력 필드는 키보드로 접근 가능</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>모든 입력 필드에 연결된 라벨을 제공하세요.</li>
+          <li>필수 필드는 <code>required</code> 속성을 추가하세요.</li>
+          <li>에러 메시지는 명확하고 구체적으로 작성하세요.</li>
+          <li>폼 제출 전 유효성 검사를 수행하세요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>13. 주의사항 및 팁</h4>
+        <ul>
+          <li><strong>라벨 연결:</strong> <code>&lt;label&gt;</code>의 <code>for</code> 속성과 입력 필드의 <code>id</code>가 일치해야 합니다.</li>
+          <li><strong>라디오 그룹:</strong> 같은 <code>name</code> 속성 값을 가진 라디오 버튼들이 하나의 그룹을 형성합니다.</li>
+          <li><strong>체크박스 그룹:</strong> 여러 체크박스를 그룹화할 때는 <code>dewp-form-check-group</code>을 사용하세요.</li>
+          <li><strong>에러 상태:</strong> <code>has-error</code> 클래스를 <code>dewp-form-group</code>에 추가하고, 입력 필드에 <code>form-input-error</code> 클래스를 추가하세요.</li>
+          <li><strong>워드프레스 호환:</strong> 관리자 화면에서는 기본 스타일 우선순위를 이기기 위해 일부 속성에 <code>!important</code>가 적용됩니다.</li>
+          <li><strong>반응형:</strong> 작은 화면에서는 입력 그룹이 세로로 쌓이도록 고려하세요.</li>
+          <li><strong>유효성 검사:</strong> HTML5 유효성 검사와 함께 JavaScript 유효성 검사를 사용하세요.</li>
+        </ul>
+      </section>
     </div>
   </div>
 
