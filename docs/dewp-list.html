@@ -139,36 +139,243 @@
         </div>
       </div>
       <div class="ex-section-content ex-docs">
-        <pre><code class="language-html">&lt;ul class="dewp-list dewp-list--hover dewp-list--divided"&gt;
+        <section>
+          <h4>1. HTML 구조 - 기본 사용법</h4>
+          <p>List를 사용하기 위한 기본 HTML 구조입니다:</p>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-title"&gt;리스트 항목&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+          <p><strong>필수 요소:</strong></p>
+          <ul>
+            <li><code>dewp-list</code>: 최상위 컨테이너 클래스 (필수, <code>&lt;ul&gt;</code> 태그 사용)</li>
+            <li><code>dewp-list-item</code>: 리스트 항목 클래스 (필수, <code>&lt;li&gt;</code> 태그 사용)</li>
+            <li><code>dewp-list-item-title</code>: 항목 제목 (권장)</li>
+          </ul>
+          <p><strong>주의사항:</strong> List는 순수 CSS 컴포넌트입니다. JavaScript가 필요하지 않습니다.</p>
+        </section>
+
+        <section>
+          <h4>2. 기본 리스트</h4>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-title"&gt;항목 1&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-title"&gt;항목 2&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-title"&gt;항목 3&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>3. 아이콘과 함께 사용</h4>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list"&gt;
   &lt;li class="dewp-list-item"&gt;
     &lt;span class="dewp-list-item-icon"&gt;📄&lt;/span&gt;
     &lt;div&gt;
-      &lt;div class="dewp-list-item-title"&gt;타이틀&lt;/div&gt;
+      &lt;div class="dewp-list-item-title"&gt;문서 1&lt;/div&gt;
       &lt;div class="dewp-list-item-subtitle"&gt;서브 텍스트&lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-        <pre><code class="language-html">&lt;ul class="dewp-list dewp-list--divided"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;span class="dewp-list-item-icon"&gt;🖼️&lt;/span&gt;
+    &lt;div&gt;
+      &lt;div class="dewp-list-item-title"&gt;이미지&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;서브 텍스트&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>4. 리스트 변형 (Variants)</h4>
+          <h5>Hover 효과</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--hover"&gt;
+  &lt;li class="dewp-list-item"&gt;항목 1&lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;항목 2&lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+          <p>마우스를 올리면 배경색이 변경됩니다.</p>
+
+          <h5>구분선 (Divided)</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--divided"&gt;
+  &lt;li class="dewp-list-item"&gt;항목 1&lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;항목 2&lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+          <p>항목 사이에 구분선이 표시됩니다.</p>
+
+          <h5>분리형 (Split)</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--split"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-label"&gt;레이블&lt;/div&gt;
+    &lt;div class="dewp-list-item-value"&gt;값&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+          <p>레이블과 값을 좌우로 분리하여 표시합니다.</p>
+        </section>
+
+        <section>
+          <h4>5. 액션 버튼이 있는 리스트</h4>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--divided"&gt;
   &lt;li class="dewp-list-item"&gt;
     &lt;div class="dewp-list-item-content"&gt;
-      &lt;div class="dewp-list-item-title"&gt;콘텐츠 제목&lt;/div&gt;
-      &lt;div class="dewp-list-item-subtitle"&gt;보조 텍스트&lt;/div&gt;
+      &lt;div class="dewp-list-item-title"&gt;회원 가입 요청&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;신규 요청 · 2분 전&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="dewp-list-item-actions"&gt;
       &lt;button class="dewp-btn dewp-btn-tertiary dewp-btn-sm"&gt;자세히&lt;/button&gt;
       &lt;button class="dewp-btn dewp-btn-primary dewp-btn-sm"&gt;승인&lt;/button&gt;
     &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-        <pre><code class="language-html">&lt;ul class="dewp-list dewp-list--divided dewp-list--split"&gt;
+&lt;/ul&gt;</code>
+          </pre>
+          <p><strong>필수 클래스:</strong></p>
+          <ul>
+            <li><code>dewp-list-item-content</code>: 콘텐츠 영역 (제목과 서브타이틀 포함)</li>
+            <li><code>dewp-list-item-actions</code>: 액션 버튼 영역</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>6. 분리형 리스트 (Split List)</h4>
+          <p>설정 페이지나 상세 정보 표시에 적합한 레이블/값 구조:</p>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--divided dewp-list--split"&gt;
   &lt;li class="dewp-list-item"&gt;
-    &lt;div class="dewp-list-item-label"&gt;레이블&lt;/div&gt;
+    &lt;div class="dewp-list-item-label"&gt;사이트 제목&lt;/div&gt;
     &lt;div class="dewp-list-item-value"&gt;
-      &lt;strong&gt;값 내용&lt;/strong&gt;
-      &lt;p class="dewp-list-item-description"&gt;추가 설명&lt;/p&gt;
+      &lt;strong&gt;Designbase Library&lt;/strong&gt;
+      &lt;p class="dewp-list-item-description"&gt;워드프레스 상단에 표시될 이름입니다.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-label"&gt;기본 언어&lt;/div&gt;
+    &lt;div class="dewp-list-item-value"&gt;
+      &lt;select class="dewp-form-select"&gt;
+        &lt;option&gt;한국어 (KO)&lt;/option&gt;
+        &lt;option&gt;English (EN)&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;p class="dewp-list-item-description"&gt;방문자 언어를 자동으로 감지할 수 없을 때 사용됩니다.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>7. 실제 사용 예시</h4>
+          <h5>예시 1: 파일 목록</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--hover dewp-list--divided" style="max-width:560px;"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;span class="dewp-list-item-icon"&gt;📄&lt;/span&gt;
+    &lt;div&gt;
+      &lt;div class="dewp-list-item-title"&gt;문서.pdf&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;2.3 MB · 2024-01-15&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;span class="dewp-list-item-icon"&gt;🖼️&lt;/span&gt;
+    &lt;div&gt;
+      &lt;div class="dewp-list-item-title"&gt;이미지.jpg&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;1.5 MB · 2024-01-14&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+
+          <h5>예시 2: 알림 목록</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--divided" style="max-width:720px;"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-content"&gt;
+      &lt;div class="dewp-list-item-title"&gt;새로운 메시지가 도착했습니다&lt;/div&gt;
+      &lt;div class="dewp-list-item-subtitle"&gt;5분 전&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="dewp-list-item-actions"&gt;
+      &lt;button class="dewp-btn dewp-btn-tertiary dewp-btn-sm"&gt;읽음&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+
+          <h5>예시 3: 설정 목록</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--divided dewp-list--split" style="max-width:720px;"&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-label"&gt;사이트 이름&lt;/div&gt;
+    &lt;div class="dewp-list-item-value"&gt;
+      &lt;strong&gt;내 사이트&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="dewp-list-item"&gt;
+    &lt;div class="dewp-list-item-label"&gt;관리자 이메일&lt;/div&gt;
+    &lt;div class="dewp-list-item-value"&gt;
+      &lt;strong&gt;admin@example.com&lt;/strong&gt;
+      &lt;p class="dewp-list-item-description"&gt;시스템 알림이 이 주소로 전송됩니다.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+
+          <h5>예시 4: 클릭 가능한 리스트</h5>
+          <pre>
+<code class="language-html">&lt;ul class="dewp-list dewp-list--hover dewp-list--divided"&gt;
+  &lt;li class="dewp-list-item" style="cursor:pointer;" onclick="handleClick(1)"&gt;
+    &lt;div class="dewp-list-item-title"&gt;항목 1&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="dewp-list-item" style="cursor:pointer;" onclick="handleClick(2)"&gt;
+    &lt;div class="dewp-list-item-title"&gt;항목 2&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code>
+          </pre>
+        </section>
+
+        <section>
+          <h4>8. 접근성 (A11y)</h4>
+          <p>List는 웹 접근성을 고려하여 설계되었습니다:</p>
+          <ul>
+            <li><strong>시맨틱 HTML:</strong> <code>&lt;ul&gt;</code>과 <code>&lt;li&gt;</code> 태그를 사용하여 구조적 의미 제공</li>
+            <li><strong>키보드 접근:</strong> 클릭 가능한 항목은 키보드로 접근 가능해야 합니다</li>
+            <li><strong>아이콘:</strong> 아이콘은 장식용이면 <code>aria-hidden="true"</code>를 추가하세요</li>
+            <li><strong>버튼:</strong> 액션 버튼에는 명확한 라벨을 제공하세요</li>
+          </ul>
+          <p><strong>권장 사항:</strong></p>
+          <ul>
+            <li>리스트 항목이 클릭 가능한 경우, 명확한 포커스 스타일을 제공하세요.</li>
+            <li>긴 리스트의 경우 가상 스크롤링을 고려하세요.</li>
+            <li>리스트 항목에 적절한 ARIA 속성을 추가하세요 (필요시).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>9. 주의사항 및 팁</h4>
+          <ul>
+            <li><strong>시맨틱 HTML:</strong> <code>&lt;ul&gt;</code>과 <code>&lt;li&gt;</code> 태그를 사용하세요.</li>
+            <li><strong>변형 조합:</strong> 여러 변형을 함께 사용할 수 있습니다 (예: <code>dewp-list--hover dewp-list--divided</code>).</li>
+            <li><strong>아이콘:</strong> 아이콘은 <code>dewp-list-item-icon</code> 클래스를 사용하세요.</li>
+            <li><strong>액션 버튼:</strong> 액션 버튼은 작은 크기(<code>dewp-btn-sm</code>)를 사용하는 것이 좋습니다.</li>
+            <li><strong>분리형 리스트:</strong> <code>dewp-list--split</code>은 설정 페이지나 상세 정보 표시에 적합합니다.</li>
+            <li><strong>반응형:</strong> 작은 화면에서는 분리형 리스트가 세로로 쌓일 수 있습니다.</li>
+            <li><strong>성능:</strong> 많은 항목을 렌더링할 때는 가상 스크롤링을 고려하세요.</li>
+          </ul>
+        </section>
       </div>
     </div>
   </div>

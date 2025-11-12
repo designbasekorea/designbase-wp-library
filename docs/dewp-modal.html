@@ -44,67 +44,309 @@
     </div>
     <div class="ex-section-content ex-docs">
       <section>
-        <h4>개요</h4>
-        <p>오버레이 위에 떠서 사용자 상호작용을 차단하고 메시지/폼을 표시합니다.</p>
-      </section>
-
-      <section>
-        <h4>HTML 구조</h4>
+        <h4>1. HTML 구조 - 트리거 버튼</h4>
+        <p>Modal은 JavaScript로 동적으로 생성되므로, 트리거 버튼만 준비하면 됩니다:</p>
         <pre>
 <code class="language-html">&lt;button class="dewp-btn dewp-btn-primary" id="openModal"&gt;모달 열기&lt;/button&gt;</code>
         </pre>
-        <p>모달 자체는 JavaScript로 생성되므로, 트리거 버튼만 준비하면 됩니다. 여러 모달을 사용하려면 각 버튼에 고유한 ID를 부여하세요.</p>
+        <p><strong>주의사항:</strong> 모달 자체는 HTML에 존재하지 않습니다. JavaScript API를 통해 동적으로 생성됩니다.</p>
       </section>
 
       <section>
-        <h4>JS 사용</h4>
+        <h4>2. JavaScript 초기화</h4>
+        <h5>기본 사용법</h5>
         <pre>
-<code class="language-js">const trigger = document.getElementById('openModal');
-trigger.addEventListener('click', () =&gt; {
+<code class="language-js">// 버튼 클릭 시 모달 열기
+document.getElementById('openModal').addEventListener('click', function() {
+  if (!window.DEWP) return;
+  
   DEWP.showModal({
     title: '알림',
     content: '&lt;p&gt;모달 내용입니다.&lt;/p&gt;',
-    size: 'md',
-    closeOnOverlayClick: true,
+    size: 'md'
   });
-});
-
-// 제어 메서드
-DEWP.closeModal(trigger);      // 특정 모달 닫기
-DEWP.closeAllModals();         // 열린 모든 모달 닫기
-DEWP.showConfirmModal({        // 헬퍼: 확인/취소 다이얼로그
-  title: '삭제',
-  content: '&lt;p&gt;정말 삭제할까요?&lt;/p&gt;',
-  onConfirm: () =&gt; console.log('confirmed'),
 });</code>
         </pre>
       </section>
 
       <section>
-        <h4>옵션</h4>
+        <h4>3. JavaScript API - 전체 메서드 목록</h4>
+        <h5>모달 열기/닫기</h5>
+        <pre>
+<code class="language-js">// 모달 열기
+DEWP.showModal(options);
+
+// 특정 트리거로 열린 모달 닫기
+DEWP.closeModal(triggerElement);
+
+// 열린 모든 모달 닫기
+DEWP.closeAllModals();</code>
+        </pre>
+
+        <h5>헬퍼 메서드</h5>
+        <pre>
+<code class="language-js">// 확인/취소 다이얼로그
+DEWP.showConfirmModal({
+  title: '삭제',
+  content: '&lt;p&gt;정말 삭제할까요?&lt;/p&gt;',
+  confirmText: '삭제',
+  cancelText: '취소',
+  onConfirm: () => {
+    console.log('확인됨');
+  },
+  onCancel: () => {
+    console.log('취소됨');
+  }
+});
+
+// 알림 다이얼로그
+DEWP.showAlertModal({
+  title: '알림',
+  content: '&lt;p&gt;알림 메시지입니다.&lt;/p&gt;',
+  confirmText: '확인',
+  onConfirm: () => {
+    console.log('확인됨');
+  }
+});</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>4. 옵션 설정</h4>
+        <h5>옵션 객체 상세</h5>
+        <pre>
+<code class="language-js">DEWP.showModal({
+  title: '모달 제목',                    // 제목 (필수)
+  content: '&lt;p&gt;모달 내용&lt;/p&gt;',        // 내용 HTML (필수)
+  size: 'md',                            // 크기: 'sm', 'md', 'lg' (기본값: 'md')
+  closable: true,                        // 닫기 버튼 표시 여부 (기본값: true)
+  overlay: true,                         // 오버레이 표시 여부 (기본값: true)
+  closeOnEscape: true,                   // ESC 키로 닫기 (기본값: true)
+  closeOnOverlayClick: true,            // 오버레이 클릭 시 닫기 (기본값: true)
+  onOpen: () => {                        // 모달이 열릴 때 콜백
+    console.log('모달이 열렸습니다.');
+  },
+  onClose: () => {                       // 모달이 닫힐 때 콜백
+    console.log('모달이 닫혔습니다.');
+  }
+});</code>
+        </pre>
+        <p><strong>옵션 설명:</strong></p>
+        <table style="width:100%; border-collapse:collapse; margin-top:var(--db-gap-m);">
+          <thead>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <th style="text-align:left; padding:var(--db-padding-s);">옵션</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">타입</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">기본값</th>
+              <th style="text-align:left; padding:var(--db-padding-s);">설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>title</code></td>
+              <td style="padding:var(--db-padding-s);">string</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">모달 제목 (필수)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>content</code></td>
+              <td style="padding:var(--db-padding-s);">string</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">모달 내용 HTML (필수)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>size</code></td>
+              <td style="padding:var(--db-padding-s);">string</td>
+              <td style="padding:var(--db-padding-s);">'md'</td>
+              <td style="padding:var(--db-padding-s);">모달 크기: 'sm', 'md', 'lg'</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>closable</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">닫기 버튼 표시 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>overlay</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">오버레이(배경 어둡게) 표시 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>closeOnEscape</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">ESC 키로 닫기 가능 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>closeOnOverlayClick</code></td>
+              <td style="padding:var(--db-padding-s);">boolean</td>
+              <td style="padding:var(--db-padding-s);">true</td>
+              <td style="padding:var(--db-padding-s);">오버레이 클릭 시 닫기 여부</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--db-border-light);">
+              <td style="padding:var(--db-padding-s);"><code>onOpen</code></td>
+              <td style="padding:var(--db-padding-s);">function</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">모달이 열릴 때 실행되는 콜백 함수</td>
+            </tr>
+            <tr>
+              <td style="padding:var(--db-padding-s);"><code>onClose</code></td>
+              <td style="padding:var(--db-padding-s);">function</td>
+              <td style="padding:var(--db-padding-s);">-</td>
+              <td style="padding:var(--db-padding-s);">모달이 닫힐 때 실행되는 콜백 함수</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h4>5. 실제 사용 예시</h4>
+        <h5>예시 1: 기본 모달</h5>
+        <pre>
+<code class="language-html">&lt;button class="dewp-btn dewp-btn-primary" id="openModal"&gt;모달 열기&lt;/button&gt;
+
+&lt;script&gt;
+  document.getElementById('openModal').addEventListener('click', function() {
+    if (!window.DEWP) return;
+    DEWP.showModal({
+      title: '알림',
+      content: '&lt;p&gt;모달 내용입니다.&lt;/p&gt;',
+      size: 'md'
+    });
+  });
+&lt;/script&gt;</code>
+        </pre>
+
+        <h5>예시 2: 폼이 있는 모달</h5>
+        <pre>
+<code class="language-js">DEWP.showModal({
+  title: '사용자 정보 입력',
+  content: `
+    &lt;form id="userForm"&gt;
+      &lt;div class="dewp-form-group"&gt;
+        &lt;label class="dewp-form-label" for="name"&gt;이름&lt;/label&gt;
+        &lt;input id="name" type="text" class="dewp-form-input" /&gt;
+      &lt;/div&gt;
+      &lt;div class="dewp-form-group"&gt;
+        &lt;label class="dewp-form-label" for="email"&gt;이메일&lt;/label&gt;
+        &lt;input id="email" type="email" class="dewp-form-input" /&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  `,
+  size: 'md',
+  onClose: () => {
+    // 모달이 닫힐 때 폼 데이터 처리
+    const form = document.getElementById('userForm');
+    if (form) {
+      const formData = new FormData(form);
+      console.log('폼 데이터:', formData);
+    }
+  }
+});</code>
+        </pre>
+
+        <h5>예시 3: 확인 다이얼로그</h5>
+        <pre>
+<code class="language-js">DEWP.showConfirmModal({
+  title: '삭제 확인',
+  content: '&lt;p&gt;정말 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.&lt;/p&gt;',
+  confirmText: '삭제',
+  cancelText: '취소',
+  onConfirm: () => {
+    // 삭제 로직 실행
+    console.log('삭제됨');
+    // API 호출 등
+  },
+  onCancel: () => {
+    console.log('취소됨');
+  }
+});</code>
+        </pre>
+
+        <h5>예시 4: 긴 내용 모달</h5>
+        <pre>
+<code class="language-js">const longContent = new Array(30).fill('&lt;p&gt;긴 내용...&lt;/p&gt;').join('');
+
+DEWP.showModal({
+  title: '긴 내용',
+  content: longContent,
+  size: 'lg',
+  closeOnOverlayClick: false  // 실수로 닫히지 않도록
+});</code>
+        </pre>
+        <p><strong>참고:</strong> 긴 내용의 경우 모달 본문만 스크롤되고 헤더와 푸터는 고정됩니다.</p>
+
+        <h5>예시 5: 콜백 함수 사용</h5>
+        <pre>
+<code class="language-js">DEWP.showModal({
+  title: '설정',
+  content: '&lt;p&gt;설정 내용&lt;/p&gt;',
+  size: 'md',
+  onOpen: () => {
+    console.log('모달이 열렸습니다.');
+    // 필요한 초기화 작업 수행
+  },
+  onClose: () => {
+    console.log('모달이 닫혔습니다.');
+    // 정리 작업 수행
+  }
+});</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>6. 모달 크기</h4>
+        <p>모달 크기는 <code>size</code> 옵션으로 설정할 수 있습니다:</p>
         <ul>
-          <li><code>title</code>, <code>content</code>, <code>size</code>(sm/md/lg)</li>
-          <li><code>closable</code>, <code>overlay</code>, <code>closeOnEscape</code>, <code>closeOnOverlayClick</code>
-          </li>
-          <li>콜백: <code>onOpen</code>, <code>onClose</code></li>
+          <li><code>'sm'</code>: 작은 크기</li>
+          <li><code>'md'</code>: 중간 크기 (기본값)</li>
+          <li><code>'lg'</code>: 큰 크기</li>
+        </ul>
+        <pre>
+<code class="language-js">// 작은 모달
+DEWP.showModal({ title: '알림', content: '&lt;p&gt;내용&lt;/p&gt;', size: 'sm' });
+
+// 중간 모달 (기본)
+DEWP.showModal({ title: '알림', content: '&lt;p&gt;내용&lt;/p&gt;', size: 'md' });
+
+// 큰 모달
+DEWP.showModal({ title: '알림', content: '&lt;p&gt;내용&lt;/p&gt;', size: 'lg' });</code>
+        </pre>
+      </section>
+
+      <section>
+        <h4>7. 접근성 (A11y)</h4>
+        <p>Modal은 웹 접근성을 고려하여 설계되었습니다:</p>
+        <ul>
+          <li><strong>포커스 트랩:</strong> 모달이 열릴 때 포커스가 모달 내부로 이동하고, 모달 외부로 포커스가 나가지 않습니다.</li>
+          <li><strong>포커스 복귀:</strong> 모달이 닫힌 후 포커스가 트리거 버튼으로 복귀합니다.</li>
+          <li><strong>키보드 접근:</strong> ESC 키로 닫기, Tab 키로 모달 내부 요소 간 이동</li>
+          <li><strong>ARIA 속성:</strong> <code>role="dialog"</code>, <code>aria-modal="true"</code>, 적절한 라벨링</li>
+          <li><strong>스크린 리더:</strong> 모달 제목이 자동으로 라벨로 사용됩니다.</li>
+        </ul>
+        <p><strong>권장 사항:</strong></p>
+        <ul>
+          <li>모달 제목은 명확하고 간결하게 작성하세요.</li>
+          <li>모달 내용은 구조화된 HTML을 사용하세요.</li>
+          <li>폼이 있는 모달의 경우 적절한 라벨을 제공하세요.</li>
+          <li>긴 내용의 경우 스크롤 가능하도록 구성하세요.</li>
         </ul>
       </section>
 
       <section>
-        <h4>긴 내용 처리</h4>
-        <p>컨테이너는 flex 레이아웃으로 헤더/푸터 고정, 본문만 스크롤됩니다.</p>
-      </section>
-
-      <section>
-        <h4>접근성</h4>
+        <h4>8. 주의사항 및 팁</h4>
         <ul>
-          <li>모달 열릴 때 포커스 트랩, 닫힌 후 트리거로 포커스 복귀</li>
-          <li>키보드: ESC 닫기, Tab 순환</li>
-          <li>ARIA: <code>role="dialog"</code>, <code>aria-modal="true"</code>, 라벨링</li>
+          <li><strong>동적 생성:</strong> 모달은 JavaScript로 동적으로 생성되므로 HTML에 미리 작성할 필요가 없습니다.</li>
+          <li><strong>여러 모달:</strong> 여러 모달을 동시에 열 수 있지만, UX를 고려하여 하나만 열도록 하는 것이 좋습니다.</li>
+          <li><strong>긴 내용:</strong> 긴 내용의 경우 모달 본문만 스크롤되고 헤더와 푸터는 고정됩니다.</li>
+          <li><strong>오버레이 클릭:</strong> 중요한 작업의 경우 <code>closeOnOverlayClick: false</code>로 설정하여 실수로 닫히지 않도록 하세요.</li>
+          <li><strong>ESC 키:</strong> <code>closeOnEscape: false</code>로 설정하면 ESC 키로 닫을 수 없습니다.</li>
+          <li><strong>콜백 함수:</strong> <code>onOpen</code>과 <code>onClose</code> 콜백을 사용하여 필요한 작업을 수행하세요.</li>
+          <li><strong>메모리 관리:</strong> 모달이 닫힐 때 동적으로 추가된 이벤트 리스너나 요소를 정리하세요.</li>
+          <li><strong>확인 다이얼로그:</strong> 삭제 등 중요한 작업 전에는 <code>showConfirmModal</code>을 사용하세요.</li>
         </ul>
       </section>
-
-
     </div>
   </div>
 
