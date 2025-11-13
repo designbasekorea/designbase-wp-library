@@ -1,5 +1,15 @@
 # designbase-wp-library
 
+## 0.10.0
+
+### Minor Changes
+
+- 캐로셀 인디케이터 디자인 개선
+
+### Patch Changes
+
+- 08da201: docs: update list examples, modal/popover guides, and README component usage
+
 ## 0.9.3
 
 ### Patch Changes
