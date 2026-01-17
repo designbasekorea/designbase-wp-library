@@ -1,5 +1,15 @@
 # designbase-wp-library
 
+## 0.11.0
+
+### Minor Changes
+
+- e09e05c: 캐로셀 인디케이터 디자인 개선
+- - Fixed: Resolved `appendChild` error when body is null by implementing lazy initialization for Modal and Toast components.
+  - Added: Unified `DEWP.init()` API to automatically initialize all `dewp-` prefixed components with a single line of code.
+  - Refactored: Standardized auto-initialization patterns across all components for more predictable behavior.
+  - Added: Comprehensive interactive test page (`test/local-init-test.html`) and improved usage documentation.
+
 ## 0.10.0
 
 ### Minor Changes

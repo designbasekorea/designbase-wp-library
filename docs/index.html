@@ -77,15 +77,22 @@ pnpm add designbase-wp-library</code></pre>
   &lt;link rel="stylesheet" href="https://unpkg.com/designbase-wp-library@latest/dist/css/dewp.min.css" /&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;button class="dewp-btn dewp-btn-primary"&gt;Primary&lt;/button&gt;
+  &lt;!-- 드롭다운 예시 --&gt;
+  &lt;div class="dewp-dropdown"&gt;
+    &lt;button class="dewp-dropdown-toggle dewp-btn dewp-btn-primary"&gt;선택&lt;/button&gt;
+    &lt;div class="dewp-dropdown-menu"&gt;
+      &lt;div class="dewp-dropdown-item" data-value="1"&gt;옵션 1&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
   &lt;script src="https://unpkg.com/designbase-wp-library@latest/dist/js/dewp.min.js"&gt;&lt;/script&gt;
   &lt;script&gt;
-    if (window.DEWP) {
-      console.log('DEWP 로드 완료', Object.keys(window.DEWP));
-    }
+    // 🎯 한 줄 초기화!
+    DEWP.init();
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+      <p><strong>핵심:</strong> <code>DEWP.init()</code> 한 줄로 모든 <code>dewp-</code> 클래스 컴포넌트를 자동 탐지하여 초기화합니다.</p>
     </div>
   </div>
 
